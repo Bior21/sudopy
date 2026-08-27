@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install system dependencies (Tkinter + virtual display)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-tk xvfb
+
+      - name: Install Python dependencies
+        run: |
+          pip install pytest --break-system-packages
+
+      - name: Run test suite
+        working-directory: app
+        run: |
+          xvfb-run -a python3 -m pytest -v
+
+      - name: Validate problem content
+        working-directory: app
+        run: |
+          python3 validate_content.py
+
+      - name: Verify every problem is solvable
+        working-directory: app
+        run: |
+          python3 verify_all_solvable.py
+
+      - name: Smoke-test the GUI launches headlessly
+        working-directory: app
+        run: |
+          xvfb-run -a python3 -c "
+          from gui.main_window import MainWindow
+          from pathlib import Path
+          app = MainWindow(Path('content'))
+          app.update()
+          assert len(app.topics) > 0, 'expected at least one topic to load'
+          app.destroy()
+          print('GUI smoke test passed')
+          "

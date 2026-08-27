@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# PyInstaller build artifacts
+app/build/
+app/dist/
+
+# Generated content archive (regenerate with: python3 compress_content.py)
+app/content.huff
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp

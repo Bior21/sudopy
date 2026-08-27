@@ -1,0 +1,11 @@
+{
+  "id": "lists_004",
+  "topic": "lists",
+  "title": "Access by index",
+  "prompt": "A list values = [10, 20, 30, 40] is provided. Print the element at index 2.",
+  "starter_code": "def access_by_index():\n    values = [10, 20, 30, 40]\n    # print values[2]\n",
+  "test_input": "",
+  "expected_output": "30",
+  "hint": "Indexing starts at 0, so index 2 is the third element.",
+  "function_name": "access_by_index"
+}

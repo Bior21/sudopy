@@ -1,0 +1,11 @@
+{
+  "id": "nested_005",
+  "topic": "nested",
+  "title": "List of tuples",
+  "prompt": "points = [(1, 2), (3, 4), (5, 6)] is provided. Print the y-value (second item) of the last point.",
+  "starter_code": "def list_of_tuples():\n    points = [(1, 2), (3, 4), (5, 6)]\n    # print the y-value of the last point\n",
+  "test_input": "",
+  "expected_output": "6",
+  "hint": "points[-1][1] uses negative indexing to get the last item.",
+  "function_name": "list_of_tuples"
+}

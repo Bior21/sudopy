@@ -1,0 +1,11 @@
+{
+  "id": "strings_003",
+  "topic": "strings",
+  "title": "Uppercase a word",
+  "prompt": "Read a word and print it in all uppercase letters.",
+  "starter_code": "def uppercase_a_word():\n    word = input()\n    # print word in uppercase\n",
+  "test_input": "hello",
+  "expected_output": "HELLO",
+  "hint": "Use word.upper()",
+  "function_name": "uppercase_a_word"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "dictionaries_005",
+  "topic": "dictionaries",
+  "title": "Update a value",
+  "prompt": "A dictionary stock = {'apples': 5} is provided. Update 'apples' to 8, then print the value.",
+  "starter_code": "def update_a_value():\n    stock = {'apples': 5}\n    # update 'apples' to 8, then print it\n",
+  "test_input": "",
+  "expected_output": "8",
+  "hint": "stock['apples'] = 8",
+  "function_name": "update_a_value"
+}

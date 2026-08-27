@@ -1,0 +1,11 @@
+{
+  "id": "loops_004",
+  "topic": "loops",
+  "title": "Count even numbers",
+  "prompt": "Read an integer N. Print how many even numbers are in the range 1 to N (inclusive).",
+  "starter_code": "def count_even_numbers():\n    n = int(input())\n    count = 0\n    # loop and count even numbers\n    print(count)\n",
+  "test_input": "10",
+  "expected_output": "5",
+  "hint": "Inside the loop: if i % 2 == 0: count += 1",
+  "function_name": "count_even_numbers"
+}

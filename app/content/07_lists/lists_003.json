@@ -1,0 +1,11 @@
+{
+  "id": "lists_003",
+  "topic": "lists",
+  "title": "Build a list with append",
+  "prompt": "Read 4 integers, one per line, appending each to a list, then print the full list.",
+  "starter_code": "def build_a_list_with_append():\n    nums = []\n    for _ in range(4):\n        nums.append(int(input()))\n    # print the list\n",
+  "test_input": "1\n2\n3\n4",
+  "expected_output": "[1, 2, 3, 4]",
+  "hint": "print(nums) prints the whole list.",
+  "function_name": "build_a_list_with_append"
+}

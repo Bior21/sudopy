@@ -1,0 +1,11 @@
+{
+  "id": "strings_002",
+  "topic": "strings",
+  "title": "Reverse a word",
+  "prompt": "Read a word and print it reversed.",
+  "starter_code": "def reverse_a_word():\n    word = input()\n    # print the reversed word\n",
+  "test_input": "hello",
+  "expected_output": "olleh",
+  "hint": "Slicing with a step of -1 reverses a string: word[::-1]",
+  "function_name": "reverse_a_word"
+}

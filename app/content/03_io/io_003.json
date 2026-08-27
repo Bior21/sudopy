@@ -1,0 +1,11 @@
+{
+  "id": "io_003",
+  "topic": "io",
+  "title": "Print with separator",
+  "prompt": "Read two words (one per line) and print them on the same line separated by a comma and a space.",
+  "starter_code": "def print_with_separator():\n    word1 = input()\n    word2 = input()\n    # print 'word1, word2'\n",
+  "test_input": "cats\ndogs",
+  "expected_output": "cats, dogs",
+  "hint": "print(word1 + ', ' + word2) or use the sep argument of print().",
+  "function_name": "print_with_separator"
+}

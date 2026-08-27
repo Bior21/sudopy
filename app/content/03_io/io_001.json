@@ -1,0 +1,11 @@
+{
+  "id": "io_001",
+  "topic": "io",
+  "title": "Greet by name",
+  "prompt": "Read a name from input and print 'Hello, <name>!'",
+  "starter_code": "def greet_by_name():\n    name = input()\n    # print greeting\n",
+  "test_input": "Ava",
+  "expected_output": "Hello, Ava!",
+  "hint": "Use string concatenation or an f-string: f'Hello, {name}!'",
+  "function_name": "greet_by_name"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "conditionals_005",
+  "topic": "conditionals",
+  "title": "Divisible by both",
+  "prompt": "Read an integer N. Print 'yes' if N is divisible by both 2 and 3, otherwise print 'no'.",
+  "starter_code": "def divisible_by_both():\n    n = int(input())\n    # print 'yes' or 'no'\n",
+  "test_input": "12",
+  "expected_output": "yes",
+  "hint": "Use the % operator with and: n % 2 == 0 and n % 3 == 0",
+  "function_name": "divisible_by_both"
+}

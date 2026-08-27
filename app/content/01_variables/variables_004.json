@@ -1,0 +1,11 @@
+{
+  "id": "variables_004",
+  "topic": "variables",
+  "title": "Boolean from comparison",
+  "prompt": "Read two integers (one per line) and print True if the first is greater than the second, otherwise False.",
+  "starter_code": "def boolean_from_comparison():\n    a = int(input())\n    b = int(input())\n    # print the boolean result of a > b\n",
+  "test_input": "9\n4",
+  "expected_output": "True",
+  "hint": "print(a > b) prints a boolean directly.",
+  "function_name": "boolean_from_comparison"
+}

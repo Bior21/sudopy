@@ -1,0 +1,11 @@
+{
+  "id": "nested_001",
+  "topic": "nested",
+  "title": "List of lists",
+  "prompt": "grid = [[1, 2], [3, 4]] is provided. Print the value at row 1, column 0 (i.e. grid[1][0]).",
+  "starter_code": "def list_of_lists():\n    grid = [[1, 2], [3, 4]]\n    # print grid[1][0]\n",
+  "test_input": "",
+  "expected_output": "3",
+  "hint": "Index twice: grid[1][0]",
+  "function_name": "list_of_lists"
+}

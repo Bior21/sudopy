@@ -1,0 +1,11 @@
+{
+  "id": "variables_002",
+  "topic": "variables",
+  "title": "Swap two variables",
+  "prompt": "Read two integers a and b (one per line). Swap their values and print them separated by a space, in the format 'b a'.",
+  "starter_code": "def swap_two_variables():\n    a = int(input())\n    b = int(input())\n    # swap a and b, then print\n",
+  "test_input": "3\n7",
+  "expected_output": "7 3",
+  "hint": "You can swap in Python with: a, b = b, a",
+  "function_name": "swap_two_variables"
+}

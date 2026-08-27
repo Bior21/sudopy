@@ -1,0 +1,11 @@
+{
+  "id": "strings_004",
+  "topic": "strings",
+  "title": "Count a character",
+  "prompt": "Read a word and print how many times the letter 'a' appears in it.",
+  "starter_code": "def count_a_character():\n    word = input()\n    # print count of 'a' in word\n",
+  "test_input": "banana",
+  "expected_output": "3",
+  "hint": "Use word.count('a')",
+  "function_name": "count_a_character"
+}

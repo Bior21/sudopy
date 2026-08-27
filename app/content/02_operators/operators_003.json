@@ -1,0 +1,11 @@
+{
+  "id": "operators_003",
+  "topic": "operators",
+  "title": "Integer division",
+  "prompt": "Read two integers a and b (one per line) and print a divided by b using integer (floor) division.",
+  "starter_code": "def integer_division():\n    a = int(input())\n    b = int(input())\n    # print integer division of a by b\n",
+  "test_input": "17\n5",
+  "expected_output": "3",
+  "hint": "Use the // operator.",
+  "function_name": "integer_division"
+}

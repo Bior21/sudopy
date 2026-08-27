@@ -1,0 +1,11 @@
+{
+  "id": "operators_001",
+  "topic": "operators",
+  "title": "Area of a rectangle",
+  "prompt": "Read width and height (two integers, one per line) and print their product (the area).",
+  "starter_code": "def area_of_a_rectangle():\n    width = int(input())\n    height = int(input())\n    # compute and print area\n",
+  "test_input": "4\n5",
+  "expected_output": "20",
+  "hint": "Use the * operator to multiply.",
+  "function_name": "area_of_a_rectangle"
+}

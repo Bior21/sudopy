@@ -1,0 +1,11 @@
+{
+  "id": "io_004",
+  "topic": "io",
+  "title": "Read a number and echo it",
+  "prompt": "Read a float and print it back exactly as read.",
+  "starter_code": "def read_a_number_and_echo_it():\n    value = float(input())\n    # print value\n",
+  "test_input": "3.14",
+  "expected_output": "3.14",
+  "hint": "print(value) will print the float value.",
+  "function_name": "read_a_number_and_echo_it"
+}

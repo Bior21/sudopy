@@ -1,0 +1,11 @@
+{
+  "id": "operators_005",
+  "topic": "operators",
+  "title": "Combine comparisons",
+  "prompt": "Read an integer N. Print True if N is between 1 and 10 (inclusive), otherwise False.",
+  "starter_code": "def combine_comparisons():\n    n = int(input())\n    # print True if 1 <= n <= 10 else False\n",
+  "test_input": "7",
+  "expected_output": "True",
+  "hint": "Python allows chained comparisons: 1 <= n <= 10",
+  "function_name": "combine_comparisons"
+}

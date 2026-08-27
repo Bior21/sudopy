@@ -1,0 +1,11 @@
+{
+  "id": "dictionaries_003",
+  "topic": "dictionaries",
+  "title": "Add a key",
+  "prompt": "A dictionary d = {'a': 1} is provided. Add the key 'b' with value 2, then print the full dictionary.",
+  "starter_code": "def add_a_key():\n    d = {'a': 1}\n    # add key 'b' with value 2, then print d\n",
+  "test_input": "",
+  "expected_output": "{'a': 1, 'b': 2}",
+  "hint": "d['b'] = 2",
+  "function_name": "add_a_key"
+}

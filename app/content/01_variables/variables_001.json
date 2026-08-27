@@ -1,0 +1,11 @@
+{
+  "id": "variables_001",
+  "topic": "variables",
+  "title": "Store and print your age",
+  "prompt": "Read an integer representing an age from input, store it in a variable called age, then print it.",
+  "starter_code": "def store_and_print_your_age():\n    age = int(input())\n    # print age below\n",
+  "test_input": "16",
+  "expected_output": "16",
+  "hint": "Use print(age) to display the value.",
+  "function_name": "store_and_print_your_age"
+}

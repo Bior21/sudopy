@@ -1,0 +1,11 @@
+{
+  "id": "loops_001",
+  "topic": "loops",
+  "title": "Sum of first N numbers",
+  "prompt": "Read an integer N, then print the sum of all integers from 1 to N (inclusive).",
+  "starter_code": "def sum_of_first_n_numbers():\n    n = int(input())\n    total = 0\n    # write a loop that adds 1..n to total\n    print(total)\n",
+  "test_input": "5",
+  "expected_output": "15",
+  "hint": "Use a for loop: for i in range(1, n + 1):",
+  "function_name": "sum_of_first_n_numbers"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "operators_004",
+  "topic": "operators",
+  "title": "Exponent",
+  "prompt": "Read an integer base and an integer exponent (one per line), print base raised to that exponent.",
+  "starter_code": "def exponent():\n    base = int(input())\n    exp = int(input())\n    # print base ** exp\n",
+  "test_input": "2\n5",
+  "expected_output": "32",
+  "hint": "Use the ** operator.",
+  "function_name": "exponent"
+}

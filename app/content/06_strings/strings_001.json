@@ -1,0 +1,11 @@
+{
+  "id": "strings_001",
+  "topic": "strings",
+  "title": "First character",
+  "prompt": "Read a word and print only its first character.",
+  "starter_code": "def first_character():\n    word = input()\n    # print the first character\n",
+  "test_input": "python",
+  "expected_output": "p",
+  "hint": "Use indexing: word[0]",
+  "function_name": "first_character"
+}

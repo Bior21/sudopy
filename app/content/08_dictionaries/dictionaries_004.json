@@ -1,0 +1,11 @@
+{
+  "id": "dictionaries_004",
+  "topic": "dictionaries",
+  "title": "Check key existence",
+  "prompt": "A dictionary colors = {'sky': 'blue', 'grass': 'green'} is provided. Print True if 'sky' is a key, otherwise False.",
+  "starter_code": "def check_key_existence():\n    colors = {'sky': 'blue', 'grass': 'green'}\n    # print True or False\n",
+  "test_input": "",
+  "expected_output": "True",
+  "hint": "Use the in operator: 'sky' in colors",
+  "function_name": "check_key_existence"
+}

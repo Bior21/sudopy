@@ -1,0 +1,11 @@
+{
+  "id": "nested_002",
+  "topic": "nested",
+  "title": "List of dictionaries",
+  "prompt": "students = [{'name': 'Ana'}, {'name': 'Leo'}] is provided. Print the name of the second student.",
+  "starter_code": "def list_of_dictionaries():\n    students = [{'name': 'Ana'}, {'name': 'Leo'}]\n    # print the name of the second student\n",
+  "test_input": "",
+  "expected_output": "Leo",
+  "hint": "students[1]['name']",
+  "function_name": "list_of_dictionaries"
+}
