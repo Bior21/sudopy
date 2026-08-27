@@ -8,13 +8,20 @@ module load-bearing in the shipped product rather than a demo script. In
 development (plain `python3 main.py`), the GUI points directly at the
 plain content/ folder, so iterating on problem content doesn't require
 re-running compress_content.py every time.
+
+A frozen build is also re-invoked as a subprocess to run student code
+(see core/runner.py's FROZEN_EXEC_FLAG). When launched that way, this
+module runs the given file as a standalone script instead of starting
+the GUI, since a frozen sys.executable can't be called with "-c <code>"
+the way a real Python interpreter can.
 """
 
+import runpy
 import sys
 import tempfile
 from pathlib import Path
 
-from gui.main_window import MainWindow
+from core.runner import FROZEN_EXEC_FLAG
 
 
 def _is_frozen() -> bool:
@@ -64,12 +71,33 @@ def resolve_content_dir() -> Path:
     return Path(__file__).parent / "content"
 
 
-def main():
-    """Launches the Sudopy desktop application.
+def _run_as_script(script_path: str) -> None:
+    """Executes a file as a standalone script, the way `python file.py` would.
 
-    Resolves the content directory, builds the main window, and starts
-    the Tkinter event loop.
+    Used only when a frozen build re-invokes itself with FROZEN_EXEC_FLAG
+    to run student code - see this module's docstring and
+    core/runner.py for why.
+
+    Args:
+        script_path: Path to the Python file to execute.
     """
+    runpy.run_path(script_path, run_name="__main__")
+
+
+def main():
+    """Launches the Sudopy desktop application, or runs student code.
+
+    If invoked with FROZEN_EXEC_FLAG - which only happens when a frozen
+    build re-invokes itself from core/runner.py - runs the given file
+    instead of starting the GUI. Otherwise resolves the content
+    directory, builds the main window, and starts the Tkinter event loop.
+    """
+    if len(sys.argv) >= 3 and sys.argv[1] == FROZEN_EXEC_FLAG:
+        _run_as_script(sys.argv[2])
+        return
+
+    from gui.main_window import MainWindow
+
     content_dir = resolve_content_dir()
     app = MainWindow(content_dir)
     app.mainloop()
