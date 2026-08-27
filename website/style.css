@@ -181,7 +181,30 @@ a { color: inherit; }
 .filesize {
   font-size: 13px;
   color: var(--chalk-dim);
+}
+
+.mac-warning {
+  font-size: 13px;
+  color: var(--chalk-dim);
   padding-bottom: 56px;
+  max-width: 480px;
+}
+.mac-warning summary {
+  cursor: pointer;
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.mac-warning p,
+.mac-warning ol {
+  margin-top: 12px;
+  line-height: 1.5;
+}
+.mac-warning ol {
+  padding-left: 20px;
+}
+.mac-warning li + li {
+  margin-top: 6px;
 }
 
 /* ===== How it works ===== */

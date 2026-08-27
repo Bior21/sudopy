@@ -155,13 +155,21 @@ Produces a single executable in `app/dist/`. PyInstaller doesn't
 cross-compile — building Windows/macOS/Linux binaries requires running this
 on each target OS (or via CI matrix builds).
 
+The macOS build isn't code-signed or notarized with Apple, so first-time
+openers will see a Gatekeeper warning ("Apple could not verify..."). It's
+not a sign anything's wrong — it just means the app isn't registered with
+Apple's developer program. The download page documents the workaround
+(System Settings → Privacy & Security → Open Anyway). Apple Developer
+notarization ($99/year) would remove the warning entirely if that becomes
+worth the cost later.
+
 ## Deploying the download page
 
-`website/` is a static page with no build step — host it anywhere that
-serves static files (GitHub Pages works well and is free). Before
-publishing, replace the placeholder `href="#"` download links in
-`index.html` with real URLs pointing at your published GitHub Release
-assets.
+`website/` is a static page with no build step, deployed to GitHub Pages
+via `.github/workflows/deploy-pages.yml` on every push to `website/`
+(enable it once under repo Settings → Pages → Source → GitHub Actions).
+After publishing a new build as a GitHub Release, update the download
+link in `index.html` to point at that release's asset.
 
 ## License
 
