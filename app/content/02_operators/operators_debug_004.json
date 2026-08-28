@@ -1,0 +1,35 @@
+{
+  "id": "operators_debug_004",
+  "topic": "operators",
+  "title": "is_right_triangle",
+  "prompt": "Given three side lengths a, b, c where c is the longest, this function is supposed to return whether they form a right triangle \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def is_right_triangle(a, b, c):\n    return a ** 2 + c ** 2 == b ** 2\n",
+  "function_name": "is_right_triangle",
+  "tests": [
+    {
+      "args": [
+        3,
+        4,
+        5
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        5,
+        6,
+        7
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        6,
+        8,
+        10
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

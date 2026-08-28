@@ -1,0 +1,35 @@
+{
+  "id": "operators_012",
+  "topic": "operators",
+  "title": "is_multiple_of_either",
+  "prompt": "Given a number n and two factors a and b, return whether n is a multiple of a or of b. e.g. n=15, a=3, b=5 returns True.",
+  "starter_code": "def is_multiple_of_either(n, a, b):\n    # TODO: implement this\n    pass\n",
+  "function_name": "is_multiple_of_either",
+  "tests": [
+    {
+      "args": [
+        15,
+        3,
+        5
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        7,
+        3,
+        5
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        10,
+        3,
+        5
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

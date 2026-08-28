@@ -1,0 +1,32 @@
+{
+  "id": "operators_debug_001",
+  "topic": "operators",
+  "title": "percentage_change",
+  "prompt": "Given old_value and new_value, this function is supposed to return the percent change from old to new \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def percentage_change(old_value, new_value):\n    return (new_value - old_value) / new_value * 100\n",
+  "function_name": "percentage_change",
+  "tests": [
+    {
+      "args": [
+        50,
+        75
+      ],
+      "expected_output": "50.0"
+    },
+    {
+      "args": [
+        100,
+        90
+      ],
+      "expected_output": "-10.0"
+    },
+    {
+      "args": [
+        20,
+        80
+      ],
+      "expected_output": "300.0"
+    }
+  ],
+  "hint": ""
+}

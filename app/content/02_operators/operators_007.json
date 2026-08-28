@@ -1,0 +1,38 @@
+{
+  "id": "operators_007",
+  "topic": "operators",
+  "title": "weighted_score",
+  "prompt": "Given two scores and a weight for each (weights that add up to 1), return the weighted combination. e.g. score1=80, weight1=0.6, score2=90, weight2=0.4 returns 84.0.",
+  "starter_code": "def weighted_score(score1, weight1, score2, weight2):\n    # TODO: implement this\n    pass\n",
+  "function_name": "weighted_score",
+  "tests": [
+    {
+      "args": [
+        80,
+        0.6,
+        90,
+        0.4
+      ],
+      "expected_output": "84.0"
+    },
+    {
+      "args": [
+        100,
+        0.5,
+        50,
+        0.5
+      ],
+      "expected_output": "75.0"
+    },
+    {
+      "args": [
+        70,
+        1,
+        0,
+        0
+      ],
+      "expected_output": "70"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,35 @@
+{
+  "id": "operators_020",
+  "topic": "operators",
+  "title": "is_right_triangle",
+  "prompt": "Given three side lengths a, b, c where c is the longest, return whether they form a right triangle. e.g. a=3, b=4, c=5 returns True.",
+  "starter_code": "def is_right_triangle(a, b, c):\n    # TODO: implement this\n    pass\n",
+  "function_name": "is_right_triangle",
+  "tests": [
+    {
+      "args": [
+        3,
+        4,
+        5
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        5,
+        6,
+        7
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        6,
+        8,
+        10
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

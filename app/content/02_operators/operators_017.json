@@ -1,0 +1,32 @@
+{
+  "id": "operators_017",
+  "topic": "operators",
+  "title": "should_send_alert",
+  "prompt": "Given two booleans is_critical and is_acknowledged, return whether an alert should fire \u2014 only when it's critical and hasn't been acknowledged yet. e.g. is_critical=True, is_acknowledged=False returns True.",
+  "starter_code": "def should_send_alert(is_critical, is_acknowledged):\n    # TODO: implement this\n    pass\n",
+  "function_name": "should_send_alert",
+  "tests": [
+    {
+      "args": [
+        true,
+        false
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        true,
+        true
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        false,
+        false
+      ],
+      "expected_output": "False"
+    }
+  ],
+  "hint": ""
+}

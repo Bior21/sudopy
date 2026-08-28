@@ -1,0 +1,29 @@
+{
+  "id": "operators_013",
+  "topic": "operators",
+  "title": "last_two_digits",
+  "prompt": "Given an int n, return its last two digits as a number. e.g. n=12345 returns 45.",
+  "starter_code": "def last_two_digits(n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "last_two_digits",
+  "tests": [
+    {
+      "args": [
+        12345
+      ],
+      "expected_output": "45"
+    },
+    {
+      "args": [
+        7
+      ],
+      "expected_output": "7"
+    },
+    {
+      "args": [
+        100
+      ],
+      "expected_output": "0"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,32 @@
+{
+  "id": "operators_019",
+  "topic": "operators",
+  "title": "body_mass_index",
+  "prompt": "Given a weight in kg and a height in meters, return the BMI (weight divided by height squared). e.g. weight_kg=80, height_m=2.0 returns 20.0.",
+  "starter_code": "def body_mass_index(weight_kg, height_m):\n    # TODO: implement this\n    pass\n",
+  "function_name": "body_mass_index",
+  "tests": [
+    {
+      "args": [
+        70,
+        1.75
+      ],
+      "expected_output": "22.857142857142858"
+    },
+    {
+      "args": [
+        80,
+        2.0
+      ],
+      "expected_output": "20.0"
+    },
+    {
+      "args": [
+        50,
+        1.0
+      ],
+      "expected_output": "50.0"
+    }
+  ],
+  "hint": ""
+}

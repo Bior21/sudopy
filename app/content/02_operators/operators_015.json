@@ -1,0 +1,32 @@
+{
+  "id": "operators_015",
+  "topic": "operators",
+  "title": "round_up_to_nearest",
+  "prompt": "Given a number n and a multiple, return n rounded up to the nearest multiple. e.g. n=47, multiple=10 returns 50.",
+  "starter_code": "def round_up_to_nearest(n, multiple):\n    # TODO: implement this\n    pass\n",
+  "function_name": "round_up_to_nearest",
+  "tests": [
+    {
+      "args": [
+        47,
+        10
+      ],
+      "expected_output": "50"
+    },
+    {
+      "args": [
+        95,
+        5
+      ],
+      "expected_output": "95"
+    },
+    {
+      "args": [
+        41,
+        4
+      ],
+      "expected_output": "44"
+    }
+  ],
+  "hint": ""
+}

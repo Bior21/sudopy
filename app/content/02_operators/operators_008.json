@@ -1,0 +1,38 @@
+{
+  "id": "operators_008",
+  "topic": "operators",
+  "title": "distance_squared",
+  "prompt": "Given the coordinates of two points, return the squared distance between them (skip the square root). e.g. x1=0, y1=0, x2=3, y2=4 returns 25.",
+  "starter_code": "def distance_squared(x1, y1, x2, y2):\n    # TODO: implement this\n    pass\n",
+  "function_name": "distance_squared",
+  "tests": [
+    {
+      "args": [
+        0,
+        0,
+        3,
+        4
+      ],
+      "expected_output": "25"
+    },
+    {
+      "args": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "expected_output": "2"
+    }
+  ],
+  "hint": ""
+}

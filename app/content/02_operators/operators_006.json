@@ -1,0 +1,32 @@
+{
+  "id": "operators_006",
+  "topic": "operators",
+  "title": "same_sign",
+  "prompt": "Given two numbers a and b, return whether they're both positive or both negative. e.g. a=5, b=3 returns True; a=5, b=-3 returns False.",
+  "starter_code": "def same_sign(a, b):\n    # TODO: implement this\n    pass\n",
+  "function_name": "same_sign",
+  "tests": [
+    {
+      "args": [
+        5,
+        3
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        -5,
+        -3
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        5,
+        -3
+      ],
+      "expected_output": "False"
+    }
+  ],
+  "hint": ""
+}

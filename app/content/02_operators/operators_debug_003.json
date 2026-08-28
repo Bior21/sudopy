@@ -1,0 +1,32 @@
+{
+  "id": "operators_debug_003",
+  "topic": "operators",
+  "title": "round_down_to_nearest",
+  "prompt": "Given n and multiple, this function is supposed to return n rounded down to the nearest multiple \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def round_down_to_nearest(n, multiple):\n    return (n // multiple + 1) * multiple\n",
+  "function_name": "round_down_to_nearest",
+  "tests": [
+    {
+      "args": [
+        47,
+        10
+      ],
+      "expected_output": "40"
+    },
+    {
+      "args": [
+        99,
+        5
+      ],
+      "expected_output": "95"
+    },
+    {
+      "args": [
+        12,
+        4
+      ],
+      "expected_output": "12"
+    }
+  ],
+  "hint": ""
+}

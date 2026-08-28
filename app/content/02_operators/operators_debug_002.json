@@ -1,0 +1,35 @@
+{
+  "id": "operators_debug_002",
+  "topic": "operators",
+  "title": "is_close_enough",
+  "prompt": "Given a, b, and tolerance, this function is supposed to return whether a and b differ by no more than tolerance \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def is_close_enough(a, b, tolerance):\n    return abs(a - b) < tolerance\n",
+  "function_name": "is_close_enough",
+  "tests": [
+    {
+      "args": [
+        5,
+        6,
+        1
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        5,
+        5.05,
+        0.1
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        5,
+        7,
+        1
+      ],
+      "expected_output": "False"
+    }
+  ],
+  "hint": ""
+}

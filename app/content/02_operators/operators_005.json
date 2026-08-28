@@ -1,23 +1,35 @@
 {
   "id": "operators_005",
   "topic": "operators",
-  "title": "Combine comparisons",
-  "prompt": "Read an integer N. Print True if N is between 1 and 10 (inclusive), otherwise False.",
-  "starter_code": "def combine_comparisons():\n    n = int(input())\n    # print True if 1 <= n <= 10 else False\n",
-  "hint": "Python allows chained comparisons: 1 <= n <= 10",
-  "function_name": "combine_comparisons",
+  "title": "is_strictly_increasing",
+  "prompt": "Given three numbers a, b, c, return whether each is strictly greater than the one before it. e.g. a=1, b=2, c=3 returns True.",
+  "starter_code": "def is_strictly_increasing(a, b, c):\n    # TODO: implement this\n    pass\n",
+  "function_name": "is_strictly_increasing",
   "tests": [
     {
-      "input": "7",
+      "args": [
+        1,
+        2,
+        3
+      ],
       "expected_output": "True"
     },
     {
-      "input": "15",
+      "args": [
+        3,
+        2,
+        1
+      ],
       "expected_output": "False"
     },
     {
-      "input": "10",
-      "expected_output": "True"
+      "args": [
+        1,
+        1,
+        2
+      ],
+      "expected_output": "False"
     }
-  ]
+  ],
+  "hint": ""
 }

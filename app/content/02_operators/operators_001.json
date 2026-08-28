@@ -1,23 +1,35 @@
 {
   "id": "operators_001",
   "topic": "operators",
-  "title": "Area of a rectangle",
-  "prompt": "Read width and height (two integers, one per line) and print their product (the area).",
-  "starter_code": "def area_of_a_rectangle():\n    width = int(input())\n    height = int(input())\n    # compute and print area\n",
-  "hint": "Use the * operator to multiply.",
-  "function_name": "area_of_a_rectangle",
+  "title": "total_with_compound_discount",
+  "prompt": "Given a price and two discount percentages, apply them one after another (discount1 first, then discount2 on the reduced price) and return the final price. e.g. price=100, discount1=20, discount2=10 returns 72.0.",
+  "starter_code": "def total_with_compound_discount(price, discount1, discount2):\n    # TODO: implement this\n    pass\n",
+  "function_name": "total_with_compound_discount",
   "tests": [
     {
-      "input": "4\n5",
-      "expected_output": "20"
+      "args": [
+        100,
+        20,
+        10
+      ],
+      "expected_output": "72.0"
     },
     {
-      "input": "3\n3",
-      "expected_output": "9"
+      "args": [
+        200,
+        50,
+        50
+      ],
+      "expected_output": "50.0"
     },
     {
-      "input": "10\n7",
-      "expected_output": "70"
+      "args": [
+        50,
+        0,
+        0
+      ],
+      "expected_output": "50.0"
     }
-  ]
+  ],
+  "hint": ""
 }

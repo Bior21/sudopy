@@ -1,0 +1,32 @@
+{
+  "id": "operators_018",
+  "topic": "operators",
+  "title": "harmonic_mean_of_two",
+  "prompt": "Given two positive numbers a and b, return their harmonic mean (2ab / (a+b)). e.g. a=4, b=4 returns 4.0.",
+  "starter_code": "def harmonic_mean_of_two(a, b):\n    # TODO: implement this\n    pass\n",
+  "function_name": "harmonic_mean_of_two",
+  "tests": [
+    {
+      "args": [
+        4,
+        4
+      ],
+      "expected_output": "4.0"
+    },
+    {
+      "args": [
+        2,
+        8
+      ],
+      "expected_output": "3.2"
+    },
+    {
+      "args": [
+        10,
+        10
+      ],
+      "expected_output": "10.0"
+    }
+  ],
+  "hint": ""
+}

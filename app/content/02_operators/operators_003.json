@@ -1,23 +1,32 @@
 {
   "id": "operators_003",
   "topic": "operators",
-  "title": "Integer division",
-  "prompt": "Read two integers a and b (one per line) and print a divided by b using integer (floor) division.",
-  "starter_code": "def integer_division():\n    a = int(input())\n    b = int(input())\n    # print integer division of a by b\n",
-  "hint": "Use the // operator.",
-  "function_name": "integer_division",
+  "title": "items_left_over",
+  "prompt": "Given a total number of items and a group_size, return how many are left over after making as many full groups as possible. e.g. total=17, group_size=5 returns 2.",
+  "starter_code": "def items_left_over(total, group_size):\n    # TODO: implement this\n    pass\n",
+  "function_name": "items_left_over",
   "tests": [
     {
-      "input": "17\n5",
-      "expected_output": "3"
+      "args": [
+        17,
+        5
+      ],
+      "expected_output": "2"
     },
     {
-      "input": "20\n4",
-      "expected_output": "5"
+      "args": [
+        20,
+        4
+      ],
+      "expected_output": "0"
     },
     {
-      "input": "7\n2",
-      "expected_output": "3"
+      "args": [
+        7,
+        3
+      ],
+      "expected_output": "1"
     }
-  ]
+  ],
+  "hint": ""
 }

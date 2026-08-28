@@ -1,23 +1,32 @@
 {
   "id": "operators_004",
   "topic": "operators",
-  "title": "Exponent",
-  "prompt": "Read an integer base and an integer exponent (one per line), print base raised to that exponent.",
-  "starter_code": "def exponent():\n    base = int(input())\n    exp = int(input())\n    # print base ** exp\n",
-  "hint": "Use the ** operator.",
-  "function_name": "exponent",
+  "title": "pages_needed",
+  "prompt": "Given a number of items and how many fit per page, return how many pages it takes, rounding up. e.g. items=23, items_per_page=10 returns 3.",
+  "starter_code": "def pages_needed(items, items_per_page):\n    # TODO: implement this\n    pass\n",
+  "function_name": "pages_needed",
   "tests": [
     {
-      "input": "2\n5",
-      "expected_output": "32"
+      "args": [
+        23,
+        10
+      ],
+      "expected_output": "3"
     },
     {
-      "input": "3\n2",
-      "expected_output": "9"
+      "args": [
+        20,
+        10
+      ],
+      "expected_output": "2"
     },
     {
-      "input": "5\n0",
+      "args": [
+        1,
+        10
+      ],
       "expected_output": "1"
     }
-  ]
+  ],
+  "hint": "There's a way to round up using only integer division \u2014 add items_per_page - 1 first."
 }

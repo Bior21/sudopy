@@ -1,0 +1,32 @@
+{
+  "id": "operators_011",
+  "topic": "operators",
+  "title": "percentage_change",
+  "prompt": "Given an old_value and a new_value, return the percent change from old to new. e.g. old_value=50, new_value=75 returns 50.0.",
+  "starter_code": "def percentage_change(old_value, new_value):\n    # TODO: implement this\n    pass\n",
+  "function_name": "percentage_change",
+  "tests": [
+    {
+      "args": [
+        50,
+        75
+      ],
+      "expected_output": "50.0"
+    },
+    {
+      "args": [
+        100,
+        90
+      ],
+      "expected_output": "-10.0"
+    },
+    {
+      "args": [
+        40,
+        40
+      ],
+      "expected_output": "0.0"
+    }
+  ],
+  "hint": ""
+}

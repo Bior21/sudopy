@@ -1,0 +1,38 @@
+{
+  "id": "operators_010",
+  "topic": "operators",
+  "title": "total_area_two_rectangles",
+  "prompt": "Given the width and height of two rectangles, return their combined area. e.g. w1=3, h1=4, w2=5, h2=6 returns 42.",
+  "starter_code": "def total_area_two_rectangles(w1, h1, w2, h2):\n    # TODO: implement this\n    pass\n",
+  "function_name": "total_area_two_rectangles",
+  "tests": [
+    {
+      "args": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "expected_output": "42"
+    },
+    {
+      "args": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "expected_output": "2"
+    },
+    {
+      "args": [
+        10,
+        2,
+        0,
+        5
+      ],
+      "expected_output": "20"
+    }
+  ],
+  "hint": ""
+}

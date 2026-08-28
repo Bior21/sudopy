@@ -1,23 +1,35 @@
 {
   "id": "operators_002",
   "topic": "operators",
-  "title": "Remainder check",
-  "prompt": "Read an integer N and print the remainder when N is divided by 3.",
-  "starter_code": "def remainder_check():\n    n = int(input())\n    # print n mod 3\n",
-  "hint": "Use the % operator.",
-  "function_name": "remainder_check",
+  "title": "is_between_exclusive",
+  "prompt": "Given a number n and a low/high range, return whether n is strictly between low and high (not equal to either). e.g. n=5, low=1, high=10 returns True.",
+  "starter_code": "def is_between_exclusive(n, low, high):\n    # TODO: implement this\n    pass\n",
+  "function_name": "is_between_exclusive",
   "tests": [
     {
-      "input": "10",
-      "expected_output": "1"
+      "args": [
+        5,
+        1,
+        10
+      ],
+      "expected_output": "True"
     },
     {
-      "input": "9",
-      "expected_output": "0"
+      "args": [
+        1,
+        1,
+        10
+      ],
+      "expected_output": "False"
     },
     {
-      "input": "14",
-      "expected_output": "2"
+      "args": [
+        10,
+        1,
+        10
+      ],
+      "expected_output": "False"
     }
-  ]
+  ],
+  "hint": ""
 }
