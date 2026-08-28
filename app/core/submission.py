@@ -11,6 +11,15 @@ Centralizing the "append the call" logic here, rather than in
 gui/problem_view.py, means any future caller - a CLI grading mode, a
 batch re-grader, etc. - gets the same behavior for free instead of
 re-implementing it and risking drift.
+
+Grading still works purely on stdout (see core/grader.py), so a solution
+that `return`s a value instead of calling print() needs that value to
+actually reach stdout - the appended call does this automatically by
+printing whatever the function returns, unless it returns None. A
+function that already prints its own output and has no explicit return
+statement returns None, so this doesn't change anything for it; a
+function that instead computes and returns a value gets that value
+printed for free, without the student needing to call print() themselves.
 """
 
 from __future__ import annotations
@@ -18,9 +27,16 @@ from __future__ import annotations
 from .runner import run_code, ExecutionResult
 from .grader import grade, GradeResult
 
+_RESULT_VAR = "__sudopy_result"
+
 
 def build_executable_code(student_code: str, function_name: str) -> str:
     """Appends a call to function_name so the student's code actually runs.
+
+    The appended call captures the function's return value and prints it
+    if it isn't None, so a solution written with `return` produces stdout
+    to grade just like one written with `print()` - see this module's
+    docstring for why.
 
     Args:
         student_code: The student's submitted function definition.
@@ -29,7 +45,12 @@ def build_executable_code(student_code: str, function_name: str) -> str:
     Returns:
         The complete, runnable source code.
     """
-    return student_code.rstrip("\n") + f"\n\n{function_name}()\n"
+    call = (
+        f"{_RESULT_VAR} = {function_name}()\n"
+        f"if {_RESULT_VAR} is not None:\n"
+        f"    print({_RESULT_VAR})\n"
+    )
+    return student_code.rstrip("\n") + "\n\n" + call
 
 
 def run_submission(student_code: str, function_name: str, test_input: str = "") -> ExecutionResult:

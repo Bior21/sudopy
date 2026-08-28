@@ -4,8 +4,28 @@ from core.submission import build_executable_code, run_submission, run_and_grade
 def test_build_executable_code_appends_call_with_correct_name():
     code = "def add_two_numbers():\n    print('hi')\n"
     full = build_executable_code(code, "add_two_numbers")
-    assert full.endswith("\n\nadd_two_numbers()\n")
+    assert "add_two_numbers()" in full
     assert "def add_two_numbers():" in full
+
+
+def test_build_executable_code_prints_a_returned_value():
+    code = "def add_two_numbers():\n    return 2 + 2\n"
+    full = build_executable_code(code, "add_two_numbers")
+    assert "print(" in full
+
+
+def test_returning_a_value_is_graded_the_same_as_printing_it():
+    student_code = "def add_two_numbers():\n    return 2 + 2\n"
+    g = run_and_grade(student_code, "add_two_numbers", test_input="", expected_output="4")
+    assert g.passed
+
+
+def test_returning_none_prints_nothing_extra():
+    # A function with no explicit return (or `return` with no value)
+    # returns None - this must not print the literal word "None".
+    student_code = "def greet():\n    print('hi')\n"
+    result = run_submission(student_code, "greet")
+    assert result.stdout.strip() == "hi"
 
 
 def test_run_submission_executes_the_function_body():

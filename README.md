@@ -135,7 +135,10 @@ Drop a JSON file into the relevant `content/<NN>_<topic>/` folder:
 `starter_code` is a function stub — the student only edits what's inside
 it. `function_name` must match the `def` name; `core/submission.py`
 appends the call automatically before running the code, so the starter
-code itself never includes the call.
+code itself never includes the call. A solution can either `print()`
+its answer or `return` it — the appended call prints whatever the
+function returns, unless it returns `None`, so either style produces
+the same stdout to grade against `expected_output`.
 
 Then add a hand-written correct solution to `SOLUTIONS` in
 `verify_all_solvable.py` and run it — this catches the class of bug that
