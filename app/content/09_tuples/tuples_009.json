@@ -1,0 +1,55 @@
+{
+  "id": "tuples_009",
+  "topic": "tuples",
+  "title": "concatenate_tuples",
+  "prompt": "Given two tuples a and b, return them joined into one tuple, a's elements first. e.g. a=(1, 2), b=(3, 4) returns (1, 2, 3, 4).",
+  "starter_code": "def concatenate_tuples(a, b):\n    # TODO: implement this\n    pass\n",
+  "function_name": "concatenate_tuples",
+  "tests": [
+    {
+      "args": [
+        {
+          "__tuple__": [
+            1,
+            2
+          ]
+        },
+        {
+          "__tuple__": [
+            3,
+            4
+          ]
+        }
+      ],
+      "expected_output": "(1, 2, 3, 4)"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": []
+        },
+        {
+          "__tuple__": [
+            1,
+            2
+          ]
+        }
+      ],
+      "expected_output": "(1, 2)"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            5
+          ]
+        },
+        {
+          "__tuple__": []
+        }
+      ],
+      "expected_output": "(5,)"
+    }
+  ],
+  "hint": ""
+}

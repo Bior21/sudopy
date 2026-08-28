@@ -1,0 +1,44 @@
+{
+  "id": "tuples_016",
+  "topic": "tuples",
+  "title": "pairs_from_two_lists",
+  "prompt": "Given two same-length lists a and b, return a list of tuples pairing up the elements at each position. e.g. a=[1, 2, 3], b=['x', 'y', 'z'] returns [(1, 'x'), (2, 'y'), (3, 'z')].",
+  "starter_code": "def pairs_from_two_lists(a, b):\n    # TODO: implement this\n    pass\n",
+  "function_name": "pairs_from_two_lists",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          "x",
+          "y",
+          "z"
+        ]
+      ],
+      "expected_output": "[(1, 'x'), (2, 'y'), (3, 'z')]"
+    },
+    {
+      "args": [
+        [
+          1
+        ],
+        [
+          10
+        ]
+      ],
+      "expected_output": "[(1, 10)]"
+    },
+    {
+      "args": [
+        [],
+        []
+      ],
+      "expected_output": "[]"
+    }
+  ],
+  "hint": "zip() pairs up two sequences elementwise into tuples - wrap it in list() to see the pairs."
+}

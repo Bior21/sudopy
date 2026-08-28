@@ -1,0 +1,41 @@
+{
+  "id": "tuples_007",
+  "topic": "tuples",
+  "title": "tuple_to_list",
+  "prompt": "Given a tuple t, return it converted to a list. e.g. t=(1, 2, 3) returns [1, 2, 3].",
+  "starter_code": "def tuple_to_list(t):\n    # TODO: implement this\n    pass\n",
+  "function_name": "tuple_to_list",
+  "tests": [
+    {
+      "args": [
+        {
+          "__tuple__": [
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "expected_output": "[1, 2, 3]"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": []
+        }
+      ],
+      "expected_output": "[]"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            5
+          ]
+        }
+      ],
+      "expected_output": "[5]"
+    }
+  ],
+  "hint": ""
+}

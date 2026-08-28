@@ -1,0 +1,47 @@
+{
+  "id": "tuples_015",
+  "topic": "tuples",
+  "title": "max_of_tuple",
+  "prompt": "Given a tuple of numbers, return the largest one. e.g. t=(3, 1, 4, 1, 5) returns 5.",
+  "starter_code": "def max_of_tuple(t):\n    # TODO: implement this\n    pass\n",
+  "function_name": "max_of_tuple",
+  "tests": [
+    {
+      "args": [
+        {
+          "__tuple__": [
+            3,
+            1,
+            4,
+            1,
+            5
+          ]
+        }
+      ],
+      "expected_output": "5"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            -5,
+            -2,
+            -10
+          ]
+        }
+      ],
+      "expected_output": "-2"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            7
+          ]
+        }
+      ],
+      "expected_output": "7"
+    }
+  ],
+  "hint": ""
+}

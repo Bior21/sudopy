@@ -1,0 +1,55 @@
+{
+  "id": "tuples_debug_002",
+  "topic": "tuples",
+  "title": "concatenate_tuples",
+  "prompt": "Given two tuples a and b, this function is supposed to return them joined into one tuple, a's elements first \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def concatenate_tuples(a, b):\n    return b + a\n",
+  "function_name": "concatenate_tuples",
+  "tests": [
+    {
+      "args": [
+        {
+          "__tuple__": [
+            1,
+            2
+          ]
+        },
+        {
+          "__tuple__": [
+            3,
+            4
+          ]
+        }
+      ],
+      "expected_output": "(1, 2, 3, 4)"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": []
+        },
+        {
+          "__tuple__": [
+            1,
+            2
+          ]
+        }
+      ],
+      "expected_output": "(1, 2)"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            5
+          ]
+        },
+        {
+          "__tuple__": []
+        }
+      ],
+      "expected_output": "(5,)"
+    }
+  ],
+  "hint": ""
+}

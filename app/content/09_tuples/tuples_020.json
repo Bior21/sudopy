@@ -1,0 +1,74 @@
+{
+  "id": "tuples_020",
+  "topic": "tuples",
+  "title": "sort_tuples_by_second",
+  "prompt": "Given a list of 2-element tuples, return it sorted by each tuple's second element, smallest first. e.g. pairs=[('a', 3), ('b', 1), ('c', 2)] returns [('b', 1), ('c', 2), ('a', 3)].",
+  "starter_code": "def sort_tuples_by_second(pairs):\n    # TODO: implement this\n    pass\n",
+  "function_name": "sort_tuples_by_second",
+  "tests": [
+    {
+      "args": [
+        [
+          {
+            "__tuple__": [
+              "a",
+              3
+            ]
+          },
+          {
+            "__tuple__": [
+              "b",
+              1
+            ]
+          },
+          {
+            "__tuple__": [
+              "c",
+              2
+            ]
+          }
+        ]
+      ],
+      "expected_output": "[('b', 1), ('c', 2), ('a', 3)]"
+    },
+    {
+      "args": [
+        [
+          {
+            "__tuple__": [
+              "x",
+              1
+            ]
+          }
+        ]
+      ],
+      "expected_output": "[('x', 1)]"
+    },
+    {
+      "args": [
+        [
+          {
+            "__tuple__": [
+              "a",
+              5
+            ]
+          },
+          {
+            "__tuple__": [
+              "b",
+              5
+            ]
+          },
+          {
+            "__tuple__": [
+              "c",
+              1
+            ]
+          }
+        ]
+      ],
+      "expected_output": "[('c', 1), ('a', 5), ('b', 5)]"
+    }
+  ],
+  "hint": ""
+}

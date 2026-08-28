@@ -1,0 +1,67 @@
+{
+  "id": "tuples_019",
+  "topic": "tuples",
+  "title": "tuples_are_equal",
+  "prompt": "Given two tuples a and b, return whether they contain the same elements in the same order. e.g. a=(1, 2, 3), b=(1, 2, 3) returns True.",
+  "starter_code": "def tuples_are_equal(a, b):\n    # TODO: implement this\n    pass\n",
+  "function_name": "tuples_are_equal",
+  "tests": [
+    {
+      "args": [
+        {
+          "__tuple__": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "__tuple__": [
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "__tuple__": [
+            3,
+            2,
+            1
+          ]
+        }
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            1,
+            2
+          ]
+        },
+        {
+          "__tuple__": [
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "expected_output": "False"
+    }
+  ],
+  "hint": ""
+}

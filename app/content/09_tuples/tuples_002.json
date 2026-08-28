@@ -1,15 +1,49 @@
 {
   "id": "tuples_002",
   "topic": "tuples",
-  "title": "Unpack a tuple",
-  "prompt": "A tuple pair = (5, 10) is provided. Unpack it into variables a and b, then print their sum.",
-  "starter_code": "def unpack_a_tuple():\n    pair = (5, 10)\n    # unpack pair into a, b and print their sum\n",
-  "hint": "a, b = pair",
-  "function_name": "unpack_a_tuple",
+  "title": "get_element_at",
+  "prompt": "Given a tuple t and an index, return the element at that index. e.g. t=(10, 20, 30), index=1 returns 20.",
+  "starter_code": "def get_element_at(t, index):\n    # TODO: implement this\n    pass\n",
+  "function_name": "get_element_at",
   "tests": [
     {
-      "input": "",
-      "expected_output": "15"
+      "args": [
+        {
+          "__tuple__": [
+            10,
+            20,
+            30
+          ]
+        },
+        1
+      ],
+      "expected_output": "20"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            5
+          ]
+        },
+        0
+      ],
+      "expected_output": "5"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        3
+      ],
+      "expected_output": "4"
     }
-  ]
+  ],
+  "hint": ""
 }

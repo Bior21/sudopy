@@ -1,0 +1,47 @@
+{
+  "id": "tuples_018",
+  "topic": "tuples",
+  "title": "swap_first_last",
+  "prompt": "Given a tuple t with at least two elements, return a new tuple with its first and last elements swapped and everything in between unchanged. e.g. t=(1, 2, 3, 4) returns (4, 2, 3, 1).",
+  "starter_code": "def swap_first_last(t):\n    # TODO: implement this\n    pass\n",
+  "function_name": "swap_first_last",
+  "tests": [
+    {
+      "args": [
+        {
+          "__tuple__": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ],
+      "expected_output": "(4, 2, 3, 1)"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            1,
+            2
+          ]
+        }
+      ],
+      "expected_output": "(2, 1)"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            9,
+            5,
+            1
+          ]
+        }
+      ],
+      "expected_output": "(1, 5, 9)"
+    }
+  ],
+  "hint": "Tuples can't be modified directly - convert to a list, swap there, then convert back."
+}

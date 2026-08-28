@@ -1,0 +1,45 @@
+{
+  "id": "tuples_012",
+  "topic": "tuples",
+  "title": "first_and_last",
+  "prompt": "Given a tuple t, return a new 2-element tuple made of its first and last elements. e.g. t=(1, 2, 3, 4) returns (1, 4).",
+  "starter_code": "def first_and_last(t):\n    # TODO: implement this\n    pass\n",
+  "function_name": "first_and_last",
+  "tests": [
+    {
+      "args": [
+        {
+          "__tuple__": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ],
+      "expected_output": "(1, 4)"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            7
+          ]
+        }
+      ],
+      "expected_output": "(7, 7)"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            9,
+            5
+          ]
+        }
+      ],
+      "expected_output": "(9, 5)"
+    }
+  ],
+  "hint": ""
+}

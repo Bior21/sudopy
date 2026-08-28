@@ -1,9 +1,9 @@
 {
-  "id": "tuples_004",
+  "id": "tuples_debug_001",
   "topic": "tuples",
   "title": "swap_pair",
-  "prompt": "Given a 2-element tuple pair, return a new tuple with the two elements swapped. e.g. pair=(1, 2) returns (2, 1).",
-  "starter_code": "def swap_pair(pair):\n    # TODO: implement this\n    pass\n",
+  "prompt": "Given a 2-element tuple pair, this function is supposed to return a new tuple with the two elements swapped \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def swap_pair(pair):\n    a, b = pair\n    return a, b\n",
   "function_name": "swap_pair",
   "tests": [
     {

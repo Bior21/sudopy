@@ -1,10 +1,10 @@
 {
-  "id": "tuples_003",
+  "id": "tuples_014",
   "topic": "tuples",
-  "title": "tuple_length",
-  "prompt": "Given a tuple t, return how many elements it has. e.g. t=(1, 2, 3) returns 3.",
-  "starter_code": "def tuple_length(t):\n    # TODO: implement this\n    pass\n",
-  "function_name": "tuple_length",
+  "title": "sum_of_tuple",
+  "prompt": "Given a tuple of numbers, return their sum. e.g. t=(1, 2, 3) returns 6.",
+  "starter_code": "def sum_of_tuple(t):\n    # TODO: implement this\n    pass\n",
+  "function_name": "sum_of_tuple",
   "tests": [
     {
       "args": [
@@ -16,7 +16,7 @@
           ]
         }
       ],
-      "expected_output": "3"
+      "expected_output": "6"
     },
     {
       "args": [
@@ -30,15 +30,11 @@
       "args": [
         {
           "__tuple__": [
-            1,
-            2,
-            3,
-            4,
-            5
+            10
           ]
         }
       ],
-      "expected_output": "5"
+      "expected_output": "10"
     }
   ],
   "hint": ""

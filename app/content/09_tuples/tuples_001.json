@@ -1,15 +1,44 @@
 {
   "id": "tuples_001",
   "topic": "tuples",
-  "title": "Access tuple elements",
-  "prompt": "A tuple point = (3, 7) is provided. Print the two values separated by a space, in the format 'x y'.",
-  "starter_code": "def access_tuple_elements():\n    point = (3, 7)\n    # print point[0] and point[1] separated by a space\n",
-  "hint": "print(point[0], point[1])",
-  "function_name": "access_tuple_elements",
+  "title": "unpack_pair",
+  "prompt": "Given a 2-element tuple pair, unpack it into two variables and return their sum. e.g. pair=(3, 4) returns 7.",
+  "starter_code": "def unpack_pair(pair):\n    # TODO: implement this\n    pass\n",
+  "function_name": "unpack_pair",
   "tests": [
     {
-      "input": "",
-      "expected_output": "3 7"
+      "args": [
+        {
+          "__tuple__": [
+            3,
+            4
+          ]
+        }
+      ],
+      "expected_output": "7"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            10,
+            20
+          ]
+        }
+      ],
+      "expected_output": "30"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            -5,
+            5
+          ]
+        }
+      ],
+      "expected_output": "0"
     }
-  ]
+  ],
+  "hint": ""
 }

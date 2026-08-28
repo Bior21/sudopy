@@ -1,0 +1,62 @@
+{
+  "id": "tuples_006",
+  "topic": "tuples",
+  "title": "distance_squared_between_points",
+  "prompt": "Given two points, each an (x, y) tuple, return the squared distance between them (skip the square root). e.g. p1=(0, 0), p2=(3, 4) returns 25.",
+  "starter_code": "def distance_squared_between_points(p1, p2):\n    # TODO: implement this\n    pass\n",
+  "function_name": "distance_squared_between_points",
+  "tests": [
+    {
+      "args": [
+        {
+          "__tuple__": [
+            0,
+            0
+          ]
+        },
+        {
+          "__tuple__": [
+            3,
+            4
+          ]
+        }
+      ],
+      "expected_output": "25"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            1,
+            1
+          ]
+        },
+        {
+          "__tuple__": [
+            1,
+            1
+          ]
+        }
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            0,
+            0
+          ]
+        },
+        {
+          "__tuple__": [
+            1,
+            1
+          ]
+        }
+      ],
+      "expected_output": "2"
+    }
+  ],
+  "hint": ""
+}

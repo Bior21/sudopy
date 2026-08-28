@@ -1,0 +1,50 @@
+{
+  "id": "tuples_011",
+  "topic": "tuples",
+  "title": "index_of_value_in_tuple",
+  "prompt": "Given a tuple t and a value known to be in it, return the index where value first appears. e.g. t=(10, 20, 30), value=20 returns 1.",
+  "starter_code": "def index_of_value_in_tuple(t, value):\n    # TODO: implement this\n    pass\n",
+  "function_name": "index_of_value_in_tuple",
+  "tests": [
+    {
+      "args": [
+        {
+          "__tuple__": [
+            10,
+            20,
+            30
+          ]
+        },
+        20
+      ],
+      "expected_output": "1"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            5,
+            6,
+            7
+          ]
+        },
+        5
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        {
+          "__tuple__": [
+            1,
+            2,
+            3
+          ]
+        },
+        3
+      ],
+      "expected_output": "2"
+    }
+  ],
+  "hint": ""
+}

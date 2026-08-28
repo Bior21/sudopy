@@ -1,0 +1,62 @@
+{
+  "id": "tuples_017",
+  "topic": "tuples",
+  "title": "sum_of_pairs",
+  "prompt": "Given a list of 2-element tuples, return a list with the sum of each pair, in order. e.g. pairs=[(1, 2), (3, 4)] returns [3, 7].",
+  "starter_code": "def sum_of_pairs(pairs):\n    # TODO: implement this\n    pass\n",
+  "function_name": "sum_of_pairs",
+  "tests": [
+    {
+      "args": [
+        [
+          {
+            "__tuple__": [
+              1,
+              2
+            ]
+          },
+          {
+            "__tuple__": [
+              3,
+              4
+            ]
+          }
+        ]
+      ],
+      "expected_output": "[3, 7]"
+    },
+    {
+      "args": [
+        [
+          {
+            "__tuple__": [
+              0,
+              0
+            ]
+          }
+        ]
+      ],
+      "expected_output": "[0]"
+    },
+    {
+      "args": [
+        [
+          {
+            "__tuple__": [
+              5,
+              5
+            ]
+          },
+          {
+            "__tuple__": [
+              10,
+              -10
+            ]
+          }
+        ]
+      ],
+      "expected_output": "[10, 0]"
+    }
+  ],
+  "hint": "You can unpack each tuple right in the for loop header: for a, b in pairs."
+}

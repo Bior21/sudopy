@@ -21,6 +21,23 @@ from core.problem_loader import TestCase
 CONTENT_ROOT = Path(__file__).parent / "content"
 
 
+def _encode_tuples(value):
+    """Recursively turns real tuples into {"__tuple__": [...]} markers.
+
+    JSON has no tuple type, so a real Python tuple in a script's args_list
+    (e.g. write_tuples_content.py passing (3, 4) as an argument) would
+    otherwise silently flatten to a JSON array and load back as a list -
+    see problem_loader.py's matching _decode_tuples for why that matters.
+    """
+    if isinstance(value, tuple):
+        return {"__tuple__": [_encode_tuples(v) for v in value]}
+    if isinstance(value, list):
+        return [_encode_tuples(v) for v in value]
+    if isinstance(value, dict):
+        return {k: _encode_tuples(v) for k, v in value.items()}
+    return value
+
+
 def compute_expected(solution_code: str, function_name: str, args_list: list) -> list:
     """Runs a correct solution for real to get each test's expected_output.
 
@@ -108,7 +125,7 @@ def write_topic(topic: str, folder_name: str, write_problems: list, debug_proble
             "starter_code": starter_stub(solution, function_name),
             "function_name": function_name,
             "tests": [
-                {"args": args, "expected_output": expected}
+                {"args": _encode_tuples(args), "expected_output": expected}
                 for args, expected in zip(args_list, expected_outputs)
             ],
             "hint": hint,
@@ -136,7 +153,7 @@ def write_topic(topic: str, folder_name: str, write_problems: list, debug_proble
             "starter_code": buggy_code,
             "function_name": function_name,
             "tests": [
-                {"args": args, "expected_output": expected}
+                {"args": _encode_tuples(args), "expected_output": expected}
                 for args, expected in zip(args_list, expected_outputs)
             ],
             "hint": "",

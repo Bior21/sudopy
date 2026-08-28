@@ -34,6 +34,25 @@ class ProblemValidationError(Exception):
     """Raised when a problem JSON file is missing fields or malformed."""
 
 
+def _decode_tuples(value):
+    """Recursively turns {"__tuple__": [...]} markers back into real tuples.
+
+    JSON has no tuple type, so a Tuples-topic test argument that's meant to
+    be a real tuple is stored with this marker convention (written by
+    content_authoring.py's matching _encode_tuples) and decoded back here.
+    Without this, every tuple argument would silently arrive as a list,
+    and the GUI's call-site display would show "[1, 2]" instead of the
+    authentic "(1, 2)".
+    """
+    if isinstance(value, dict) and set(value.keys()) == {"__tuple__"}:
+        return tuple(_decode_tuples(v) for v in value["__tuple__"])
+    if isinstance(value, list):
+        return [_decode_tuples(v) for v in value]
+    if isinstance(value, dict):
+        return {k: _decode_tuples(v) for k, v in value.items()}
+    return value
+
+
 @dataclass
 class TestCase:
     # Tells pytest not to collect this as a test class, despite the name -
@@ -69,7 +88,7 @@ class TestCase:
                 f"{source_path}: tests[{index}] is missing 'expected_output'"
             )
         return TestCase(
-            args=data.get("args", []),
+            args=[_decode_tuples(arg) for arg in data.get("args", [])],
             input=data.get("input", ""),
             expected_output=data["expected_output"],
         )

@@ -1,15 +1,32 @@
 {
   "id": "tuples_005",
   "topic": "tuples",
-  "title": "Three-way unpack",
-  "prompt": "A tuple rgb = (255, 0, 128) is provided. Unpack it into r, g, b and print them separated by spaces.",
-  "starter_code": "def three_way_unpack():\n    rgb = (255, 0, 128)\n    # unpack into r, g, b and print\n",
-  "hint": "r, g, b = rgb",
-  "function_name": "three_way_unpack",
+  "title": "make_point",
+  "prompt": "Given an x and a y, return them packed together as a tuple. e.g. x=3, y=4 returns (3, 4).",
+  "starter_code": "def make_point(x, y):\n    # TODO: implement this\n    pass\n",
+  "function_name": "make_point",
   "tests": [
     {
-      "input": "",
-      "expected_output": "255 0 128"
+      "args": [
+        3,
+        4
+      ],
+      "expected_output": "(3, 4)"
+    },
+    {
+      "args": [
+        0,
+        0
+      ],
+      "expected_output": "(0, 0)"
+    },
+    {
+      "args": [
+        -1,
+        5
+      ],
+      "expected_output": "(-1, 5)"
     }
-  ]
+  ],
+  "hint": ""
 }
