@@ -4,8 +4,12 @@
   "title": "Count down",
   "prompt": "Read an integer N and print the numbers from N down to 1, each on its own line.",
   "starter_code": "def count_down():\n    n = int(input())\n    # print n, n-1, ..., 1 each on its own line\n",
-  "test_input": "4",
-  "expected_output": "4\n3\n2\n1",
   "hint": "Use range(n, 0, -1)",
-  "function_name": "count_down"
+  "function_name": "count_down",
+  "tests": [
+    {
+      "input": "4",
+      "expected_output": "4\n3\n2\n1"
+    }
+  ]
 }

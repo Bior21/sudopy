@@ -24,6 +24,7 @@ printed for free, without the student needing to call print() themselves.
 
 from __future__ import annotations
 
+from .problem_loader import TestCase
 from .runner import run_code, ExecutionResult
 from .grader import grade, GradeResult
 
@@ -84,3 +85,25 @@ def run_and_grade(
     """
     result = run_submission(student_code, function_name, test_input)
     return grade(result, expected_output)
+
+
+def run_and_grade_all(
+    student_code: str, function_name: str, tests: list[TestCase]
+) -> list[GradeResult]:
+    """Runs a student's submission against every one of a problem's test cases.
+
+    The submission is re-run once per test case, since each test case can
+    supply different stdin.
+
+    Args:
+        student_code: The student's submitted function definition.
+        function_name: The name of the function to call after defining it.
+        tests: The problem's test cases to run the submission against.
+
+    Returns:
+        One GradeResult per test case, in the same order as tests.
+    """
+    return [
+        run_and_grade(student_code, function_name, test.input, test.expected_output)
+        for test in tests
+    ]

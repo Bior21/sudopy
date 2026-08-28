@@ -4,8 +4,12 @@
   "title": "String length",
   "prompt": "Read a word and print how many characters it has.",
   "starter_code": "def string_length():\n    word = input()\n    # print the length of word\n",
-  "test_input": "banana",
-  "expected_output": "6",
   "hint": "Use len(word).",
-  "function_name": "string_length"
+  "function_name": "string_length",
+  "tests": [
+    {
+      "input": "banana",
+      "expected_output": "6"
+    }
+  ]
 }

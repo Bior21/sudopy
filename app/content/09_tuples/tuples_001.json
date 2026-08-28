@@ -4,8 +4,12 @@
   "title": "Access tuple elements",
   "prompt": "A tuple point = (3, 7) is provided. Print the two values separated by a space, in the format 'x y'.",
   "starter_code": "def access_tuple_elements():\n    point = (3, 7)\n    # print point[0] and point[1] separated by a space\n",
-  "test_input": "",
-  "expected_output": "3 7",
   "hint": "print(point[0], point[1])",
-  "function_name": "access_tuple_elements"
+  "function_name": "access_tuple_elements",
+  "tests": [
+    {
+      "input": "",
+      "expected_output": "3 7"
+    }
+  ]
 }

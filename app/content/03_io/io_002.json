@@ -4,8 +4,12 @@
   "title": "Print on separate lines",
   "prompt": "Read two words (one per line) and print each on its own line, in the order they were entered.",
   "starter_code": "def print_on_separate_lines():\n    word1 = input()\n    word2 = input()\n    # print each on its own line\n",
-  "test_input": "sun\nmoon",
-  "expected_output": "sun\nmoon",
   "hint": "Two separate print() calls.",
-  "function_name": "print_on_separate_lines"
+  "function_name": "print_on_separate_lines",
+  "tests": [
+    {
+      "input": "sun\nmoon",
+      "expected_output": "sun\nmoon"
+    }
+  ]
 }

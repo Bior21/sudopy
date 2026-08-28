@@ -13,11 +13,14 @@ from pathlib import Path
 from core.problem_loader import ProblemLoader
 from core.runner import run_code
 from core.grader import grade
+from core.submission import run_and_grade_all
 
 
 CONTENT_DIR = Path(__file__).parent / "content"
 
-# Hand-written correct solutions, keyed by problem id, just for this smoke test
+# Hand-written correct solutions, keyed by problem id, just for this smoke
+# test. Written as plain top-level scripts (not function-wrapped), so
+# they're run directly through run_code/grade rather than core.submission.
 CORRECT_SOLUTIONS = {
     "variables_001": "age = int(input())\nprint(age)\n",
     "variables_002": "a = int(input())\nb = int(input())\na, b = b, a\nprint(a, b)\n",
@@ -46,22 +49,20 @@ def main():
     for topic_name, topic in topics.items():
         print(f"=== Topic: {topic_name} ===")
         for problem in topic.problems:
-            print(f"  Problem: {problem.id} - {problem.title}")
+            print(f"  Problem: {problem.id} - {problem.title} ({len(problem.tests)} test(s))")
 
             # Run the starter code as-is (expected to fail/incomplete)
-            starter_result = run_code(problem.starter_code, problem.test_input)
-            starter_grade = grade(starter_result, problem.expected_output)
-            print(f"    starter_code -> passed={starter_grade.passed} "
-                  f"({starter_grade.reason.splitlines()[0]})")
+            starter_grades = run_and_grade_all(problem.starter_code, problem.function_name, problem.tests)
+            starter_passed = sum(1 for g in starter_grades if g.passed)
+            print(f"    starter_code -> {starter_passed}/{len(starter_grades)} test(s) passed")
 
-            # Run our hand-written correct solution (expected to pass)
+            # Run our hand-written correct solution (expected to pass every test)
             if problem.id in CORRECT_SOLUTIONS:
-                solution_result = run_code(
-                    CORRECT_SOLUTIONS[problem.id], problem.test_input
-                )
-                solution_grade = grade(solution_result, problem.expected_output)
-                status = "PASS" if solution_grade.passed else "FAIL <-- unexpected!"
-                print(f"    correct_solution -> {status}")
+                for index, test in enumerate(problem.tests, start=1):
+                    solution_result = run_code(CORRECT_SOLUTIONS[problem.id], test.input)
+                    solution_grade = grade(solution_result, test.expected_output)
+                    status = "PASS" if solution_grade.passed else "FAIL <-- unexpected!"
+                    print(f"    correct_solution test {index} -> {status}")
             else:
                 print("    (no hand-written solution registered for this id)")
         print()

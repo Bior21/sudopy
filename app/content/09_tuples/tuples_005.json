@@ -4,8 +4,12 @@
   "title": "Three-way unpack",
   "prompt": "A tuple rgb = (255, 0, 128) is provided. Unpack it into r, g, b and print them separated by spaces.",
   "starter_code": "def three_way_unpack():\n    rgb = (255, 0, 128)\n    # unpack into r, g, b and print\n",
-  "test_input": "",
-  "expected_output": "255 0 128",
   "hint": "r, g, b = rgb",
-  "function_name": "three_way_unpack"
+  "function_name": "three_way_unpack",
+  "tests": [
+    {
+      "input": "",
+      "expected_output": "255 0 128"
+    }
+  ]
 }

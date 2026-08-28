@@ -4,8 +4,12 @@
   "title": "Remainder check",
   "prompt": "Read an integer N and print the remainder when N is divided by 3.",
   "starter_code": "def remainder_check():\n    n = int(input())\n    # print n mod 3\n",
-  "test_input": "10",
-  "expected_output": "1",
   "hint": "Use the % operator.",
-  "function_name": "remainder_check"
+  "function_name": "remainder_check",
+  "tests": [
+    {
+      "input": "10",
+      "expected_output": "1"
+    }
+  ]
 }

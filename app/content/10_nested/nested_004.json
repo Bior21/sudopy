@@ -4,8 +4,12 @@
   "title": "Dictionary of lists",
   "prompt": "scores = {'Sam': [90, 85], 'Al': [70, 75]} is provided. Print the second score for 'Sam'.",
   "starter_code": "def dictionary_of_lists():\n    scores = {'Sam': [90, 85], 'Al': [70, 75]}\n    # print the second score for Sam\n",
-  "test_input": "",
-  "expected_output": "85",
   "hint": "scores['Sam'][1]",
-  "function_name": "dictionary_of_lists"
+  "function_name": "dictionary_of_lists",
+  "tests": [
+    {
+      "input": "",
+      "expected_output": "85"
+    }
+  ]
 }

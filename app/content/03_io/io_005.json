@@ -4,8 +4,12 @@
   "title": "Formatted output",
   "prompt": "Read a name and an age (one per line, age as an integer). Print 'NAME is AGE years old.'",
   "starter_code": "def formatted_output():\n    name = input()\n    age = int(input())\n    # print formatted sentence\n",
-  "test_input": "Maya\n14",
-  "expected_output": "Maya is 14 years old.",
   "hint": "Use an f-string: f'{name} is {age} years old.'",
-  "function_name": "formatted_output"
+  "function_name": "formatted_output",
+  "tests": [
+    {
+      "input": "Maya\n14",
+      "expected_output": "Maya is 14 years old."
+    }
+  ]
 }

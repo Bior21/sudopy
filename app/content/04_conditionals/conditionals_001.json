@@ -4,8 +4,12 @@
   "title": "Even or odd",
   "prompt": "Read an integer and print 'even' if it's even, otherwise print 'odd'.",
   "starter_code": "def even_or_odd():\n    n = int(input())\n    # print 'even' or 'odd'\n",
-  "test_input": "7",
-  "expected_output": "odd",
   "hint": "Use n % 2 == 0 to check evenness.",
-  "function_name": "even_or_odd"
+  "function_name": "even_or_odd",
+  "tests": [
+    {
+      "input": "7",
+      "expected_output": "odd"
+    }
+  ]
 }

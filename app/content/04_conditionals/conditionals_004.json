@@ -4,8 +4,12 @@
   "title": "Sign of a number",
   "prompt": "Read an integer and print 'positive', 'negative', or 'zero' depending on its sign.",
   "starter_code": "def sign_of_a_number():\n    n = int(input())\n    # print 'positive', 'negative', or 'zero'\n",
-  "test_input": "-5",
-  "expected_output": "negative",
   "hint": "Use if/elif/else with n > 0, n < 0, and the remaining case.",
-  "function_name": "sign_of_a_number"
+  "function_name": "sign_of_a_number",
+  "tests": [
+    {
+      "input": "-5",
+      "expected_output": "negative"
+    }
+  ]
 }

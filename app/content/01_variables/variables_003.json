@@ -4,8 +4,12 @@
   "title": "Convert to float",
   "prompt": "Read an integer and print it as a float (e.g. 5 becomes 5.0).",
   "starter_code": "def convert_to_float():\n    n = int(input())\n    # print n as a float\n",
-  "test_input": "5",
-  "expected_output": "5.0",
   "hint": "Use float(n).",
-  "function_name": "convert_to_float"
+  "function_name": "convert_to_float",
+  "tests": [
+    {
+      "input": "5",
+      "expected_output": "5.0"
+    }
+  ]
 }

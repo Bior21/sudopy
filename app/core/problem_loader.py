@@ -24,14 +24,48 @@ REQUIRED_FIELDS = {
     "title",
     "prompt",
     "starter_code",
-    "expected_output",
     "function_name",
+    "tests",
 }
-# test_input and hint are optional (some problems take no input)
+# hint is optional
 
 
 class ProblemValidationError(Exception):
     """Raised when a problem JSON file is missing fields or malformed."""
+
+
+@dataclass
+class TestCase:
+    # Tells pytest not to collect this as a test class, despite the name -
+    # it's a domain object (a problem's test case), not a test suite.
+    __test__ = False
+
+    input: str
+    expected_output: str
+
+    @staticmethod
+    def from_dict(data: dict, source_path: Path, index: int) -> "TestCase":
+        """Builds a TestCase from one entry of a problem's "tests" list.
+
+        Args:
+            data: The parsed JSON object for one test case.
+            source_path: The file data came from, used in error messages.
+            index: The test case's position in the list, for error messages.
+
+        Returns:
+            A validated TestCase instance.
+
+        Raises:
+            ProblemValidationError: If expected_output is missing.
+        """
+        if "expected_output" not in data:
+            raise ProblemValidationError(
+                f"{source_path}: tests[{index}] is missing 'expected_output'"
+            )
+        return TestCase(
+            input=data.get("input", ""),
+            expected_output=data["expected_output"],
+        )
 
 
 @dataclass
@@ -41,9 +75,8 @@ class Problem:
     title: str
     prompt: str
     starter_code: str
-    expected_output: str
     function_name: str
-    test_input: str = ""
+    tests: list[TestCase]
     hint: str = ""
 
     @staticmethod
@@ -58,22 +91,28 @@ class Problem:
             A validated Problem instance.
 
         Raises:
-            ProblemValidationError: If data is missing any required field.
+            ProblemValidationError: If data is missing any required field,
+                or "tests" is empty or malformed.
         """
         missing = REQUIRED_FIELDS - data.keys()
         if missing:
             raise ProblemValidationError(
                 f"{source_path}: missing required field(s): {sorted(missing)}"
             )
+        if not data["tests"]:
+            raise ProblemValidationError(f"{source_path}: 'tests' must not be empty")
+        tests = [
+            TestCase.from_dict(test_data, source_path, index)
+            for index, test_data in enumerate(data["tests"])
+        ]
         return Problem(
             id=data["id"],
             topic=data["topic"],
             title=data["title"],
             prompt=data["prompt"],
             starter_code=data["starter_code"],
-            expected_output=data["expected_output"],
             function_name=data["function_name"],
-            test_input=data.get("test_input", ""),
+            tests=tests,
             hint=data.get("hint", ""),
         )
 

@@ -4,8 +4,12 @@
   "title": "Sum a nested list",
   "prompt": "matrix = [[1, 2], [3, 4], [5, 6]] is provided. Print the sum of all numbers in the matrix.",
   "starter_code": "def sum_a_nested_list():\n    matrix = [[1, 2], [3, 4], [5, 6]]\n    total = 0\n    # loop through rows and columns, adding to total\n    print(total)\n",
-  "test_input": "",
-  "expected_output": "21",
   "hint": "Nested for loops: for row in matrix: for val in row: total += val",
-  "function_name": "sum_a_nested_list"
+  "function_name": "sum_a_nested_list",
+  "tests": [
+    {
+      "input": "",
+      "expected_output": "21"
+    }
+  ]
 }

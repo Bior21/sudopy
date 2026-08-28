@@ -4,8 +4,12 @@
   "title": "Largest in a list",
   "prompt": "Read 3 integers into a list and print the largest one.",
   "starter_code": "def largest_in_a_list():\n    nums = []\n    for _ in range(3):\n        nums.append(int(input()))\n    # print the largest\n",
-  "test_input": "4\n9\n2",
-  "expected_output": "9",
   "hint": "Use max(nums).",
-  "function_name": "largest_in_a_list"
+  "function_name": "largest_in_a_list",
+  "tests": [
+    {
+      "input": "4\n9\n2",
+      "expected_output": "9"
+    }
+  ]
 }

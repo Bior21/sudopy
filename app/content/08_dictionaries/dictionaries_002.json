@@ -4,8 +4,12 @@
   "title": "Count with a dictionary",
   "prompt": "A dictionary scores = {'math': 90, 'art': 85, 'gym': 95} is provided. Print how many keys it has.",
   "starter_code": "def count_with_a_dictionary():\n    scores = {'math': 90, 'art': 85, 'gym': 95}\n    # print number of keys\n",
-  "test_input": "",
-  "expected_output": "3",
   "hint": "Use len(scores).",
-  "function_name": "count_with_a_dictionary"
+  "function_name": "count_with_a_dictionary",
+  "tests": [
+    {
+      "input": "",
+      "expected_output": "3"
+    }
+  ]
 }

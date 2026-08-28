@@ -64,8 +64,18 @@ def _validate_problem_file(
     else:
         seen_ids[problem_id] = json_file
 
-    if not data["expected_output"].strip() and not data.get("test_input", "").strip():
-        warnings.append(f"{json_file}: expected_output is empty - is this intentional?")
+    if not data["tests"]:
+        errors.append(f"{json_file}: 'tests' must not be empty")
+        return errors, warnings
+
+    for index, test in enumerate(data["tests"]):
+        if "expected_output" not in test:
+            errors.append(f"{json_file}: tests[{index}] is missing 'expected_output'")
+            continue
+        if not test["expected_output"].strip() and not test.get("input", "").strip():
+            warnings.append(
+                f"{json_file}: tests[{index}] has empty expected_output - is this intentional?"
+            )
 
     return errors, warnings
 

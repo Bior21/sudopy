@@ -4,8 +4,12 @@
   "title": "Slice a substring",
   "prompt": "Read a word and print the first 3 characters.",
   "starter_code": "def slice_a_substring():\n    word = input()\n    # print the first 3 characters\n",
-  "test_input": "elephant",
-  "expected_output": "ele",
   "hint": "Use slicing: word[:3]",
-  "function_name": "slice_a_substring"
+  "function_name": "slice_a_substring",
+  "tests": [
+    {
+      "input": "elephant",
+      "expected_output": "ele"
+    }
+  ]
 }

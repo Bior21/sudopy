@@ -11,7 +11,7 @@ out into its own file.
 import tkinter as tk
 from tkinter import ttk
 
-from core.submission import run_and_grade
+from core.submission import run_and_grade_all
 from gui.results_view import ResultsView
 from gui.code_editor import CodeEditor
 
@@ -71,17 +71,16 @@ class ProblemView(ttk.Frame):
         self.results_view.clear()
 
     def _on_run(self):
-        """Runs and grades the student's current code, then shows the result."""
+        """Runs and grades the student's current code against every test, then shows the results."""
         if not self.current_problem:
             return
         code = self.editor.get("1.0", "end-1c")
-        grade_result = run_and_grade(
+        grade_results = run_and_grade_all(
             code,
             self.current_problem.function_name,
-            self.current_problem.test_input,
-            self.current_problem.expected_output,
+            self.current_problem.tests,
         )
-        self.results_view.update_result(grade_result)
+        self.results_view.update_results(self.current_problem.tests, grade_results)
 
     def _on_reset(self):
         """Discards the student's edits and restores the starter code."""

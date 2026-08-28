@@ -4,8 +4,12 @@
   "title": "List length",
   "prompt": "A list items = ['a', 'b', 'c', 'd', 'e'] is provided. Print how many elements it has.",
   "starter_code": "def list_length():\n    items = ['a', 'b', 'c', 'd', 'e']\n    # print the length\n",
-  "test_input": "",
-  "expected_output": "5",
   "hint": "Use len(items).",
-  "function_name": "list_length"
+  "function_name": "list_length",
+  "tests": [
+    {
+      "input": "",
+      "expected_output": "5"
+    }
+  ]
 }

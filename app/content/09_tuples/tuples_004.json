@@ -4,8 +4,12 @@
   "title": "Tuple in a loop",
   "prompt": "A tuple nums = (1, 2, 3) is provided. Print each value on its own line.",
   "starter_code": "def tuple_in_a_loop():\n    nums = (1, 2, 3)\n    # print each value on its own line\n",
-  "test_input": "",
-  "expected_output": "1\n2\n3",
   "hint": "for n in nums: print(n)",
-  "function_name": "tuple_in_a_loop"
+  "function_name": "tuple_in_a_loop",
+  "tests": [
+    {
+      "input": "",
+      "expected_output": "1\n2\n3"
+    }
+  ]
 }

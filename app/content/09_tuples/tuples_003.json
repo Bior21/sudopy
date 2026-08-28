@@ -4,8 +4,12 @@
   "title": "Tuple length",
   "prompt": "A tuple values = (3, 6, 9, 12) is provided. Print how many elements it has.",
   "starter_code": "def tuple_length():\n    values = (3, 6, 9, 12)\n    # print the length\n",
-  "test_input": "",
-  "expected_output": "4",
   "hint": "Use len(values).",
-  "function_name": "tuple_length"
+  "function_name": "tuple_length",
+  "tests": [
+    {
+      "input": "",
+      "expected_output": "4"
+    }
+  ]
 }

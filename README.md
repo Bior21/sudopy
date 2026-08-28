@@ -126,8 +126,10 @@ Drop a JSON file into the relevant `content/<NN>_<topic>/` folder:
   "prompt": "What the learner needs to do.",
   "starter_code": "def short_descriptive_title():\n    n = int(input())\n    # TODO\n",
   "function_name": "short_descriptive_title",
-  "test_input": "5",
-  "expected_output": "expected stdout, exactly",
+  "tests": [
+    { "input": "5", "expected_output": "expected stdout for input 5" },
+    { "input": "3", "expected_output": "expected stdout for input 3" }
+  ],
   "hint": "optional nudge in the right direction"
 }
 ```
@@ -138,7 +140,14 @@ appends the call automatically before running the code, so the starter
 code itself never includes the call. A solution can either `print()`
 its answer or `return` it — the appended call prints whatever the
 function returns, unless it returns `None`, so either style produces
-the same stdout to grade against `expected_output`.
+the same stdout to grade against a test's `expected_output`.
+
+`tests` needs at least one entry; a problem with no meaningful input
+variation (e.g. one that just prints a fixed literal) can have just the
+one. Each test is run as a separate execution of the submission with
+its own `input`, and all of them have to pass for the problem to pass —
+this is what catches a solution that's hardcoded to one sample input
+rather than actually solving the problem.
 
 Then add a hand-written correct solution to `SOLUTIONS` in
 `verify_all_solvable.py` and run it — this catches the class of bug that

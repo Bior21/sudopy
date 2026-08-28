@@ -4,8 +4,12 @@
   "title": "Unpack a tuple",
   "prompt": "A tuple pair = (5, 10) is provided. Unpack it into variables a and b, then print their sum.",
   "starter_code": "def unpack_a_tuple():\n    pair = (5, 10)\n    # unpack pair into a, b and print their sum\n",
-  "test_input": "",
-  "expected_output": "15",
   "hint": "a, b = pair",
-  "function_name": "unpack_a_tuple"
+  "function_name": "unpack_a_tuple",
+  "tests": [
+    {
+      "input": "",
+      "expected_output": "15"
+    }
+  ]
 }

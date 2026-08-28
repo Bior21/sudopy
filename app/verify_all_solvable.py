@@ -92,12 +92,15 @@ def main():
             if problem.id not in SOLUTIONS:
                 continue
             checked += 1
-            result = run_code(SOLUTIONS[problem.id], problem.test_input)
-            g = grade(result, problem.expected_output)
-            status = "PASS" if g.passed else "FAIL"
-            print(f"[{status}] {topic_name}/{problem.id}")
-            if not g.passed:
-                failures.append((problem.id, g.reason, result.stdout, problem.expected_output))
+            all_tests_passed = True
+            for index, test in enumerate(problem.tests, start=1):
+                result = run_code(SOLUTIONS[problem.id], test.input)
+                g = grade(result, test.expected_output)
+                if not g.passed:
+                    all_tests_passed = False
+                    failures.append((f"{problem.id} (test {index})", g.reason, result.stdout, test.expected_output))
+            status = "PASS" if all_tests_passed else "FAIL"
+            print(f"[{status}] {topic_name}/{problem.id} ({len(problem.tests)} test(s))")
 
     print(f"\nChecked {checked}/{len(all_ids)} problems.")
 

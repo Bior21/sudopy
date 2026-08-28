@@ -4,8 +4,12 @@
   "title": "Sum a list of numbers",
   "prompt": "Read 3 integers, one per line, store them in a list, then print their sum.",
   "starter_code": "def sum_a_list_of_numbers():\n    nums = []\n    for _ in range(3):\n        nums.append(int(input()))\n    # print the sum\n",
-  "test_input": "1\n2\n3",
-  "expected_output": "6",
   "hint": "Use sum(nums) or a loop that adds each value.",
-  "function_name": "sum_a_list_of_numbers"
+  "function_name": "sum_a_list_of_numbers",
+  "tests": [
+    {
+      "input": "1\n2\n3",
+      "expected_output": "6"
+    }
+  ]
 }

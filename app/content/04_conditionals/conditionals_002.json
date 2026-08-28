@@ -4,8 +4,12 @@
   "title": "Largest of two",
   "prompt": "Read two integers (one per line) and print the larger one.",
   "starter_code": "def largest_of_two():\n    a = int(input())\n    b = int(input())\n    # print the larger value\n",
-  "test_input": "8\n3",
-  "expected_output": "8",
   "hint": "if a > b: print(a) else: print(b)",
-  "function_name": "largest_of_two"
+  "function_name": "largest_of_two",
+  "tests": [
+    {
+      "input": "8\n3",
+      "expected_output": "8"
+    }
+  ]
 }

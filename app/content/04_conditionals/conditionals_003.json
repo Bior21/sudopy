@@ -4,8 +4,12 @@
   "title": "Grade classifier",
   "prompt": "Read an integer score. Print 'pass' if score is 60 or above, otherwise print 'fail'.",
   "starter_code": "def grade_classifier():\n    score = int(input())\n    # print 'pass' or 'fail'\n",
-  "test_input": "72",
-  "expected_output": "pass",
   "hint": "if score >= 60: print('pass')",
-  "function_name": "grade_classifier"
+  "function_name": "grade_classifier",
+  "tests": [
+    {
+      "input": "72",
+      "expected_output": "pass"
+    }
+  ]
 }

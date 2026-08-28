@@ -1,4 +1,5 @@
-from core.submission import build_executable_code, run_submission, run_and_grade
+from core.problem_loader import TestCase
+from core.submission import build_executable_code, run_submission, run_and_grade, run_and_grade_all
 
 
 def test_build_executable_code_appends_call_with_correct_name():
@@ -86,3 +87,38 @@ def test_renaming_the_function_gives_a_clear_error_not_a_silent_failure():
     g = run_and_grade(student_code, "sum_of_first_n_numbers", test_input="", expected_output="hi")
     assert not g.passed
     assert "error" in g.reason.lower()
+
+
+def test_run_and_grade_all_checks_every_test_case():
+    student_code = "def double_it():\n    n = int(input())\n    print(n * 2)\n"
+    tests = [
+        TestCase(input="1", expected_output="2"),
+        TestCase(input="10", expected_output="20"),
+    ]
+    results = run_and_grade_all(student_code, "double_it", tests)
+    assert len(results) == 2
+    assert all(g.passed for g in results)
+
+
+def test_run_and_grade_all_reports_a_mix_of_pass_and_fail():
+    # A solution that's hardcoded to the first test case should fail the
+    # second one, not be masked by the first passing.
+    student_code = "def double_it():\n    input()\n    print(2)\n"
+    tests = [
+        TestCase(input="1", expected_output="2"),
+        TestCase(input="10", expected_output="20"),
+    ]
+    results = run_and_grade_all(student_code, "double_it", tests)
+    assert results[0].passed
+    assert not results[1].passed
+
+
+def test_run_and_grade_all_preserves_test_order():
+    student_code = "def echo():\n    print(input())\n"
+    tests = [
+        TestCase(input="first", expected_output="first"),
+        TestCase(input="second", expected_output="second"),
+        TestCase(input="third", expected_output="third"),
+    ]
+    results = run_and_grade_all(student_code, "echo", tests)
+    assert [g.actual_output.strip() for g in results] == ["first", "second", "third"]
