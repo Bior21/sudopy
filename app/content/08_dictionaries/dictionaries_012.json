@@ -1,0 +1,42 @@
+{
+  "id": "dictionaries_012",
+  "topic": "dictionaries",
+  "title": "merge_dicts",
+  "prompt": "Given two dictionaries a and b, return a new dictionary with all of a's pairs plus all of b's - where a key is in both, b's value wins. e.g. a={'a': 1, 'b': 2}, b={'b': 20, 'c': 3} returns {'a': 1, 'b': 20, 'c': 3}.",
+  "starter_code": "def merge_dicts(a, b):\n    # TODO: implement this\n    pass\n",
+  "function_name": "merge_dicts",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 1,
+          "b": 2
+        },
+        {
+          "b": 20,
+          "c": 3
+        }
+      ],
+      "expected_output": "{'a': 1, 'b': 20, 'c': 3}"
+    },
+    {
+      "args": [
+        {},
+        {
+          "x": 1
+        }
+      ],
+      "expected_output": "{'x': 1}"
+    },
+    {
+      "args": [
+        {
+          "a": 1
+        },
+        {}
+      ],
+      "expected_output": "{'a': 1}"
+    }
+  ],
+  "hint": ""
+}

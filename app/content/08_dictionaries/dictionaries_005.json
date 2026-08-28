@@ -1,15 +1,36 @@
 {
   "id": "dictionaries_005",
   "topic": "dictionaries",
-  "title": "Update a value",
-  "prompt": "A dictionary stock = {'apples': 5} is provided. Update 'apples' to 8, then print the value.",
-  "starter_code": "def update_a_value():\n    stock = {'apples': 5}\n    # update 'apples' to 8, then print it\n",
-  "hint": "stock['apples'] = 8",
-  "function_name": "update_a_value",
+  "title": "count_keys",
+  "prompt": "Given a dictionary d, return how many keys it has. e.g. d={'a': 1, 'b': 2} returns 2.",
+  "starter_code": "def count_keys(d):\n    # TODO: implement this\n    pass\n",
+  "function_name": "count_keys",
   "tests": [
     {
-      "input": "",
-      "expected_output": "8"
+      "args": [
+        {
+          "a": 1,
+          "b": 2
+        }
+      ],
+      "expected_output": "2"
+    },
+    {
+      "args": [
+        {}
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        {
+          "x": 1,
+          "y": 2,
+          "z": 3
+        }
+      ],
+      "expected_output": "3"
     }
-  ]
+  ],
+  "hint": ""
 }

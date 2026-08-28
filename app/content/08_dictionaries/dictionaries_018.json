@@ -1,0 +1,39 @@
+{
+  "id": "dictionaries_018",
+  "topic": "dictionaries",
+  "title": "combine_counts",
+  "prompt": "Given a dictionary d of running counts, a key, and an amount, add amount to d's count for key - treating a missing key as starting at 0 - and return d. e.g. d={'a': 5}, key='b', amount=2 returns {'a': 5, 'b': 2}.",
+  "starter_code": "def combine_counts(d, key, amount):\n    # TODO: implement this\n    pass\n",
+  "function_name": "combine_counts",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 5
+        },
+        "a",
+        3
+      ],
+      "expected_output": "{'a': 8}"
+    },
+    {
+      "args": [
+        {
+          "a": 5
+        },
+        "b",
+        2
+      ],
+      "expected_output": "{'a': 5, 'b': 2}"
+    },
+    {
+      "args": [
+        {},
+        "x",
+        7
+      ],
+      "expected_output": "{'x': 7}"
+    }
+  ],
+  "hint": ""
+}

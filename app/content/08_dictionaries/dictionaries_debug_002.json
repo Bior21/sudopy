@@ -1,0 +1,42 @@
+{
+  "id": "dictionaries_debug_002",
+  "topic": "dictionaries",
+  "title": "merge_dicts",
+  "prompt": "Given two dictionaries a and b, this function is supposed to return a new dictionary with all of a's pairs plus all of b's \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def merge_dicts(a, b):\n    return dict(a)\n",
+  "function_name": "merge_dicts",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 1,
+          "b": 2
+        },
+        {
+          "b": 20,
+          "c": 3
+        }
+      ],
+      "expected_output": "{'a': 1, 'b': 20, 'c': 3}"
+    },
+    {
+      "args": [
+        {},
+        {
+          "x": 1
+        }
+      ],
+      "expected_output": "{'x': 1}"
+    },
+    {
+      "args": [
+        {
+          "a": 1
+        },
+        {}
+      ],
+      "expected_output": "{'a': 1}"
+    }
+  ],
+  "hint": ""
+}

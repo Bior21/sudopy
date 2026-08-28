@@ -1,0 +1,39 @@
+{
+  "id": "dictionaries_006",
+  "topic": "dictionaries",
+  "title": "get_with_default",
+  "prompt": "Given a dictionary d, a key, and a default, return d's value at key if key is in d, or default otherwise. e.g. d={'a': 1}, key='b', default=0 returns 0.",
+  "starter_code": "def get_with_default(d, key, default):\n    # TODO: implement this\n    pass\n",
+  "function_name": "get_with_default",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 1
+        },
+        "a",
+        0
+      ],
+      "expected_output": "1"
+    },
+    {
+      "args": [
+        {
+          "a": 1
+        },
+        "b",
+        0
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        {},
+        "z",
+        -1
+      ],
+      "expected_output": "-1"
+    }
+  ],
+  "hint": ""
+}

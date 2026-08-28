@@ -1,0 +1,39 @@
+{
+  "id": "dictionaries_debug_001",
+  "topic": "dictionaries",
+  "title": "get_with_default",
+  "prompt": "Given d, a key, and a default, this function is supposed to return d's value at key, or default if key isn't in d \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def get_with_default(d, key, default):\n    return d.get(key)\n",
+  "function_name": "get_with_default",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 1
+        },
+        "a",
+        0
+      ],
+      "expected_output": "1"
+    },
+    {
+      "args": [
+        {
+          "a": 1
+        },
+        "b",
+        0
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        {},
+        "z",
+        -1
+      ],
+      "expected_output": "-1"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,38 @@
+{
+  "id": "dictionaries_debug_003",
+  "topic": "dictionaries",
+  "title": "invert_dict",
+  "prompt": "Given a dictionary d whose values are unique, this function is supposed to return a new dictionary with keys and values swapped \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def invert_dict(d):\n    result = {}\n    for key in d:\n        result[key] = d[key]\n    return result\n",
+  "function_name": "invert_dict",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": 3
+        }
+      ],
+      "expected_output": "{1: 'a', 2: 'b', 3: 'c'}"
+    },
+    {
+      "args": [
+        {
+          "x": 10
+        }
+      ],
+      "expected_output": "{10: 'x'}"
+    },
+    {
+      "args": [
+        {
+          "p": 1,
+          "q": 2
+        }
+      ],
+      "expected_output": "{1: 'p', 2: 'q'}"
+    }
+  ],
+  "hint": ""
+}

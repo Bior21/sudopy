@@ -1,15 +1,37 @@
 {
   "id": "dictionaries_002",
   "topic": "dictionaries",
-  "title": "Count with a dictionary",
-  "prompt": "A dictionary scores = {'math': 90, 'art': 85, 'gym': 95} is provided. Print how many keys it has.",
-  "starter_code": "def count_with_a_dictionary():\n    scores = {'math': 90, 'art': 85, 'gym': 95}\n    # print number of keys\n",
-  "hint": "Use len(scores).",
-  "function_name": "count_with_a_dictionary",
+  "title": "has_key",
+  "prompt": "Given a dictionary d and a key, return whether key is in d. e.g. d={'a': 1, 'b': 2}, key='a' returns True.",
+  "starter_code": "def has_key(d, key):\n    # TODO: implement this\n    pass\n",
+  "function_name": "has_key",
   "tests": [
     {
-      "input": "",
-      "expected_output": "3"
+      "args": [
+        {
+          "a": 1,
+          "b": 2
+        },
+        "a"
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        {
+          "a": 1
+        },
+        "c"
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        {},
+        "z"
+      ],
+      "expected_output": "False"
     }
-  ]
+  ],
+  "hint": ""
 }

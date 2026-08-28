@@ -1,0 +1,35 @@
+{
+  "id": "dictionaries_008",
+  "topic": "dictionaries",
+  "title": "all_values",
+  "prompt": "Given a dictionary d, return a list of all its values. e.g. d={'a': 1, 'b': 2} returns [1, 2].",
+  "starter_code": "def all_values(d):\n    # TODO: implement this\n    pass\n",
+  "function_name": "all_values",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 1,
+          "b": 2
+        }
+      ],
+      "expected_output": "[1, 2]"
+    },
+    {
+      "args": [
+        {}
+      ],
+      "expected_output": "[]"
+    },
+    {
+      "args": [
+        {
+          "x": 5,
+          "y": 10
+        }
+      ],
+      "expected_output": "[5, 10]"
+    }
+  ],
+  "hint": ""
+}

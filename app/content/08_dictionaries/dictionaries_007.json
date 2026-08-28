@@ -1,0 +1,34 @@
+{
+  "id": "dictionaries_007",
+  "topic": "dictionaries",
+  "title": "all_keys",
+  "prompt": "Given a dictionary d, return a list of all its keys. e.g. d={'a': 1, 'b': 2} returns ['a', 'b'].",
+  "starter_code": "def all_keys(d):\n    # TODO: implement this\n    pass\n",
+  "function_name": "all_keys",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 1,
+          "b": 2
+        }
+      ],
+      "expected_output": "['a', 'b']"
+    },
+    {
+      "args": [
+        {}
+      ],
+      "expected_output": "[]"
+    },
+    {
+      "args": [
+        {
+          "x": 1
+        }
+      ],
+      "expected_output": "['x']"
+    }
+  ],
+  "hint": ""
+}

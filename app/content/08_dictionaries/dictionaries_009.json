@@ -1,0 +1,35 @@
+{
+  "id": "dictionaries_009",
+  "topic": "dictionaries",
+  "title": "sum_of_values",
+  "prompt": "Given a dictionary d whose values are numbers, return their sum. e.g. d={'a': 1, 'b': 2, 'c': 3} returns 6.",
+  "starter_code": "def sum_of_values(d):\n    # TODO: implement this\n    pass\n",
+  "function_name": "sum_of_values",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": 3
+        }
+      ],
+      "expected_output": "6"
+    },
+    {
+      "args": [
+        {}
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        {
+          "x": 10
+        }
+      ],
+      "expected_output": "10"
+    }
+  ],
+  "hint": ""
+}

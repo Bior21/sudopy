@@ -1,15 +1,40 @@
 {
   "id": "dictionaries_001",
   "topic": "dictionaries",
-  "title": "Look up a value",
-  "prompt": "A dictionary ages = {'Sam': 12, 'Al': 15} is provided. Print the age of 'Al'.",
-  "starter_code": "def look_up_a_value():\n    ages = {'Sam': 12, 'Al': 15}\n    # print ages['Al']\n",
-  "hint": "Access with ages['Al']",
-  "function_name": "look_up_a_value",
+  "title": "get_value",
+  "prompt": "Given a dictionary d and a key known to be in it, return the value stored at that key. e.g. d={'sam': 12, 'al': 15}, key='al' returns 15.",
+  "starter_code": "def get_value(d, key):\n    # TODO: implement this\n    pass\n",
+  "function_name": "get_value",
   "tests": [
     {
-      "input": "",
+      "args": [
+        {
+          "sam": 12,
+          "al": 15
+        },
+        "al"
+      ],
       "expected_output": "15"
+    },
+    {
+      "args": [
+        {
+          "math": 90,
+          "art": 85
+        },
+        "math"
+      ],
+      "expected_output": "90"
+    },
+    {
+      "args": [
+        {
+          "x": 1
+        },
+        "x"
+      ],
+      "expected_output": "1"
     }
-  ]
+  ],
+  "hint": ""
 }

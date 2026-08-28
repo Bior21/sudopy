@@ -1,0 +1,42 @@
+{
+  "id": "dictionaries_016",
+  "topic": "dictionaries",
+  "title": "keys_with_value",
+  "prompt": "Given a dictionary d and a target_value, return a list of every key whose value equals target_value. e.g. d={'a': 1, 'b': 2, 'c': 1}, target_value=1 returns ['a', 'c'].",
+  "starter_code": "def keys_with_value(d, target_value):\n    # TODO: implement this\n    pass\n",
+  "function_name": "keys_with_value",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": 1
+        },
+        1
+      ],
+      "expected_output": "['a', 'c']"
+    },
+    {
+      "args": [
+        {
+          "x": 5
+        },
+        9
+      ],
+      "expected_output": "[]"
+    },
+    {
+      "args": [
+        {
+          "m": 3,
+          "n": 3,
+          "o": 3
+        },
+        3
+      ],
+      "expected_output": "['m', 'n', 'o']"
+    }
+  ],
+  "hint": ""
+}

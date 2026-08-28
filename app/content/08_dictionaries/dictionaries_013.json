@@ -1,0 +1,38 @@
+{
+  "id": "dictionaries_013",
+  "topic": "dictionaries",
+  "title": "invert_dict",
+  "prompt": "Given a dictionary d whose values are unique, return a new dictionary with keys and values swapped. e.g. d={'a': 1, 'b': 2} returns {1: 'a', 2: 'b'}.",
+  "starter_code": "def invert_dict(d):\n    # TODO: implement this\n    pass\n",
+  "function_name": "invert_dict",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": 3
+        }
+      ],
+      "expected_output": "{1: 'a', 2: 'b', 3: 'c'}"
+    },
+    {
+      "args": [
+        {
+          "x": 10
+        }
+      ],
+      "expected_output": "{10: 'x'}"
+    },
+    {
+      "args": [
+        {
+          "p": 1,
+          "q": 2
+        }
+      ],
+      "expected_output": "{1: 'p', 2: 'q'}"
+    }
+  ],
+  "hint": ""
+}

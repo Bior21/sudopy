@@ -1,15 +1,39 @@
 {
   "id": "dictionaries_003",
   "topic": "dictionaries",
-  "title": "Add a key",
-  "prompt": "A dictionary d = {'a': 1} is provided. Add the key 'b' with value 2, then print the full dictionary.",
-  "starter_code": "def add_a_key():\n    d = {'a': 1}\n    # add key 'b' with value 2, then print d\n",
-  "hint": "d['b'] = 2",
-  "function_name": "add_a_key",
+  "title": "add_or_update",
+  "prompt": "Given a dictionary d, a key, and a value, set d[key] to value (adding it if new, overwriting it if not) and return d. e.g. d={'a': 1}, key='b', value=2 returns {'a': 1, 'b': 2}.",
+  "starter_code": "def add_or_update(d, key, value):\n    # TODO: implement this\n    pass\n",
+  "function_name": "add_or_update",
   "tests": [
     {
-      "input": "",
+      "args": [
+        {
+          "a": 1
+        },
+        "b",
+        2
+      ],
       "expected_output": "{'a': 1, 'b': 2}"
+    },
+    {
+      "args": [
+        {
+          "a": 1
+        },
+        "a",
+        99
+      ],
+      "expected_output": "{'a': 99}"
+    },
+    {
+      "args": [
+        {},
+        "x",
+        5
+      ],
+      "expected_output": "{'x': 5}"
     }
-  ]
+  ],
+  "hint": ""
 }

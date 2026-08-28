@@ -1,0 +1,40 @@
+{
+  "id": "dictionaries_015",
+  "topic": "dictionaries",
+  "title": "increment_value",
+  "prompt": "Given a dictionary d whose values are numbers and a key known to be in it, add 1 to the value at that key and return d. e.g. d={'a': 1, 'b': 2}, key='a' returns {'a': 2, 'b': 2}.",
+  "starter_code": "def increment_value(d, key):\n    # TODO: implement this\n    pass\n",
+  "function_name": "increment_value",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 1,
+          "b": 2
+        },
+        "a"
+      ],
+      "expected_output": "{'a': 2, 'b': 2}"
+    },
+    {
+      "args": [
+        {
+          "x": 9
+        },
+        "x"
+      ],
+      "expected_output": "{'x': 10}"
+    },
+    {
+      "args": [
+        {
+          "a": 1,
+          "b": 2
+        },
+        "b"
+      ],
+      "expected_output": "{'a': 1, 'b': 3}"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,40 @@
+{
+  "id": "dictionaries_017",
+  "topic": "dictionaries",
+  "title": "average_of_values",
+  "prompt": "Given a dictionary d whose values are numbers, return their average. e.g. d={'a': 10, 'b': 20, 'c': 30} returns 20.0.",
+  "starter_code": "def average_of_values(d):\n    # TODO: implement this\n    pass\n",
+  "function_name": "average_of_values",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 10,
+          "b": 20,
+          "c": 30
+        }
+      ],
+      "expected_output": "20.0"
+    },
+    {
+      "args": [
+        {
+          "x": 5
+        }
+      ],
+      "expected_output": "5.0"
+    },
+    {
+      "args": [
+        {
+          "a": 4,
+          "b": 4,
+          "c": 4,
+          "d": 4
+        }
+      ],
+      "expected_output": "4.0"
+    }
+  ],
+  "hint": ""
+}

@@ -1,15 +1,41 @@
 {
   "id": "dictionaries_004",
   "topic": "dictionaries",
-  "title": "Check key existence",
-  "prompt": "A dictionary colors = {'sky': 'blue', 'grass': 'green'} is provided. Print True if 'sky' is a key, otherwise False.",
-  "starter_code": "def check_key_existence():\n    colors = {'sky': 'blue', 'grass': 'green'}\n    # print True or False\n",
-  "hint": "Use the in operator: 'sky' in colors",
-  "function_name": "check_key_existence",
+  "title": "remove_key",
+  "prompt": "Given a dictionary d and a key known to be in it, remove that key from d and return d. e.g. d={'a': 1, 'b': 2}, key='a' returns {'b': 2}.",
+  "starter_code": "def remove_key(d, key):\n    # TODO: implement this\n    pass\n",
+  "function_name": "remove_key",
   "tests": [
     {
-      "input": "",
-      "expected_output": "True"
+      "args": [
+        {
+          "a": 1,
+          "b": 2
+        },
+        "a"
+      ],
+      "expected_output": "{'b': 2}"
+    },
+    {
+      "args": [
+        {
+          "x": 1
+        },
+        "x"
+      ],
+      "expected_output": "{}"
+    },
+    {
+      "args": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": 3
+        },
+        "b"
+      ],
+      "expected_output": "{'a': 1, 'c': 3}"
     }
-  ]
+  ],
+  "hint": ""
 }

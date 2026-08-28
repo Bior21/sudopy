@@ -1,0 +1,44 @@
+{
+  "id": "dictionaries_019",
+  "topic": "dictionaries",
+  "title": "dict_from_two_lists",
+  "prompt": "Given a list of keys and a same-length list of values, return a dictionary pairing each key with the value at the same position. e.g. keys=['a', 'b', 'c'], values=[1, 2, 3] returns {'a': 1, 'b': 2, 'c': 3}.",
+  "starter_code": "def dict_from_two_lists(keys, values):\n    # TODO: implement this\n    pass\n",
+  "function_name": "dict_from_two_lists",
+  "tests": [
+    {
+      "args": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected_output": "{'a': 1, 'b': 2, 'c': 3}"
+    },
+    {
+      "args": [
+        [
+          "x"
+        ],
+        [
+          10
+        ]
+      ],
+      "expected_output": "{'x': 10}"
+    },
+    {
+      "args": [
+        [],
+        []
+      ],
+      "expected_output": "{}"
+    }
+  ],
+  "hint": ""
+}

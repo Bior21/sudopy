@@ -1,0 +1,41 @@
+{
+  "id": "dictionaries_014",
+  "topic": "dictionaries",
+  "title": "filter_by_value_threshold",
+  "prompt": "Given a dictionary d whose values are numbers and a threshold, return a new dictionary with only the pairs whose value is strictly greater than threshold. e.g. d={'a': 5, 'b': 15, 'c': 25}, threshold=10 returns {'b': 15, 'c': 25}.",
+  "starter_code": "def filter_by_value_threshold(d, threshold):\n    # TODO: implement this\n    pass\n",
+  "function_name": "filter_by_value_threshold",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 5,
+          "b": 15,
+          "c": 25
+        },
+        10
+      ],
+      "expected_output": "{'b': 15, 'c': 25}"
+    },
+    {
+      "args": [
+        {
+          "x": 1,
+          "y": 2
+        },
+        10
+      ],
+      "expected_output": "{}"
+    },
+    {
+      "args": [
+        {
+          "m": 100
+        },
+        50
+      ],
+      "expected_output": "{'m': 100}"
+    }
+  ],
+  "hint": ""
+}

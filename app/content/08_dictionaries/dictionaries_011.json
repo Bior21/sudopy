@@ -1,0 +1,42 @@
+{
+  "id": "dictionaries_011",
+  "topic": "dictionaries",
+  "title": "count_word_frequencies",
+  "prompt": "Given a list of words, return a dictionary mapping each word to how many times it appears. e.g. words=['a', 'b', 'a', 'c', 'b', 'a'] returns {'a': 3, 'b': 2, 'c': 1}.",
+  "starter_code": "def count_word_frequencies(words):\n    # TODO: implement this\n    pass\n",
+  "function_name": "count_word_frequencies",
+  "tests": [
+    {
+      "args": [
+        [
+          "a",
+          "b",
+          "a",
+          "c",
+          "b",
+          "a"
+        ]
+      ],
+      "expected_output": "{'a': 3, 'b': 2, 'c': 1}"
+    },
+    {
+      "args": [
+        [
+          "x"
+        ]
+      ],
+      "expected_output": "{'x': 1}"
+    },
+    {
+      "args": [
+        [
+          "hi",
+          "hi",
+          "hi"
+        ]
+      ],
+      "expected_output": "{'hi': 3}"
+    }
+  ],
+  "hint": ""
+}

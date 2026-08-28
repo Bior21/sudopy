@@ -1,0 +1,39 @@
+{
+  "id": "dictionaries_010",
+  "topic": "dictionaries",
+  "title": "max_value_key",
+  "prompt": "Given a dictionary d whose values are numbers, return the key with the largest value. e.g. d={'a': 3, 'b': 7, 'c': 2} returns 'b'.",
+  "starter_code": "def max_value_key(d):\n    # TODO: implement this\n    pass\n",
+  "function_name": "max_value_key",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 3,
+          "b": 7,
+          "c": 2
+        }
+      ],
+      "expected_output": "b"
+    },
+    {
+      "args": [
+        {
+          "x": 1
+        }
+      ],
+      "expected_output": "x"
+    },
+    {
+      "args": [
+        {
+          "m": 5,
+          "n": 9,
+          "o": 1
+        }
+      ],
+      "expected_output": "n"
+    }
+  ],
+  "hint": ""
+}
