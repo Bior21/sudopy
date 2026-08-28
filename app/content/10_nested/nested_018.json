@@ -1,0 +1,49 @@
+{
+  "id": "nested_018",
+  "topic": "nested",
+  "title": "count_items_per_category",
+  "prompt": "Given a dictionary mapping each category to a list of items, return a new dictionary mapping each category to how many items it has. e.g. catalog={'fruits': ['apple', 'banana'], 'veggies': ['carrot']} returns {'fruits': 2, 'veggies': 1}.",
+  "starter_code": "def count_items_per_category(catalog):\n    # TODO: implement this\n    pass\n",
+  "function_name": "count_items_per_category",
+  "tests": [
+    {
+      "args": [
+        {
+          "fruits": [
+            "apple",
+            "banana"
+          ],
+          "veggies": [
+            "carrot"
+          ]
+        }
+      ],
+      "expected_output": "{'fruits': 2, 'veggies': 1}"
+    },
+    {
+      "args": [
+        {
+          "x": []
+        }
+      ],
+      "expected_output": "{'x': 0}"
+    },
+    {
+      "args": [
+        {
+          "a": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "b": [
+            1
+          ]
+        }
+      ],
+      "expected_output": "{'a': 4, 'b': 1}"
+    }
+  ],
+  "hint": ""
+}

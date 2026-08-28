@@ -1,0 +1,56 @@
+{
+  "id": "nested_019",
+  "topic": "nested",
+  "title": "find_student_with_max_score",
+  "prompt": "Given a list of student dictionaries, return the name of the student with the highest score. e.g. students=[{'name': 'Ana', 'score': 90}, {'name': 'Leo', 'score': 95}] returns 'Leo'.",
+  "starter_code": "def find_student_with_max_score(students):\n    # TODO: implement this\n    pass\n",
+  "function_name": "find_student_with_max_score",
+  "tests": [
+    {
+      "args": [
+        [
+          {
+            "name": "Ana",
+            "score": 90
+          },
+          {
+            "name": "Leo",
+            "score": 95
+          }
+        ]
+      ],
+      "expected_output": "Leo"
+    },
+    {
+      "args": [
+        [
+          {
+            "name": "Sam",
+            "score": 70
+          }
+        ]
+      ],
+      "expected_output": "Sam"
+    },
+    {
+      "args": [
+        [
+          {
+            "name": "Al",
+            "score": 50
+          },
+          {
+            "name": "Kim",
+            "score": 80
+          },
+          {
+            "name": "Jo",
+            "score": 60
+          }
+        ]
+      ],
+      "expected_output": "Kim"
+    }
+  ],
+  "hint": ""
+}

@@ -1,15 +1,53 @@
 {
   "id": "nested_004",
   "topic": "nested",
-  "title": "Dictionary of lists",
-  "prompt": "scores = {'Sam': [90, 85], 'Al': [70, 75]} is provided. Print the second score for 'Sam'.",
-  "starter_code": "def dictionary_of_lists():\n    scores = {'Sam': [90, 85], 'Al': [70, 75]}\n    # print the second score for Sam\n",
-  "hint": "scores['Sam'][1]",
-  "function_name": "dictionary_of_lists",
+  "title": "row_sums",
+  "prompt": "Given a 2D grid, return a list with the sum of each row, in order. e.g. grid=[[1, 2], [3, 4]] returns [3, 7].",
+  "starter_code": "def row_sums(grid):\n    # TODO: implement this\n    pass\n",
+  "function_name": "row_sums",
   "tests": [
     {
-      "input": "",
-      "expected_output": "85"
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected_output": "[3, 7]"
+    },
+    {
+      "args": [
+        [
+          [
+            5
+          ]
+        ]
+      ],
+      "expected_output": "[5]"
+    },
+    {
+      "args": [
+        [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ]
+        ]
+      ],
+      "expected_output": "[6, 15]"
     }
-  ]
+  ],
+  "hint": ""
 }

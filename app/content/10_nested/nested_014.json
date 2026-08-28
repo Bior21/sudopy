@@ -1,0 +1,53 @@
+{
+  "id": "nested_014",
+  "topic": "nested",
+  "title": "average_field",
+  "prompt": "Given a list of student dictionaries and a field name, return the average of that field across every student. e.g. students=[{'score': 80}, {'score': 90}, {'score': 100}], field='score' returns 90.0.",
+  "starter_code": "def average_field(students, field):\n    # TODO: implement this\n    pass\n",
+  "function_name": "average_field",
+  "tests": [
+    {
+      "args": [
+        [
+          {
+            "score": 80
+          },
+          {
+            "score": 90
+          },
+          {
+            "score": 100
+          }
+        ],
+        "score"
+      ],
+      "expected_output": "90.0"
+    },
+    {
+      "args": [
+        [
+          {
+            "score": 50
+          }
+        ],
+        "score"
+      ],
+      "expected_output": "50.0"
+    },
+    {
+      "args": [
+        [
+          {
+            "score": 10
+          },
+          {
+            "score": 20
+          }
+        ],
+        "score"
+      ],
+      "expected_output": "15.0"
+    }
+  ],
+  "hint": ""
+}

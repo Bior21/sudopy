@@ -1,0 +1,50 @@
+{
+  "id": "nested_012",
+  "topic": "nested",
+  "title": "names_of_students",
+  "prompt": "Given a list of student dictionaries, return a list of just their names. e.g. students=[{'name': 'Ana'}, {'name': 'Leo'}] returns ['Ana', 'Leo'].",
+  "starter_code": "def names_of_students(students):\n    # TODO: implement this\n    pass\n",
+  "function_name": "names_of_students",
+  "tests": [
+    {
+      "args": [
+        [
+          {
+            "name": "Ana",
+            "score": 90
+          },
+          {
+            "name": "Leo",
+            "score": 85
+          }
+        ]
+      ],
+      "expected_output": "['Ana', 'Leo']"
+    },
+    {
+      "args": [
+        [
+          {
+            "name": "Sam",
+            "score": 70
+          }
+        ]
+      ],
+      "expected_output": "['Sam']"
+    },
+    {
+      "args": [
+        [
+          {
+            "name": "Al"
+          },
+          {
+            "name": "Kim"
+          }
+        ]
+      ],
+      "expected_output": "['Al', 'Kim']"
+    }
+  ],
+  "hint": ""
+}

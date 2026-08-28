@@ -1,0 +1,54 @@
+{
+  "id": "nested_016",
+  "topic": "nested",
+  "title": "add_score_to_student",
+  "prompt": "Given a list of student dictionaries, an index, and a number of points, add points to that student's score and return the list. e.g. students=[{'name': 'Ana', 'score': 90}], index=0, points=5 returns [{'name': 'Ana', 'score': 95}].",
+  "starter_code": "def add_score_to_student(students, index, points):\n    # TODO: implement this\n    pass\n",
+  "function_name": "add_score_to_student",
+  "tests": [
+    {
+      "args": [
+        [
+          {
+            "name": "Ana",
+            "score": 90
+          }
+        ],
+        0,
+        5
+      ],
+      "expected_output": "[{'name': 'Ana', 'score': 95}]"
+    },
+    {
+      "args": [
+        [
+          {
+            "name": "Sam",
+            "score": 50
+          },
+          {
+            "name": "Al",
+            "score": 60
+          }
+        ],
+        1,
+        10
+      ],
+      "expected_output": "[{'name': 'Sam', 'score': 50}, {'name': 'Al', 'score': 70}]"
+    },
+    {
+      "args": [
+        [
+          {
+            "name": "X",
+            "score": 0
+          }
+        ],
+        0,
+        100
+      ],
+      "expected_output": "[{'name': 'X', 'score': 100}]"
+    }
+  ],
+  "hint": ""
+}

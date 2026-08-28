@@ -1,15 +1,53 @@
 {
   "id": "nested_002",
   "topic": "nested",
-  "title": "List of dictionaries",
-  "prompt": "students = [{'name': 'Ana'}, {'name': 'Leo'}] is provided. Print the name of the second student.",
-  "starter_code": "def list_of_dictionaries():\n    students = [{'name': 'Ana'}, {'name': 'Leo'}]\n    # print the name of the second student\n",
-  "hint": "students[1]['name']",
-  "function_name": "list_of_dictionaries",
+  "title": "sum_of_grid",
+  "prompt": "Given a 2D grid, return the sum of every value in it. e.g. grid=[[1, 2], [3, 4]] returns 10.",
+  "starter_code": "def sum_of_grid(grid):\n    # TODO: implement this\n    pass\n",
+  "function_name": "sum_of_grid",
   "tests": [
     {
-      "input": "",
-      "expected_output": "Leo"
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected_output": "10"
+    },
+    {
+      "args": [
+        [
+          [
+            5
+          ]
+        ]
+      ],
+      "expected_output": "5"
+    },
+    {
+      "args": [
+        [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ]
+        ]
+      ],
+      "expected_output": "21"
     }
-  ]
+  ],
+  "hint": ""
 }

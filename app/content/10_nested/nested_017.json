@@ -1,0 +1,49 @@
+{
+  "id": "nested_017",
+  "topic": "nested",
+  "title": "group_totals",
+  "prompt": "Given a dictionary mapping each group name to a list of numbers, return a new dictionary mapping each group name to the sum of its list. e.g. groups={'a': [1, 2, 3], 'b': [4, 5]} returns {'a': 6, 'b': 9}.",
+  "starter_code": "def group_totals(groups):\n    # TODO: implement this\n    pass\n",
+  "function_name": "group_totals",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": [
+            1,
+            2,
+            3
+          ],
+          "b": [
+            4,
+            5
+          ]
+        }
+      ],
+      "expected_output": "{'a': 6, 'b': 9}"
+    },
+    {
+      "args": [
+        {
+          "x": []
+        }
+      ],
+      "expected_output": "{'x': 0}"
+    },
+    {
+      "args": [
+        {
+          "m": [
+            10
+          ],
+          "n": [
+            20,
+            30
+          ]
+        }
+      ],
+      "expected_output": "{'m': 10, 'n': 50}"
+    }
+  ],
+  "hint": ""
+}

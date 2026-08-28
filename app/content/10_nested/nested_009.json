@@ -1,0 +1,58 @@
+{
+  "id": "nested_009",
+  "topic": "nested",
+  "title": "diagonal_sum",
+  "prompt": "Given a square 2D grid, return the sum of its main diagonal - grid[0][0], grid[1][1], and so on. e.g. grid=[[1, 2], [3, 4]] returns 5.",
+  "starter_code": "def diagonal_sum(grid):\n    # TODO: implement this\n    pass\n",
+  "function_name": "diagonal_sum",
+  "tests": [
+    {
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected_output": "5"
+    },
+    {
+      "args": [
+        [
+          [
+            5
+          ]
+        ]
+      ],
+      "expected_output": "5"
+    },
+    {
+      "args": [
+        [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            3
+          ]
+        ]
+      ],
+      "expected_output": "6"
+    }
+  ],
+  "hint": ""
+}

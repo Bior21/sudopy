@@ -1,0 +1,54 @@
+{
+  "id": "nested_debug_002",
+  "topic": "nested",
+  "title": "transpose_grid",
+  "prompt": "Given a 2D grid, this function is supposed to return it transposed \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def transpose_grid(grid):\n    result = []\n    for col in range(len(grid)):\n        new_row = []\n        for row in grid:\n            new_row.append(row[col])\n        result.append(new_row)\n    return result\n",
+  "function_name": "transpose_grid",
+  "tests": [
+    {
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected_output": "[[1, 3], [2, 4]]"
+    },
+    {
+      "args": [
+        [
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      ],
+      "expected_output": "[[1], [2], [3]]"
+    },
+    {
+      "args": [
+        [
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ]
+      ],
+      "expected_output": "[[1, 2, 3]]"
+    }
+  ],
+  "hint": ""
+}

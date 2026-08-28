@@ -1,0 +1,55 @@
+{
+  "id": "nested_011",
+  "topic": "nested",
+  "title": "total_score",
+  "prompt": "Given a list of student dictionaries and a field name, return the sum of that field across every student. e.g. students=[{'score': 90}, {'score': 85}], field='score' returns 175.",
+  "starter_code": "def total_score(students, field):\n    # TODO: implement this\n    pass\n",
+  "function_name": "total_score",
+  "tests": [
+    {
+      "args": [
+        [
+          {
+            "name": "Ana",
+            "score": 90
+          },
+          {
+            "name": "Leo",
+            "score": 85
+          }
+        ],
+        "score"
+      ],
+      "expected_output": "175"
+    },
+    {
+      "args": [
+        [
+          {
+            "score": 100
+          }
+        ],
+        "score"
+      ],
+      "expected_output": "100"
+    },
+    {
+      "args": [
+        [
+          {
+            "score": 10
+          },
+          {
+            "score": 20
+          },
+          {
+            "score": 30
+          }
+        ],
+        "score"
+      ],
+      "expected_output": "60"
+    }
+  ],
+  "hint": ""
+}

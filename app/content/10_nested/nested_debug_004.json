@@ -1,0 +1,58 @@
+{
+  "id": "nested_debug_004",
+  "topic": "nested",
+  "title": "diagonal_sum",
+  "prompt": "Given a square 2D grid, this function is supposed to return the sum of its main diagonal \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def diagonal_sum(grid):\n    total = 0\n    for i in range(len(grid)):\n        total += grid[i][0]\n    return total\n",
+  "function_name": "diagonal_sum",
+  "tests": [
+    {
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected_output": "5"
+    },
+    {
+      "args": [
+        [
+          [
+            5
+          ]
+        ]
+      ],
+      "expected_output": "5"
+    },
+    {
+      "args": [
+        [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            3
+          ]
+        ]
+      ],
+      "expected_output": "6"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,55 @@
+{
+  "id": "nested_013",
+  "topic": "nested",
+  "title": "filter_students_by_min_score",
+  "prompt": "Given a list of student dictionaries and a min_score, return the names of every student whose score is at least min_score. e.g. students=[{'name': 'Ana', 'score': 90}, {'name': 'Leo', 'score': 60}], min_score=70 returns ['Ana'].",
+  "starter_code": "def filter_students_by_min_score(students, min_score):\n    # TODO: implement this\n    pass\n",
+  "function_name": "filter_students_by_min_score",
+  "tests": [
+    {
+      "args": [
+        [
+          {
+            "name": "Ana",
+            "score": 90
+          },
+          {
+            "name": "Leo",
+            "score": 60
+          }
+        ],
+        70
+      ],
+      "expected_output": "['Ana']"
+    },
+    {
+      "args": [
+        [
+          {
+            "name": "Sam",
+            "score": 50
+          }
+        ],
+        70
+      ],
+      "expected_output": "[]"
+    },
+    {
+      "args": [
+        [
+          {
+            "name": "Al",
+            "score": 95
+          },
+          {
+            "name": "Kim",
+            "score": 95
+          }
+        ],
+        95
+      ],
+      "expected_output": "['Al', 'Kim']"
+    }
+  ],
+  "hint": ""
+}

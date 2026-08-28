@@ -1,10 +1,10 @@
 {
-  "id": "nested_003",
+  "id": "nested_debug_001",
   "topic": "nested",
-  "title": "flatten_grid",
-  "prompt": "Given a 2D grid, return a single list with every value, row by row. e.g. grid=[[1, 2], [3, 4]] returns [1, 2, 3, 4].",
-  "starter_code": "def flatten_grid(grid):\n    # TODO: implement this\n    pass\n",
-  "function_name": "flatten_grid",
+  "title": "sum_of_grid",
+  "prompt": "Given a 2D grid, this function is supposed to return the sum of every value in it \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def sum_of_grid(grid):\n    total = 0\n    for row in grid:\n        total += row[0]\n    return total\n",
+  "function_name": "sum_of_grid",
   "tests": [
     {
       "args": [
@@ -19,7 +19,7 @@
           ]
         ]
       ],
-      "expected_output": "[1, 2, 3, 4]"
+      "expected_output": "10"
     },
     {
       "args": [
@@ -29,16 +29,14 @@
           ]
         ]
       ],
-      "expected_output": "[5]"
+      "expected_output": "5"
     },
     {
       "args": [
         [
           [
             1,
-            2
-          ],
-          [
+            2,
             3
           ],
           [
@@ -48,7 +46,7 @@
           ]
         ]
       ],
-      "expected_output": "[1, 2, 3, 4, 5, 6]"
+      "expected_output": "21"
     }
   ],
   "hint": ""

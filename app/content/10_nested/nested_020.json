@@ -1,0 +1,68 @@
+{
+  "id": "nested_020",
+  "topic": "nested",
+  "title": "list_of_pairs_to_dict",
+  "prompt": "Given a list of (key, value) tuples, return a dictionary built from them. e.g. pairs=[('a', 1), ('b', 2)] returns {'a': 1, 'b': 2}.",
+  "starter_code": "def list_of_pairs_to_dict(pairs):\n    # TODO: implement this\n    pass\n",
+  "function_name": "list_of_pairs_to_dict",
+  "tests": [
+    {
+      "args": [
+        [
+          {
+            "__tuple__": [
+              "a",
+              1
+            ]
+          },
+          {
+            "__tuple__": [
+              "b",
+              2
+            ]
+          }
+        ]
+      ],
+      "expected_output": "{'a': 1, 'b': 2}"
+    },
+    {
+      "args": [
+        [
+          {
+            "__tuple__": [
+              "x",
+              10
+            ]
+          }
+        ]
+      ],
+      "expected_output": "{'x': 10}"
+    },
+    {
+      "args": [
+        [
+          {
+            "__tuple__": [
+              "m",
+              1
+            ]
+          },
+          {
+            "__tuple__": [
+              "n",
+              2
+            ]
+          },
+          {
+            "__tuple__": [
+              "o",
+              3
+            ]
+          }
+        ]
+      ],
+      "expected_output": "{'m': 1, 'n': 2, 'o': 3}"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,58 @@
+{
+  "id": "nested_010",
+  "topic": "nested",
+  "title": "get_student_field",
+  "prompt": "Given a list of student dictionaries and an index and field name, return that student's value for that field. e.g. students=[{'name': 'Ana', 'score': 90}, {'name': 'Leo', 'score': 85}], index=1, field='name' returns 'Leo'.",
+  "starter_code": "def get_student_field(students, index, field):\n    # TODO: implement this\n    pass\n",
+  "function_name": "get_student_field",
+  "tests": [
+    {
+      "args": [
+        [
+          {
+            "name": "Ana",
+            "score": 90
+          },
+          {
+            "name": "Leo",
+            "score": 85
+          }
+        ],
+        1,
+        "name"
+      ],
+      "expected_output": "Leo"
+    },
+    {
+      "args": [
+        [
+          {
+            "name": "Sam",
+            "score": 70
+          }
+        ],
+        0,
+        "score"
+      ],
+      "expected_output": "70"
+    },
+    {
+      "args": [
+        [
+          {
+            "name": "Al",
+            "score": 95
+          },
+          {
+            "name": "Kim",
+            "score": 88
+          }
+        ],
+        0,
+        "score"
+      ],
+      "expected_output": "95"
+    }
+  ],
+  "hint": ""
+}

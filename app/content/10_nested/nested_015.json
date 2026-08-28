@@ -1,0 +1,51 @@
+{
+  "id": "nested_015",
+  "topic": "nested",
+  "title": "get_nested_dict_value",
+  "prompt": "Given a dictionary of dictionaries and an outer_key and inner_key, return the value found by looking up both in turn. e.g. data={'Sam': {'math': 90, 'art': 85}}, outer_key='Sam', inner_key='art' returns 85.",
+  "starter_code": "def get_nested_dict_value(data, outer_key, inner_key):\n    # TODO: implement this\n    pass\n",
+  "function_name": "get_nested_dict_value",
+  "tests": [
+    {
+      "args": [
+        {
+          "Sam": {
+            "math": 90,
+            "art": 85
+          }
+        },
+        "Sam",
+        "art"
+      ],
+      "expected_output": "85"
+    },
+    {
+      "args": [
+        {
+          "Al": {
+            "gym": 70
+          }
+        },
+        "Al",
+        "gym"
+      ],
+      "expected_output": "70"
+    },
+    {
+      "args": [
+        {
+          "A": {
+            "x": 1
+          },
+          "B": {
+            "x": 2
+          }
+        },
+        "B",
+        "x"
+      ],
+      "expected_output": "2"
+    }
+  ],
+  "hint": ""
+}

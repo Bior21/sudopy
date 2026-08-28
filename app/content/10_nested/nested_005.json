@@ -1,15 +1,61 @@
 {
   "id": "nested_005",
   "topic": "nested",
-  "title": "List of tuples",
-  "prompt": "points = [(1, 2), (3, 4), (5, 6)] is provided. Print the y-value (second item) of the last point.",
-  "starter_code": "def list_of_tuples():\n    points = [(1, 2), (3, 4), (5, 6)]\n    # print the y-value of the last point\n",
-  "hint": "points[-1][1] uses negative indexing to get the last item.",
-  "function_name": "list_of_tuples",
+  "title": "column_sum",
+  "prompt": "Given a 2D grid and a col_index, return the sum of that column across every row. e.g. grid=[[1, 2], [3, 4]], col_index=1 returns 6.",
+  "starter_code": "def column_sum(grid, col_index):\n    # TODO: implement this\n    pass\n",
+  "function_name": "column_sum",
   "tests": [
     {
-      "input": "",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        0
+      ],
+      "expected_output": "4"
+    },
+    {
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        1
+      ],
       "expected_output": "6"
+    },
+    {
+      "args": [
+        [
+          [
+            5,
+            6,
+            7
+          ],
+          [
+            8,
+            9,
+            10
+          ]
+        ],
+        2
+      ],
+      "expected_output": "17"
     }
-  ]
+  ],
+  "hint": ""
 }

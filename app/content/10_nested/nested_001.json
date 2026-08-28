@@ -1,15 +1,60 @@
 {
   "id": "nested_001",
   "topic": "nested",
-  "title": "List of lists",
-  "prompt": "grid = [[1, 2], [3, 4]] is provided. Print the value at row 1, column 0 (i.e. grid[1][0]).",
-  "starter_code": "def list_of_lists():\n    grid = [[1, 2], [3, 4]]\n    # print grid[1][0]\n",
-  "hint": "Index twice: grid[1][0]",
-  "function_name": "list_of_lists",
+  "title": "get_grid_value",
+  "prompt": "Given a 2D grid (a list of lists) and a row/col index, return the value at that position. e.g. grid=[[1, 2], [3, 4]], row=1, col=0 returns 3.",
+  "starter_code": "def get_grid_value(grid, row, col):\n    # TODO: implement this\n    pass\n",
+  "function_name": "get_grid_value",
   "tests": [
     {
-      "input": "",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        1,
+        0
+      ],
+      "expected_output": "3"
+    },
+    {
+      "args": [
+        [
+          [
+            5,
+            6,
+            7
+          ]
+        ],
+        0,
+        2
+      ],
+      "expected_output": "7"
+    },
+    {
+      "args": [
+        [
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        2,
+        0
+      ],
       "expected_output": "3"
     }
-  ]
+  ],
+  "hint": ""
 }
