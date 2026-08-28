@@ -1,23 +1,32 @@
 {
   "id": "conditionals_002",
   "topic": "conditionals",
-  "title": "Largest of two",
-  "prompt": "Read two integers (one per line) and print the larger one.",
-  "starter_code": "def largest_of_two():\n    a = int(input())\n    b = int(input())\n    # print the larger value\n",
-  "hint": "if a > b: print(a) else: print(b)",
-  "function_name": "largest_of_two",
+  "title": "classify_bmi",
+  "prompt": "Given a weight in kg and a height in meters, compute the BMI (weight / height\u00b2) and return its category: 'underweight' below 18.5, 'normal' below 25, 'overweight' below 30, otherwise 'obese'. e.g. weight_kg=80, height_m=2.0 returns 'normal'.",
+  "starter_code": "def classify_bmi(weight_kg, height_m):\n    # TODO: implement this\n    pass\n",
+  "function_name": "classify_bmi",
   "tests": [
     {
-      "input": "8\n3",
-      "expected_output": "8"
+      "args": [
+        80,
+        2.0
+      ],
+      "expected_output": "normal"
     },
     {
-      "input": "3\n8",
-      "expected_output": "8"
+      "args": [
+        50,
+        1.7
+      ],
+      "expected_output": "underweight"
     },
     {
-      "input": "5\n5",
-      "expected_output": "5"
+      "args": [
+        100,
+        1.7
+      ],
+      "expected_output": "obese"
     }
-  ]
+  ],
+  "hint": ""
 }

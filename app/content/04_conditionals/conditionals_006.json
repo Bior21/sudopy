@@ -1,0 +1,32 @@
+{
+  "id": "conditionals_006",
+  "topic": "conditionals",
+  "title": "overtime_pay",
+  "prompt": "Given hours worked and an hourly_rate, return the pay \u2014 the normal rate for the first 40 hours, and 1.5\u00d7 the rate for anything beyond. e.g. hours=45, hourly_rate=20 returns 950.0.",
+  "starter_code": "def overtime_pay(hours, hourly_rate):\n    # TODO: implement this\n    pass\n",
+  "function_name": "overtime_pay",
+  "tests": [
+    {
+      "args": [
+        35,
+        20
+      ],
+      "expected_output": "700"
+    },
+    {
+      "args": [
+        45,
+        20
+      ],
+      "expected_output": "950.0"
+    },
+    {
+      "args": [
+        40,
+        15
+      ],
+      "expected_output": "600"
+    }
+  ],
+  "hint": ""
+}

@@ -1,23 +1,35 @@
 {
   "id": "conditionals_004",
   "topic": "conditionals",
-  "title": "Sign of a number",
-  "prompt": "Read an integer and print 'positive', 'negative', or 'zero' depending on its sign.",
-  "starter_code": "def sign_of_a_number():\n    n = int(input())\n    # print 'positive', 'negative', or 'zero'\n",
-  "hint": "Use if/elif/else with n > 0, n < 0, and the remaining case.",
-  "function_name": "sign_of_a_number",
+  "title": "is_valid_triangle",
+  "prompt": "Given three side lengths, return whether they can form a triangle (each side must be shorter than the sum of the other two). e.g. a=3, b=4, c=5 returns True.",
+  "starter_code": "def is_valid_triangle(a, b, c):\n    # TODO: implement this\n    pass\n",
+  "function_name": "is_valid_triangle",
   "tests": [
     {
-      "input": "-5",
-      "expected_output": "negative"
+      "args": [
+        3,
+        4,
+        5
+      ],
+      "expected_output": "True"
     },
     {
-      "input": "5",
-      "expected_output": "positive"
+      "args": [
+        1,
+        1,
+        5
+      ],
+      "expected_output": "False"
     },
     {
-      "input": "0",
-      "expected_output": "zero"
+      "args": [
+        5,
+        5,
+        5
+      ],
+      "expected_output": "True"
     }
-  ]
+  ],
+  "hint": ""
 }

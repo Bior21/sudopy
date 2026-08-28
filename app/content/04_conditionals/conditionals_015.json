@@ -1,0 +1,29 @@
+{
+  "id": "conditionals_015",
+  "topic": "conditionals",
+  "title": "late_fee",
+  "prompt": "Given how many days a payment is late, return the fee: 0 if not late, $5 up to a week late, $15 up to a month late, otherwise $30. e.g. days_late=45 returns 30.",
+  "starter_code": "def late_fee(days_late):\n    # TODO: implement this\n    pass\n",
+  "function_name": "late_fee",
+  "tests": [
+    {
+      "args": [
+        0
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        5
+      ],
+      "expected_output": "5"
+    },
+    {
+      "args": [
+        45
+      ],
+      "expected_output": "30"
+    }
+  ],
+  "hint": ""
+}

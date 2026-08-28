@@ -1,0 +1,35 @@
+{
+  "id": "conditionals_016",
+  "topic": "conditionals",
+  "title": "can_move_elevator",
+  "prompt": "Given the elevator's current_floor, a requested_floor, and the building's max_floor, return whether the request is valid \u2014 in range and different from the current floor. e.g. current_floor=3, requested_floor=3, max_floor=10 returns False.",
+  "starter_code": "def can_move_elevator(current_floor, requested_floor, max_floor):\n    # TODO: implement this\n    pass\n",
+  "function_name": "can_move_elevator",
+  "tests": [
+    {
+      "args": [
+        3,
+        5,
+        10
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        3,
+        3,
+        10
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        3,
+        15,
+        10
+      ],
+      "expected_output": "False"
+    }
+  ],
+  "hint": ""
+}

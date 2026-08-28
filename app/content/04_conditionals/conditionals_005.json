@@ -1,23 +1,32 @@
 {
   "id": "conditionals_005",
   "topic": "conditionals",
-  "title": "Divisible by both",
-  "prompt": "Read an integer N. Print 'yes' if N is divisible by both 2 and 3, otherwise print 'no'.",
-  "starter_code": "def divisible_by_both():\n    n = int(input())\n    # print 'yes' or 'no'\n",
-  "hint": "Use the % operator with and: n % 2 == 0 and n % 3 == 0",
-  "function_name": "divisible_by_both",
+  "title": "ticket_price_with_group_discount",
+  "prompt": "Given an age and a group_size, return the ticket price: $5 under 12, $10 from 12 to 64, $7 for 65+, with a 20% discount if group_size is 5 or more. e.g. age=30, group_size=2 returns 10.",
+  "starter_code": "def ticket_price_with_group_discount(age, group_size):\n    # TODO: implement this\n    pass\n",
+  "function_name": "ticket_price_with_group_discount",
   "tests": [
     {
-      "input": "12",
-      "expected_output": "yes"
+      "args": [
+        30,
+        2
+      ],
+      "expected_output": "10"
     },
     {
-      "input": "4",
-      "expected_output": "no"
+      "args": [
+        30,
+        6
+      ],
+      "expected_output": "8.0"
     },
     {
-      "input": "18",
-      "expected_output": "yes"
+      "args": [
+        8,
+        5
+      ],
+      "expected_output": "4.0"
     }
-  ]
+  ],
+  "hint": ""
 }

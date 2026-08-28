@@ -1,0 +1,29 @@
+{
+  "id": "conditionals_018",
+  "topic": "conditionals",
+  "title": "is_business_day",
+  "prompt": "Given a day name, return whether it's a business day (not Saturday or Sunday). e.g. day_name='Saturday' returns False.",
+  "starter_code": "def is_business_day(day_name):\n    # TODO: implement this\n    pass\n",
+  "function_name": "is_business_day",
+  "tests": [
+    {
+      "args": [
+        "Monday"
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        "Saturday"
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        "Friday"
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

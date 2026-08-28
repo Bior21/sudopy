@@ -1,0 +1,32 @@
+{
+  "id": "conditionals_011",
+  "topic": "conditionals",
+  "title": "heat_index_alert",
+  "prompt": "Given a temperature and a humidity percentage, return whether both are high enough to warrant a heat warning (temp at least 90 and humidity at least 60). e.g. temp=95, humidity=70 returns True.",
+  "starter_code": "def heat_index_alert(temp, humidity):\n    # TODO: implement this\n    pass\n",
+  "function_name": "heat_index_alert",
+  "tests": [
+    {
+      "args": [
+        95,
+        70
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        95,
+        40
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        80,
+        90
+      ],
+      "expected_output": "False"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,29 @@
+{
+  "id": "conditionals_debug_003",
+  "topic": "conditionals",
+  "title": "fizz_or_buzz",
+  "prompt": "Given an int n, this function is supposed to return 'fizzbuzz', 'fizz', 'buzz', or str(n) depending on divisibility by 3 and 5 \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def fizz_or_buzz(n):\n    if n % 5 == 0:\n        return 'buzz'\n    elif n % 3 == 0:\n        return 'fizz'\n    else:\n        return str(n)\n",
+  "function_name": "fizz_or_buzz",
+  "tests": [
+    {
+      "args": [
+        15
+      ],
+      "expected_output": "fizzbuzz"
+    },
+    {
+      "args": [
+        9
+      ],
+      "expected_output": "fizz"
+    },
+    {
+      "args": [
+        7
+      ],
+      "expected_output": "7"
+    }
+  ],
+  "hint": ""
+}

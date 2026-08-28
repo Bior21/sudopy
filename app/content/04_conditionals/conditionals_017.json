@@ -1,0 +1,29 @@
+{
+  "id": "conditionals_017",
+  "topic": "conditionals",
+  "title": "discount_tier",
+  "prompt": "Given a total_spent amount, return the discount percentage earned: 20% at 500+, 10% at 200+, 5% at 50+, otherwise 0. e.g. total_spent=100 returns 5.",
+  "starter_code": "def discount_tier(total_spent):\n    # TODO: implement this\n    pass\n",
+  "function_name": "discount_tier",
+  "tests": [
+    {
+      "args": [
+        600
+      ],
+      "expected_output": "20"
+    },
+    {
+      "args": [
+        100
+      ],
+      "expected_output": "5"
+    },
+    {
+      "args": [
+        10
+      ],
+      "expected_output": "0"
+    }
+  ],
+  "hint": ""
+}

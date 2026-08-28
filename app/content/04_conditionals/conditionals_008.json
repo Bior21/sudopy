@@ -1,0 +1,29 @@
+{
+  "id": "conditionals_008",
+  "topic": "conditionals",
+  "title": "password_strength",
+  "prompt": "Given a password string, return its strength based on length alone: fewer than 6 characters is 'weak', 6 to 9 is 'medium', 10 or more is 'strong'.",
+  "starter_code": "def password_strength(password):\n    # TODO: implement this\n    pass\n",
+  "function_name": "password_strength",
+  "tests": [
+    {
+      "args": [
+        "abc"
+      ],
+      "expected_output": "weak"
+    },
+    {
+      "args": [
+        "abcdefgh"
+      ],
+      "expected_output": "medium"
+    },
+    {
+      "args": [
+        "abcdefghij"
+      ],
+      "expected_output": "strong"
+    }
+  ],
+  "hint": ""
+}

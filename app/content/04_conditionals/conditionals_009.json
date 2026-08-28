@@ -1,0 +1,29 @@
+{
+  "id": "conditionals_009",
+  "topic": "conditionals",
+  "title": "tax_owed",
+  "prompt": "Given an income, return the tax owed using tiered brackets: 10% up to 10000, 20% on the amount from 10000 to 40000 (plus 1000), and 30% on anything above 40000 (plus 7000). e.g. income=25000 returns 4000.0.",
+  "starter_code": "def tax_owed(income):\n    # TODO: implement this\n    pass\n",
+  "function_name": "tax_owed",
+  "tests": [
+    {
+      "args": [
+        5000
+      ],
+      "expected_output": "500.0"
+    },
+    {
+      "args": [
+        25000
+      ],
+      "expected_output": "4000.0"
+    },
+    {
+      "args": [
+        50000
+      ],
+      "expected_output": "10000.0"
+    }
+  ],
+  "hint": ""
+}

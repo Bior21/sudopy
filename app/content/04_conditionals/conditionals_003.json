@@ -1,23 +1,32 @@
 {
   "id": "conditionals_003",
   "topic": "conditionals",
-  "title": "Grade classifier",
-  "prompt": "Read an integer score. Print 'pass' if score is 60 or above, otherwise print 'fail'.",
-  "starter_code": "def grade_classifier():\n    score = int(input())\n    # print 'pass' or 'fail'\n",
-  "hint": "if score >= 60: print('pass')",
-  "function_name": "grade_classifier",
+  "title": "shipping_cost",
+  "prompt": "Given a package's weight and the shipping distance, return the cost: $5 if weight is 5 or under and distance is 100 or under, $15 if only distance is over 100, $10 if only weight is over 5, otherwise $20. e.g. weight=3, distance=50 returns 5.",
+  "starter_code": "def shipping_cost(weight, distance):\n    # TODO: implement this\n    pass\n",
+  "function_name": "shipping_cost",
   "tests": [
     {
-      "input": "72",
-      "expected_output": "pass"
+      "args": [
+        3,
+        50
+      ],
+      "expected_output": "5"
     },
     {
-      "input": "45",
-      "expected_output": "fail"
+      "args": [
+        10,
+        50
+      ],
+      "expected_output": "15"
     },
     {
-      "input": "60",
-      "expected_output": "pass"
+      "args": [
+        10,
+        200
+      ],
+      "expected_output": "20"
     }
-  ]
+  ],
+  "hint": ""
 }

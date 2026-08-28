@@ -1,0 +1,35 @@
+{
+  "id": "conditionals_010",
+  "topic": "conditionals",
+  "title": "can_checkout",
+  "prompt": "Given a cart_total, whether the customer has a coupon, and the coupon's minimum spend, return whether checkout can proceed \u2014 it's blocked only if a coupon is claimed but cart_total doesn't meet coupon_minimum. e.g. cart_total=50, has_coupon=True, coupon_minimum=100 returns False.",
+  "starter_code": "def can_checkout(cart_total, has_coupon, coupon_minimum):\n    # TODO: implement this\n    pass\n",
+  "function_name": "can_checkout",
+  "tests": [
+    {
+      "args": [
+        50,
+        false,
+        100
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        150,
+        true,
+        100
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        50,
+        true,
+        100
+      ],
+      "expected_output": "False"
+    }
+  ],
+  "hint": ""
+}

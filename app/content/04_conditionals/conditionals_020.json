@@ -1,0 +1,29 @@
+{
+  "id": "conditionals_020",
+  "topic": "conditionals",
+  "title": "fizz_or_buzz",
+  "prompt": "Given an int n, return 'fizzbuzz' if it's divisible by both 3 and 5, 'fizz' if just by 3, 'buzz' if just by 5, otherwise str(n). e.g. n=15 returns 'fizzbuzz'.",
+  "starter_code": "def fizz_or_buzz(n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "fizz_or_buzz",
+  "tests": [
+    {
+      "args": [
+        15
+      ],
+      "expected_output": "fizzbuzz"
+    },
+    {
+      "args": [
+        9
+      ],
+      "expected_output": "fizz"
+    },
+    {
+      "args": [
+        7
+      ],
+      "expected_output": "7"
+    }
+  ],
+  "hint": ""
+}

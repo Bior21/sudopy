@@ -1,23 +1,29 @@
 {
   "id": "conditionals_001",
   "topic": "conditionals",
-  "title": "Even or odd",
-  "prompt": "Read an integer and print 'even' if it's even, otherwise print 'odd'.",
-  "starter_code": "def even_or_odd():\n    n = int(input())\n    # print 'even' or 'odd'\n",
-  "hint": "Use n % 2 == 0 to check evenness.",
-  "function_name": "even_or_odd",
+  "title": "grade_from_score",
+  "prompt": "Given a score, return a letter grade \u2014 A for 90+, B for 80+, C for 70+, D for 60+, and F below that. e.g. score=95 returns 'A'.",
+  "starter_code": "def grade_from_score(score):\n    # TODO: implement this\n    pass\n",
+  "function_name": "grade_from_score",
   "tests": [
     {
-      "input": "7",
-      "expected_output": "odd"
+      "args": [
+        95
+      ],
+      "expected_output": "A"
     },
     {
-      "input": "8",
-      "expected_output": "even"
+      "args": [
+        82
+      ],
+      "expected_output": "B"
     },
     {
-      "input": "0",
-      "expected_output": "even"
+      "args": [
+        55
+      ],
+      "expected_output": "F"
     }
-  ]
+  ],
+  "hint": ""
 }

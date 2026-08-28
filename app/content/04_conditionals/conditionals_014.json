@@ -1,0 +1,29 @@
+{
+  "id": "conditionals_014",
+  "topic": "conditionals",
+  "title": "is_valid_username",
+  "prompt": "Given a username, return whether it's 3 to 16 characters long and contains no spaces. e.g. username='ab' returns False.",
+  "starter_code": "def is_valid_username(username):\n    # TODO: implement this\n    pass\n",
+  "function_name": "is_valid_username",
+  "tests": [
+    {
+      "args": [
+        "ab"
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        "validname"
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        "has space"
+      ],
+      "expected_output": "False"
+    }
+  ],
+  "hint": ""
+}

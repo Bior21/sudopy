@@ -1,0 +1,32 @@
+{
+  "id": "conditionals_012",
+  "topic": "conditionals",
+  "title": "is_valid_day_for_month",
+  "prompt": "Given a day number and a month number (1-12), return whether day is valid for that month. Treat February as having 28 days. e.g. day=31, month=4 returns False (April has 30 days).",
+  "starter_code": "def is_valid_day_for_month(day, month):\n    # TODO: implement this\n    pass\n",
+  "function_name": "is_valid_day_for_month",
+  "tests": [
+    {
+      "args": [
+        31,
+        1
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        31,
+        4
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        30,
+        2
+      ],
+      "expected_output": "False"
+    }
+  ],
+  "hint": ""
+}

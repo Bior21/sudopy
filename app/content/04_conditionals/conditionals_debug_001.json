@@ -1,0 +1,29 @@
+{
+  "id": "conditionals_debug_001",
+  "topic": "conditionals",
+  "title": "grade_from_score",
+  "prompt": "Given a score, this function is supposed to return a letter grade (A for 90+, B for 80+, C for 70+, D for 60+, F below) \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def grade_from_score(score):\n    if score > 90:\n        return 'A'\n    elif score >= 80:\n        return 'B'\n    elif score >= 70:\n        return 'C'\n    elif score >= 60:\n        return 'D'\n    else:\n        return 'F'\n",
+  "function_name": "grade_from_score",
+  "tests": [
+    {
+      "args": [
+        95
+      ],
+      "expected_output": "A"
+    },
+    {
+      "args": [
+        90
+      ],
+      "expected_output": "A"
+    },
+    {
+      "args": [
+        55
+      ],
+      "expected_output": "F"
+    }
+  ],
+  "hint": ""
+}

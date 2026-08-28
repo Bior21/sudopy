@@ -1,0 +1,29 @@
+{
+  "id": "conditionals_debug_002",
+  "topic": "conditionals",
+  "title": "is_leap_year",
+  "prompt": "Given a year, this function is supposed to return whether it's a leap year \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def is_leap_year(year):\n    return year % 4 == 0\n",
+  "function_name": "is_leap_year",
+  "tests": [
+    {
+      "args": [
+        2024
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        1900
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        2000
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

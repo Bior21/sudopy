@@ -1,0 +1,29 @@
+{
+  "id": "conditionals_007",
+  "topic": "conditionals",
+  "title": "is_leap_year",
+  "prompt": "Given a year, return whether it's a leap year (divisible by 4, except centuries, which must be divisible by 400). e.g. year=1900 returns False; year=2000 returns True.",
+  "starter_code": "def is_leap_year(year):\n    # TODO: implement this\n    pass\n",
+  "function_name": "is_leap_year",
+  "tests": [
+    {
+      "args": [
+        2024
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        1900
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        2000
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

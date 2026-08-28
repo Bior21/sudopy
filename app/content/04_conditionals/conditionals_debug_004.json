@@ -1,0 +1,32 @@
+{
+  "id": "conditionals_debug_004",
+  "topic": "conditionals",
+  "title": "compare_three_way",
+  "prompt": "Given two numbers a and b, this function is supposed to return -1, 0, or 1 depending on how they compare \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def compare_three_way(a, b):\n    if a < b:\n        return 1\n    elif a > b:\n        return -1\n    else:\n        return 0\n",
+  "function_name": "compare_three_way",
+  "tests": [
+    {
+      "args": [
+        3,
+        5
+      ],
+      "expected_output": "-1"
+    },
+    {
+      "args": [
+        5,
+        3
+      ],
+      "expected_output": "1"
+    },
+    {
+      "args": [
+        4,
+        4
+      ],
+      "expected_output": "0"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,32 @@
+{
+  "id": "conditionals_019",
+  "topic": "conditionals",
+  "title": "compare_three_way",
+  "prompt": "Given two numbers a and b, return -1 if a is smaller, 1 if a is larger, or 0 if they're equal. e.g. a=3, b=5 returns -1.",
+  "starter_code": "def compare_three_way(a, b):\n    # TODO: implement this\n    pass\n",
+  "function_name": "compare_three_way",
+  "tests": [
+    {
+      "args": [
+        3,
+        5
+      ],
+      "expected_output": "-1"
+    },
+    {
+      "args": [
+        5,
+        3
+      ],
+      "expected_output": "1"
+    },
+    {
+      "args": [
+        4,
+        4
+      ],
+      "expected_output": "0"
+    }
+  ],
+  "hint": ""
+}

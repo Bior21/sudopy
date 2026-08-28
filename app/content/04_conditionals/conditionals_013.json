@@ -1,0 +1,38 @@
+{
+  "id": "conditionals_013",
+  "topic": "conditionals",
+  "title": "performance_tier",
+  "prompt": "Given a score and three increasing thresholds, return which tier it falls in: 1 if below threshold1, 2 if below threshold2, 3 if below threshold3, otherwise 4. e.g. score=80, threshold1=60, threshold2=75, threshold3=90 returns 3.",
+  "starter_code": "def performance_tier(score, threshold1, threshold2, threshold3):\n    # TODO: implement this\n    pass\n",
+  "function_name": "performance_tier",
+  "tests": [
+    {
+      "args": [
+        95,
+        60,
+        75,
+        90
+      ],
+      "expected_output": "4"
+    },
+    {
+      "args": [
+        80,
+        60,
+        75,
+        90
+      ],
+      "expected_output": "3"
+    },
+    {
+      "args": [
+        50,
+        60,
+        75,
+        90
+      ],
+      "expected_output": "1"
+    }
+  ],
+  "hint": ""
+}
