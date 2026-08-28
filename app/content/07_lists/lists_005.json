@@ -1,15 +1,46 @@
 {
   "id": "lists_005",
   "topic": "lists",
-  "title": "List length",
-  "prompt": "A list items = ['a', 'b', 'c', 'd', 'e'] is provided. Print how many elements it has.",
-  "starter_code": "def list_length():\n    items = ['a', 'b', 'c', 'd', 'e']\n    # print the length\n",
-  "hint": "Use len(items).",
-  "function_name": "list_length",
+  "title": "count_occurrences",
+  "prompt": "Given a list of numbers and a target, return how many times target appears in nums. e.g. nums=[1, 2, 2, 3, 2], target=2 returns 3.",
+  "starter_code": "def count_occurrences(nums, target):\n    # TODO: implement this\n    pass\n",
+  "function_name": "count_occurrences",
   "tests": [
     {
-      "input": "",
-      "expected_output": "5"
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3,
+          2
+        ],
+        2
+      ],
+      "expected_output": "3"
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        5
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        [
+          4,
+          4,
+          4
+        ],
+        4
+      ],
+      "expected_output": "3"
     }
-  ]
+  ],
+  "hint": ""
 }

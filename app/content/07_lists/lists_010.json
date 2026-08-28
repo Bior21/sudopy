@@ -1,0 +1,46 @@
+{
+  "id": "lists_010",
+  "topic": "lists",
+  "title": "last_n_elements",
+  "prompt": "Given a list of numbers and a count n, return its last n elements. e.g. nums=[1, 2, 3, 4, 5], n=2 returns [4, 5].",
+  "starter_code": "def last_n_elements(nums, n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "last_n_elements",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        2
+      ],
+      "expected_output": "[4, 5]"
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        5
+      ],
+      "expected_output": "[1, 2, 3]"
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        1
+      ],
+      "expected_output": "[3]"
+    }
+  ],
+  "hint": ""
+}

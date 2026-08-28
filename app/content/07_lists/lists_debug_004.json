@@ -1,0 +1,42 @@
+{
+  "id": "lists_debug_004",
+  "topic": "lists",
+  "title": "second_largest",
+  "prompt": "Given a list of at least two numbers, this function is supposed to return the second largest value \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def second_largest(nums):\n    first = max(nums[0], nums[1])\n    second = min(nums[0], nums[1])\n    for n in nums[2:]:\n        if n > first:\n            first = n\n        elif n > second:\n            second = n\n    return second\n",
+  "function_name": "second_largest",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected_output": "4"
+    },
+    {
+      "args": [
+        [
+          10,
+          20
+        ]
+      ],
+      "expected_output": "10"
+    },
+    {
+      "args": [
+        [
+          5,
+          5,
+          9
+        ]
+      ],
+      "expected_output": "5"
+    }
+  ],
+  "hint": ""
+}

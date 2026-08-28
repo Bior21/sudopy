@@ -1,0 +1,39 @@
+{
+  "id": "lists_017",
+  "topic": "lists",
+  "title": "squares_of_list",
+  "prompt": "Given a list of numbers, return a new list with each number squared. e.g. nums=[1, 2, 3] returns [1, 4, 9].",
+  "starter_code": "def squares_of_list(nums):\n    # TODO: implement this\n    pass\n",
+  "function_name": "squares_of_list",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected_output": "[1, 4, 9]"
+    },
+    {
+      "args": [
+        [
+          0,
+          5
+        ]
+      ],
+      "expected_output": "[0, 25]"
+    },
+    {
+      "args": [
+        [
+          -2,
+          -3
+        ]
+      ],
+      "expected_output": "[4, 9]"
+    }
+  ],
+  "hint": ""
+}

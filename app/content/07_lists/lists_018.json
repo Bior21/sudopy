@@ -1,0 +1,43 @@
+{
+  "id": "lists_018",
+  "topic": "lists",
+  "title": "merge_two_lists",
+  "prompt": "Given two lists a and b, return a single list with all of a's elements followed by all of b's. e.g. a=[1, 2], b=[3, 4] returns [1, 2, 3, 4].",
+  "starter_code": "def merge_two_lists(a, b):\n    # TODO: implement this\n    pass\n",
+  "function_name": "merge_two_lists",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "expected_output": "[1, 2, 3, 4]"
+    },
+    {
+      "args": [
+        [],
+        [
+          1,
+          2
+        ]
+      ],
+      "expected_output": "[1, 2]"
+    },
+    {
+      "args": [
+        [
+          5
+        ],
+        []
+      ],
+      "expected_output": "[5]"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,46 @@
+{
+  "id": "lists_009",
+  "topic": "lists",
+  "title": "first_n_elements",
+  "prompt": "Given a list of numbers and a count n, return its first n elements. e.g. nums=[1, 2, 3, 4, 5], n=3 returns [1, 2, 3].",
+  "starter_code": "def first_n_elements(nums, n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "first_n_elements",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        3
+      ],
+      "expected_output": "[1, 2, 3]"
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        5
+      ],
+      "expected_output": "[1, 2, 3]"
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        0
+      ],
+      "expected_output": "[]"
+    }
+  ],
+  "hint": ""
+}

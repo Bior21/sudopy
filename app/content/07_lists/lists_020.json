@@ -1,0 +1,42 @@
+{
+  "id": "lists_020",
+  "topic": "lists",
+  "title": "second_largest",
+  "prompt": "Given a list of at least two numbers, return the second largest value. e.g. nums=[3, 1, 4, 1, 5, 9, 2, 6] returns 6.",
+  "starter_code": "def second_largest(nums):\n    # TODO: implement this\n    pass\n",
+  "function_name": "second_largest",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected_output": "4"
+    },
+    {
+      "args": [
+        [
+          10,
+          20
+        ]
+      ],
+      "expected_output": "10"
+    },
+    {
+      "args": [
+        [
+          5,
+          5,
+          9
+        ]
+      ],
+      "expected_output": "5"
+    }
+  ],
+  "hint": "Track both the largest and second largest as you scan \u2014 when a new number beats the largest, the old largest becomes the new second largest."
+}

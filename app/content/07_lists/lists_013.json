@@ -1,0 +1,40 @@
+{
+  "id": "lists_013",
+  "topic": "lists",
+  "title": "double_each_element",
+  "prompt": "Given a list of numbers, return a new list where every number is doubled. e.g. nums=[1, 2, 3] returns [2, 4, 6].",
+  "starter_code": "def double_each_element(nums):\n    # TODO: implement this\n    pass\n",
+  "function_name": "double_each_element",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected_output": "[2, 4, 6]"
+    },
+    {
+      "args": [
+        [
+          0,
+          5,
+          10
+        ]
+      ],
+      "expected_output": "[0, 10, 20]"
+    },
+    {
+      "args": [
+        [
+          -1,
+          -2
+        ]
+      ],
+      "expected_output": "[-2, -4]"
+    }
+  ],
+  "hint": ""
+}

@@ -1,23 +1,40 @@
 {
   "id": "lists_002",
   "topic": "lists",
-  "title": "Largest in a list",
-  "prompt": "Read 3 integers into a list and print the largest one.",
-  "starter_code": "def largest_in_a_list():\n    nums = []\n    for _ in range(3):\n        nums.append(int(input()))\n    # print the largest\n",
-  "hint": "Use max(nums).",
-  "function_name": "largest_in_a_list",
+  "title": "average_of_list",
+  "prompt": "Given a list of numbers, return their average. e.g. nums=[10, 20, 30] returns 20.0.",
+  "starter_code": "def average_of_list(nums):\n    # TODO: implement this\n    pass\n",
+  "function_name": "average_of_list",
   "tests": [
     {
-      "input": "4\n9\n2",
-      "expected_output": "9"
+      "args": [
+        [
+          10,
+          20,
+          30
+        ]
+      ],
+      "expected_output": "20.0"
     },
     {
-      "input": "5\n5\n5",
-      "expected_output": "5"
+      "args": [
+        [
+          4,
+          4,
+          4,
+          4
+        ]
+      ],
+      "expected_output": "4.0"
     },
     {
-      "input": "1\n2\n3",
-      "expected_output": "3"
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expected_output": "7.0"
     }
-  ]
+  ],
+  "hint": ""
 }

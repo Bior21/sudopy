@@ -1,0 +1,40 @@
+{
+  "id": "lists_008",
+  "topic": "lists",
+  "title": "reverse_list",
+  "prompt": "Given a list of numbers, return it reversed. e.g. nums=[1, 2, 3] returns [3, 2, 1].",
+  "starter_code": "def reverse_list(nums):\n    # TODO: implement this\n    pass\n",
+  "function_name": "reverse_list",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected_output": "[3, 2, 1]"
+    },
+    {
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected_output": "[5]"
+    },
+    {
+      "args": [
+        [
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected_output": "[1, 2, 3, 4]"
+    }
+  ],
+  "hint": ""
+}

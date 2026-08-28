@@ -1,0 +1,44 @@
+{
+  "id": "lists_debug_003",
+  "topic": "lists",
+  "title": "remove_duplicates",
+  "prompt": "Given a list of numbers, this function is supposed to return a new list with duplicates removed \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def remove_duplicates(nums):\n    result = []\n    for n in nums:\n        result.append(n)\n    return result\n",
+  "function_name": "remove_duplicates",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3,
+          1,
+          4
+        ]
+      ],
+      "expected_output": "[1, 2, 3, 4]"
+    },
+    {
+      "args": [
+        [
+          5,
+          5,
+          5
+        ]
+      ],
+      "expected_output": "[5]"
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected_output": "[1, 2, 3]"
+    }
+  ],
+  "hint": ""
+}

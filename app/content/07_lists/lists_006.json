@@ -1,0 +1,40 @@
+{
+  "id": "lists_006",
+  "topic": "lists",
+  "title": "contains_value",
+  "prompt": "Given a list of numbers and a target, return whether target appears in nums. e.g. nums=[1, 2, 3], target=2 returns True.",
+  "starter_code": "def contains_value(nums, target):\n    # TODO: implement this\n    pass\n",
+  "function_name": "contains_value",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        2
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        5
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        [],
+        1
+      ],
+      "expected_output": "False"
+    }
+  ],
+  "hint": ""
+}

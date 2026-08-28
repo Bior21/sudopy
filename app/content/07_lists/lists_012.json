@@ -1,0 +1,44 @@
+{
+  "id": "lists_012",
+  "topic": "lists",
+  "title": "remove_value",
+  "prompt": "Given a list of numbers and a value known to be in it, remove the first occurrence of value from nums and return nums. e.g. nums=[1, 2, 3], value=2 returns [1, 3].",
+  "starter_code": "def remove_value(nums, value):\n    # TODO: implement this\n    pass\n",
+  "function_name": "remove_value",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        2
+      ],
+      "expected_output": "[1, 3]"
+    },
+    {
+      "args": [
+        [
+          5,
+          6,
+          7
+        ],
+        5
+      ],
+      "expected_output": "[6, 7]"
+    },
+    {
+      "args": [
+        [
+          1,
+          1,
+          2
+        ],
+        1
+      ],
+      "expected_output": "[1, 2]"
+    }
+  ],
+  "hint": "remove() only takes out the first match \u2014 with nums=[1, 1, 2], value=1, one 1 stays behind."
+}

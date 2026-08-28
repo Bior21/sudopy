@@ -1,0 +1,43 @@
+{
+  "id": "lists_016",
+  "topic": "lists",
+  "title": "count_positive",
+  "prompt": "Given a list of numbers, return how many of them are positive. e.g. nums=[1, -2, 3, -4, 5] returns 3.",
+  "starter_code": "def count_positive(nums):\n    # TODO: implement this\n    pass\n",
+  "function_name": "count_positive",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          -2,
+          3,
+          -4,
+          5
+        ]
+      ],
+      "expected_output": "3"
+    },
+    {
+      "args": [
+        [
+          -1,
+          -2,
+          -3
+        ]
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected_output": "3"
+    }
+  ],
+  "hint": ""
+}

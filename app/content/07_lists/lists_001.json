@@ -1,23 +1,40 @@
 {
   "id": "lists_001",
   "topic": "lists",
-  "title": "Sum a list of numbers",
-  "prompt": "Read 3 integers, one per line, store them in a list, then print their sum.",
-  "starter_code": "def sum_a_list_of_numbers():\n    nums = []\n    for _ in range(3):\n        nums.append(int(input()))\n    # print the sum\n",
-  "hint": "Use sum(nums) or a loop that adds each value.",
-  "function_name": "sum_a_list_of_numbers",
+  "title": "sum_of_list",
+  "prompt": "Given a list of numbers, return their sum. e.g. nums=[1, 2, 3] returns 6.",
+  "starter_code": "def sum_of_list(nums):\n    # TODO: implement this\n    pass\n",
+  "function_name": "sum_of_list",
   "tests": [
     {
-      "input": "1\n2\n3",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
       "expected_output": "6"
     },
     {
-      "input": "10\n20\n30",
-      "expected_output": "60"
+      "args": [
+        [
+          10,
+          20,
+          30,
+          40
+        ]
+      ],
+      "expected_output": "100"
     },
     {
-      "input": "0\n0\n0",
-      "expected_output": "0"
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected_output": "5"
     }
-  ]
+  ],
+  "hint": ""
 }

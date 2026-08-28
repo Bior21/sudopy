@@ -1,0 +1,44 @@
+{
+  "id": "lists_019",
+  "topic": "lists",
+  "title": "remove_duplicates",
+  "prompt": "Given a list of numbers, return a new list with duplicates removed, keeping only each number's first appearance and preserving order. e.g. nums=[1, 2, 2, 3, 1, 4] returns [1, 2, 3, 4].",
+  "starter_code": "def remove_duplicates(nums):\n    # TODO: implement this\n    pass\n",
+  "function_name": "remove_duplicates",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3,
+          1,
+          4
+        ]
+      ],
+      "expected_output": "[1, 2, 3, 4]"
+    },
+    {
+      "args": [
+        [
+          5,
+          5,
+          5
+        ]
+      ],
+      "expected_output": "[5]"
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected_output": "[1, 2, 3]"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,38 @@
+{
+  "id": "lists_011",
+  "topic": "lists",
+  "title": "append_value",
+  "prompt": "Given a list of numbers and a value, append value to the end of nums and return nums. e.g. nums=[1, 2, 3], value=4 returns [1, 2, 3, 4].",
+  "starter_code": "def append_value(nums, value):\n    # TODO: implement this\n    pass\n",
+  "function_name": "append_value",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        4
+      ],
+      "expected_output": "[1, 2, 3, 4]"
+    },
+    {
+      "args": [
+        [],
+        1
+      ],
+      "expected_output": "[1]"
+    },
+    {
+      "args": [
+        [
+          5
+        ],
+        10
+      ],
+      "expected_output": "[5, 10]"
+    }
+  ],
+  "hint": ""
+}

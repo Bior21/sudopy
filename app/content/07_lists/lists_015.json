@@ -1,0 +1,46 @@
+{
+  "id": "lists_015",
+  "topic": "lists",
+  "title": "filter_greater_than",
+  "prompt": "Given a list of numbers and a threshold, return a new list with only the numbers strictly greater than threshold. e.g. nums=[1, 5, 10, 15, 20], threshold=10 returns [15, 20].",
+  "starter_code": "def filter_greater_than(nums, threshold):\n    # TODO: implement this\n    pass\n",
+  "function_name": "filter_greater_than",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          5,
+          10,
+          15,
+          20
+        ],
+        10
+      ],
+      "expected_output": "[15, 20]"
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        10
+      ],
+      "expected_output": "[]"
+    },
+    {
+      "args": [
+        [
+          5,
+          5,
+          5
+        ],
+        5
+      ],
+      "expected_output": "[]"
+    }
+  ],
+  "hint": ""
+}
