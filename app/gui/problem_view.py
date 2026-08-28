@@ -64,9 +64,9 @@ class ProblemView(ttk.Frame):
         )
         self.show_solution_button.pack(side="left", padx=(8, 0))
 
-        # Results
+        # Results - stays hidden (see ResultsView.clear()) until the
+        # student's code has actually been run
         self.results_view = ResultsView(self)
-        self.results_view.pack(fill="both", expand=True)
 
     def load_problem(self, problem):
         """Displays the given problem: prompt, hint, starter code, cleared results.
