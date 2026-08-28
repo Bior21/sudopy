@@ -1,9 +1,11 @@
 """A self-contained code editor widget for the problem view.
 
 Provides a line-number gutter with synced scrolling, lightweight
-regex-based Python syntax highlighting, current-line highlighting, and
-Tab-inserts-4-spaces - the baseline things that make a text box read as
-"a code editor" rather than a plain text field. It's deliberately not a
+regex-based Python syntax highlighting, current-line highlighting,
+Tab-inserts-4-spaces, and auto-indent on Enter (matching the previous
+line's indentation, one level deeper after a line ending in ":") - the
+baseline things that make a text box read as "a code editor" rather than
+a plain text field. It's deliberately not a
 full tokenizer/parser: regex-based highlighting can be fooled by edge
 cases (e.g. a '#' inside a string that isn't a comment), which is
 acceptable here since this is a teaching tool for beginner-level code,
@@ -104,6 +106,7 @@ class CodeEditor(ttk.Frame):
         self.text.bind("<KeyRelease>", self._on_change)
         self.text.bind("<ButtonRelease>", self._on_change)
         self.text.bind("<Tab>", self._on_tab)
+        self.text.bind("<Return>", self._on_return)
 
         self._refresh()
 
@@ -150,6 +153,31 @@ class CodeEditor(ttk.Frame):
         """
         self.text.insert("insert", "    ")
         return "break"  # prevent default focus-shift behavior
+
+    def _on_return(self, event):
+        """Auto-indents the new line: same as the current line, deeper after ":".
+
+        Mirrors how other code editors handle Enter - a new line starts
+        with the same leading whitespace as the line it follows, plus
+        one more level of indentation if that line ends with a colon
+        (the start of a new block).
+
+        Args:
+            event: The Tkinter key event that triggered this handler.
+
+        Returns:
+            The string "break", which tells Tkinter to skip its default
+            Return behavior (a plain newline with no indentation).
+        """
+        line_before_cursor = self.text.get("insert linestart", "insert")
+        current_indent = re.match(r"[ \t]*", line_before_cursor).group(0)
+
+        new_indent = current_indent
+        if line_before_cursor.rstrip().endswith(":"):
+            new_indent += "    "
+
+        self.text.insert("insert", "\n" + new_indent)
+        return "break"
 
     def _on_change(self, event=None):
         """Re-renders line numbers and highlighting after an edit.
