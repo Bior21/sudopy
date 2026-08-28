@@ -2,18 +2,24 @@
 
 Shows the prompt text, a Show Hint button that reveals the hint on
 click, an editable code area pre-filled with starter_code, Run/Reset/
-Show Solution buttons, and a ResultsView showing pass/fail feedback.
-ProblemView wires directly to core.submission (and, through it,
-core.runner and core.grader) when Run is clicked. Kept as a single frame
-class for now; if it grows too large later, the editor pane can be
-split out into its own file.
+Show Solution/Next Problem buttons, and a ResultsView showing pass/fail
+feedback. ProblemView wires directly to core.submission (and, through
+it, core.runner and core.grader) when Run is clicked. Kept as a single
+frame class for now; if it grows too large later, the editor pane can
+be split out into its own file.
 
 The Show Solution button stays disabled until the student has clicked
 Run at least once for the currently loaded problem - passing, failing,
 or a mix of both all count, the only thing gated on is having made a
 genuine attempt first. Run uses the "Primary.TButton" style (see
 gui/main_window.py's _configure_style) so it visually stands out from
-the secondary Reset/Show Solution actions.
+the secondary Reset/Show Solution/Next Problem actions.
+
+Next Problem is an alternative to clicking a row in the navigation
+tree, not a replacement for it - ProblemView itself has no notion of
+problem ordering, so it just calls the on_next callback MainWindow
+supplies and lets MainWindow (which owns the tree) figure out what
+"next" means.
 """
 
 import tkinter as tk
@@ -26,15 +32,19 @@ from gui.code_editor import CodeEditor
 
 
 class ProblemView(ttk.Frame):
-    def __init__(self, parent):
+    def __init__(self, parent, on_next=None):
         """Builds the prompt/editor/results layout, with no problem loaded yet.
 
         Args:
             parent: The Tkinter widget this frame is placed inside.
+            on_next: Optional callback invoked when the Next Problem
+                button is clicked. ProblemView has no notion of problem
+                ordering, so it just delegates to the caller.
         """
         super().__init__(parent)
         self.current_problem = None
         self._has_attempted_current_problem = False
+        self._on_next = on_next
 
         # Prompt
         self.title_label = ttk.Label(self, text="", font=("TkDefaultFont", 14, "bold"))
@@ -70,6 +80,10 @@ class ProblemView(ttk.Frame):
             button_frame, text="Show Solution", command=self._on_show_solution, state="disabled"
         )
         self.show_solution_button.pack(side="left", padx=(8, 0))
+        self.next_button = ttk.Button(
+            button_frame, text="Next Problem", command=self._on_next_clicked
+        )
+        self.next_button.pack(side="left", padx=(8, 0))
 
         # Results - stays hidden (see ResultsView.clear()) until the
         # student's code has actually been run
@@ -147,6 +161,20 @@ class ProblemView(ttk.Frame):
         text.config(state="disabled")
 
         ttk.Button(window, text="Close", command=window.destroy).pack(pady=(0, 10))
+
+    def _on_next_clicked(self):
+        """Delegates to the on_next callback, if one was supplied."""
+        if self._on_next:
+            self._on_next()
+
+    def set_next_enabled(self, enabled: bool):
+        """Enables or disables the Next Problem button.
+
+        Args:
+            enabled: False when the currently loaded problem is the last
+                one in the whole curriculum, so there's nowhere to go.
+        """
+        self.next_button.config(state="normal" if enabled else "disabled")
 
     def _on_reset(self):
         """Discards the student's edits and restores the starter code."""

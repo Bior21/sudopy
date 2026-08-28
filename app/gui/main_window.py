@@ -49,6 +49,10 @@ class MainWindow(tk.Tk):
         # so a topic row (not in this map) can be told apart from a
         # problem row on selection.
         self._problem_by_iid: dict[str, tuple[str, str]] = {}
+        # Every problem row's iid, in tree order - lets the Next Problem
+        # button figure out what comes after the current one.
+        self._problem_order: list[str] = []
+        self._current_problem_iid: str | None = None
 
         self._configure_style()
         self._build_layout()
@@ -125,7 +129,7 @@ class MainWindow(tk.Tk):
 
         # --- Problem view (prompt/editor/results) ---
         view_container = ttk.Frame(paned, padding=18)
-        self.problem_view = ProblemView(view_container)
+        self.problem_view = ProblemView(view_container, on_next=self._on_next_clicked)
         self.problem_view.pack(fill="both", expand=True)
         paned.add(view_container, weight=1)
 
@@ -147,6 +151,7 @@ class MainWindow(tk.Tk):
             for index, problem in enumerate(topic.problems, start=1):
                 problem_iid = f"{topic_name}::{problem.id}"
                 self._problem_by_iid[problem_iid] = (topic_name, problem.id)
+                self._problem_order.append(problem_iid)
                 self.tree.insert(
                     topic_name, "end", iid=problem_iid,
                     text=f"{index}. {problem.title}",
@@ -176,7 +181,29 @@ class MainWindow(tk.Tk):
         if iid in self._problem_by_iid:
             topic_name, problem_id = self._problem_by_iid[iid]
             problem = self.loader.get_problem(topic_name, problem_id)
+            resolved_iid = iid
         else:
             problem = self.loader.get_topic(iid).problems[0]
+            resolved_iid = f"{iid}::{problem.id}"
 
+        self._current_problem_iid = resolved_iid
         self.problem_view.load_problem(problem)
+        is_last = self._problem_order.index(resolved_iid) == len(self._problem_order) - 1
+        self.problem_view.set_next_enabled(not is_last)
+
+    def _on_next_clicked(self):
+        """Advances to the problem right after the current one in tree order.
+
+        The alternative to clicking a row in the navigation tree directly.
+        Selecting the next row triggers _on_tree_selected the same way a
+        manual click would, so there's only one place that actually loads
+        a problem.
+        """
+        if self._current_problem_iid is None:
+            return
+        index = self._problem_order.index(self._current_problem_iid)
+        if index + 1 >= len(self._problem_order):
+            return
+        next_iid = self._problem_order[index + 1]
+        self.tree.selection_set(next_iid)
+        self.tree.see(next_iid)
