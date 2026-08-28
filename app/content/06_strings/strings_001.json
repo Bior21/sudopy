@@ -10,6 +10,14 @@
     {
       "input": "python",
       "expected_output": "p"
+    },
+    {
+      "input": "hello",
+      "expected_output": "h"
+    },
+    {
+      "input": "a",
+      "expected_output": "a"
     }
   ]
 }

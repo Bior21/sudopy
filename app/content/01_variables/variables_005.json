@@ -10,6 +10,14 @@
     {
       "input": "banana",
       "expected_output": "6"
+    },
+    {
+      "input": "cat",
+      "expected_output": "3"
+    },
+    {
+      "input": "encyclopedia",
+      "expected_output": "12"
     }
   ]
 }

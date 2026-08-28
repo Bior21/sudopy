@@ -10,6 +10,14 @@
     {
       "input": "72",
       "expected_output": "pass"
+    },
+    {
+      "input": "45",
+      "expected_output": "fail"
+    },
+    {
+      "input": "60",
+      "expected_output": "pass"
     }
   ]
 }

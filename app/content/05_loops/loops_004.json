@@ -10,6 +10,14 @@
     {
       "input": "10",
       "expected_output": "5"
+    },
+    {
+      "input": "1",
+      "expected_output": "0"
+    },
+    {
+      "input": "20",
+      "expected_output": "10"
     }
   ]
 }

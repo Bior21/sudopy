@@ -10,6 +10,14 @@
     {
       "input": "hello",
       "expected_output": "HELLO"
+    },
+    {
+      "input": "world",
+      "expected_output": "WORLD"
+    },
+    {
+      "input": "AbC",
+      "expected_output": "ABC"
     }
   ]
 }

@@ -10,6 +10,14 @@
     {
       "input": "elephant",
       "expected_output": "ele"
+    },
+    {
+      "input": "cat",
+      "expected_output": "cat"
+    },
+    {
+      "input": "hi",
+      "expected_output": "hi"
     }
   ]
 }

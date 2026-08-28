@@ -10,6 +10,14 @@
     {
       "input": "12",
       "expected_output": "yes"
+    },
+    {
+      "input": "4",
+      "expected_output": "no"
+    },
+    {
+      "input": "18",
+      "expected_output": "yes"
     }
   ]
 }

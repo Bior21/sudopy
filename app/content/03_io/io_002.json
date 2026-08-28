@@ -10,6 +10,14 @@
     {
       "input": "sun\nmoon",
       "expected_output": "sun\nmoon"
+    },
+    {
+      "input": "cat\ndog",
+      "expected_output": "cat\ndog"
+    },
+    {
+      "input": "red\nblue",
+      "expected_output": "red\nblue"
     }
   ]
 }

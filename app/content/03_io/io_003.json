@@ -10,6 +10,14 @@
     {
       "input": "cats\ndogs",
       "expected_output": "cats, dogs"
+    },
+    {
+      "input": "apple\norange",
+      "expected_output": "apple, orange"
+    },
+    {
+      "input": "red\nblue",
+      "expected_output": "red, blue"
     }
   ]
 }

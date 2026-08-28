@@ -10,6 +10,14 @@
     {
       "input": "hello",
       "expected_output": "olleh"
+    },
+    {
+      "input": "world",
+      "expected_output": "dlrow"
+    },
+    {
+      "input": "a",
+      "expected_output": "a"
     }
   ]
 }

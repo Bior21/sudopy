@@ -10,6 +10,14 @@
     {
       "input": "9\n4",
       "expected_output": "True"
+    },
+    {
+      "input": "4\n9",
+      "expected_output": "False"
+    },
+    {
+      "input": "5\n5",
+      "expected_output": "False"
     }
   ]
 }

@@ -10,6 +10,14 @@
     {
       "input": "banana",
       "expected_output": "3"
+    },
+    {
+      "input": "apple",
+      "expected_output": "1"
+    },
+    {
+      "input": "cucumber",
+      "expected_output": "0"
     }
   ]
 }

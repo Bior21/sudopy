@@ -1,16 +1,22 @@
 """Displays a single problem and lets the student run and grade their code.
 
 Shows the prompt text, an editable code area pre-filled with
-starter_code, a Run button, and a ResultsView showing pass/fail feedback.
-ProblemView wires directly to core.submission (and, through it,
-core.runner and core.grader) when Run is clicked. Kept as a single frame
-class for now; if it grows too large later, the editor pane can be split
-out into its own file.
+starter_code, Run/Reset/Show Solution buttons, and a ResultsView showing
+pass/fail feedback. ProblemView wires directly to core.submission (and,
+through it, core.runner and core.grader) when Run is clicked. Kept as a
+single frame class for now; if it grows too large later, the editor pane
+can be split out into its own file.
+
+The Show Solution button stays disabled until the student has clicked
+Run at least once for the currently loaded problem - passing, failing,
+or a mix of both all count, the only thing gated on is having made a
+genuine attempt first.
 """
 
 import tkinter as tk
 from tkinter import ttk
 
+from core.solutions import SOLUTIONS
 from core.submission import run_and_grade_all
 from gui.results_view import ResultsView
 from gui.code_editor import CodeEditor
@@ -25,6 +31,7 @@ class ProblemView(ttk.Frame):
         """
         super().__init__(parent)
         self.current_problem = None
+        self._has_attempted_current_problem = False
 
         # Prompt
         self.title_label = ttk.Label(self, text="", font=("TkDefaultFont", 14, "bold"))
@@ -52,6 +59,10 @@ class ProblemView(ttk.Frame):
         self.run_button.pack(side="left")
         self.reset_button = ttk.Button(button_frame, text="Reset to starter code", command=self._on_reset)
         self.reset_button.pack(side="left", padx=(8, 0))
+        self.show_solution_button = ttk.Button(
+            button_frame, text="Show Solution", command=self._on_show_solution, state="disabled"
+        )
+        self.show_solution_button.pack(side="left", padx=(8, 0))
 
         # Results
         self.results_view = ResultsView(self)
@@ -64,6 +75,8 @@ class ProblemView(ttk.Frame):
             problem: The core.problem_loader.Problem to display.
         """
         self.current_problem = problem
+        self._has_attempted_current_problem = False
+        self.show_solution_button.config(state="disabled")
         self.title_label.config(text=problem.title)
         self.prompt_label.config(text=problem.prompt)
         self.hint_label.config(text=f"Hint: {problem.hint}" if problem.hint else "")
@@ -81,6 +94,33 @@ class ProblemView(ttk.Frame):
             self.current_problem.tests,
         )
         self.results_view.update_results(self.current_problem.tests, grade_results)
+
+        self._has_attempted_current_problem = True
+        self.show_solution_button.config(state="normal")
+
+    def _on_show_solution(self):
+        """Opens a read-only window showing the current problem's reference solution.
+
+        Only reachable once the Show Solution button is enabled, which
+        happens after the student has clicked Run at least once for this
+        problem (see _on_run).
+        """
+        if not self.current_problem or not self._has_attempted_current_problem:
+            return
+        solution = SOLUTIONS.get(self.current_problem.id)
+        if solution is None:
+            return
+
+        window = tk.Toplevel(self)
+        window.title(f"Solution — {self.current_problem.title}")
+        window.geometry("500x400")
+
+        text = tk.Text(window, wrap="none", font=("Courier New", 11), padx=10, pady=10)
+        text.pack(fill="both", expand=True)
+        text.insert("1.0", solution)
+        text.config(state="disabled")
+
+        ttk.Button(window, text="Close", command=window.destroy).pack(pady=(0, 10))
 
     def _on_reset(self):
         """Discards the student's edits and restores the starter code."""

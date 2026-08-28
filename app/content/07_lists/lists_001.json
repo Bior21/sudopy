@@ -10,6 +10,14 @@
     {
       "input": "1\n2\n3",
       "expected_output": "6"
+    },
+    {
+      "input": "10\n20\n30",
+      "expected_output": "60"
+    },
+    {
+      "input": "0\n0\n0",
+      "expected_output": "0"
     }
   ]
 }

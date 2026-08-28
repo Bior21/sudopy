@@ -10,6 +10,14 @@
     {
       "input": "Maya\n14",
       "expected_output": "Maya is 14 years old."
+    },
+    {
+      "input": "Tom\n30",
+      "expected_output": "Tom is 30 years old."
+    },
+    {
+      "input": "Zoe\n7",
+      "expected_output": "Zoe is 7 years old."
     }
   ]
 }

@@ -10,6 +10,14 @@
     {
       "input": "5",
       "expected_output": "5.0"
+    },
+    {
+      "input": "0",
+      "expected_output": "0.0"
+    },
+    {
+      "input": "-3",
+      "expected_output": "-3.0"
     }
   ]
 }

@@ -10,6 +10,14 @@
     {
       "input": "7",
       "expected_output": "odd"
+    },
+    {
+      "input": "8",
+      "expected_output": "even"
+    },
+    {
+      "input": "0",
+      "expected_output": "even"
     }
   ]
 }

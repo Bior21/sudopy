@@ -21,7 +21,8 @@ app/
 │   ├── problem_loader.py   # reads/validates problem JSON, organized by topic
 │   ├── runner.py           # sandboxed subprocess execution of student code
 │   ├── grader.py           # compares captured output to expected output
-│   └── submission.py       # appends the function call before running student code
+│   ├── submission.py       # appends the function call before running student code
+│   └── solutions.py        # one correct solution per problem, for verification + Show Solution
 ├── gui/
 │   ├── main_window.py      # topic sidebar + problem list
 │   ├── problem_view.py     # prompt, code editor, run/reset buttons
@@ -150,10 +151,14 @@ this is what catches a solution that's hardcoded to one sample input
 rather than actually solving the problem.
 
 Then add a hand-written correct solution to `SOLUTIONS` in
-`verify_all_solvable.py` and run it — this catches the class of bug that
-schema validation can't (an `expected_output` that doesn't actually match
-what correct code produces). Solutions in `SOLUTIONS` are plain top-level
-scripts, not function-wrapped — that script runs them directly.
+`core/solutions.py` and run `verify_all_solvable.py` — this catches the
+class of bug that schema validation can't (an `expected_output` that
+doesn't actually match what correct code produces). Solutions in
+`SOLUTIONS` are plain top-level scripts, not function-wrapped — they're
+run directly, not through `core/submission.py`'s call-appending. Every
+problem needs a registered solution: it's also what the GUI's Show
+Solution button reveals to a student, once they've attempted the
+problem at least once.
 
 ## Building the standalone executable
 
