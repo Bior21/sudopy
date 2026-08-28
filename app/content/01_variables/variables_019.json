@@ -1,0 +1,32 @@
+{
+  "id": "variables_019",
+  "topic": "variables",
+  "title": "total_inches",
+  "prompt": "Given a length in feet and inches, return the total length in inches. e.g. feet=5, inches=6 returns 66.",
+  "starter_code": "def total_inches(feet, inches):\n    # TODO: implement this\n    pass\n",
+  "function_name": "total_inches",
+  "tests": [
+    {
+      "args": [
+        5,
+        6
+      ],
+      "expected_output": "66"
+    },
+    {
+      "args": [
+        2,
+        11
+      ],
+      "expected_output": "35"
+    },
+    {
+      "args": [
+        0,
+        5
+      ],
+      "expected_output": "5"
+    }
+  ],
+  "hint": ""
+}

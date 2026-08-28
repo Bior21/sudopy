@@ -1,0 +1,32 @@
+{
+  "id": "variables_008",
+  "topic": "variables",
+  "title": "paces_to_meters",
+  "prompt": "Given a number of paces and the length of each pace in meters, return the total distance covered. e.g. paces=100, pace_length=0.75 returns 75.0.",
+  "starter_code": "def paces_to_meters(paces, pace_length):\n    # TODO: implement this\n    pass\n",
+  "function_name": "paces_to_meters",
+  "tests": [
+    {
+      "args": [
+        100,
+        0.75
+      ],
+      "expected_output": "75.0"
+    },
+    {
+      "args": [
+        50,
+        1.2
+      ],
+      "expected_output": "60.0"
+    },
+    {
+      "args": [
+        10,
+        2.0
+      ],
+      "expected_output": "20.0"
+    }
+  ],
+  "hint": ""
+}

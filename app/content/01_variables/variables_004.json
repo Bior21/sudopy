@@ -1,23 +1,35 @@
 {
   "id": "variables_004",
   "topic": "variables",
-  "title": "Boolean from comparison",
-  "prompt": "Read two integers (one per line) and print True if the first is greater than the second, otherwise False.",
-  "starter_code": "def boolean_from_comparison():\n    a = int(input())\n    b = int(input())\n    # print the boolean result of a > b\n",
-  "hint": "print(a > b) prints a boolean directly.",
-  "function_name": "boolean_from_comparison",
+  "title": "split_the_bill_with_tip",
+  "prompt": "Given a bill total, a number of people, and a tip_rate (as a fraction), return each person's share, tip included. e.g. total=100, people=4, tip_rate=0.2 returns 30.0.",
+  "starter_code": "def split_the_bill_with_tip(total, people, tip_rate):\n    # TODO: implement this\n    pass\n",
+  "function_name": "split_the_bill_with_tip",
   "tests": [
     {
-      "input": "9\n4",
-      "expected_output": "True"
+      "args": [
+        100,
+        4,
+        0.2
+      ],
+      "expected_output": "30.0"
     },
     {
-      "input": "4\n9",
-      "expected_output": "False"
+      "args": [
+        50,
+        2,
+        0.1
+      ],
+      "expected_output": "27.5"
     },
     {
-      "input": "5\n5",
-      "expected_output": "False"
+      "args": [
+        90,
+        3,
+        0.0
+      ],
+      "expected_output": "30.0"
     }
-  ]
+  ],
+  "hint": ""
 }

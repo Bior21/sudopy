@@ -1,0 +1,32 @@
+{
+  "id": "variables_018",
+  "topic": "variables",
+  "title": "can_afford",
+  "prompt": "Given a balance and a price, return whether balance covers price. e.g. balance=100, price=80 returns True.",
+  "starter_code": "def can_afford(balance, price):\n    # TODO: implement this\n    pass\n",
+  "function_name": "can_afford",
+  "tests": [
+    {
+      "args": [
+        100,
+        80
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        50,
+        80
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        80,
+        80
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

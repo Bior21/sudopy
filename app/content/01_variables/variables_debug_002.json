@@ -1,0 +1,32 @@
+{
+  "id": "variables_debug_002",
+  "topic": "variables",
+  "title": "discounted_price",
+  "prompt": "Given price and discount_percent, this function is supposed to return the price after taking off that percentage \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def discounted_price(price, discount_percent):\n    return price + price * discount_percent / 100\n",
+  "function_name": "discounted_price",
+  "tests": [
+    {
+      "args": [
+        200,
+        25
+      ],
+      "expected_output": "150.0"
+    },
+    {
+      "args": [
+        80,
+        10
+      ],
+      "expected_output": "72.0"
+    },
+    {
+      "args": [
+        50,
+        0
+      ],
+      "expected_output": "50.0"
+    }
+  ],
+  "hint": ""
+}

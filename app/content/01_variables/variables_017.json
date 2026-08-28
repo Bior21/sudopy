@@ -1,0 +1,35 @@
+{
+  "id": "variables_017",
+  "topic": "variables",
+  "title": "average_speed",
+  "prompt": "Given a distance covered over a trip split into two timed parts, return the average speed. e.g. distance=100, time1=2, time2=3 returns 20.0.",
+  "starter_code": "def average_speed(distance, time1, time2):\n    # TODO: implement this\n    pass\n",
+  "function_name": "average_speed",
+  "tests": [
+    {
+      "args": [
+        100,
+        2,
+        3
+      ],
+      "expected_output": "20.0"
+    },
+    {
+      "args": [
+        90,
+        1,
+        2
+      ],
+      "expected_output": "30.0"
+    },
+    {
+      "args": [
+        50,
+        5,
+        5
+      ],
+      "expected_output": "5.0"
+    }
+  ],
+  "hint": ""
+}

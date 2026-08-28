@@ -1,0 +1,23 @@
+{
+  "id": "variables_016",
+  "topic": "variables",
+  "title": "flag_to_bit",
+  "prompt": "Given a boolean is_active, return it converted to an integer \u2014 True becomes 1, False becomes 0. e.g. is_active=True returns 1.",
+  "starter_code": "def flag_to_bit(is_active):\n    # TODO: implement this\n    pass\n",
+  "function_name": "flag_to_bit",
+  "tests": [
+    {
+      "args": [
+        true
+      ],
+      "expected_output": "1"
+    },
+    {
+      "args": [
+        false
+      ],
+      "expected_output": "0"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,32 @@
+{
+  "id": "variables_011",
+  "topic": "variables",
+  "title": "discounted_price",
+  "prompt": "Given a price and a discount_percent, return the price after taking off that percentage. e.g. price=200, discount_percent=25 returns 150.0.",
+  "starter_code": "def discounted_price(price, discount_percent):\n    # TODO: implement this\n    pass\n",
+  "function_name": "discounted_price",
+  "tests": [
+    {
+      "args": [
+        200,
+        25
+      ],
+      "expected_output": "150.0"
+    },
+    {
+      "args": [
+        80,
+        10
+      ],
+      "expected_output": "72.0"
+    },
+    {
+      "args": [
+        50,
+        0
+      ],
+      "expected_output": "50.0"
+    }
+  ],
+  "hint": ""
+}

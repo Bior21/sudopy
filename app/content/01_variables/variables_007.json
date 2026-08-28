@@ -1,0 +1,35 @@
+{
+  "id": "variables_007",
+  "topic": "variables",
+  "title": "remaining_after_purchase",
+  "prompt": "Given a balance, a price, and a quantity, return what's left of balance after buying quantity items at price each. e.g. balance=100, price=15, quantity=3 returns 55.",
+  "starter_code": "def remaining_after_purchase(balance, price, quantity):\n    # TODO: implement this\n    pass\n",
+  "function_name": "remaining_after_purchase",
+  "tests": [
+    {
+      "args": [
+        100,
+        15,
+        3
+      ],
+      "expected_output": "55"
+    },
+    {
+      "args": [
+        50,
+        10,
+        6
+      ],
+      "expected_output": "-10"
+    },
+    {
+      "args": [
+        200,
+        25,
+        4
+      ],
+      "expected_output": "100"
+    }
+  ],
+  "hint": ""
+}

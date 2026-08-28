@@ -1,0 +1,38 @@
+{
+  "id": "variables_013",
+  "topic": "variables",
+  "title": "total_distance_two_legs",
+  "prompt": "Given the speed and time for two separate legs of a trip, return the total distance covered. e.g. speed1=60, time1=2, speed2=80, time2=1 returns 200.",
+  "starter_code": "def total_distance_two_legs(speed1, time1, speed2, time2):\n    # TODO: implement this\n    pass\n",
+  "function_name": "total_distance_two_legs",
+  "tests": [
+    {
+      "args": [
+        60,
+        2,
+        80,
+        1
+      ],
+      "expected_output": "200"
+    },
+    {
+      "args": [
+        50,
+        1,
+        50,
+        1
+      ],
+      "expected_output": "100"
+    },
+    {
+      "args": [
+        30,
+        3,
+        0,
+        5
+      ],
+      "expected_output": "90"
+    }
+  ],
+  "hint": ""
+}

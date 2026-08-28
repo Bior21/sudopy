@@ -1,0 +1,35 @@
+{
+  "id": "variables_debug_003",
+  "topic": "variables",
+  "title": "formatted_id",
+  "prompt": "Given first, last, and id_number, this function is supposed to return them formatted as 'Last, First (#id_number)' \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def formatted_id(first, last, id_number):\n    return f'{last},{first} (#{id_number})'\n",
+  "function_name": "formatted_id",
+  "tests": [
+    {
+      "args": [
+        "Ana",
+        "Lopez",
+        42
+      ],
+      "expected_output": "Lopez, Ana (#42)"
+    },
+    {
+      "args": [
+        "Sam",
+        "Diaz",
+        7
+      ],
+      "expected_output": "Diaz, Sam (#7)"
+    },
+    {
+      "args": [
+        "Zoe",
+        "Ali",
+        100
+      ],
+      "expected_output": "Ali, Zoe (#100)"
+    }
+  ],
+  "hint": ""
+}

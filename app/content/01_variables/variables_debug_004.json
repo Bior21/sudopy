@@ -1,0 +1,35 @@
+{
+  "id": "variables_debug_004",
+  "topic": "variables",
+  "title": "remaining_after_purchase",
+  "prompt": "Given balance, price, and quantity, this function is supposed to return what's left of balance after buying quantity items at price each \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def remaining_after_purchase(balance, price, quantity):\n    return balance - price\n",
+  "function_name": "remaining_after_purchase",
+  "tests": [
+    {
+      "args": [
+        100,
+        15,
+        3
+      ],
+      "expected_output": "55"
+    },
+    {
+      "args": [
+        50,
+        10,
+        6
+      ],
+      "expected_output": "-10"
+    },
+    {
+      "args": [
+        200,
+        25,
+        4
+      ],
+      "expected_output": "100"
+    }
+  ],
+  "hint": ""
+}

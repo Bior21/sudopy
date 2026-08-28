@@ -1,0 +1,32 @@
+{
+  "id": "variables_debug_001",
+  "topic": "variables",
+  "title": "speed_from_distance_time",
+  "prompt": "Given distance and time, this function is supposed to return the speed implied by covering distance in time \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def speed_from_distance_time(distance, time):\n    return time / distance\n",
+  "function_name": "speed_from_distance_time",
+  "tests": [
+    {
+      "args": [
+        100,
+        4
+      ],
+      "expected_output": "25.0"
+    },
+    {
+      "args": [
+        60,
+        1.5
+      ],
+      "expected_output": "40.0"
+    },
+    {
+      "args": [
+        10,
+        2
+      ],
+      "expected_output": "5.0"
+    }
+  ],
+  "hint": ""
+}

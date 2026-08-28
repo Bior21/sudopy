@@ -1,0 +1,32 @@
+{
+  "id": "variables_015",
+  "topic": "variables",
+  "title": "year_someone_turns_age",
+  "prompt": "Given a birth_year and a target_age, return the year someone born in birth_year turns target_age. e.g. birth_year=2010, target_age=18 returns 2028.",
+  "starter_code": "def year_someone_turns_age(birth_year, target_age):\n    # TODO: implement this\n    pass\n",
+  "function_name": "year_someone_turns_age",
+  "tests": [
+    {
+      "args": [
+        2010,
+        18
+      ],
+      "expected_output": "2028"
+    },
+    {
+      "args": [
+        2000,
+        30
+      ],
+      "expected_output": "2030"
+    },
+    {
+      "args": [
+        2015,
+        21
+      ],
+      "expected_output": "2036"
+    }
+  ],
+  "hint": ""
+}

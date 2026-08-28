@@ -1,0 +1,32 @@
+{
+  "id": "variables_020",
+  "topic": "variables",
+  "title": "net_change",
+  "prompt": "Given a start_value and an end_value, return how much it changed. e.g. start_value=50, end_value=75 returns 25.",
+  "starter_code": "def net_change(start_value, end_value):\n    # TODO: implement this\n    pass\n",
+  "function_name": "net_change",
+  "tests": [
+    {
+      "args": [
+        50,
+        75
+      ],
+      "expected_output": "25"
+    },
+    {
+      "args": [
+        100,
+        60
+      ],
+      "expected_output": "-40"
+    },
+    {
+      "args": [
+        10,
+        10
+      ],
+      "expected_output": "0"
+    }
+  ],
+  "hint": ""
+}

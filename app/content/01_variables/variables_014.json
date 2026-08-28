@@ -1,0 +1,32 @@
+{
+  "id": "variables_014",
+  "topic": "variables",
+  "title": "profit",
+  "prompt": "Given a revenue and a cost, return the profit (can be negative if cost exceeds revenue). e.g. revenue=500, cost=300 returns 200.",
+  "starter_code": "def profit(revenue, cost):\n    # TODO: implement this\n    pass\n",
+  "function_name": "profit",
+  "tests": [
+    {
+      "args": [
+        500,
+        300
+      ],
+      "expected_output": "200"
+    },
+    {
+      "args": [
+        200,
+        350
+      ],
+      "expected_output": "-150"
+    },
+    {
+      "args": [
+        100,
+        100
+      ],
+      "expected_output": "0"
+    }
+  ],
+  "hint": ""
+}

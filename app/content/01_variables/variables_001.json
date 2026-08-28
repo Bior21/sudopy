@@ -1,23 +1,32 @@
 {
   "id": "variables_001",
   "topic": "variables",
-  "title": "Store and print your age",
-  "prompt": "Read an integer representing an age from input, store it in a variable called age, then print it.",
-  "starter_code": "def store_and_print_your_age():\n    age = int(input())\n    # print age below\n",
-  "hint": "Use print(age) to display the value.",
-  "function_name": "store_and_print_your_age",
+  "title": "total_after_tax",
+  "prompt": "Given a price and a tax_rate (as a fraction, e.g. 0.08 for 8%), return the total price including tax. e.g. price=100, tax_rate=0.08 returns 108.0.",
+  "starter_code": "def total_after_tax(price, tax_rate):\n    # TODO: implement this\n    pass\n",
+  "function_name": "total_after_tax",
   "tests": [
     {
-      "input": "16",
-      "expected_output": "16"
+      "args": [
+        100,
+        0.08
+      ],
+      "expected_output": "108.0"
     },
     {
-      "input": "1",
-      "expected_output": "1"
+      "args": [
+        40,
+        0.25
+      ],
+      "expected_output": "50.0"
     },
     {
-      "input": "99",
-      "expected_output": "99"
+      "args": [
+        200,
+        0.05
+      ],
+      "expected_output": "210.0"
     }
-  ]
+  ],
+  "hint": ""
 }

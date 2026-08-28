@@ -1,0 +1,32 @@
+{
+  "id": "variables_006",
+  "topic": "variables",
+  "title": "exceeds_when_converted",
+  "prompt": "Given a temperature in celsius and a fahrenheit_limit, convert celsius to Fahrenheit and return whether it exceeds fahrenheit_limit. e.g. celsius=30, fahrenheit_limit=80 returns True (30\u00b0C is 86\u00b0F).",
+  "starter_code": "def exceeds_when_converted(celsius, fahrenheit_limit):\n    # TODO: implement this\n    pass\n",
+  "function_name": "exceeds_when_converted",
+  "tests": [
+    {
+      "args": [
+        30,
+        80
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        10,
+        100
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        0,
+        31
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": "Fahrenheit = Celsius \u00d7 9/5 + 32."
+}

@@ -1,23 +1,32 @@
 {
   "id": "variables_005",
   "topic": "variables",
-  "title": "String length",
-  "prompt": "Read a word and print how many characters it has.",
-  "starter_code": "def string_length():\n    word = input()\n    # print the length of word\n",
-  "hint": "Use len(word).",
-  "function_name": "string_length",
+  "title": "age_gap",
+  "prompt": "Given two ages, return the difference between them, regardless of which one is older. e.g. age1=15, age2=22 returns 7.",
+  "starter_code": "def age_gap(age1, age2):\n    # TODO: implement this\n    pass\n",
+  "function_name": "age_gap",
   "tests": [
     {
-      "input": "banana",
-      "expected_output": "6"
+      "args": [
+        15,
+        22
+      ],
+      "expected_output": "7"
     },
     {
-      "input": "cat",
-      "expected_output": "3"
+      "args": [
+        30,
+        12
+      ],
+      "expected_output": "18"
     },
     {
-      "input": "encyclopedia",
-      "expected_output": "12"
+      "args": [
+        20,
+        20
+      ],
+      "expected_output": "0"
     }
-  ]
+  ],
+  "hint": ""
 }

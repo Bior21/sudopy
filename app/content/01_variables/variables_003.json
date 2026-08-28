@@ -1,23 +1,32 @@
 {
   "id": "variables_003",
   "topic": "variables",
-  "title": "Convert to float",
-  "prompt": "Read an integer and print it as a float (e.g. 5 becomes 5.0).",
-  "starter_code": "def convert_to_float():\n    n = int(input())\n    # print n as a float\n",
-  "hint": "Use float(n).",
-  "function_name": "convert_to_float",
+  "title": "time_to_seconds",
+  "prompt": "Given a number of hours and minutes, return the total number of seconds. e.g. hours=1, minutes=30 returns 5400.",
+  "starter_code": "def time_to_seconds(hours, minutes):\n    # TODO: implement this\n    pass\n",
+  "function_name": "time_to_seconds",
   "tests": [
     {
-      "input": "5",
-      "expected_output": "5.0"
+      "args": [
+        1,
+        30
+      ],
+      "expected_output": "5400"
     },
     {
-      "input": "0",
-      "expected_output": "0.0"
+      "args": [
+        0,
+        5
+      ],
+      "expected_output": "300"
     },
     {
-      "input": "-3",
-      "expected_output": "-3.0"
+      "args": [
+        2,
+        0
+      ],
+      "expected_output": "7200"
     }
-  ]
+  ],
+  "hint": ""
 }

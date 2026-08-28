@@ -1,0 +1,32 @@
+{
+  "id": "variables_009",
+  "topic": "variables",
+  "title": "is_within_one_year",
+  "prompt": "Given two ages, return whether they're at most a year apart. e.g. age1=15, age2=16 returns True.",
+  "starter_code": "def is_within_one_year(age1, age2):\n    # TODO: implement this\n    pass\n",
+  "function_name": "is_within_one_year",
+  "tests": [
+    {
+      "args": [
+        15,
+        16
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        15,
+        20
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        10,
+        10
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

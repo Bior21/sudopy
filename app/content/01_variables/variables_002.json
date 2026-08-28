@@ -1,23 +1,32 @@
 {
   "id": "variables_002",
   "topic": "variables",
-  "title": "Swap two variables",
-  "prompt": "Read two integers a and b (one per line). Swap their values and print them separated by a space, in the format 'b a'.",
-  "starter_code": "def swap_two_variables():\n    a = int(input())\n    b = int(input())\n    # swap a and b, then print\n",
-  "hint": "You can swap in Python with: a, b = b, a",
-  "function_name": "swap_two_variables",
+  "title": "temperature_swing",
+  "prompt": "Given the temperature in the morning and in the evening, return how much it changed (can be negative). e.g. morning_temp=60, evening_temp=75 returns 15.",
+  "starter_code": "def temperature_swing(morning_temp, evening_temp):\n    # TODO: implement this\n    pass\n",
+  "function_name": "temperature_swing",
   "tests": [
     {
-      "input": "3\n7",
-      "expected_output": "7 3"
+      "args": [
+        60,
+        75
+      ],
+      "expected_output": "15"
     },
     {
-      "input": "1\n2",
-      "expected_output": "2 1"
+      "args": [
+        80,
+        68
+      ],
+      "expected_output": "-12"
     },
     {
-      "input": "10\n-5",
-      "expected_output": "-5 10"
+      "args": [
+        50,
+        50
+      ],
+      "expected_output": "0"
     }
-  ]
+  ],
+  "hint": ""
 }
