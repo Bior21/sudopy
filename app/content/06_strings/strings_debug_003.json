@@ -1,0 +1,29 @@
+{
+  "id": "strings_debug_003",
+  "topic": "strings",
+  "title": "capitalize_first_letter",
+  "prompt": "Given a non-empty string s, this function is supposed to return it with its first letter capitalized \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def capitalize_first_letter(s):\n    return s[0].upper()\n",
+  "function_name": "capitalize_first_letter",
+  "tests": [
+    {
+      "args": [
+        "hello"
+      ],
+      "expected_output": "Hello"
+    },
+    {
+      "args": [
+        "world"
+      ],
+      "expected_output": "World"
+    },
+    {
+      "args": [
+        "a"
+      ],
+      "expected_output": "A"
+    }
+  ],
+  "hint": ""
+}

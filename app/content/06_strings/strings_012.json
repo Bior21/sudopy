@@ -1,0 +1,32 @@
+{
+  "id": "strings_012",
+  "topic": "strings",
+  "title": "ends_with",
+  "prompt": "Given a string s and a suffix, return whether s ends with suffix. e.g. s='hello world', suffix='world' returns True.",
+  "starter_code": "def ends_with(s, suffix):\n    # TODO: implement this\n    pass\n",
+  "function_name": "ends_with",
+  "tests": [
+    {
+      "args": [
+        "hello world",
+        "world"
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        "hello",
+        "world"
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        "python",
+        "on"
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

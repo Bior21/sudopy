@@ -1,0 +1,29 @@
+{
+  "id": "strings_014",
+  "topic": "strings",
+  "title": "split_into_words",
+  "prompt": "Given a string s of words separated by spaces, return a list of the individual words. e.g. s='hello world' returns ['hello', 'world'].",
+  "starter_code": "def split_into_words(s):\n    # TODO: implement this\n    pass\n",
+  "function_name": "split_into_words",
+  "tests": [
+    {
+      "args": [
+        "hello world"
+      ],
+      "expected_output": "['hello', 'world']"
+    },
+    {
+      "args": [
+        "a b c"
+      ],
+      "expected_output": "['a', 'b', 'c']"
+    },
+    {
+      "args": [
+        "single"
+      ],
+      "expected_output": "['single']"
+    }
+  ],
+  "hint": ""
+}

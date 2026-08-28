@@ -1,0 +1,32 @@
+{
+  "id": "strings_019",
+  "topic": "strings",
+  "title": "remove_character",
+  "prompt": "Given a string s and a character ch, return s with every occurrence of ch removed - built up one character at a time, not with replace(). e.g. s='banana', ch='a' returns 'bnn'.",
+  "starter_code": "def remove_character(s, ch):\n    # TODO: implement this\n    pass\n",
+  "function_name": "remove_character",
+  "tests": [
+    {
+      "args": [
+        "banana",
+        "a"
+      ],
+      "expected_output": "bnn"
+    },
+    {
+      "args": [
+        "hello",
+        "l"
+      ],
+      "expected_output": "heo"
+    },
+    {
+      "args": [
+        "xyz",
+        "q"
+      ],
+      "expected_output": "xyz"
+    }
+  ],
+  "hint": ""
+}

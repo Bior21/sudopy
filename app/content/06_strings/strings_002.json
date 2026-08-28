@@ -1,23 +1,29 @@
 {
   "id": "strings_002",
   "topic": "strings",
-  "title": "Reverse a word",
-  "prompt": "Read a word and print it reversed.",
-  "starter_code": "def reverse_a_word():\n    word = input()\n    # print the reversed word\n",
-  "hint": "Slicing with a step of -1 reverses a string: word[::-1]",
-  "function_name": "reverse_a_word",
+  "title": "is_palindrome",
+  "prompt": "Given a string s, return whether it reads the same forwards and backwards. e.g. s='racecar' returns True; s='hello' returns False.",
+  "starter_code": "def is_palindrome(s):\n    # TODO: implement this\n    pass\n",
+  "function_name": "is_palindrome",
   "tests": [
     {
-      "input": "hello",
-      "expected_output": "olleh"
+      "args": [
+        "racecar"
+      ],
+      "expected_output": "True"
     },
     {
-      "input": "world",
-      "expected_output": "dlrow"
+      "args": [
+        "hello"
+      ],
+      "expected_output": "False"
     },
     {
-      "input": "a",
-      "expected_output": "a"
+      "args": [
+        "a"
+      ],
+      "expected_output": "True"
     }
-  ]
+  ],
+  "hint": ""
 }

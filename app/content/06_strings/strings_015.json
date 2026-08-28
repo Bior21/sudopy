@@ -1,0 +1,29 @@
+{
+  "id": "strings_015",
+  "topic": "strings",
+  "title": "is_all_digits",
+  "prompt": "Given a string s, return whether every character in it is a digit. e.g. s='12345' returns True; s='12a45' returns False.",
+  "starter_code": "def is_all_digits(s):\n    # TODO: implement this\n    pass\n",
+  "function_name": "is_all_digits",
+  "tests": [
+    {
+      "args": [
+        "12345"
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        "12a45"
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        "0"
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

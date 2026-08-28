@@ -1,0 +1,29 @@
+{
+  "id": "strings_debug_001",
+  "topic": "strings",
+  "title": "reverse_string",
+  "prompt": "Given a string s, this function is supposed to return it reversed \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def reverse_string(s):\n    return s[::]\n",
+  "function_name": "reverse_string",
+  "tests": [
+    {
+      "args": [
+        "hello"
+      ],
+      "expected_output": "olleh"
+    },
+    {
+      "args": [
+        "world"
+      ],
+      "expected_output": "dlrow"
+    },
+    {
+      "args": [
+        "ab"
+      ],
+      "expected_output": "ba"
+    }
+  ],
+  "hint": ""
+}

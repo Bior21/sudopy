@@ -1,0 +1,41 @@
+{
+  "id": "strings_013",
+  "topic": "strings",
+  "title": "join_with_separator",
+  "prompt": "Given a list of words and a separator, return them joined into one string with separator between each pair. e.g. words=['a', 'b', 'c'], separator='-' returns 'a-b-c'.",
+  "starter_code": "def join_with_separator(words, separator):\n    # TODO: implement this\n    pass\n",
+  "function_name": "join_with_separator",
+  "tests": [
+    {
+      "args": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        "-"
+      ],
+      "expected_output": "a-b-c"
+    },
+    {
+      "args": [
+        [
+          "hello",
+          "world"
+        ],
+        " "
+      ],
+      "expected_output": "hello world"
+    },
+    {
+      "args": [
+        [
+          "x"
+        ],
+        ","
+      ],
+      "expected_output": "x"
+    }
+  ],
+  "hint": ""
+}

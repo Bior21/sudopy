@@ -1,0 +1,29 @@
+{
+  "id": "strings_017",
+  "topic": "strings",
+  "title": "title_case",
+  "prompt": "Given a string s of lowercase words separated by spaces, return it with the first letter of every word capitalized. e.g. s='hello world' returns 'Hello World'.",
+  "starter_code": "def title_case(s):\n    # TODO: implement this\n    pass\n",
+  "function_name": "title_case",
+  "tests": [
+    {
+      "args": [
+        "hello world"
+      ],
+      "expected_output": "Hello World"
+    },
+    {
+      "args": [
+        "python is fun"
+      ],
+      "expected_output": "Python Is Fun"
+    },
+    {
+      "args": [
+        "single"
+      ],
+      "expected_output": "Single"
+    }
+  ],
+  "hint": "Build the capitalized words in a list, then join() them back together with a space."
+}

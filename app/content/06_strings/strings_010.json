@@ -1,0 +1,35 @@
+{
+  "id": "strings_010",
+  "topic": "strings",
+  "title": "replace_character",
+  "prompt": "Given a string s and two characters old and new, return s with every occurrence of old replaced by new. e.g. s='hello', old='l', new='L' returns 'heLLo'.",
+  "starter_code": "def replace_character(s, old, new):\n    # TODO: implement this\n    pass\n",
+  "function_name": "replace_character",
+  "tests": [
+    {
+      "args": [
+        "hello",
+        "l",
+        "L"
+      ],
+      "expected_output": "heLLo"
+    },
+    {
+      "args": [
+        "banana",
+        "a",
+        "o"
+      ],
+      "expected_output": "bonono"
+    },
+    {
+      "args": [
+        "test",
+        "x",
+        "y"
+      ],
+      "expected_output": "test"
+    }
+  ],
+  "hint": ""
+}

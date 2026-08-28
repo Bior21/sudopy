@@ -1,0 +1,29 @@
+{
+  "id": "strings_009",
+  "topic": "strings",
+  "title": "capitalize_first_letter",
+  "prompt": "Given a non-empty string s, return it with its first letter capitalized. e.g. s='hello' returns 'Hello'.",
+  "starter_code": "def capitalize_first_letter(s):\n    # TODO: implement this\n    pass\n",
+  "function_name": "capitalize_first_letter",
+  "tests": [
+    {
+      "args": [
+        "hello"
+      ],
+      "expected_output": "Hello"
+    },
+    {
+      "args": [
+        "world"
+      ],
+      "expected_output": "World"
+    },
+    {
+      "args": [
+        "a"
+      ],
+      "expected_output": "A"
+    }
+  ],
+  "hint": ""
+}

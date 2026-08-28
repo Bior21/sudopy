@@ -1,0 +1,32 @@
+{
+  "id": "strings_debug_004",
+  "topic": "strings",
+  "title": "is_anagram",
+  "prompt": "Given two strings a and b, this function is supposed to return whether they're anagrams of each other \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def is_anagram(a, b):\n    return a == b\n",
+  "function_name": "is_anagram",
+  "tests": [
+    {
+      "args": [
+        "listen",
+        "silent"
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        "hello",
+        "world"
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        "cat",
+        "act"
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

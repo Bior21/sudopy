@@ -1,9 +1,9 @@
 {
-  "id": "strings_003",
+  "id": "strings_debug_002",
   "topic": "strings",
   "title": "count_character",
-  "prompt": "Given a string s and a single character ch, return how many times ch appears in s. e.g. s='banana', ch='a' returns 3.",
-  "starter_code": "def count_character(s, ch):\n    # TODO: implement this\n    pass\n",
+  "prompt": "Given a string s and a character ch, this function is supposed to return how many times ch appears in s \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def count_character(s, ch):\n    count = 0\n    for c in s:\n        if c == ch:\n            count = 1\n    return count\n",
   "function_name": "count_character",
   "tests": [
     {

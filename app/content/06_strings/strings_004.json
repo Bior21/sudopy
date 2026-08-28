@@ -1,23 +1,29 @@
 {
   "id": "strings_004",
   "topic": "strings",
-  "title": "Count a character",
-  "prompt": "Read a word and print how many times the letter 'a' appears in it.",
-  "starter_code": "def count_a_character():\n    word = input()\n    # print count of 'a' in word\n",
-  "hint": "Use word.count('a')",
-  "function_name": "count_a_character",
+  "title": "first_and_last_char",
+  "prompt": "Given a string s, return a new 2-character string made of its first and last characters. e.g. s='hello' returns 'ho'.",
+  "starter_code": "def first_and_last_char(s):\n    # TODO: implement this\n    pass\n",
+  "function_name": "first_and_last_char",
   "tests": [
     {
-      "input": "banana",
-      "expected_output": "3"
+      "args": [
+        "hello"
+      ],
+      "expected_output": "ho"
     },
     {
-      "input": "apple",
-      "expected_output": "1"
+      "args": [
+        "ab"
+      ],
+      "expected_output": "ab"
     },
     {
-      "input": "cucumber",
-      "expected_output": "0"
+      "args": [
+        "x"
+      ],
+      "expected_output": "xx"
     }
-  ]
+  ],
+  "hint": ""
 }

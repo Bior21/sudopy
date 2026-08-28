@@ -1,0 +1,29 @@
+{
+  "id": "strings_007",
+  "topic": "strings",
+  "title": "slice_middle",
+  "prompt": "Given a string s, return it with the first and last characters removed. e.g. s='hello' returns 'ell'.",
+  "starter_code": "def slice_middle(s):\n    # TODO: implement this\n    pass\n",
+  "function_name": "slice_middle",
+  "tests": [
+    {
+      "args": [
+        "hello"
+      ],
+      "expected_output": "ell"
+    },
+    {
+      "args": [
+        "ab"
+      ],
+      "expected_output": ""
+    },
+    {
+      "args": [
+        "python"
+      ],
+      "expected_output": "ytho"
+    }
+  ],
+  "hint": ""
+}

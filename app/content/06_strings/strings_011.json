@@ -1,0 +1,32 @@
+{
+  "id": "strings_011",
+  "topic": "strings",
+  "title": "starts_with",
+  "prompt": "Given a string s and a prefix, return whether s starts with prefix. e.g. s='hello world', prefix='hello' returns True.",
+  "starter_code": "def starts_with(s, prefix):\n    # TODO: implement this\n    pass\n",
+  "function_name": "starts_with",
+  "tests": [
+    {
+      "args": [
+        "hello world",
+        "hello"
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        "hello",
+        "world"
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        "python",
+        "py"
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

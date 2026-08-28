@@ -1,0 +1,29 @@
+{
+  "id": "strings_018",
+  "topic": "strings",
+  "title": "longest_word",
+  "prompt": "Given a string s of words separated by spaces, return the longest one. e.g. s='the quick brown fox' returns 'quick'.",
+  "starter_code": "def longest_word(s):\n    # TODO: implement this\n    pass\n",
+  "function_name": "longest_word",
+  "tests": [
+    {
+      "args": [
+        "the quick brown fox"
+      ],
+      "expected_output": "quick"
+    },
+    {
+      "args": [
+        "a bb ccc"
+      ],
+      "expected_output": "ccc"
+    },
+    {
+      "args": [
+        "equal ab cd"
+      ],
+      "expected_output": "equal"
+    }
+  ],
+  "hint": ""
+}

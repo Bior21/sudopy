@@ -1,23 +1,29 @@
 {
   "id": "strings_005",
   "topic": "strings",
-  "title": "Slice a substring",
-  "prompt": "Read a word and print the first 3 characters.",
-  "starter_code": "def slice_a_substring():\n    word = input()\n    # print the first 3 characters\n",
-  "hint": "Use slicing: word[:3]",
-  "function_name": "slice_a_substring",
+  "title": "remove_spaces",
+  "prompt": "Given a string s, return it with every space removed. e.g. s='hello world' returns 'helloworld'.",
+  "starter_code": "def remove_spaces(s):\n    # TODO: implement this\n    pass\n",
+  "function_name": "remove_spaces",
   "tests": [
     {
-      "input": "elephant",
-      "expected_output": "ele"
+      "args": [
+        "hello world"
+      ],
+      "expected_output": "helloworld"
     },
     {
-      "input": "cat",
-      "expected_output": "cat"
+      "args": [
+        "a b c"
+      ],
+      "expected_output": "abc"
     },
     {
-      "input": "hi",
-      "expected_output": "hi"
+      "args": [
+        "noSpaces"
+      ],
+      "expected_output": "noSpaces"
     }
-  ]
+  ],
+  "hint": ""
 }

@@ -1,0 +1,32 @@
+{
+  "id": "strings_006",
+  "topic": "strings",
+  "title": "contains_substring",
+  "prompt": "Given a string s and a substring sub, return whether sub appears anywhere inside s. e.g. s='hello world', sub='world' returns True.",
+  "starter_code": "def contains_substring(s, sub):\n    # TODO: implement this\n    pass\n",
+  "function_name": "contains_substring",
+  "tests": [
+    {
+      "args": [
+        "hello world",
+        "world"
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        "hello",
+        "xyz"
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        "python",
+        "th"
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

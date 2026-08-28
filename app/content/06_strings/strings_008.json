@@ -1,0 +1,29 @@
+{
+  "id": "strings_008",
+  "topic": "strings",
+  "title": "count_words",
+  "prompt": "Given a string s of words separated by spaces, return how many words it has. e.g. s='hello world' returns 2.",
+  "starter_code": "def count_words(s):\n    # TODO: implement this\n    pass\n",
+  "function_name": "count_words",
+  "tests": [
+    {
+      "args": [
+        "hello world"
+      ],
+      "expected_output": "2"
+    },
+    {
+      "args": [
+        "  a   b  c "
+      ],
+      "expected_output": "3"
+    },
+    {
+      "args": [
+        "single"
+      ],
+      "expected_output": "1"
+    }
+  ],
+  "hint": ""
+}
