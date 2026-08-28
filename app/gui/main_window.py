@@ -55,16 +55,24 @@ class MainWindow(tk.Tk):
         self._populate_tree()
 
     def _configure_style(self):
-        """Sets up a readable, consistent look for the navigation tree.
+        """Sets up a readable, consistent look for the whole app.
 
         Switches to the "clam" ttk theme, since the platform-native theme
-        (e.g. aqua on macOS) ignores most custom Treeview colors, then
-        applies a taller row height, a soft background, and a clear
-        selection highlight so the tree reads as distinct rows rather
-        than a run of plain text.
+        (e.g. aqua on macOS) ignores most custom widget colors, then
+        applies:
+          - Sidebar.Treeview: a taller row height, a soft background, and
+            a clear selection highlight so the navigation tree reads as
+            distinct rows rather than a run of plain text.
+          - Primary.TButton: a filled accent-green button style, used
+            only for ProblemView's Run button so it visually stands out
+            from secondary actions like Reset and Show Solution.
+        Both styles share the same accent green, so the selected sidebar
+        row and the primary action button read as one consistent color.
         """
         style = ttk.Style(self)
         style.theme_use("clam")
+
+        accent_green = "#2F6F4F"
 
         style.configure(
             "Sidebar.Treeview",
@@ -78,8 +86,22 @@ class MainWindow(tk.Tk):
         )
         style.map(
             "Sidebar.Treeview",
-            background=[("selected", "#2F6F4F")],
+            background=[("selected", accent_green)],
             foreground=[("selected", "#FFFFFF")],
+        )
+
+        style.configure(
+            "Primary.TButton",
+            background=accent_green,
+            foreground="#FFFFFF",
+            font=("TkDefaultFont", 10, "bold"),
+            padding=(12, 6),
+            borderwidth=0,
+        )
+        style.map(
+            "Primary.TButton",
+            background=[("active", "#26593F"), ("disabled", "#A9C4B5")],
+            foreground=[("disabled", "#EFEFEF")],
         )
 
     def _build_layout(self):

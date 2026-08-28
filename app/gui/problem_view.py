@@ -1,16 +1,19 @@
 """Displays a single problem and lets the student run and grade their code.
 
-Shows the prompt text, an editable code area pre-filled with
-starter_code, Run/Reset/Show Solution buttons, and a ResultsView showing
-pass/fail feedback. ProblemView wires directly to core.submission (and,
-through it, core.runner and core.grader) when Run is clicked. Kept as a
-single frame class for now; if it grows too large later, the editor pane
-can be split out into its own file.
+Shows the prompt text, a Show Hint button that reveals the hint on
+click, an editable code area pre-filled with starter_code, Run/Reset/
+Show Solution buttons, and a ResultsView showing pass/fail feedback.
+ProblemView wires directly to core.submission (and, through it,
+core.runner and core.grader) when Run is clicked. Kept as a single frame
+class for now; if it grows too large later, the editor pane can be
+split out into its own file.
 
 The Show Solution button stays disabled until the student has clicked
 Run at least once for the currently loaded problem - passing, failing,
 or a mix of both all count, the only thing gated on is having made a
-genuine attempt first.
+genuine attempt first. Run uses the "Primary.TButton" style (see
+gui/main_window.py's _configure_style) so it visually stands out from
+the secondary Reset/Show Solution actions.
 """
 
 import tkinter as tk
@@ -40,22 +43,26 @@ class ProblemView(ttk.Frame):
         self.prompt_label = ttk.Label(self, text="", wraplength=700, justify="left")
         self.prompt_label.pack(anchor="w", pady=(0, 10))
 
-        # Hint (collapsed by default via a button toggle - simple v1: just show it)
+        # Hint - hidden behind a button until clicked (see _on_show_hint).
+        # Neither widget is packed here; load_problem() shows hint_button
+        # only when the problem actually has a hint.
+        self.hint_button = ttk.Button(self, text="Show Hint", command=self._on_show_hint)
         self.hint_label = ttk.Label(
             self, text="", wraplength=700, justify="left", foreground="#57606a"
         )
-        self.hint_label.pack(anchor="w", pady=(0, 10))
 
         # Code editor
-        editor_frame = ttk.LabelFrame(self, text="Your code")
-        editor_frame.pack(fill="both", expand=True, pady=(0, 10))
-        self.editor = CodeEditor(editor_frame, font=("Courier New", 11))
+        self.editor_frame = ttk.LabelFrame(self, text="Your code")
+        self.editor_frame.pack(fill="both", expand=True, pady=(0, 10))
+        self.editor = CodeEditor(self.editor_frame, font=("Courier New", 11))
         self.editor.pack(fill="both", expand=True, padx=4, pady=4)
 
         # Run button
         button_frame = ttk.Frame(self)
         button_frame.pack(fill="x", pady=(0, 10))
-        self.run_button = ttk.Button(button_frame, text="Run", command=self._on_run)
+        self.run_button = ttk.Button(
+            button_frame, text="Run", command=self._on_run, style="Primary.TButton"
+        )
         self.run_button.pack(side="left")
         self.reset_button = ttk.Button(button_frame, text="Reset to starter code", command=self._on_reset)
         self.reset_button.pack(side="left", padx=(8, 0))
@@ -69,7 +76,10 @@ class ProblemView(ttk.Frame):
         self.results_view = ResultsView(self)
 
     def load_problem(self, problem):
-        """Displays the given problem: prompt, hint, starter code, cleared results.
+        """Displays the given problem: prompt, starter code, cleared results.
+
+        The hint (if any) starts hidden behind the Show Hint button -
+        see _on_show_hint.
 
         Args:
             problem: The core.problem_loader.Problem to display.
@@ -79,7 +89,13 @@ class ProblemView(ttk.Frame):
         self.show_solution_button.config(state="disabled")
         self.title_label.config(text=problem.title)
         self.prompt_label.config(text=problem.prompt)
-        self.hint_label.config(text=f"Hint: {problem.hint}" if problem.hint else "")
+
+        self.hint_button.pack_forget()
+        self.hint_label.pack_forget()
+        self.hint_label.config(text="")
+        if problem.hint:
+            self.hint_button.pack(anchor="w", pady=(0, 10), before=self.editor_frame)
+
         self._set_editor_text(problem.starter_code)
         self.results_view.clear()
 
@@ -99,6 +115,14 @@ class ProblemView(ttk.Frame):
 
         self._has_attempted_current_problem = True
         self.show_solution_button.config(state="normal")
+
+    def _on_show_hint(self):
+        """Reveals the current problem's hint, replacing the button with the text."""
+        if not self.current_problem:
+            return
+        self.hint_label.config(text=f"Hint: {self.current_problem.hint}")
+        self.hint_button.pack_forget()
+        self.hint_label.pack(anchor="w", pady=(0, 10), before=self.editor_frame)
 
     def _on_show_solution(self):
         """Opens a read-only window showing the current problem's reference solution.
