@@ -1,0 +1,25 @@
+{
+  "id": "functions_019",
+  "topic": "functions",
+  "title": "apply_discount_twice",
+  "prompt": "A working discounted_price(price, discount_percent) is already defined above. Given a price and a discount_percent, use it twice in a row and return the final price. e.g. price=100, discount_percent=10 returns 81.0.",
+  "starter_code": "def discounted_price(price, discount_percent):\n    return price - price * discount_percent / 100\n\n\ndef apply_discount_twice(price, discount_percent):\n    # TODO: implement this\n    pass\n",
+  "function_name": "apply_discount_twice",
+  "tests": [
+    {
+      "args": [
+        100,
+        10
+      ],
+      "expected_output": "81.0"
+    },
+    {
+      "args": [
+        200,
+        50
+      ],
+      "expected_output": "50.0"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,30 @@
+{
+  "id": "functions_013",
+  "topic": "functions",
+  "title": "sum_of_squares",
+  "prompt": "A working square(n) is already defined above. Given a list of numbers, use it to return the sum of their squares. e.g. nums=[1, 2, 3] returns 14.",
+  "starter_code": "def square(n):\n    return n * n\n\n\ndef sum_of_squares(nums):\n    # TODO: implement this\n    pass\n",
+  "function_name": "sum_of_squares",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected_output": "14"
+    },
+    {
+      "args": [
+        [
+          2,
+          4
+        ]
+      ],
+      "expected_output": "20"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,25 @@
+{
+  "id": "functions_008",
+  "topic": "functions",
+  "title": "divide_with_remainder",
+  "prompt": "Given a and b, return the quotient and remainder of a divided by b, as a tuple. e.g. a=17, b=5 returns (3, 2).",
+  "starter_code": "def divide_with_remainder(a, b):\n    # TODO: implement this\n    pass\n",
+  "function_name": "divide_with_remainder",
+  "tests": [
+    {
+      "args": [
+        17,
+        5
+      ],
+      "expected_output": "(3, 2)"
+    },
+    {
+      "args": [
+        20,
+        4
+      ],
+      "expected_output": "(5, 0)"
+    }
+  ],
+  "hint": ""
+}

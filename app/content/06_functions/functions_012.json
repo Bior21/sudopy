@@ -1,0 +1,23 @@
+{
+  "id": "functions_012",
+  "topic": "functions",
+  "title": "weather_report",
+  "prompt": "A working celsius_to_fahrenheit(c) is already defined above. Given a temperature in celsius, use it to return a one-line report. e.g. c=20 returns \"It's 68.0 degrees Fahrenheit.\".",
+  "starter_code": "def celsius_to_fahrenheit(c):\n    return c * 9 / 5 + 32\n\n\ndef weather_report(c):\n    # TODO: implement this\n    pass\n",
+  "function_name": "weather_report",
+  "tests": [
+    {
+      "args": [
+        20
+      ],
+      "expected_output": "It's 68.0 degrees Fahrenheit."
+    },
+    {
+      "args": [
+        0
+      ],
+      "expected_output": "It's 32.0 degrees Fahrenheit."
+    }
+  ],
+  "hint": ""
+}

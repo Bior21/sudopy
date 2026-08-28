@@ -1,0 +1,27 @@
+{
+  "id": "functions_020",
+  "topic": "functions",
+  "title": "format_receipt",
+  "prompt": "A working total_cost(price, quantity) is already defined above. Given an item name, price, and quantity, use it plus string formatting to return a receipt line like '3x apple: $6'.",
+  "starter_code": "def total_cost(price, quantity):\n    return price * quantity\n\n\ndef format_receipt(item, price, quantity):\n    # TODO: implement this\n    pass\n",
+  "function_name": "format_receipt",
+  "tests": [
+    {
+      "args": [
+        "apple",
+        2,
+        3
+      ],
+      "expected_output": "3x apple: $6"
+    },
+    {
+      "args": [
+        "book",
+        15,
+        1
+      ],
+      "expected_output": "1x book: $15"
+    }
+  ],
+  "hint": ""
+}

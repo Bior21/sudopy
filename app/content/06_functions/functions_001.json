@@ -1,0 +1,15 @@
+{
+  "id": "functions_001",
+  "topic": "functions",
+  "title": "lucky_number",
+  "prompt": "Return a fixed lucky number \u2014 no parameters needed at all. e.g. lucky_number() returns 7.",
+  "starter_code": "def lucky_number():\n    # TODO: implement this\n    pass\n",
+  "function_name": "lucky_number",
+  "tests": [
+    {
+      "args": [],
+      "expected_output": "7"
+    }
+  ],
+  "hint": ""
+}

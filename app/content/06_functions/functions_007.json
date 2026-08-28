@@ -1,0 +1,31 @@
+{
+  "id": "functions_007",
+  "topic": "functions",
+  "title": "min_and_max",
+  "prompt": "Given a list of numbers, return the smallest and largest, as a tuple. e.g. nums=[3, 1, 4, 1, 5] returns (1, 5).",
+  "starter_code": "def min_and_max(nums):\n    # TODO: implement this\n    pass\n",
+  "function_name": "min_and_max",
+  "tests": [
+    {
+      "args": [
+        [
+          3,
+          1,
+          4,
+          1,
+          5
+        ]
+      ],
+      "expected_output": "(1, 5)"
+    },
+    {
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expected_output": "(7, 7)"
+    }
+  ],
+  "hint": ""
+}

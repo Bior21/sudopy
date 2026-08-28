@@ -1,0 +1,25 @@
+{
+  "id": "functions_debug_002",
+  "topic": "functions",
+  "title": "describe_rectangle",
+  "prompt": "Given width and height, this function is supposed to return (area, perimeter) as a tuple \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def describe_rectangle(width, height):\n    area = width * height\n    perimeter = 2 * (width + height)\n    return perimeter, area\n",
+  "function_name": "describe_rectangle",
+  "tests": [
+    {
+      "args": [
+        3,
+        4
+      ],
+      "expected_output": "(12, 14)"
+    },
+    {
+      "args": [
+        5,
+        5
+      ],
+      "expected_output": "(25, 20)"
+    }
+  ],
+  "hint": ""
+}

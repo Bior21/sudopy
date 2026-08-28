@@ -1,0 +1,23 @@
+{
+  "id": "functions_004",
+  "topic": "functions",
+  "title": "announce_winner",
+  "prompt": "Given a name, print '{name} wins!' \u2014 this one doesn't return anything, it just prints directly.",
+  "starter_code": "def announce_winner(name):\n    # TODO: implement this\n    pass\n",
+  "function_name": "announce_winner",
+  "tests": [
+    {
+      "args": [
+        "Ana"
+      ],
+      "expected_output": "Ana wins!"
+    },
+    {
+      "args": [
+        "Sam"
+      ],
+      "expected_output": "Sam wins!"
+    }
+  ],
+  "hint": ""
+}

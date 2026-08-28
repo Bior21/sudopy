@@ -1,0 +1,32 @@
+{
+  "id": "functions_017",
+  "topic": "functions",
+  "title": "count_passing_scores",
+  "prompt": "A working is_passing(score) is already defined above. Given a list of scores, use it to count how many pass. e.g. scores=[85, 45, 60, 90, 30] returns 3.",
+  "starter_code": "def is_passing(score):\n    return score >= 60\n\n\ndef count_passing_scores(scores):\n    # TODO: implement this\n    pass\n",
+  "function_name": "count_passing_scores",
+  "tests": [
+    {
+      "args": [
+        [
+          85,
+          45,
+          60,
+          90,
+          30
+        ]
+      ],
+      "expected_output": "3"
+    },
+    {
+      "args": [
+        [
+          50,
+          55
+        ]
+      ],
+      "expected_output": "0"
+    }
+  ],
+  "hint": ""
+}

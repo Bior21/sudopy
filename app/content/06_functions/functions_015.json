@@ -1,0 +1,29 @@
+{
+  "id": "functions_015",
+  "topic": "functions",
+  "title": "all_passwords_valid",
+  "prompt": "A working is_valid_password_length(pw) is already defined above. Given a list of passwords, use it to return whether every one of them is valid. e.g. passwords=['longenough1', 'longenough2'] returns True.",
+  "starter_code": "def is_valid_password_length(pw):\n    return len(pw) >= 8\n\n\ndef all_passwords_valid(passwords):\n    # TODO: implement this\n    pass\n",
+  "function_name": "all_passwords_valid",
+  "tests": [
+    {
+      "args": [
+        [
+          "longenough1",
+          "longenough2"
+        ]
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        [
+          "short",
+          "longenough1"
+        ]
+      ],
+      "expected_output": "False"
+    }
+  ],
+  "hint": ""
+}

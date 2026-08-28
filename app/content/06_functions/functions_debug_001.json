@@ -1,0 +1,33 @@
+{
+  "id": "functions_debug_001",
+  "topic": "functions",
+  "title": "safe_divide",
+  "prompt": "Given a, b, and an optional default, this function is supposed to return a divided by b, or default if b is zero \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def safe_divide(a, b, default=0):\n    if b is None:\n        return default\n    return a / b\n",
+  "function_name": "safe_divide",
+  "tests": [
+    {
+      "args": [
+        10,
+        2
+      ],
+      "expected_output": "5.0"
+    },
+    {
+      "args": [
+        10,
+        0
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        10,
+        0,
+        -1
+      ],
+      "expected_output": "-1"
+    }
+  ],
+  "hint": ""
+}

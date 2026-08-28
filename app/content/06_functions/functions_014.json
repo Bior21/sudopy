@@ -1,0 +1,29 @@
+{
+  "id": "functions_014",
+  "topic": "functions",
+  "title": "total_area_of_squares",
+  "prompt": "A working area_of_square(side) is already defined above. Given a list of side lengths, use it to return the total area. e.g. sides=[2, 3, 4] returns 29.",
+  "starter_code": "def area_of_square(side):\n    return side * side\n\n\ndef total_area_of_squares(sides):\n    # TODO: implement this\n    pass\n",
+  "function_name": "total_area_of_squares",
+  "tests": [
+    {
+      "args": [
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected_output": "29"
+    },
+    {
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected_output": "25"
+    }
+  ],
+  "hint": ""
+}

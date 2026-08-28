@@ -1,0 +1,24 @@
+{
+  "id": "functions_002",
+  "topic": "functions",
+  "title": "greet",
+  "prompt": "Given a name and an optional greeting (default 'Hello'), return them combined as '{greeting}, {name}!'. e.g. greet('Ana') returns 'Hello, Ana!'; greet('Sam', 'Hi') returns 'Hi, Sam!'.",
+  "starter_code": "def greet(name, greeting='Hello'):\n    # TODO: implement this\n    pass\n",
+  "function_name": "greet",
+  "tests": [
+    {
+      "args": [
+        "Ana"
+      ],
+      "expected_output": "Hello, Ana!"
+    },
+    {
+      "args": [
+        "Sam",
+        "Hi"
+      ],
+      "expected_output": "Hi, Sam!"
+    }
+  ],
+  "hint": ""
+}

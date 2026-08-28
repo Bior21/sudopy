@@ -1,0 +1,33 @@
+{
+  "id": "functions_010",
+  "topic": "functions",
+  "title": "classify_and_count",
+  "prompt": "Given a list of numbers, return how many are positive, negative, and zero, as a 3-tuple. e.g. nums=[1, -2, 3, 0, -5] returns (2, 2, 1).",
+  "starter_code": "def classify_and_count(nums):\n    # TODO: implement this\n    pass\n",
+  "function_name": "classify_and_count",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          -2,
+          3,
+          0,
+          -5
+        ]
+      ],
+      "expected_output": "(2, 2, 1)"
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected_output": "(3, 0, 0)"
+    }
+  ],
+  "hint": ""
+}

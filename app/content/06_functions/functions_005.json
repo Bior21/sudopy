@@ -1,0 +1,33 @@
+{
+  "id": "functions_005",
+  "topic": "functions",
+  "title": "safe_divide",
+  "prompt": "Given a and b, return a divided by b \u2014 or an optional default (0 if not given) if b is zero, instead of crashing. e.g. safe_divide(10, 0) returns 0.",
+  "starter_code": "def safe_divide(a, b, default=0):\n    # TODO: implement this\n    pass\n",
+  "function_name": "safe_divide",
+  "tests": [
+    {
+      "args": [
+        10,
+        2
+      ],
+      "expected_output": "5.0"
+    },
+    {
+      "args": [
+        10,
+        0
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        10,
+        0,
+        -1
+      ],
+      "expected_output": "-1"
+    }
+  ],
+  "hint": ""
+}

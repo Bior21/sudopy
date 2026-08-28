@@ -1,0 +1,26 @@
+{
+  "id": "functions_003",
+  "topic": "functions",
+  "title": "describe_person",
+  "prompt": "Given a name, an age, and an optional city (default 'Unknown'), return a sentence describing them. e.g. describe_person('Ana', 20) returns 'Ana is 20 years old and lives in Unknown.'.",
+  "starter_code": "def describe_person(name, age, city='Unknown'):\n    # TODO: implement this\n    pass\n",
+  "function_name": "describe_person",
+  "tests": [
+    {
+      "args": [
+        "Ana",
+        20
+      ],
+      "expected_output": "Ana is 20 years old and lives in Unknown."
+    },
+    {
+      "args": [
+        "Sam",
+        30,
+        "Austin"
+      ],
+      "expected_output": "Sam is 30 years old and lives in Austin."
+    }
+  ],
+  "hint": ""
+}

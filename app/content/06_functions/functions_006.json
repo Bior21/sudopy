@@ -1,0 +1,25 @@
+{
+  "id": "functions_006",
+  "topic": "functions",
+  "title": "describe_rectangle",
+  "prompt": "Given a width and height, return both the area and the perimeter, as a tuple. e.g. width=3, height=4 returns (12, 14).",
+  "starter_code": "def describe_rectangle(width, height):\n    # TODO: implement this\n    pass\n",
+  "function_name": "describe_rectangle",
+  "tests": [
+    {
+      "args": [
+        3,
+        4
+      ],
+      "expected_output": "(12, 14)"
+    },
+    {
+      "args": [
+        5,
+        5
+      ],
+      "expected_output": "(25, 20)"
+    }
+  ],
+  "hint": ""
+}

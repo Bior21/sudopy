@@ -1,0 +1,21 @@
+{
+  "id": "functions_016",
+  "topic": "functions",
+  "title": "fahrenheit_report_list",
+  "prompt": "A working celsius_to_fahrenheit(c) is already defined above. Given a list of celsius temperatures, use it to return a list of their Fahrenheit equivalents. e.g. celsius_list=[0, 20, 100] returns [32.0, 68.0, 212.0].",
+  "starter_code": "def celsius_to_fahrenheit(c):\n    return c * 9 / 5 + 32\n\n\ndef fahrenheit_report_list(celsius_list):\n    # TODO: implement this\n    pass\n",
+  "function_name": "fahrenheit_report_list",
+  "tests": [
+    {
+      "args": [
+        [
+          0,
+          20,
+          100
+        ]
+      ],
+      "expected_output": "[32.0, 68.0, 212.0]"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,41 @@
+{
+  "id": "functions_debug_004",
+  "topic": "functions",
+  "title": "total_and_average",
+  "prompt": "Given a list of numbers, this function is supposed to return both the sum and the average \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def total_and_average(nums):\n    total = sum(nums)\n    average = total / 3\n    return total, average\n",
+  "function_name": "total_and_average",
+  "tests": [
+    {
+      "args": [
+        [
+          10,
+          20
+        ]
+      ],
+      "expected_output": "(30, 15.0)"
+    },
+    {
+      "args": [
+        [
+          5,
+          5,
+          5,
+          5
+        ]
+      ],
+      "expected_output": "(20, 5.0)"
+    },
+    {
+      "args": [
+        [
+          10,
+          20,
+          30
+        ]
+      ],
+      "expected_output": "(60, 20.0)"
+    }
+  ],
+  "hint": ""
+}

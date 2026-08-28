@@ -1,0 +1,35 @@
+{
+  "id": "functions_018",
+  "topic": "functions",
+  "title": "total_cost_for_order",
+  "prompt": "A working total_cost(price, quantity) is already defined above. Given parallel lists of prices and quantities, use it to return the total cost of the whole order. e.g. prices=[10, 20], quantities=[2, 3] returns 80.",
+  "starter_code": "def total_cost(price, quantity):\n    return price * quantity\n\n\ndef total_cost_for_order(prices, quantities):\n    # TODO: implement this\n    pass\n",
+  "function_name": "total_cost_for_order",
+  "tests": [
+    {
+      "args": [
+        [
+          10,
+          20
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "expected_output": "80"
+    },
+    {
+      "args": [
+        [
+          5
+        ],
+        [
+          4
+        ]
+      ],
+      "expected_output": "20"
+    }
+  ],
+  "hint": ""
+}
