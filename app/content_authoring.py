@@ -47,17 +47,28 @@ def compute_expected(solution_code: str, function_name: str, args_list: list) ->
     return outputs
 
 
-def starter_stub(function_name: str, params_line: str) -> str:
-    """Builds a plain TODO stub for a write-from-scratch problem.
+def starter_stub(solution: str, function_name: str) -> str:
+    """Builds starter_code from a correct solution by stubbing out one function.
+
+    Finds function_name's own `def` line within solution and replaces
+    just that function's body with a TODO. Anything before it - a
+    decomposition problem's already-working helper function, e.g. - is
+    kept verbatim, since that's meant to be given to the student, not
+    written by them.
 
     Args:
-        function_name: The function's name.
-        params_line: The parameter list as it appears in the def line.
+        solution: A correct, function-based solution. May define a
+            helper function before function_name.
+        function_name: The name of the function to stub out.
 
     Returns:
         A starter_code stub.
     """
-    return f"def {function_name}({params_line}):\n    # TODO: implement this\n    pass\n"
+    marker = f"def {function_name}("
+    marker_index = solution.index(marker)
+    preamble = solution[:marker_index]
+    params_line = solution[marker_index:].split("(", 1)[1].split(")", 1)[0]
+    return preamble + f"def {function_name}({params_line}):\n    # TODO: implement this\n    pass\n"
 
 
 def write_topic(topic: str, folder_name: str, write_problems: list, debug_problems: list) -> int:
@@ -88,14 +99,13 @@ def write_topic(topic: str, folder_name: str, write_problems: list, debug_proble
     written = 0
 
     for problem_id, function_name, prompt, solution, args_list, hint in write_problems:
-        params_line = solution.split("(", 1)[1].split(")", 1)[0]
         expected_outputs = compute_expected(solution, function_name, args_list)
         data = {
             "id": problem_id,
             "topic": topic,
             "title": function_name,
             "prompt": prompt,
-            "starter_code": starter_stub(function_name, params_line),
+            "starter_code": starter_stub(solution, function_name),
             "function_name": function_name,
             "tests": [
                 {"args": args, "expected_output": expected}
