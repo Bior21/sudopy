@@ -1,9 +1,9 @@
 """The top-level application window.
 
-Lays out three panes side by side: a topic sidebar, a problem list, and
-the problem view (prompt/editor/results). MainWindow owns the
-ProblemLoader and drives which Problem is currently loaded into the
-ProblemView based on the user's sidebar and list selections.
+Lays out two panes side by side: a navigation tree listing every topic
+with its problems nested underneath, and the problem view (prompt/editor/
+results). MainWindow owns the ProblemLoader and drives which Problem is
+currently loaded into the ProblemView based on the user's tree selection.
 """
 
 import tkinter as tk
@@ -11,6 +11,23 @@ from tkinter import ttk
 
 from core.problem_loader import ProblemLoader
 from gui.problem_view import ProblemView
+
+_TOPIC_DISPLAY_NAMES = {
+    "io": "I/O",
+}
+
+
+def _display_topic_name(topic_name: str) -> str:
+    """Turns a raw topic name like "nested" into a readable label.
+
+    Args:
+        topic_name: The topic's internal name, from ProblemLoader.
+
+    Returns:
+        A title-cased label, with a few short names (e.g. "io") spelled
+        out by hand since title-casing alone reads oddly for them.
+    """
+    return _TOPIC_DISPLAY_NAMES.get(topic_name, topic_name.replace("_", " ").title())
 
 
 class MainWindow(tk.Tk):
@@ -28,90 +45,116 @@ class MainWindow(tk.Tk):
         self.loader = ProblemLoader(content_dir)
         self.topics = self.loader.load_all()
 
+        # Maps a problem row's tree item id to (topic_name, problem_id),
+        # so a topic row (not in this map) can be told apart from a
+        # problem row on selection.
+        self._problem_by_iid: dict[str, tuple[str, str]] = {}
+
+        self._configure_style()
         self._build_layout()
-        self._populate_topics()
+        self._populate_tree()
+
+    def _configure_style(self):
+        """Sets up a readable, consistent look for the navigation tree.
+
+        Switches to the "clam" ttk theme, since the platform-native theme
+        (e.g. aqua on macOS) ignores most custom Treeview colors, then
+        applies a taller row height, a soft background, and a clear
+        selection highlight so the tree reads as distinct rows rather
+        than a run of plain text.
+        """
+        style = ttk.Style(self)
+        style.theme_use("clam")
+
+        style.configure(
+            "Sidebar.Treeview",
+            background="#FAFAF8",
+            fieldbackground="#FAFAF8",
+            foreground="#1A1A1A",
+            rowheight=30,
+            borderwidth=0,
+            relief="flat",
+            font=("TkDefaultFont", 11),
+        )
+        style.map(
+            "Sidebar.Treeview",
+            background=[("selected", "#2F6F4F")],
+            foreground=[("selected", "#FFFFFF")],
+        )
 
     def _build_layout(self):
-        """Builds the three-pane layout: topic sidebar, problem list, problem view."""
-        # Use a horizontal paned window so users can resize panels
+        """Builds the two-pane layout: the navigation tree and the problem view."""
         paned = ttk.Panedwindow(self, orient="horizontal")
         paned.pack(fill="both", expand=True)
 
-        # --- Topic sidebar ---
-        topic_frame = ttk.Frame(paned, width=180)
-        ttk.Label(topic_frame, text="Topics", font=("TkDefaultFont", 11, "bold")).pack(
-            anchor="w", padx=6, pady=(6, 2)
-        )
-        self.topic_listbox = tk.Listbox(topic_frame, exportselection=False)
-        self.topic_listbox.pack(fill="both", expand=True, padx=6, pady=(0, 6))
-        self.topic_listbox.bind("<<ListboxSelect>>", self._on_topic_selected)
-        paned.add(topic_frame, weight=0)
+        # --- Topic/problem navigation tree ---
+        nav_frame = ttk.Frame(paned, width=280)
+        ttk.Label(
+            nav_frame, text="Problems", font=("TkDefaultFont", 12, "bold")
+        ).pack(anchor="w", padx=14, pady=(14, 8))
 
-        # --- Problem list ---
-        problem_frame = ttk.Frame(paned, width=220)
-        ttk.Label(problem_frame, text="Problems", font=("TkDefaultFont", 11, "bold")).pack(
-            anchor="w", padx=6, pady=(6, 2)
+        self.tree = ttk.Treeview(
+            nav_frame, style="Sidebar.Treeview", show="tree", selectmode="browse"
         )
-        self.problem_listbox = tk.Listbox(problem_frame, exportselection=False)
-        self.problem_listbox.pack(fill="both", expand=True, padx=6, pady=(0, 6))
-        self.problem_listbox.bind("<<ListboxSelect>>", self._on_problem_selected)
-        paned.add(problem_frame, weight=0)
+        self.tree.pack(fill="both", expand=True, padx=8, pady=(0, 10))
+        self.tree.tag_configure("topic", font=("TkDefaultFont", 11, "bold"))
+        self.tree.bind("<<TreeviewSelect>>", self._on_tree_selected)
+        paned.add(nav_frame, weight=0)
 
         # --- Problem view (prompt/editor/results) ---
-        view_container = ttk.Frame(paned, padding=10)
+        view_container = ttk.Frame(paned, padding=18)
         self.problem_view = ProblemView(view_container)
         self.problem_view.pack(fill="both", expand=True)
         paned.add(view_container, weight=1)
 
-        self._current_topic_name = None
+    def _populate_tree(self):
+        """Fills the tree with every topic and its problems.
 
-    def _populate_topics(self):
-        """Fills the topic sidebar and loads the first topic by default."""
-        self.topic_listbox.delete(0, "end")
-        for topic_name in self.topics.keys():
-            self.topic_listbox.insert("end", topic_name)
-        if self.topics:
-            self.topic_listbox.selection_set(0)
-            self._load_topic(list(self.topics.keys())[0])
+        Each topic becomes an expanded parent row; its problems become
+        numbered child rows underneath. The first problem of the first
+        topic is selected and loaded by default.
+        """
+        first_problem_iid = None
 
-    def _on_topic_selected(self, event):
-        """Handles a click in the topic sidebar.
+        for topic_name, topic in self.topics.items():
+            self.tree.insert(
+                "", "end", iid=topic_name,
+                text=_display_topic_name(topic_name),
+                tags=("topic",), open=True,
+            )
+            for index, problem in enumerate(topic.problems, start=1):
+                problem_iid = f"{topic_name}::{problem.id}"
+                self._problem_by_iid[problem_iid] = (topic_name, problem.id)
+                self.tree.insert(
+                    topic_name, "end", iid=problem_iid,
+                    text=f"{index}. {problem.title}",
+                )
+                if first_problem_iid is None:
+                    first_problem_iid = problem_iid
+
+        if first_problem_iid is not None:
+            self.tree.selection_set(first_problem_iid)
+            self.tree.see(first_problem_iid)
+
+    def _on_tree_selected(self, event):
+        """Loads the selected problem into the problem view.
+
+        Selecting a topic row loads that topic's first problem instead,
+        so clicking a section header is never a dead end.
 
         Args:
-            event: The Tkinter listbox selection event. Unused; the
-                current selection is read directly from the listbox.
+            event: The Tkinter Treeview selection event. Unused; the
+                current selection is read directly from the tree.
         """
-        selection = self.topic_listbox.curselection()
+        selection = self.tree.selection()
         if not selection:
             return
-        topic_name = self.topic_listbox.get(selection[0])
-        self._load_topic(topic_name)
+        iid = selection[0]
 
-    def _load_topic(self, topic_name):
-        """Fills the problem list for a topic and loads its first problem.
+        if iid in self._problem_by_iid:
+            topic_name, problem_id = self._problem_by_iid[iid]
+            problem = self.loader.get_problem(topic_name, problem_id)
+        else:
+            problem = self.loader.get_topic(iid).problems[0]
 
-        Args:
-            topic_name: The name of the topic to display.
-        """
-        self._current_topic_name = topic_name
-        topic = self.loader.get_topic(topic_name)
-        self.problem_listbox.delete(0, "end")
-        for problem in topic.problems:
-            self.problem_listbox.insert("end", problem.title)
-        if topic.problems:
-            self.problem_listbox.selection_set(0)
-            self.problem_view.load_problem(topic.problems[0])
-
-    def _on_problem_selected(self, event):
-        """Handles a click in the problem list.
-
-        Args:
-            event: The Tkinter listbox selection event. Unused; the
-                current selection is read directly from the listbox.
-        """
-        selection = self.problem_listbox.curselection()
-        if not selection or not self._current_topic_name:
-            return
-        topic = self.loader.get_topic(self._current_topic_name)
-        problem = topic.problems[selection[0]]
         self.problem_view.load_problem(problem)
