@@ -1,0 +1,139 @@
+"""Shared machinery for the per-topic content-authoring scripts.
+
+Each topic gets its own one-time script (write_loops_content.py,
+write_variables_content.py, etc.) that supplies problem data - prompts,
+solutions, test arguments - and calls write_topic() here to do the
+actual work: compute every expected_output by really executing the
+solution (never hand-typed), confirm every debug problem's buggy
+starter_code genuinely fails at least one test, and write the JSON files.
+
+Keeping this logic in one place means all topics get the same
+correctness guarantees for free, rather than each script re-implementing
+(and risking drift in) the same checks.
+"""
+
+import json
+from pathlib import Path
+
+from core.submission import run_and_grade_all
+from core.problem_loader import TestCase
+
+CONTENT_ROOT = Path(__file__).parent / "content"
+
+
+def compute_expected(solution_code: str, function_name: str, args_list: list) -> list:
+    """Runs a correct solution for real to get each test's expected_output.
+
+    Args:
+        solution_code: A correct, function-based solution.
+        function_name: The function's name.
+        args_list: One argument list per test case.
+
+    Returns:
+        One expected_output string per entry in args_list.
+
+    Raises:
+        RuntimeError: If the solution crashes or times out on any input -
+            that means the input choice or the "correct" solution is
+            wrong, not that content should ship with a bad expected value.
+    """
+    tests = [TestCase(args=args, expected_output="") for args in args_list]
+    results = run_and_grade_all(solution_code, function_name, tests)
+    outputs = []
+    for args, result in zip(args_list, results):
+        if result.reason.startswith("Your code crashed") or result.reason.startswith("Your code took too long"):
+            raise RuntimeError(f"{function_name}{tuple(args)}: reference solution failed: {result.reason}")
+        outputs.append(result.actual_output.strip())
+    return outputs
+
+
+def starter_stub(function_name: str, params_line: str) -> str:
+    """Builds a plain TODO stub for a write-from-scratch problem.
+
+    Args:
+        function_name: The function's name.
+        params_line: The parameter list as it appears in the def line.
+
+    Returns:
+        A starter_code stub.
+    """
+    return f"def {function_name}({params_line}):\n    # TODO: implement this\n    pass\n"
+
+
+def write_topic(topic: str, folder_name: str, write_problems: list, debug_problems: list) -> int:
+    """Writes a topic's full set of problem JSON files, clearing old ones first.
+
+    Args:
+        topic: The topic name stored in each problem's "topic" field
+            (e.g. "variables").
+        folder_name: The content subfolder to write into (e.g.
+            "01_variables"), relative to content/.
+        write_problems: A list of (id, function_name, prompt, solution,
+            args_list, hint) tuples - the write-from-scratch problems.
+        debug_problems: A list of (id, function_name, prompt, solution,
+            buggy_starter_code, args_list) tuples - the debug-it problems.
+
+    Returns:
+        How many problem files were written.
+
+    Raises:
+        RuntimeError: If a debug problem's buggy_starter_code doesn't
+            actually fail any test - it wouldn't be a real bug to find.
+    """
+    content_dir = CONTENT_ROOT / folder_name
+    content_dir.mkdir(parents=True, exist_ok=True)
+    for old_file in content_dir.glob("*.json"):
+        old_file.unlink()
+
+    written = 0
+
+    for problem_id, function_name, prompt, solution, args_list, hint in write_problems:
+        params_line = solution.split("(", 1)[1].split(")", 1)[0]
+        expected_outputs = compute_expected(solution, function_name, args_list)
+        data = {
+            "id": problem_id,
+            "topic": topic,
+            "title": function_name,
+            "prompt": prompt,
+            "starter_code": starter_stub(function_name, params_line),
+            "function_name": function_name,
+            "tests": [
+                {"args": args, "expected_output": expected}
+                for args, expected in zip(args_list, expected_outputs)
+            ],
+            "hint": hint,
+        }
+        (content_dir / f"{problem_id}.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
+        written += 1
+        print(f"wrote {problem_id} ({function_name}) - {len(args_list)} test(s)")
+
+    for problem_id, function_name, prompt, solution, buggy_code, args_list in debug_problems:
+        expected_outputs = compute_expected(solution, function_name, args_list)
+
+        buggy_tests = [
+            TestCase(args=args, expected_output=expected)
+            for args, expected in zip(args_list, expected_outputs)
+        ]
+        buggy_results = run_and_grade_all(buggy_code, function_name, buggy_tests)
+        if all(r.passed for r in buggy_results):
+            raise RuntimeError(f"{problem_id}: buggy starter_code passes every test - not actually buggy!")
+
+        data = {
+            "id": problem_id,
+            "topic": topic,
+            "title": function_name,
+            "prompt": prompt,
+            "starter_code": buggy_code,
+            "function_name": function_name,
+            "tests": [
+                {"args": args, "expected_output": expected}
+                for args, expected in zip(args_list, expected_outputs)
+            ],
+            "hint": "",
+        }
+        (content_dir / f"{problem_id}.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
+        written += 1
+        print(f"wrote {problem_id} ({function_name}, debug) - confirmed buggy on "
+              f"{sum(1 for r in buggy_results if not r.passed)}/{len(buggy_results)} test(s)")
+
+    return written

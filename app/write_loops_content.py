@@ -3,22 +3,12 @@
 Replaces the old input()-based loops_001..004 with 20 parameter-based
 problems (loops_001..020) plus 4 "debug it" problems (loops_debug_001..
 004) that ship with near-complete but broken starter_code instead of a
-TODO stub.
-
-Every expected_output is computed by actually running a correct,
-function-based reference solution through core.submission - never hand-
-typed. Every debug problem's buggy starter_code is also run through the
-same pipeline and checked to genuinely fail at least one test, so a
-"bug" that doesn't actually reproduce can't slip into shipped content.
+TODO stub. The actual writing - computing every expected_output for
+real, confirming every debug bug genuinely reproduces - is shared logic
+in content_authoring.py; this script only supplies the problem data.
 """
 
-import json
-from pathlib import Path
-
-from core.submission import run_and_grade_all
-from core.problem_loader import TestCase
-
-CONTENT_DIR = Path(__file__).parent / "content" / "05_loops"
+from content_authoring import write_topic
 
 # Each write problem: (id, function_name, prompt, correct_solution, list_of_args, hint)
 WRITE_PROBLEMS = [
@@ -374,106 +364,10 @@ DEBUG_PROBLEMS = [
 ]
 
 
-def _compute_expected(solution_code: str, function_name: str, args_list: list) -> list:
-    """Runs a correct solution for real to get each test's expected_output.
-
-    Args:
-        solution_code: A correct, function-based solution.
-        function_name: The function's name.
-        args_list: One argument list per test case.
-
-    Returns:
-        One expected_output string per entry in args_list.
-
-    Raises:
-        RuntimeError: If the solution crashes or times out on any input -
-            that means the input choice or the "correct" solution is
-            wrong, not that content should ship with a bad expected value.
-    """
-    tests = [TestCase(args=args, expected_output="") for args in args_list]
-    results = run_and_grade_all(solution_code, function_name, tests)
-    outputs = []
-    for args, result in zip(args_list, results):
-        if result.reason.startswith("Your code crashed") or result.reason.startswith("Your code took too long"):
-            raise RuntimeError(f"{function_name}{tuple(args)}: reference solution failed: {result.reason}")
-        outputs.append(result.actual_output.strip())
-    return outputs
-
-
-def _starter_stub(function_name: str, params_line: str) -> str:
-    """Builds a plain TODO stub for a write-from-scratch problem.
-
-    Args:
-        function_name: The function's name.
-        params_line: The parameter list as it appears in the def line.
-
-    Returns:
-        A starter_code stub.
-    """
-    return f"def {function_name}({params_line}):\n    # TODO: implement this\n    pass\n"
-
-
 def main():
     """Writes all 24 Loops problem files and reports what it did."""
-    CONTENT_DIR.mkdir(parents=True, exist_ok=True)
-
-    # Clear out the old input()-based content before writing the new set.
-    for old_file in CONTENT_DIR.glob("*.json"):
-        old_file.unlink()
-
-    written = 0
-
-    for problem_id, function_name, prompt, solution, args_list, hint in WRITE_PROBLEMS:
-        params_line = solution.split("(", 1)[1].split(")", 1)[0]
-        expected_outputs = _compute_expected(solution, function_name, args_list)
-        data = {
-            "id": problem_id,
-            "topic": "loops",
-            "title": function_name,
-            "prompt": prompt,
-            "starter_code": _starter_stub(function_name, params_line),
-            "function_name": function_name,
-            "tests": [
-                {"args": args, "expected_output": expected}
-                for args, expected in zip(args_list, expected_outputs)
-            ],
-            "hint": hint,
-        }
-        (CONTENT_DIR / f"{problem_id}.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
-        written += 1
-        print(f"wrote {problem_id} ({function_name}) - {len(args_list)} test(s)")
-
-    for problem_id, function_name, prompt, solution, buggy_code, args_list in DEBUG_PROBLEMS:
-        expected_outputs = _compute_expected(solution, function_name, args_list)
-
-        # Confirm the bug is real: the buggy code must fail at least one test.
-        buggy_tests = [
-            TestCase(args=args, expected_output=expected)
-            for args, expected in zip(args_list, expected_outputs)
-        ]
-        buggy_results = run_and_grade_all(buggy_code, function_name, buggy_tests)
-        if all(r.passed for r in buggy_results):
-            raise RuntimeError(f"{problem_id}: buggy starter_code passes every test - not actually buggy!")
-
-        data = {
-            "id": problem_id,
-            "topic": "loops",
-            "title": function_name,
-            "prompt": prompt,
-            "starter_code": buggy_code,
-            "function_name": function_name,
-            "tests": [
-                {"args": args, "expected_output": expected}
-                for args, expected in zip(args_list, expected_outputs)
-            ],
-            "hint": "",
-        }
-        (CONTENT_DIR / f"{problem_id}.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
-        written += 1
-        print(f"wrote {problem_id} ({function_name}, debug) - confirmed buggy on "
-              f"{sum(1 for r in buggy_results if not r.passed)}/{len(buggy_results)} test(s)")
-
-    print(f"\nWrote {written} problem files to {CONTENT_DIR}")
+    written = write_topic("loops", "05_loops", WRITE_PROBLEMS, DEBUG_PROBLEMS)
+    print(f"\nWrote {written} problem files.")
 
 
 if __name__ == "__main__":
