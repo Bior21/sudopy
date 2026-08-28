@@ -93,7 +93,9 @@ class ProblemView(ttk.Frame):
             self.current_problem.function_name,
             self.current_problem.tests,
         )
-        self.results_view.update_results(self.current_problem.tests, grade_results)
+        self.results_view.update_results(
+            self.current_problem.function_name, self.current_problem.tests, grade_results
+        )
 
         self._has_attempted_current_problem = True
         self.show_solution_button.config(state="normal")
