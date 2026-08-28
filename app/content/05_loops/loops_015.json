@@ -1,0 +1,29 @@
+{
+  "id": "loops_015",
+  "topic": "loops",
+  "title": "is_prime",
+  "prompt": "Given an int n, return whether it's prime (has no divisors other than 1 and itself; numbers less than 2 are not prime). e.g. n=17 returns True, n=18 returns False.",
+  "starter_code": "def is_prime(n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "is_prime",
+  "tests": [
+    {
+      "args": [
+        17
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        18
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        2
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

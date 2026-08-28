@@ -1,0 +1,29 @@
+{
+  "id": "loops_020",
+  "topic": "loops",
+  "title": "collatz_steps",
+  "prompt": "Given a positive int n, return how many steps it takes to reach 1 using the Collatz rule: if n is even, divide it by 2; if it's odd, multiply by 3 and add 1. e.g. n=6 returns 8. Use a while loop \u2014 it runs until n reaches 1, however long that takes.",
+  "starter_code": "def collatz_steps(n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "collatz_steps",
+  "tests": [
+    {
+      "args": [
+        6
+      ],
+      "expected_output": "8"
+    },
+    {
+      "args": [
+        1
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        27
+      ],
+      "expected_output": "111"
+    }
+  ],
+  "hint": "Trace it by hand for a small n first, like 6, so you know what the loop should do each step."
+}

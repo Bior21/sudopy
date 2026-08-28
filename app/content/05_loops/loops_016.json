@@ -1,0 +1,32 @@
+{
+  "id": "loops_016",
+  "topic": "loops",
+  "title": "gcd_of_two",
+  "prompt": "Given two positive ints a and b, return their greatest common divisor. e.g. a=48, b=18 returns 6. Use a while loop \u2014 the classic Euclidean algorithm: repeatedly replace the larger number with the remainder of dividing by the smaller.",
+  "starter_code": "def gcd_of_two(a, b):\n    # TODO: implement this\n    pass\n",
+  "function_name": "gcd_of_two",
+  "tests": [
+    {
+      "args": [
+        48,
+        18
+      ],
+      "expected_output": "6"
+    },
+    {
+      "args": [
+        17,
+        5
+      ],
+      "expected_output": "1"
+    },
+    {
+      "args": [
+        20,
+        30
+      ],
+      "expected_output": "10"
+    }
+  ],
+  "hint": ""
+}

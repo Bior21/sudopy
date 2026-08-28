@@ -1,0 +1,35 @@
+{
+  "id": "loops_013",
+  "topic": "loops",
+  "title": "sum_of_multiples_of_either",
+  "prompt": "Given a positive int limit and two positive ints a and b, return the sum of every number below limit that's a multiple of a or b (don't count any number twice). e.g. limit=20, a=3, b=5 returns 78.",
+  "starter_code": "def sum_of_multiples_of_either(limit, a, b):\n    # TODO: implement this\n    pass\n",
+  "function_name": "sum_of_multiples_of_either",
+  "tests": [
+    {
+      "args": [
+        20,
+        3,
+        5
+      ],
+      "expected_output": "78"
+    },
+    {
+      "args": [
+        10,
+        2,
+        3
+      ],
+      "expected_output": "32"
+    },
+    {
+      "args": [
+        15,
+        5,
+        5
+      ],
+      "expected_output": "15"
+    }
+  ],
+  "hint": ""
+}

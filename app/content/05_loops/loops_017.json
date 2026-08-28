@@ -1,0 +1,29 @@
+{
+  "id": "loops_017",
+  "topic": "loops",
+  "title": "fibonacci_at",
+  "prompt": "Given a positive int n, return the nth Fibonacci number (1, 1, 2, 3, 5, 8, ... starting at n=1). e.g. n=6 returns 8.",
+  "starter_code": "def fibonacci_at(n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "fibonacci_at",
+  "tests": [
+    {
+      "args": [
+        6
+      ],
+      "expected_output": "8"
+    },
+    {
+      "args": [
+        1
+      ],
+      "expected_output": "1"
+    },
+    {
+      "args": [
+        10
+      ],
+      "expected_output": "55"
+    }
+  ],
+  "hint": ""
+}

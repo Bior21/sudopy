@@ -40,12 +40,18 @@ class TestCase:
     # it's a domain object (a problem's test case), not a test suite.
     __test__ = False
 
-    input: str
     expected_output: str
+    args: list = field(default_factory=list)
+    input: str = ""
 
     @staticmethod
     def from_dict(data: dict, source_path: Path, index: int) -> "TestCase":
         """Builds a TestCase from one entry of a problem's "tests" list.
+
+        A test case supplies its function call one of two ways: `args`
+        (a list of positional arguments, for a parameter-based problem)
+        or `input` (stdin text, for an I/O-based problem that still reads
+        via input()). Most problems use one or the other, not both.
 
         Args:
             data: The parsed JSON object for one test case.
@@ -63,6 +69,7 @@ class TestCase:
                 f"{source_path}: tests[{index}] is missing 'expected_output'"
             )
         return TestCase(
+            args=data.get("args", []),
             input=data.get("input", ""),
             expected_output=data["expected_output"],
         )

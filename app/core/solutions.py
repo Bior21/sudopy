@@ -5,9 +5,14 @@ to this problem look like" - verify_all_solvable.py imports it to check
 every problem's expected_output actually matches what correct code
 produces, and gui/problem_view.py's Show Solution button imports it to
 reveal a solution to a student who has already attempted the problem.
-Kept as plain top-level scripts (not function-wrapped, unlike
-starter_code), since they're run directly through core.runner rather
-than through core.submission's function-call wrapping.
+
+Each entry is one of two shapes, and verify_all_solvable.py tells them
+apart by whether the text starts with "def ": a plain top-level script
+(the legacy I/O-topic style, run directly through core.runner since it
+reads via input() rather than taking arguments), or a real function
+definition matching the problem's function_name (every other topic,
+run through core.submission exactly like a student submission would be,
+since it takes its test data as arguments).
 """
 
 SOLUTIONS = {
@@ -19,7 +24,6 @@ SOLUTIONS = {
     "io_002": "word1 = input()\nword2 = input()\nprint(word1)\nprint(word2)\n",
     "conditionals_001": "n = int(input())\nif n % 2 == 0:\n    print('even')\nelse:\n    print('odd')\n",
     "conditionals_002": "a = int(input())\nb = int(input())\nif a > b:\n    print(a)\nelse:\n    print(b)\n",
-    "loops_001": "n = int(input())\ntotal = 0\nfor i in range(1, n + 1):\n    total += i\nprint(total)\n",
     "strings_001": "word = input()\nprint(word[0])\n",
     "strings_002": "word = input()\nprint(word[::-1])\n",
     "lists_001": "nums = []\nfor _ in range(3):\n    nums.append(int(input()))\nprint(sum(nums))\n",
@@ -42,9 +46,6 @@ SOLUTIONS = {
     "conditionals_003": "score = int(input())\nif score >= 60:\n    print('pass')\nelse:\n    print('fail')\n",
     "conditionals_004": "n = int(input())\nif n > 0:\n    print('positive')\nelif n < 0:\n    print('negative')\nelse:\n    print('zero')\n",
     "conditionals_005": "n = int(input())\nif n % 2 == 0 and n % 3 == 0:\n    print('yes')\nelse:\n    print('no')\n",
-    "loops_002": "n = int(input())\nfor i in range(n, 0, -1):\n    print(i)\n",
-    "loops_003": "n = int(input())\nfor i in range(1, 6):\n    print(n * i)\n",
-    "loops_004": "n = int(input())\ncount = 0\nfor i in range(1, n + 1):\n    if i % 2 == 0:\n        count += 1\nprint(count)\n",
     "strings_003": "word = input()\nprint(word.upper())\n",
     "strings_004": "word = input()\nprint(word.count('a'))\n",
     "strings_005": "word = input()\nprint(word[:3])\n",
@@ -60,4 +61,33 @@ SOLUTIONS = {
     "nested_003": "matrix = [[1, 2], [3, 4], [5, 6]]\ntotal = 0\nfor row in matrix:\n    for val in row:\n        total += val\nprint(total)\n",
     "nested_004": "scores = {'Sam': [90, 85], 'Al': [70, 75]}\nprint(scores['Sam'][1])\n",
     "nested_005": "points = [(1, 2), (3, 4), (5, 6)]\nprint(points[-1][1])\n",
+
+    # Loops (05_loops): function-based, since these problems take arguments
+    # instead of reading via input() - see core/submission.py for why a
+    # solution shaped like "def name(...): ... return ..." is run through
+    # run_and_grade_all rather than run_code directly.
+    "loops_001": "def sum_of_odd_numbers_up_to(n):\n    total = 0\n    for i in range(1, n + 1):\n        if i % 2 == 1:\n            total += i\n    return total\n",
+    "loops_002": "def count_divisible_by(n, divisor):\n    count = 0\n    for i in range(1, n + 1):\n        if i % divisor == 0:\n            count += 1\n    return count\n",
+    "loops_003": "def sum_of_range(start, end):\n    total = 0\n    for i in range(start, end + 1):\n        total += i\n    return total\n",
+    "loops_004": "def multiplication_table(n):\n    table = []\n    for i in range(1, 6):\n        table.append(n * i)\n    return table\n",
+    "loops_005": "def countdown_by_step(n, step):\n    result = []\n    current = n\n    while current >= 0:\n        result.append(current)\n        current -= step\n    return result\n",
+    "loops_006": "def factorial(n):\n    total = 1\n    for i in range(1, n + 1):\n        total *= i\n    return total\n",
+    "loops_007": "def digit_sum(n):\n    total = 0\n    while n > 0:\n        total += n % 10\n        n //= 10\n    return total\n",
+    "loops_008": "def count_digits(n):\n    count = 0\n    while n > 0:\n        count += 1\n        n //= 10\n    return count\n",
+    "loops_009": "def reverse_number(n):\n    reversed_n = 0\n    while n > 0:\n        digit = n % 10\n        reversed_n = reversed_n * 10 + digit\n        n //= 10\n    return reversed_n\n",
+    "loops_010": "def number_triangle(n):\n    rows = []\n    for i in range(1, n + 1):\n        row = ''\n        for x in range(1, i + 1):\n            if x > 1:\n                row = row + ' '\n            row = row + str(x)\n        rows.append(row)\n    return '\\n'.join(rows)\n",
+    "loops_011": "def count_vowels(word):\n    vowels = 'aeiouAEIOU'\n    count = 0\n    for ch in word:\n        if ch in vowels:\n            count += 1\n    return count\n",
+    "loops_012": "def count_occurrences(word, letter):\n    count = 0\n    for ch in word:\n        if ch == letter:\n            count += 1\n    return count\n",
+    "loops_013": "def sum_of_multiples_of_either(limit, a, b):\n    total = 0\n    for i in range(1, limit):\n        if i % a == 0 or i % b == 0:\n            total += i\n    return total\n",
+    "loops_014": "def power_without_operator(base, exp):\n    result = 1\n    for i in range(exp):\n        result *= base\n    return result\n",
+    "loops_015": "def is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, n):\n        if n % i == 0:\n            return False\n    return True\n",
+    "loops_016": "def gcd_of_two(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n",
+    "loops_017": "def fibonacci_at(n):\n    a, b = 0, 1\n    for i in range(n):\n        a, b = b, a + b\n    return a\n",
+    "loops_018": "def digital_root(n):\n    while n >= 10:\n        total = 0\n        while n > 0:\n            total += n % 10\n            n //= 10\n        n = total\n    return n\n",
+    "loops_019": "def triangle_pattern(n):\n    rows = []\n    for i in range(1, n + 1):\n        rows.append('*' * i)\n    return '\\n'.join(rows)\n",
+    "loops_020": "def collatz_steps(n):\n    steps = 0\n    while n != 1:\n        if n % 2 == 0:\n            n = n // 2\n        else:\n            n = 3 * n + 1\n        steps += 1\n    return steps\n",
+    "loops_debug_001": "def sum_of_range(start, end):\n    total = 0\n    for i in range(start, end + 1):\n        total += i\n    return total\n",
+    "loops_debug_002": "def factorial(n):\n    total = 1\n    for i in range(1, n + 1):\n        total *= i\n    return total\n",
+    "loops_debug_003": "def count_divisible_by(n, divisor):\n    count = 0\n    for i in range(1, n + 1):\n        if i % divisor == 0:\n            count += 1\n    return count\n",
+    "loops_debug_004": "def is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, n):\n        if n % i == 0:\n            return False\n    return True\n",
 }

@@ -122,3 +122,43 @@ def test_run_and_grade_all_preserves_test_order():
     ]
     results = run_and_grade_all(student_code, "echo", tests)
     assert [g.actual_output.strip() for g in results] == ["first", "second", "third"]
+
+
+def test_build_executable_code_passes_positional_arguments():
+    code = "def add(a, b):\n    return a + b\n"
+    full = build_executable_code(code, "add", args=[2, 3])
+    assert "add(2, 3)" in full
+
+
+def test_run_and_grade_all_calls_function_with_each_test_case_args():
+    student_code = "def sum_up_to(n):\n    total = 0\n    for i in range(1, n + 1):\n        total += i\n    return total\n"
+    tests = [
+        TestCase(args=[5], expected_output="15"),
+        TestCase(args=[1], expected_output="1"),
+        TestCase(args=[10], expected_output="55"),
+    ]
+    results = run_and_grade_all(student_code, "sum_up_to", tests)
+    assert all(g.passed for g in results)
+
+
+def test_args_supports_non_numeric_types():
+    # A string argument must be passed through as a real Python string
+    # literal (quoted), not interpolated as bare, unquoted source.
+    student_code = "def shout(word):\n    return word.upper()\n"
+    tests = [TestCase(args=["hello"], expected_output="HELLO")]
+    results = run_and_grade_all(student_code, "shout", tests)
+    assert results[0].passed
+
+
+def test_args_supports_list_arguments():
+    student_code = "def total(nums):\n    return sum(nums)\n"
+    tests = [TestCase(args=[[1, 2, 3]], expected_output="6")]
+    results = run_and_grade_all(student_code, "total", tests)
+    assert results[0].passed
+
+
+def test_no_args_still_calls_with_empty_parens():
+    student_code = "def lucky_number():\n    return 7\n"
+    tests = [TestCase(expected_output="7")]
+    results = run_and_grade_all(student_code, "lucky_number", tests)
+    assert results[0].passed

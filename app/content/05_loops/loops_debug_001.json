@@ -1,9 +1,9 @@
 {
-  "id": "loops_003",
+  "id": "loops_debug_001",
   "topic": "loops",
   "title": "sum_of_range",
-  "prompt": "Given two ints start and end, return the sum of every number from start through end, inclusive. e.g. start=3, end=6 returns 18 (3+4+5+6).",
-  "starter_code": "def sum_of_range(start, end):\n    # TODO: implement this\n    pass\n",
+  "prompt": "Given start and end, this function is supposed to return the sum of every number from start through end, inclusive \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def sum_of_range(start, end):\n    total = 0\n    for i in range(start, end):\n        total += i\n    return total\n",
   "function_name": "sum_of_range",
   "tests": [
     {

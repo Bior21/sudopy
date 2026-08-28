@@ -1,0 +1,29 @@
+{
+  "id": "loops_007",
+  "topic": "loops",
+  "title": "digit_sum",
+  "prompt": "Given a non-negative int n, return the sum of its digits. e.g. n=493 returns 16 (4+9+3). Use a while loop \u2014 peel off one digit at a time with % and //.",
+  "starter_code": "def digit_sum(n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "digit_sum",
+  "tests": [
+    {
+      "args": [
+        493
+      ],
+      "expected_output": "16"
+    },
+    {
+      "args": [
+        7
+      ],
+      "expected_output": "7"
+    },
+    {
+      "args": [
+        1000
+      ],
+      "expected_output": "1"
+    }
+  ],
+  "hint": ""
+}

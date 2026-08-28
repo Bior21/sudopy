@@ -1,0 +1,29 @@
+{
+  "id": "loops_018",
+  "topic": "loops",
+  "title": "digital_root",
+  "prompt": "Given a positive int n, sum its digits, then keep summing the digits of the result until only one digit is left, and return it. e.g. n=9875 returns 2 (9+8+7+5=29, 2+9=11, 1+1=2). Use a while loop \u2014 you don't know how many rounds it'll take in advance.",
+  "starter_code": "def digital_root(n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "digital_root",
+  "tests": [
+    {
+      "args": [
+        9875
+      ],
+      "expected_output": "2"
+    },
+    {
+      "args": [
+        5
+      ],
+      "expected_output": "5"
+    },
+    {
+      "args": [
+        999
+      ],
+      "expected_output": "9"
+    }
+  ],
+  "hint": ""
+}

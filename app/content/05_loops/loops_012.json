@@ -1,0 +1,32 @@
+{
+  "id": "loops_012",
+  "topic": "loops",
+  "title": "count_occurrences",
+  "prompt": "Given a string word and a single-character string letter, return how many times letter appears in word. e.g. word='mississippi', letter='s' returns 4. Use a for-each loop.",
+  "starter_code": "def count_occurrences(word, letter):\n    # TODO: implement this\n    pass\n",
+  "function_name": "count_occurrences",
+  "tests": [
+    {
+      "args": [
+        "mississippi",
+        "s"
+      ],
+      "expected_output": "4"
+    },
+    {
+      "args": [
+        "banana",
+        "a"
+      ],
+      "expected_output": "3"
+    },
+    {
+      "args": [
+        "hello",
+        "z"
+      ],
+      "expected_output": "0"
+    }
+  ],
+  "hint": ""
+}

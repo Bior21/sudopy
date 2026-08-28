@@ -1,0 +1,29 @@
+{
+  "id": "loops_debug_004",
+  "topic": "loops",
+  "title": "is_prime",
+  "prompt": "Given an int n, this function is supposed to return whether n is prime \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def is_prime(n):\n    if n <= 2:\n        return False\n    for i in range(2, n):\n        if n % i == 0:\n            return False\n    return True\n",
+  "function_name": "is_prime",
+  "tests": [
+    {
+      "args": [
+        17
+      ],
+      "expected_output": "True"
+    },
+    {
+      "args": [
+        18
+      ],
+      "expected_output": "False"
+    },
+    {
+      "args": [
+        2
+      ],
+      "expected_output": "True"
+    }
+  ],
+  "hint": ""
+}

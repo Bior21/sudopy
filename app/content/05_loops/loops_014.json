@@ -1,0 +1,32 @@
+{
+  "id": "loops_014",
+  "topic": "loops",
+  "title": "power_without_operator",
+  "prompt": "Given an int base and a non-negative int exp, return base to the power of exp \u2014 but compute it by multiplying in a loop, not with **. e.g. base=2, exp=5 returns 32.",
+  "starter_code": "def power_without_operator(base, exp):\n    # TODO: implement this\n    pass\n",
+  "function_name": "power_without_operator",
+  "tests": [
+    {
+      "args": [
+        2,
+        5
+      ],
+      "expected_output": "32"
+    },
+    {
+      "args": [
+        3,
+        0
+      ],
+      "expected_output": "1"
+    },
+    {
+      "args": [
+        5,
+        3
+      ],
+      "expected_output": "125"
+    }
+  ],
+  "hint": ""
+}

@@ -1,0 +1,29 @@
+{
+  "id": "loops_019",
+  "topic": "loops",
+  "title": "triangle_pattern",
+  "prompt": "Given a positive int n, return a string of n lines, where line i is i asterisks. e.g. n=4 returns '*\\n**\\n***\\n****'.",
+  "starter_code": "def triangle_pattern(n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "triangle_pattern",
+  "tests": [
+    {
+      "args": [
+        4
+      ],
+      "expected_output": "*\n**\n***\n****"
+    },
+    {
+      "args": [
+        1
+      ],
+      "expected_output": "*"
+    },
+    {
+      "args": [
+        6
+      ],
+      "expected_output": "*\n**\n***\n****\n*****\n******"
+    }
+  ],
+  "hint": ""
+}

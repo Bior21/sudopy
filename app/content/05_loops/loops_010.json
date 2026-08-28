@@ -1,0 +1,29 @@
+{
+  "id": "loops_010",
+  "topic": "loops",
+  "title": "number_triangle",
+  "prompt": "Given a positive int n, return a string with n lines, where line i lists the numbers 1 through i separated by spaces. e.g. n=3 returns '1\\n1 2\\n1 2 3'.",
+  "starter_code": "def number_triangle(n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "number_triangle",
+  "tests": [
+    {
+      "args": [
+        3
+      ],
+      "expected_output": "1\n1 2\n1 2 3"
+    },
+    {
+      "args": [
+        1
+      ],
+      "expected_output": "1"
+    },
+    {
+      "args": [
+        5
+      ],
+      "expected_output": "1\n1 2\n1 2 3\n1 2 3 4\n1 2 3 4 5"
+    }
+  ],
+  "hint": ""
+}

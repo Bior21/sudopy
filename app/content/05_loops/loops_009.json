@@ -1,0 +1,29 @@
+{
+  "id": "loops_009",
+  "topic": "loops",
+  "title": "reverse_number",
+  "prompt": "Given a non-negative int n, return it with its digits reversed. e.g. n=1234 returns 4321. Use a while loop, the same digit-peeling idea as digit_sum.",
+  "starter_code": "def reverse_number(n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "reverse_number",
+  "tests": [
+    {
+      "args": [
+        1234
+      ],
+      "expected_output": "4321"
+    },
+    {
+      "args": [
+        7
+      ],
+      "expected_output": "7"
+    },
+    {
+      "args": [
+        1200
+      ],
+      "expected_output": "21"
+    }
+  ],
+  "hint": ""
+}

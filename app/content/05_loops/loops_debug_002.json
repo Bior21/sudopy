@@ -1,0 +1,29 @@
+{
+  "id": "loops_debug_002",
+  "topic": "loops",
+  "title": "factorial",
+  "prompt": "Given a non-negative int n, this function is supposed to return n factorial \u2014 but it has a bug. Find it and fix it.",
+  "starter_code": "def factorial(n):\n    total = 0\n    for i in range(1, n + 1):\n        total *= i\n    return total\n",
+  "function_name": "factorial",
+  "tests": [
+    {
+      "args": [
+        5
+      ],
+      "expected_output": "120"
+    },
+    {
+      "args": [
+        1
+      ],
+      "expected_output": "1"
+    },
+    {
+      "args": [
+        7
+      ],
+      "expected_output": "5040"
+    }
+  ],
+  "hint": ""
+}

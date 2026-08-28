@@ -117,23 +117,34 @@ python3 verify_all_solvable.py   # confirms every problem actually has a working
 
 ## Adding a new problem
 
-Drop a JSON file into the relevant `content/<NN>_<topic>/` folder:
+Drop a JSON file into the relevant `content/<NN>_<topic>/` folder. Most
+problems take arguments and return a value, rather than reading via
+`input()`:
 
 ```json
 {
-  "id": "loops_005",
+  "id": "loops_003",
   "topic": "loops",
-  "title": "Short, descriptive title",
-  "prompt": "What the learner needs to do.",
-  "starter_code": "def short_descriptive_title():\n    n = int(input())\n    # TODO\n",
-  "function_name": "short_descriptive_title",
+  "title": "sum_of_range",
+  "prompt": "Given two ints start and end, return the sum of every number from start through end, inclusive. e.g. start=3, end=6 returns 18 (3+4+5+6).",
+  "starter_code": "def sum_of_range(start, end):\n    # TODO: implement this\n    pass\n",
+  "function_name": "sum_of_range",
   "tests": [
-    { "input": "5", "expected_output": "expected stdout for input 5" },
-    { "input": "3", "expected_output": "expected stdout for input 3" }
+    { "args": [3, 6], "expected_output": "18" },
+    { "args": [1, 10], "expected_output": "55" }
   ],
   "hint": "optional nudge in the right direction"
 }
 ```
+
+`title` is the bare function name (matching Stanford CS106A's own
+practice-problem convention), not a human-readable phrase — it's shown
+as-is at the top of the problem view. `prompt` follows that same
+convention: one direct paragraph — what's given, what to do, one or two
+`e.g.` examples inline, and a loop/method hint only where practicing
+that specific construct is the point of the problem (e.g. "Use a while
+loop.") — never a separate headed sections, an explicit hook/story, or a
+bulleted constraints list.
 
 `starter_code` is a function stub — the student only edits what's inside
 it. `function_name` must match the `def` name; `core/submission.py`
@@ -143,22 +154,41 @@ its answer or `return` it — the appended call prints whatever the
 function returns, unless it returns `None`, so either style produces
 the same stdout to grade against a test's `expected_output`.
 
-`tests` needs at least one entry; a problem with no meaningful input
-variation (e.g. one that just prints a fixed literal) can have just the
-one. Each test is run as a separate execution of the submission with
-its own `input`, and all of them have to pass for the problem to pass —
-this is what catches a solution that's hardcoded to one sample input
-rather than actually solving the problem.
+Each test case supplies its data one of two ways: `args` (a list of
+positional arguments — used by every topic except I/O) or `input`
+(stdin text, for an I/O-topic problem that still reads via `input()`
+because that's literally its subject). `tests` needs at least one
+entry; a problem with no meaningful input variation (e.g. one that just
+prints a fixed literal) can have just the one. Each test is run as a
+separate execution of the submission, and all of them have to pass for
+the problem to pass — this is what catches a solution that's hardcoded
+to one sample input rather than actually solving the problem. Never
+hand-type an `expected_output` — compute it by actually running a
+correct solution (see `write_loops_content.py` for the pattern: write
+the reference solution as a real Python function, then execute it
+through `core.submission.run_and_grade_all` to get real output).
 
-Then add a hand-written correct solution to `SOLUTIONS` in
+Then add that same hand-written correct solution to `SOLUTIONS` in
 `core/solutions.py` and run `verify_all_solvable.py` — this catches the
 class of bug that schema validation can't (an `expected_output` that
-doesn't actually match what correct code produces). Solutions in
-`SOLUTIONS` are plain top-level scripts, not function-wrapped — they're
-run directly, not through `core/submission.py`'s call-appending. Every
-problem needs a registered solution: it's also what the GUI's Show
-Solution button reveals to a student, once they've attempted the
-problem at least once.
+doesn't actually match what correct code produces). An entry is either
+a real function definition matching `function_name` (everything but
+I/O — verified by running it through `core.submission`, exactly like a
+student submission), or a plain top-level script that reads via
+`input()` (I/O topic only — verified by running it directly, since it
+was never meant to be called as a function).
+`verify_all_solvable.py` tells the two apart by whether the solution
+text starts with `"def "`. Every problem needs a registered solution:
+it's also what the GUI's Show Solution button reveals to a student,
+once they've attempted the problem at least once.
+
+A "debug it" problem uses this same schema — the only difference is
+that `starter_code` is a near-complete but broken solution instead of a
+`# TODO` stub, and the `prompt` says what the function is supposed to
+do and that it currently doesn't. When authoring one, confirm the bug
+is real by actually running the buggy `starter_code` through
+`core.submission.run_and_grade_all` and checking it fails at least one
+test — a "bug" that doesn't actually reproduce shouldn't ship.
 
 ## Building the standalone executable
 

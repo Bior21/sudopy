@@ -1,0 +1,32 @@
+{
+  "id": "loops_005",
+  "topic": "loops",
+  "title": "countdown_by_step",
+  "prompt": "Given a non-negative int n and a positive int step, return a list counting down from n to 0 (or as close to 0 as step allows) in increments of step. e.g. n=10, step=3 returns [10, 7, 4, 1]. Use a while loop.",
+  "starter_code": "def countdown_by_step(n, step):\n    # TODO: implement this\n    pass\n",
+  "function_name": "countdown_by_step",
+  "tests": [
+    {
+      "args": [
+        10,
+        3
+      ],
+      "expected_output": "[10, 7, 4, 1]"
+    },
+    {
+      "args": [
+        5,
+        5
+      ],
+      "expected_output": "[5, 0]"
+    },
+    {
+      "args": [
+        6,
+        2
+      ],
+      "expected_output": "[6, 4, 2, 0]"
+    }
+  ],
+  "hint": ""
+}

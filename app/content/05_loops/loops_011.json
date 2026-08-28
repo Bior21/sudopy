@@ -1,0 +1,29 @@
+{
+  "id": "loops_011",
+  "topic": "loops",
+  "title": "count_vowels",
+  "prompt": "Given a string word, return how many of its characters are vowels (a, e, i, o, u \u2014 either case). e.g. word='Banana' returns 3. Use a for-each loop \u2014 for ch in word.",
+  "starter_code": "def count_vowels(word):\n    # TODO: implement this\n    pass\n",
+  "function_name": "count_vowels",
+  "tests": [
+    {
+      "args": [
+        "Banana"
+      ],
+      "expected_output": "3"
+    },
+    {
+      "args": [
+        "rhythm"
+      ],
+      "expected_output": "0"
+    },
+    {
+      "args": [
+        "EEEasy"
+      ],
+      "expected_output": "4"
+    }
+  ],
+  "hint": ""
+}

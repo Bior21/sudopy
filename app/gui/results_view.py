@@ -116,7 +116,7 @@ class ResultsView(ttk.Frame):
             test: The core.problem_loader.TestCase that was run.
             grade_result: The GradeResult produced by grading it.
         """
-        input_display = _flatten(test.input) if test.input.strip() else f"{function_name}()"
+        input_display = _call_display(function_name, test)
         expected_display = _flatten(test.expected_output)
         got_display = _got_display(grade_result)
 
@@ -134,6 +134,30 @@ class ResultsView(ttk.Frame):
             background=_CELL_BG, padx=6, pady=2, anchor="center",
         )
         ok_label.grid(row=row, column=3, sticky="nsew", padx=(0, 1), pady=(0, 1))
+
+
+def _call_display(function_name, test) -> str:
+    """Builds what to show in the "Input / Call" column for one test.
+
+    Prefers showing the actual call (e.g. "sum_up_to(5)") when the test
+    supplies arguments, since that's the most direct way to show a
+    student what ran. Falls back to the raw input text for a problem
+    that still reads via input(), or the bare call for one that takes
+    neither.
+
+    Args:
+        function_name: The problem's function name.
+        test: The core.problem_loader.TestCase being displayed.
+
+    Returns:
+        A one-line string for the table cell.
+    """
+    if test.args:
+        args_display = ", ".join(repr(arg) for arg in test.args)
+        return f"{function_name}({args_display})"
+    if test.input.strip():
+        return _flatten(test.input)
+    return f"{function_name}()"
 
 
 def _flatten(text: str) -> str:

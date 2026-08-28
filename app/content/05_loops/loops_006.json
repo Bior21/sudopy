@@ -1,0 +1,29 @@
+{
+  "id": "loops_006",
+  "topic": "loops",
+  "title": "factorial",
+  "prompt": "Given a non-negative int n, return n factorial (n! = n * (n-1) * ... * 1, and 0! = 1). e.g. n=5 returns 120.",
+  "starter_code": "def factorial(n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "factorial",
+  "tests": [
+    {
+      "args": [
+        5
+      ],
+      "expected_output": "120"
+    },
+    {
+      "args": [
+        0
+      ],
+      "expected_output": "1"
+    },
+    {
+      "args": [
+        7
+      ],
+      "expected_output": "5040"
+    }
+  ],
+  "hint": ""
+}

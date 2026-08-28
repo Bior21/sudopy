@@ -1,0 +1,29 @@
+{
+  "id": "loops_008",
+  "topic": "loops",
+  "title": "count_digits",
+  "prompt": "Given a positive int n, return how many digits it has. e.g. n=4021 returns 4.",
+  "starter_code": "def count_digits(n):\n    # TODO: implement this\n    pass\n",
+  "function_name": "count_digits",
+  "tests": [
+    {
+      "args": [
+        4021
+      ],
+      "expected_output": "4"
+    },
+    {
+      "args": [
+        7
+      ],
+      "expected_output": "1"
+    },
+    {
+      "args": [
+        1000000
+      ],
+      "expected_output": "7"
+    }
+  ],
+  "hint": ""
+}
