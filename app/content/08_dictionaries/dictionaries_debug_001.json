@@ -35,5 +35,6 @@
       "expected_output": "-1"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def get_with_default(d, key, default):\n    return d.get(key, default)\n"
 }

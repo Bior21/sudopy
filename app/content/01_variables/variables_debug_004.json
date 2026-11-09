@@ -31,5 +31,6 @@
       "expected_output": "100"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def remaining_after_purchase(balance, price, quantity):\n    return balance - price * quantity\n"
 }

@@ -25,5 +25,6 @@
       "expected_output": "ba"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def reverse_string(s):\n    return s[::-1]\n"
 }

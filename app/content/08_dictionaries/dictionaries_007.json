@@ -30,5 +30,6 @@
       "expected_output": "['x']"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def all_keys(d):\n    return list(d.keys())\n"
 }

@@ -19,5 +19,6 @@
       "expected_output": "It's 32.0 degrees Fahrenheit."
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def celsius_to_fahrenheit(c):\n    return c * 9 / 5 + 32\n\n\ndef weather_report(c):\n    f = celsius_to_fahrenheit(c)\n    return f\"It's {f} degrees Fahrenheit.\"\n"
 }

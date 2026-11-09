@@ -25,5 +25,6 @@
       "expected_output": "7"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def count_digits(n):\n    count = 0\n    while n > 0:\n        count += 1\n        n //= 10\n    return count\n"
 }

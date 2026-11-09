@@ -28,5 +28,6 @@
       "expected_output": "0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def count_character(s, ch):\n    return s.count(ch)\n"
 }

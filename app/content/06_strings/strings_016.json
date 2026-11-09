@@ -25,5 +25,6 @@
       "expected_output": "0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def count_uppercase_letters(s):\n    count = 0\n    for ch in s:\n        if ch.isupper():\n            count += 1\n    return count\n"
 }

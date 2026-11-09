@@ -28,5 +28,6 @@
       "expected_output": "xyz"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def remove_character(s, ch):\n    result = ''\n    for c in s:\n        if c != ch:\n            result += c\n    return result\n"
 }

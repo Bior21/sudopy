@@ -36,5 +36,6 @@
       "expected_output": "1"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def get_value(d, key):\n    return d[key]\n"
 }

@@ -28,5 +28,6 @@
       "expected_output": "True"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def is_within_one_year(age1, age2):\n    return abs(age1 - age2) <= 1\n"
 }

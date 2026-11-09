@@ -40,5 +40,6 @@
       "expected_output": "[1, 2]"
     }
   ],
-  "hint": "remove() only takes out the first match \u2014 with nums=[1, 1, 2], value=1, one 1 stays behind."
+  "hint": "remove() only takes out the first match \u2014 with nums=[1, 1, 2], value=1, one 1 stays behind.",
+  "solution": "def remove_value(nums, value):\n    nums.remove(value)\n    return nums\n"
 }

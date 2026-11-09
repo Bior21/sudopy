@@ -37,5 +37,6 @@
       "expected_output": "{'m': 100}"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def filter_by_value_threshold(d, threshold):\n    result = {}\n    for key in d:\n        if d[key] > threshold:\n            result[key] = d[key]\n    return result\n"
 }

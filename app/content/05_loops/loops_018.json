@@ -25,5 +25,6 @@
       "expected_output": "9"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def digital_root(n):\n    while n >= 10:\n        total = 0\n        while n > 0:\n            total += n % 10\n            n //= 10\n        n = total\n    return n\n"
 }

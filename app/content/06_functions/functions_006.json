@@ -21,5 +21,6 @@
       "expected_output": "(25, 20)"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def describe_rectangle(width, height):\n    area = width * height\n    perimeter = 2 * (width + height)\n    return area, perimeter\n"
 }

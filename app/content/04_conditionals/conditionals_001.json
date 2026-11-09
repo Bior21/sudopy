@@ -25,5 +25,6 @@
       "expected_output": "F"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def grade_from_score(score):\n    if score >= 90:\n        return 'A'\n    elif score >= 80:\n        return 'B'\n    elif score >= 70:\n        return 'C'\n    elif score >= 60:\n        return 'D'\n    else:\n        return 'F'\n"
 }

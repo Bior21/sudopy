@@ -57,5 +57,6 @@
       "expected_output": "17"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def column_sum(grid, col_index):\n    total = 0\n    for row in grid:\n        total += row[col_index]\n    return total\n"
 }

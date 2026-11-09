@@ -28,5 +28,6 @@
       "expected_output": "1"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def items_left_over(total, group_size):\n    return total % group_size\n"
 }

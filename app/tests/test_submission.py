@@ -1,5 +1,13 @@
+"""
+File: test_submission.py
+Author: Bior Madol Khom Bior
+------------------------
+Checks that the student's function is called with each test's
+arguments, and that tests after a timeout are skipped.
+"""
+
 from core.problem_loader import TestCase
-from core.submission import build_executable_code, run_submission, run_and_grade, run_and_grade_all
+from core.submission import SKIPPED_REASON, build_executable_code, run_submission, run_and_grade, run_and_grade_all
 
 
 def test_build_executable_code_appends_call_with_correct_name():
@@ -162,3 +170,15 @@ def test_no_args_still_calls_with_empty_parens():
     tests = [TestCase(expected_output="7")]
     results = run_and_grade_all(student_code, "lucky_number", tests)
     assert results[0].passed
+
+
+def test_tests_after_a_timeout_are_skipped():
+    # An infinite loop should cost one timeout, not one per test.
+    student_code = "def stuck(n):\n    while True:\n        pass\n"
+    tests = [TestCase(args=[1], expected_output="1"),
+             TestCase(args=[2], expected_output="2"),
+             TestCase(args=[3], expected_output="3")]
+    results = run_and_grade_all(student_code, "stuck", tests)
+    assert results[0].timed_out
+    assert results[1].reason == SKIPPED_REASON
+    assert results[2].reason == SKIPPED_REASON

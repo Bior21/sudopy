@@ -39,5 +39,6 @@
       "expected_output": "[5]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def merge_two_lists(a, b):\n    return a + b\n"
 }

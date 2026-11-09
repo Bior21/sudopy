@@ -25,5 +25,6 @@
       "expected_output": "True"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def is_leap_year(year):\n    if year % 4 != 0:\n        return False\n    if year % 100 != 0:\n        return True\n    return year % 400 == 0\n"
 }

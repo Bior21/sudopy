@@ -1,194 +1,124 @@
-"""Displays the outcome of running and grading a student's code.
-
-Hidden until the student runs their code for the first time on the
-current problem - clear() unpacks the whole panel rather than just
-emptying it. Once there's something to show, update_results() packs it
-back and fills in an overall "X/Y tests passed" summary plus a compact
-bordered table: one row per test case, with the input used (or the
-function call, for a test that takes no input), the expected output,
-what the student's code actually produced, and a pass/fail mark.
-ResultsView is deliberately dumb and stateless - it just renders
-whatever it's given via update_results(), with no knowledge of
-runner/grader internals beyond the GradeResult shape.
+"""
+File: results_view.py
+Author: Bior Madol Khom Bior
+----------------------------
+Shows how the student's code did: a summary line such as "2/3 test(s)
+passed" and a table with one row per test, listing the call that was
+made, the expected output, what the code printed, and a ✓ or ✗. The
+whole panel stays hidden until the student first presses Run.
 """
 
 import tkinter as tk
 from tkinter import ttk
 
-_PASS_COLOR = "#1a7f37"
-_FAIL_COLOR = "#cf222e"
-_PASS_MARK = "✓"
-_FAIL_MARK = "✗"
-_BORDER_COLOR = "#D0D0D0"
-_HEADER_BG = "#EFEFEF"
-_CELL_BG = "white"
-_TEXT_COLOR = "#1A1A1A"
-
-_HEADERS = ("Input / Call", "Expected", "Got", "OK")
-_HEADER_FONT = ("TkDefaultFont", 9, "bold")
-_CELL_FONT = ("TkDefaultFont", 9)
+PASS_COLOR = "#1a7f37"
+FAIL_COLOR = "#cf222e"
+BORDER_COLOR = "#D0D0D0"
+HEADER_BACKGROUND = "#EFEFEF"
+TEXT_COLOR = "#1A1A1A"
+HEADER_FONT = ("TkDefaultFont", 9, "bold")
+CELL_FONT = ("TkDefaultFont", 9)
+COLUMN_TITLES = ["Input / Call", "Expected", "Got", "OK"]
 
 
 class ResultsView(ttk.Frame):
+
     def __init__(self, parent):
-        """Builds the summary label and table, without showing them yet.
-
-        Args:
-            parent: The Tkinter widget this frame is placed inside.
-        """
+        """Builds the summary line and the table's header row, hidden for now."""
         super().__init__(parent)
-        self._pack_options = {"fill": "x"}
+        self.summary_label = ttk.Label(self, font=("TkDefaultFont", 11, "bold"))
+        self.summary_label.pack(anchor="w", pady=(0, 6))
 
-        self.status_label = ttk.Label(self, text="", font=("TkDefaultFont", 11, "bold"))
-        self.status_label.pack(anchor="w", pady=(0, 6))
+        # The table's background is the border color. Each cell leaves a 1px
+        # gap around itself, and the background shows through as grid lines.
+        self.table = tk.Frame(self, background=BORDER_COLOR)
+        self.table.pack(fill="x")
+        for column in range(3):
+            self.table.grid_columnconfigure(column, weight=1)
 
-        # A frame with a border-colored background, showing through the
-        # 1px gaps left around each cell label, is the standard Tkinter
-        # way to fake grid lines between cells.
-        self.table_frame = tk.Frame(self, background=_BORDER_COLOR)
-        self.table_frame.pack(fill="x")
-        for col in range(3):
-            self.table_frame.grid_columnconfigure(col, weight=1)
-
-        self._build_header_row()
-
-    def _build_header_row(self):
-        """Builds the table's fixed header row of column titles."""
-        for col, title in enumerate(_HEADERS):
-            label = tk.Label(
-                self.table_frame, text=title, font=_HEADER_FONT, foreground=_TEXT_COLOR,
-                background=_HEADER_BG, padx=6, pady=2, anchor="w",
-            )
-            label.grid(row=0, column=col, sticky="nsew", padx=(0, 1), pady=(0, 1))
+        for column, title in enumerate(COLUMN_TITLES):
+            self._add_cell(0, column, title, HEADER_FONT, TEXT_COLOR, HEADER_BACKGROUND)
 
     def clear(self):
-        """Hides the whole results panel until the next run."""
+        """Hides the panel until the next run."""
         self.pack_forget()
 
-    def update_results(self, function_name, tests, grade_results):
-        """Fills the table with one row per test case, plus an overall summary.
+    def show_results(self, function_name, tests, grade_results):
+        """Fills in the summary and one table row per test, then shows the panel."""
+        self._show_summary(grade_results)
+        self._remove_rows()
+        row = 1
+        for test, result in zip(tests, grade_results):
+            self._add_row(row, function_name, test, result)
+            row += 1
+        self.pack(fill="x")
 
-        Shows the panel, which is hidden by default until this is called.
-
-        Args:
-            function_name: The problem's function name, shown in the
-                "Input / Call" column for a test that takes no input.
-            tests: The problem's core.problem_loader.TestCase list that
-                was run, in the same order as grade_results.
-            grade_results: The core.grader.GradeResult produced for each
-                test in tests.
-        """
-        self._update_summary(grade_results)
-        self._clear_rows()
-        for row, (test, grade_result) in enumerate(zip(tests, grade_results), start=1):
-            self._add_row(row, function_name, test, grade_result)
-        self.pack(**self._pack_options)
-
-    def _update_summary(self, grade_results):
-        """Sets the overall "X/Y tests passed" status label.
-
-        Args:
-            grade_results: The GradeResult produced for each test run.
-        """
-        passed_count = sum(1 for g in grade_results if g.passed)
+    def _show_summary(self, grade_results):
+        """Sets the summary line, in green if every test passed and red if not."""
+        passed = 0
+        for result in grade_results:
+            if result.passed:
+                passed += 1
         total = len(grade_results)
-        if passed_count == total:
-            self.status_label.config(text=f"All {total} test(s) passed!", foreground=_PASS_COLOR)
+        if passed == total:
+            self.summary_label.config(text=f"All {total} test(s) passed!", foreground=PASS_COLOR)
         else:
-            self.status_label.config(
-                text=f"{passed_count}/{total} test(s) passed", foreground=_FAIL_COLOR
-            )
+            self.summary_label.config(text=f"{passed}/{total} test(s) passed", foreground=FAIL_COLOR)
 
-    def _clear_rows(self):
-        """Removes every data row from the table, keeping the header row."""
-        for widget in self.table_frame.grid_slaves():
-            if int(widget.grid_info()["row"]) != 0:
-                widget.destroy()
+    def _remove_rows(self):
+        """Removes every row except the header row."""
+        for cell in self.table.grid_slaves():
+            if int(cell.grid_info()["row"]) != 0:
+                cell.destroy()
 
-    def _add_row(self, row, function_name, test, grade_result):
-        """Adds one test's row to the results table.
+    def _add_row(self, row, function_name, test, result):
+        """Adds one test's row to the table."""
+        self._add_cell(row, 0, call_text(function_name, test))
+        self._add_cell(row, 1, one_line(test.expected_output))
+        self._add_cell(row, 2, got_text(result))
+        if result.passed:
+            self._add_cell(row, 3, "✓", color=PASS_COLOR)
+        else:
+            self._add_cell(row, 3, "✗", color=FAIL_COLOR)
 
-        Args:
-            row: The row's grid position (row 0 is the header, so this
-                is 1-based).
-            function_name: The problem's function name, used as the
-                "Input / Call" cell when the test has no input.
-            test: The core.problem_loader.TestCase that was run.
-            grade_result: The GradeResult produced by grading it.
-        """
-        input_display = _call_display(function_name, test)
-        expected_display = _flatten(test.expected_output)
-        got_display = _got_display(grade_result)
-
-        for col, text in enumerate((input_display, expected_display, got_display)):
-            label = tk.Label(
-                self.table_frame, text=text, font=_CELL_FONT, foreground=_TEXT_COLOR,
-                background=_CELL_BG, padx=6, pady=2, anchor="w",
-            )
-            label.grid(row=row, column=col, sticky="nsew", padx=(0, 1), pady=(0, 1))
-
-        mark = _PASS_MARK if grade_result.passed else _FAIL_MARK
-        mark_color = _PASS_COLOR if grade_result.passed else _FAIL_COLOR
-        ok_label = tk.Label(
-            self.table_frame, text=mark, font=_CELL_FONT, foreground=mark_color,
-            background=_CELL_BG, padx=6, pady=2, anchor="center",
-        )
-        ok_label.grid(row=row, column=3, sticky="nsew", padx=(0, 1), pady=(0, 1))
+    def _add_cell(self, row, column, text, font=CELL_FONT, color=TEXT_COLOR, background="white"):
+        """Places one cell of text in the table."""
+        cell = tk.Label(self.table, text=text, font=font, foreground=color,
+                        background=background, padx=6, pady=2, anchor="w")
+        cell.grid(row=row, column=column, sticky="nsew", padx=(0, 1), pady=(0, 1))
 
 
-def _call_display(function_name, test) -> str:
-    """Builds what to show in the "Input / Call" column for one test.
-
-    Prefers showing the actual call (e.g. "sum_up_to(5)") when the test
-    supplies arguments, since that's the most direct way to show a
-    student what ran. Falls back to the raw input text for a problem
-    that still reads via input(), or the bare call for one that takes
-    neither.
-
-    Args:
-        function_name: The problem's function name.
-        test: The core.problem_loader.TestCase being displayed.
-
-    Returns:
-        A one-line string for the table cell.
+def call_text(function_name, test) -> str:
+    """
+    What to show in the "Input / Call" column: the function call when the
+    test passes arguments, such as "add(2, 3)", or else the typed input.
     """
     if test.args:
-        args_display = ", ".join(repr(arg) for arg in test.args)
-        return f"{function_name}({args_display})"
+        arg_texts = []
+        for arg in test.args:
+            arg_texts.append(repr(arg))
+        return f"{function_name}({', '.join(arg_texts)})"
     if test.input.strip():
-        return _flatten(test.input)
+        return one_line(test.input)
     return f"{function_name}()"
 
 
-def _flatten(text: str) -> str:
-    """Joins a multi-line string into one table-cell-friendly line.
-
-    Args:
-        text: The (possibly multi-line) text to flatten.
-
-    Returns:
-        The text's lines joined with " | ", or "(empty)" if there's
-        nothing but whitespace.
-    """
+def one_line(text: str) -> str:
+    """Joins several lines with " | " so they fit in one cell."""
     lines = text.strip().splitlines()
-    return " | ".join(lines) if lines else "(empty)"
+    if not lines:
+        return "(empty)"
+    return " | ".join(lines)
 
 
-def _got_display(grade_result) -> str:
-    """Picks what to show in the "Got" column for one test result.
-
-    Args:
-        grade_result: The GradeResult to summarize.
-
-    Returns:
-        The student's actual output, flattened to one line - or, if
-        there was none and the test failed, why: the timeout message,
-        or just the exception line for a crash (its last line), rather
-        than the full traceback, which wouldn't fit in a table cell.
+def got_text(result) -> str:
     """
-    actual = grade_result.actual_output.strip()
-    if actual:
-        return _flatten(actual)
-    if not grade_result.passed:
-        return grade_result.reason.strip().splitlines()[-1]
+    What to show in the "Got" column: what the code printed. If it printed
+    nothing and failed, the last line of the reason instead, which for a
+    crash is the error itself, such as "ZeroDivisionError: division by zero".
+    """
+    if result.actual_output.strip():
+        return one_line(result.actual_output)
+    if not result.passed:
+        return result.reason.strip().splitlines()[-1]
     return "(empty)"

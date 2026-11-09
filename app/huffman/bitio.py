@@ -1,101 +1,72 @@
-"""Minimal bit-level I/O helpers, via the BitWriter and BitReader classes.
-
-Deliberately built by hand rather than using a third-party bitarray
-library, since demonstrating real bit packing - not just concatenating
-'0'/'1' strings and pretending that's compression - is the point of this
-module. Internally it still builds up a string of '0'/'1' characters
-before packing into bytes; this is clear and easy to verify correct,
-which matters more here than raw performance, since this module only
-ever processes problem-text-sized content (KBs), not gigabytes.
 """
+File: bitio.py
+Author: Bior Madol Khom Bior
+----------------------------
+Writes and reads single bits. Files can only store whole bytes, so
+BitWriter collects bits and packs every 8 of them into one byte, adding
+zero bits at the end to fill the last byte. BitReader unpacks the bytes
+again and hands the bits back one at a time.
 
-from __future__ import annotations
+Bits are kept as a string of "0" and "1" characters. That is not the
+fastest way, but it is easy to check, and the problem files are small.
+"""
 
 
 class BitWriter:
-    """Accumulates individual bits and packs them into bytes."""
+    """Collects bits and packs them into bytes."""
 
     def __init__(self):
-        """Creates an empty BitWriter with no bits written yet."""
-        self._chunks: list[str] = []
+        """Starts with no bits written."""
+        self._bits = []
 
     def write_bit(self, bit: int) -> None:
-        """Appends a single bit.
+        """Adds one bit (0 or 1)."""
+        if bit:
+            self._bits.append("1")
+        else:
+            self._bits.append("0")
 
-        Args:
-            bit: 0 or 1 (any truthy/falsy int is treated as 1/0).
-        """
-        self._chunks.append("1" if bit else "0")
-
-    def write_bits(self, bitstring: str) -> None:
-        """Appends a run of bits.
-
-        Args:
-            bitstring: A string of '0'/'1' characters.
-        """
-        self._chunks.append(bitstring)
+    def write_bits(self, bits: str) -> None:
+        """Adds several bits, given as a string such as "0110"."""
+        self._bits.append(bits)
 
     def to_bytes(self) -> tuple[bytes, int]:
-        """Packs all written bits into bytes, padding to a byte boundary.
-
-        Returns:
-            A tuple of (packed_bytes, padding_bit_count), where
-            padding_bit_count is how many zero bits were appended at the
-            end to reach a whole number of bytes.
         """
-        bitstring = "".join(self._chunks)
-        padding = (8 - len(bitstring) % 8) % 8
-        bitstring += "0" * padding
+        Packs the bits into bytes. Returns the bytes and how many zero bits
+        were added at the end to fill the last byte (between 0 and 7).
+        """
+        bits = "".join(self._bits)
+        padding = (8 - len(bits) % 8) % 8
+        bits += "0" * padding
 
-        out = bytearray()
-        for i in range(0, len(bitstring), 8):
-            out.append(int(bitstring[i : i + 8], 2))
-        return bytes(out), padding
+        packed = bytearray()
+        for start in range(0, len(bits), 8):
+            packed.append(int(bits[start:start + 8], 2))
+        return bytes(packed), padding
 
 
 class BitReader:
-    """Reads individual bits back out of a byte string, in order."""
+    """Reads bits back out of bytes, in the order they were written."""
 
     def __init__(self, data: bytes, padding: int = 0):
-        """Unpacks data into a bitstring, dropping the trailing padding bits.
-
-        Args:
-            data: The compressed bytes to read bits from.
-            padding: How many trailing bits are padding and should be dropped.
-        """
-        bits = "".join(f"{byte:08b}" for byte in data)
-        if padding:
+        """Unpacks the bytes into bits, dropping the padding bits at the end."""
+        byte_texts = []
+        for byte in data:
+            byte_texts.append(format(byte, "08b"))   # e.g. 5 -> "00000101"
+        bits = "".join(byte_texts)
+        if padding > 0:
             bits = bits[:-padding]
         self._bits = bits
-        self._pos = 0
+        self._position = 0
 
     def read_bit(self) -> str:
-        """Reads and consumes the next single bit.
-
-        Returns:
-            The next bit, as the character '0' or '1'.
-        """
-        bit = self._bits[self._pos]
-        self._pos += 1
+        """Returns the next bit as "0" or "1"."""
+        bit = self._bits[self._position]
+        self._position += 1
         return bit
 
-    def read_bits(self, n: int) -> str:
-        """Reads and consumes the next n bits.
-
-        Args:
-            n: How many bits to read.
-
-        Returns:
-            The next n bits, as a string of '0'/'1' characters.
-        """
-        chunk = self._bits[self._pos : self._pos + n]
-        self._pos += n
-        return chunk
-
-    def has_more(self) -> bool:
-        """Determines whether there are unread bits remaining.
-
-        Returns:
-            True if more bits remain to be read, False otherwise.
-        """
-        return self._pos < len(self._bits)
+    def read_bits(self, count: int) -> str:
+        """Returns the next count bits as a string."""
+        bits = self._bits[self._position:self._position + count]
+        self._position += count
+        return bits

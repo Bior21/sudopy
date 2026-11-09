@@ -34,5 +34,6 @@
       "expected_output": "{1: 'p', 2: 'q'}"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def invert_dict(d):\n    result = {}\n    for key in d:\n        result[d[key]] = key\n    return result\n"
 }

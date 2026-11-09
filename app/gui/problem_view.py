@@ -1,193 +1,155 @@
-"""Displays a single problem and lets the student run and grade their code.
+"""
+File: problem_view.py
+Author: Bior Madol Khom Bior
+----------------------------
+Shows one problem: its title and prompt, a hint hidden behind a button,
+the code editor, the buttons, and the test results.
 
-Shows the prompt text, a Show Hint button that reveals the hint on
-click, an editable code area pre-filled with starter_code, Run/Reset/
-Show Solution/Next Problem buttons, and a ResultsView showing pass/fail
-feedback. ProblemView wires directly to core.submission (and, through
-it, core.runner and core.grader) when Run is clicked. Kept as a single
-frame class for now; if it grows too large later, the editor pane can
-be split out into its own file.
+Grading can take a few seconds (up to 5 for code stuck in an infinite
+loop), so it runs on a separate thread. That keeps the window responsive
+while "Running..." is shown. Tkinter widgets may only be touched from the
+main thread, so the grading thread only computes the results; the main
+thread checks every 100 ms whether they're ready and then displays them.
 
-The Show Solution button stays disabled until the student has clicked
-Run at least once for the currently loaded problem - passing, failing,
-or a mix of both all count, the only thing gated on is having made a
-genuine attempt first. Run uses the "Primary.TButton" style (see
-gui/main_window.py's _configure_style) so it visually stands out from
-the secondary Reset/Show Solution/Next Problem actions.
-
-Next Problem is an alternative to clicking a row in the navigation
-tree, not a replacement for it - ProblemView itself has no notion of
-problem ordering, so it just calls the on_next callback MainWindow
-supplies and lets MainWindow (which owns the tree) figure out what
-"next" means.
+Show Solution stays disabled until the student has pressed Run at least
+once on the current problem.
 """
 
+import threading
 import tkinter as tk
 from tkinter import ttk
 
-from core.solutions import SOLUTIONS
 from core.submission import run_and_grade_all
-from gui.results_view import ResultsView
 from gui.code_editor import CodeEditor
+from gui.results_view import ResultsView
+
+CHECK_EVERY_MS = 100
+HINT_COLOR = "#57606a"
+CODE_FONT = ("Courier New", 11)
 
 
 class ProblemView(ttk.Frame):
-    def __init__(self, parent, on_next=None):
-        """Builds the prompt/editor/results layout, with no problem loaded yet.
 
-        Args:
-            parent: The Tkinter widget this frame is placed inside.
-            on_next: Optional callback invoked when the Next Problem
-                button is clicked. ProblemView has no notion of problem
-                ordering, so it just delegates to the caller.
+    def __init__(self, parent, on_next):
+        """
+        Builds the view with no problem loaded yet. on_next is called when
+        Next Problem is pressed, since only the main window knows which
+        problem comes next.
         """
         super().__init__(parent)
-        self.current_problem = None
-        self._has_attempted_current_problem = False
+        self.problem = None
         self._on_next = on_next
+        self._grading_thread = None
+        self._grade_results = None
 
-        # Prompt
-        self.title_label = ttk.Label(self, text="", font=("TkDefaultFont", 14, "bold"))
+        self.title_label = ttk.Label(self, font=("TkDefaultFont", 14, "bold"))
         self.title_label.pack(anchor="w", pady=(0, 4))
-
-        self.prompt_label = ttk.Label(self, text="", wraplength=700, justify="left")
+        self.prompt_label = ttk.Label(self, wraplength=700, justify="left")
         self.prompt_label.pack(anchor="w", pady=(0, 10))
 
-        # Hint - hidden behind a button until clicked (see _on_show_hint).
-        # Neither widget is packed here; load_problem() shows hint_button
-        # only when the problem actually has a hint.
-        self.hint_button = ttk.Button(self, text="Show Hint", command=self._on_show_hint)
-        self.hint_label = ttk.Label(
-            self, text="", wraplength=700, justify="left", foreground="#57606a"
-        )
+        # The hint button and hint text are only placed on screen by load_problem and _show_hint.
+        self.hint_button = ttk.Button(self, text="Show Hint", command=self._show_hint)
+        self.hint_label = ttk.Label(self, wraplength=700, justify="left", foreground=HINT_COLOR)
 
-        # Code editor
         self.editor_frame = ttk.LabelFrame(self, text="Your code")
         self.editor_frame.pack(fill="both", expand=True, pady=(0, 10))
-        self.editor = CodeEditor(self.editor_frame, font=("Courier New", 11))
+        self.editor = CodeEditor(self.editor_frame, font=CODE_FONT)
         self.editor.pack(fill="both", expand=True, padx=4, pady=4)
 
-        # Run button
-        button_frame = ttk.Frame(self)
-        button_frame.pack(fill="x", pady=(0, 10))
-        self.run_button = ttk.Button(
-            button_frame, text="Run", command=self._on_run, style="Primary.TButton"
-        )
-        self.run_button.pack(side="left")
-        self.reset_button = ttk.Button(button_frame, text="Reset to starter code", command=self._on_reset)
-        self.reset_button.pack(side="left", padx=(8, 0))
-        self.show_solution_button = ttk.Button(
-            button_frame, text="Show Solution", command=self._on_show_solution, state="disabled"
-        )
-        self.show_solution_button.pack(side="left", padx=(8, 0))
-        self.next_button = ttk.Button(
-            button_frame, text="Next Problem", command=self._on_next_clicked
-        )
-        self.next_button.pack(side="left", padx=(8, 0))
-
-        # Results - stays hidden (see ResultsView.clear()) until the
-        # student's code has actually been run
+        self._build_buttons()
         self.results_view = ResultsView(self)
 
+    def _build_buttons(self):
+        """Adds the Run, Reset, Show Solution and Next Problem buttons in one row."""
+        row = ttk.Frame(self)
+        row.pack(fill="x", pady=(0, 10))
+        self.run_button = ttk.Button(row, text="Run", command=self._run, style="Primary.TButton")
+        self.reset_button = ttk.Button(row, text="Reset to starter code", command=self._reset)
+        self.solution_button = ttk.Button(row, text="Show Solution", command=self._show_solution)
+        self.next_button = ttk.Button(row, text="Next Problem", command=self._on_next)
+
+        self.run_button.pack(side="left")
+        for button in (self.reset_button, self.solution_button, self.next_button):
+            button.pack(side="left", padx=(8, 0))
+
     def load_problem(self, problem):
-        """Displays the given problem: prompt, starter code, cleared results.
-
-        The hint (if any) starts hidden behind the Show Hint button -
-        see _on_show_hint.
-
-        Args:
-            problem: The core.problem_loader.Problem to display.
-        """
-        self.current_problem = problem
-        self._has_attempted_current_problem = False
-        self.show_solution_button.config(state="disabled")
+        """Shows a new problem with its starter code, its hint hidden, and no results."""
+        self.problem = problem
         self.title_label.config(text=problem.title)
         self.prompt_label.config(text=problem.prompt)
+        self.solution_button.config(state="disabled")
 
-        self.hint_button.pack_forget()
         self.hint_label.pack_forget()
-        self.hint_label.config(text="")
+        self.hint_button.pack_forget()
         if problem.hint:
             self.hint_button.pack(anchor="w", pady=(0, 10), before=self.editor_frame)
 
-        self._set_editor_text(problem.starter_code)
+        self.editor.set_text(problem.starter_code)
         self.results_view.clear()
-
-    def _on_run(self):
-        """Runs and grades the student's current code against every test, then shows the results."""
-        if not self.current_problem:
-            return
-        code = self.editor.get("1.0", "end-1c")
-        grade_results = run_and_grade_all(
-            code,
-            self.current_problem.function_name,
-            self.current_problem.tests,
-        )
-        self.results_view.update_results(
-            self.current_problem.function_name, self.current_problem.tests, grade_results
-        )
-
-        self._has_attempted_current_problem = True
-        self.show_solution_button.config(state="normal")
-
-    def _on_show_hint(self):
-        """Reveals the current problem's hint, replacing the button with the text."""
-        if not self.current_problem:
-            return
-        self.hint_label.config(text=f"Hint: {self.current_problem.hint}")
-        self.hint_button.pack_forget()
-        self.hint_label.pack(anchor="w", pady=(0, 10), before=self.editor_frame)
-
-    def _on_show_solution(self):
-        """Opens a read-only window showing the current problem's reference solution.
-
-        Only reachable once the Show Solution button is enabled, which
-        happens after the student has clicked Run at least once for this
-        problem (see _on_run).
-        """
-        if not self.current_problem or not self._has_attempted_current_problem:
-            return
-        solution = SOLUTIONS.get(self.current_problem.id)
-        if solution is None:
-            return
-
-        window = tk.Toplevel(self)
-        window.title(f"Solution — {self.current_problem.title}")
-        window.geometry("500x400")
-
-        text = tk.Text(window, wrap="none", font=("Courier New", 11), padx=10, pady=10)
-        text.pack(fill="both", expand=True)
-        text.insert("1.0", solution)
-        text.config(state="disabled")
-
-        ttk.Button(window, text="Close", command=window.destroy).pack(pady=(0, 10))
-
-    def _on_next_clicked(self):
-        """Delegates to the on_next callback, if one was supplied."""
-        if self._on_next:
-            self._on_next()
 
     def set_next_enabled(self, enabled: bool):
-        """Enables or disables the Next Problem button.
+        """Turns the Next Problem button on or off (off on the very last problem)."""
+        if enabled:
+            self.next_button.config(state="normal")
+        else:
+            self.next_button.config(state="disabled")
 
-        Args:
-            enabled: False when the currently loaded problem is the last
-                one in the whole curriculum, so there's nowhere to go.
-        """
-        self.next_button.config(state="normal" if enabled else "disabled")
-
-    def _on_reset(self):
-        """Discards the student's edits and restores the starter code."""
-        if not self.current_problem:
+    def _run(self):
+        """Starts grading the student's code on a separate thread."""
+        if self.problem is None or self._grading_thread is not None:
             return
-        self._set_editor_text(self.current_problem.starter_code)
-        self.results_view.clear()
+        self.run_button.config(text="Running...", state="disabled")
 
-    def _set_editor_text(self, text: str):
-        """Replaces the editor's contents.
+        code = self.editor.get_text()
+        problem = self.problem
+        self._grade_results = None
+        self._grading_thread = threading.Thread(
+            target=self._grade_in_background, args=(code, problem), daemon=True)
+        self._grading_thread.start()
+        self.after(CHECK_EVERY_MS, self._check_if_graded, problem)
 
-        Args:
-            text: The text to place in the editor.
+    def _grade_in_background(self, code, problem):
+        """Runs on the grading thread. Grades the code and stores the results."""
+        self._grade_results = run_and_grade_all(code, problem.function_name, problem.tests)
+
+    def _check_if_graded(self, problem):
         """
-        self.editor.delete("1.0", "end")
-        self.editor.insert("1.0", text)
+        Runs on the main thread every 100 ms until grading is done, then shows
+        the results. If the student switched problems meanwhile, the results
+        belong to the old problem and are not shown.
+        """
+        if self._grading_thread.is_alive():
+            self.after(CHECK_EVERY_MS, self._check_if_graded, problem)
+            return
+
+        self._grading_thread = None
+        self.run_button.config(text="Run", state="normal")
+        if problem is not self.problem:
+            return
+        self.results_view.show_results(problem.function_name, problem.tests, self._grade_results)
+        self.solution_button.config(state="normal")
+
+    def _show_hint(self):
+        """Replaces the Show Hint button with the hint itself."""
+        self.hint_button.pack_forget()
+        self.hint_label.config(text=f"Hint: {self.problem.hint}")
+        self.hint_label.pack(anchor="w", pady=(0, 10), before=self.editor_frame)
+
+    def _show_solution(self):
+        """Opens a small read-only window with the problem's solution."""
+        window = tk.Toplevel(self)
+        window.title(f"Solution — {self.problem.title}")
+        window.geometry("500x400")
+
+        text = tk.Text(window, wrap="none", font=CODE_FONT, padx=10, pady=10)
+        text.pack(fill="both", expand=True)
+        text.insert("1.0", self.problem.solution)
+        text.config(state="disabled")
+        ttk.Button(window, text="Close", command=window.destroy).pack(pady=(0, 10))
+
+    def _reset(self):
+        """Throws away the student's changes and brings back the starter code."""
+        if self.problem is None:
+            return
+        self.editor.set_text(self.problem.starter_code)
+        self.results_view.clear()

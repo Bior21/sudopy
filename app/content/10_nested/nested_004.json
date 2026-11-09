@@ -49,5 +49,6 @@
       "expected_output": "[6, 15]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def row_sums(grid):\n    result = []\n    for row in grid:\n        result.append(sum(row))\n    return result\n"
 }

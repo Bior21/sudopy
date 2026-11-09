@@ -31,5 +31,6 @@
       "expected_output": "20"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def total_cost(price, quantity):\n    return price * quantity\n\n\ndef total_cost_for_order(prices, quantities):\n    total = 0\n    for i in range(len(prices)):\n        total += total_cost(prices[i], quantities[i])\n    return total\n"
 }

@@ -41,5 +41,6 @@
       "expected_output": "5"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def tuple_length(t):\n    return len(t)\n"
 }

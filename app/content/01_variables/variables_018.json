@@ -28,5 +28,6 @@
       "expected_output": "True"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def can_afford(balance, price):\n    return balance >= price\n"
 }

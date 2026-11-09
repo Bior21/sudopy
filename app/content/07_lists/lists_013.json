@@ -36,5 +36,6 @@
       "expected_output": "[-2, -4]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def double_each_element(nums):\n    result = []\n    for n in nums:\n        result.append(n * 2)\n    return result\n"
 }

@@ -25,5 +25,6 @@
       "expected_output": "30"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def late_fee(days_late):\n    if days_late <= 0:\n        return 0\n    elif days_late <= 7:\n        return 5\n    elif days_late <= 30:\n        return 15\n    else:\n        return 30\n"
 }

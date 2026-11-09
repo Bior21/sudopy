@@ -49,5 +49,6 @@
       "expected_output": "15.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def average_field(students, field):\n    total = 0\n    for s in students:\n        total += s[field]\n    return total / len(students)\n"
 }

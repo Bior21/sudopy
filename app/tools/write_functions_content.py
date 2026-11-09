@@ -1,14 +1,18 @@
-"""One-time authoring script: writes the redesigned Functions topic content.
+"""
+File: write_functions_content.py
+Author: Bior Madol Khom Bior
+--------------------------------
+Lists the Functions problems. tools/content_authoring.py does the
+actual work of computing expected outputs and writing the JSON files.
+Run it from inside app/:
 
-See write_loops_content.py's docstring for the general pattern. Many
-solutions here define a helper function before the target one - that's
-deliberate: content_authoring.starter_stub() keeps everything before the
-target function's own def line verbatim, so the helper ships already
-working in starter_code and only the target function is a TODO stub.
-No recursion anywhere - see the curriculum plan for why.
+    python3 -m tools.write_functions_content
+
+Some solutions define a helper function first. The student is given
+the helper already working and only writes the main function.
 """
 
-from content_authoring import write_topic
+from tools.content_authoring import write_topic
 
 # Each write problem: (id, function_name, prompt, correct_solution, list_of_args, hint)
 WRITE_PROBLEMS = [

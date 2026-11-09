@@ -28,5 +28,6 @@
       "expected_output": "0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def profit(revenue, cost):\n    return revenue - cost\n"
 }

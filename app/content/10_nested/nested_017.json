@@ -45,5 +45,6 @@
       "expected_output": "{'m': 10, 'n': 50}"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def group_totals(groups):\n    result = {}\n    for key in groups:\n        result[key] = sum(groups[key])\n    return result\n"
 }

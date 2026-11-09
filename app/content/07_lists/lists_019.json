@@ -40,5 +40,6 @@
       "expected_output": "[1, 2, 3]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def remove_duplicates(nums):\n    result = []\n    for n in nums:\n        if n not in result:\n            result.append(n)\n    return result\n"
 }

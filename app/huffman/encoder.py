@@ -1,68 +1,61 @@
-"""Encodes a string into a compressed byte string using Huffman coding.
-
-The output is self-contained: the tree is serialized into the header, so
-decode() needs nothing but the bytes this produces. The binary format is
-a 4-byte original text length, a 1-byte padding bit count (0-7), the
-serialized tree, and the encoded data, with the tree and data packed
-together into one bitstream and padded to a byte boundary at the very
-end (see BitWriter.to_bytes). The tree serialization grammar is
-self-terminating and needs no length prefix: a leaf node is '1' followed
-by 21 bits of the character's Unicode code point, and an internal node
-is '0' followed by its left and right subtrees.
 """
+File: encoder.py
+Author: Bior Madol Khom Bior
+----------------------------
+Compresses text with Huffman coding. The result holds everything needed
+to decompress it, in this order:
 
-from __future__ import annotations
+    4 bytes   how many characters the text has
+    1 byte    how many padding bits were added at the end
+    the tree, written as bits (see write_tree)
+    the text, with each character replaced by its code
+"""
 
 import struct
 
 from .bitio import BitWriter
 from .tree import CHAR_BITS, Node, build_codes, build_tree
 
-_HEADER_FORMAT = ">IB"  # uint32 text length, uint8 padding
-_HEADER_SIZE = struct.calcsize(_HEADER_FORMAT)
+# ">IB" means: big-endian, one 4-byte unsigned int, one 1-byte unsigned int.
+HEADER_FORMAT = ">IB"
 
 
-def _serialize_tree(node: Node, writer: BitWriter) -> None:
-    """Writes a subtree into a bitstream using the leaf/internal-node grammar.
-
-    Args:
-        node: The subtree root to serialize.
-        writer: The BitWriter to append bits to.
+def write_tree(node: Node, writer: BitWriter) -> None:
+    """
+    Writes the tree in preorder. A leaf is written as a 1 followed by its
+    character's 21-bit Unicode number. An inner node is written as a 0
+    followed by its left subtree and then its right subtree.
     """
     if node.is_leaf():
         writer.write_bit(1)
         writer.write_bits(format(ord(node.char), f"0{CHAR_BITS}b"))
     else:
         writer.write_bit(0)
-        _serialize_tree(node.left, writer)
-        _serialize_tree(node.right, writer)
+        write_tree(node.left, writer)
+        write_tree(node.right, writer)
+
+
+def count_characters(text: str) -> dict[str, int]:
+    """Returns how many times each character appears in the text."""
+    frequencies = {}
+    for char in text:
+        frequencies[char] = frequencies.get(char, 0) + 1
+    return frequencies
 
 
 def encode(text: str) -> bytes:
-    """Compresses text into a self-contained Huffman-coded byte string.
-
-    Args:
-        text: The text to compress.
-
-    Returns:
-        The compressed bytes, including a header and serialized tree so
-        decode() needs nothing else to reconstruct the original text.
-    """
+    """Compresses the text and returns the compressed bytes."""
     if text == "":
-        return struct.pack(_HEADER_FORMAT, 0, 0)
+        return struct.pack(HEADER_FORMAT, 0, 0)
 
-    freq: dict[str, int] = {}
-    for ch in text:
-        freq[ch] = freq.get(ch, 0) + 1
-
-    root = build_tree(freq)
+    root = build_tree(count_characters(text))
     codes = build_codes(root)
 
     writer = BitWriter()
-    _serialize_tree(root, writer)
-    for ch in text:
-        writer.write_bits(codes[ch])
+    write_tree(root, writer)
+    for char in text:
+        writer.write_bits(codes[char])
 
-    data_bytes, padding = writer.to_bytes()
-    header = struct.pack(_HEADER_FORMAT, len(text), padding)
-    return header + data_bytes
+    data, padding = writer.to_bytes()
+    header = struct.pack(HEADER_FORMAT, len(text), padding)
+    return header + data

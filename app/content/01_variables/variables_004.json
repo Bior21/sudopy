@@ -31,5 +31,6 @@
       "expected_output": "30.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def split_the_bill_with_tip(total, people, tip_rate):\n    return (total + total * tip_rate) / people\n"
 }

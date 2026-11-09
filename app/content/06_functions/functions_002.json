@@ -20,5 +20,6 @@
       "expected_output": "Hi, Sam!"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def greet(name, greeting='Hello'):\n    return f'{greeting}, {name}!'\n"
 }

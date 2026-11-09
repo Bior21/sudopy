@@ -25,5 +25,6 @@
       "expected_output": "25"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def area_of_square(side):\n    return side * side\n\n\ndef total_area_of_squares(sides):\n    total = 0\n    for side in sides:\n        total += area_of_square(side)\n    return total\n"
 }

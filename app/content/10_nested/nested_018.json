@@ -45,5 +45,6 @@
       "expected_output": "{'a': 4, 'b': 1}"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def count_items_per_category(catalog):\n    result = {}\n    for key in catalog:\n        result[key] = len(catalog[key])\n    return result\n"
 }

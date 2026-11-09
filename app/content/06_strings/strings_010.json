@@ -31,5 +31,6 @@
       "expected_output": "test"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def replace_character(s, old, new):\n    return s.replace(old, new)\n"
 }

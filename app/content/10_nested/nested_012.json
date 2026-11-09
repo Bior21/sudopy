@@ -46,5 +46,6 @@
       "expected_output": "['Al', 'Kim']"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def names_of_students(students):\n    result = []\n    for s in students:\n        result.append(s['name'])\n    return result\n"
 }

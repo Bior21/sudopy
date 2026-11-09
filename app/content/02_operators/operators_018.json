@@ -28,5 +28,6 @@
       "expected_output": "10.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def harmonic_mean_of_two(a, b):\n    return 2 * a * b / (a + b)\n"
 }

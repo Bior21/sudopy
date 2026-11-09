@@ -31,5 +31,6 @@
       "expected_output": "True"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def is_right_triangle(a, b, c):\n    return a ** 2 + b ** 2 == c ** 2\n"
 }

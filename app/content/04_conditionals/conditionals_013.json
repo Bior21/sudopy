@@ -34,5 +34,6 @@
       "expected_output": "1"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def performance_tier(score, threshold1, threshold2, threshold3):\n    if score >= threshold3:\n        return 4\n    elif score >= threshold2:\n        return 3\n    elif score >= threshold1:\n        return 2\n    else:\n        return 1\n"
 }

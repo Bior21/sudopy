@@ -22,5 +22,6 @@
       "expected_output": "Sam is 30 years old and lives in Austin."
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def describe_person(name, age, city='Unknown'):\n    return f'{name} is {age} years old and lives in {city}.'\n"
 }

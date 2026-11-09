@@ -1,97 +1,32 @@
-"""Reads and validates problem definitions from a content directory.
-
-Each topic is a subfolder (e.g. content/05_loops/) containing one JSON
-file per problem. This module discovers topics from folder names
-(stripped of their numeric prefix), loads and validates individual
-problem files into the Problem and Topic dataclasses, and exposes a
-simple in-memory structure that the GUI and core modules can query
-through ProblemLoader. It does not know about Huffman compression - in
-the packaged app, content/ is decompressed to a temp directory first,
-and this loader just points at that temp directory, which keeps it
-testable against plain JSON files without touching compression at all.
 """
-
-from __future__ import annotations
+File: problem_loader.py
+Author: Bior Madol Khom Bior
+----------------------------
+Reads the practice problems from the content folder. Each topic is a
+subfolder such as content/05_loops/ (the number sets the order), with one
+JSON file per problem. A problem file that is missing something raises
+ProblemValidationError with the file's name, so mistakes are easy to find.
+"""
 
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
-
-REQUIRED_FIELDS = {
-    "id",
-    "topic",
-    "title",
-    "prompt",
-    "starter_code",
-    "function_name",
-    "tests",
-}
-# hint is optional
+# Every problem file must have these. "hint" is optional.
+REQUIRED_FIELDS = {"id", "topic", "title", "prompt", "starter_code", "function_name", "tests", "solution"}
 
 
 class ProblemValidationError(Exception):
-    """Raised when a problem JSON file is missing fields or malformed."""
-
-
-def _decode_tuples(value):
-    """Recursively turns {"__tuple__": [...]} markers back into real tuples.
-
-    JSON has no tuple type, so a Tuples-topic test argument that's meant to
-    be a real tuple is stored with this marker convention (written by
-    content_authoring.py's matching _encode_tuples) and decoded back here.
-    Without this, every tuple argument would silently arrive as a list,
-    and the GUI's call-site display would show "[1, 2]" instead of the
-    authentic "(1, 2)".
-    """
-    if isinstance(value, dict) and set(value.keys()) == {"__tuple__"}:
-        return tuple(_decode_tuples(v) for v in value["__tuple__"])
-    if isinstance(value, list):
-        return [_decode_tuples(v) for v in value]
-    if isinstance(value, dict):
-        return {k: _decode_tuples(v) for k, v in value.items()}
-    return value
+    """Raised when a problem file is missing a field or is badly formed."""
 
 
 @dataclass
 class TestCase:
-    # Tells pytest not to collect this as a test class, despite the name -
-    # it's a domain object (a problem's test case), not a test suite.
-    __test__ = False
+    __test__ = False  # tells pytest this is not a test class, despite its name
 
     expected_output: str
-    args: list = field(default_factory=list)
-    input: str = ""
-
-    @staticmethod
-    def from_dict(data: dict, source_path: Path, index: int) -> "TestCase":
-        """Builds a TestCase from one entry of a problem's "tests" list.
-
-        A test case supplies its function call one of two ways: `args`
-        (a list of positional arguments, for a parameter-based problem)
-        or `input` (stdin text, for an I/O-based problem that still reads
-        via input()). Most problems use one or the other, not both.
-
-        Args:
-            data: The parsed JSON object for one test case.
-            source_path: The file data came from, used in error messages.
-            index: The test case's position in the list, for error messages.
-
-        Returns:
-            A validated TestCase instance.
-
-        Raises:
-            ProblemValidationError: If expected_output is missing.
-        """
-        if "expected_output" not in data:
-            raise ProblemValidationError(
-                f"{source_path}: tests[{index}] is missing 'expected_output'"
-            )
-        return TestCase(
-            args=[_decode_tuples(arg) for arg in data.get("args", [])],
-            input=data.get("input", ""),
-            expected_output=data["expected_output"],
-        )
+    args: list = field(default_factory=list)   # arguments passed to the function
+    input: str = ""                             # text typed in for input() calls
 
 
 @dataclass
@@ -103,153 +38,126 @@ class Problem:
     starter_code: str
     function_name: str
     tests: list[TestCase]
+    solution: str
     hint: str = ""
-
-    @staticmethod
-    def from_dict(data: dict, source_path: Path) -> "Problem":
-        """Builds a Problem from a parsed JSON dict.
-
-        Args:
-            data: The parsed JSON object for a single problem.
-            source_path: The file data came from, used in error messages.
-
-        Returns:
-            A validated Problem instance.
-
-        Raises:
-            ProblemValidationError: If data is missing any required field,
-                or "tests" is empty or malformed.
-        """
-        missing = REQUIRED_FIELDS - data.keys()
-        if missing:
-            raise ProblemValidationError(
-                f"{source_path}: missing required field(s): {sorted(missing)}"
-            )
-        if not data["tests"]:
-            raise ProblemValidationError(f"{source_path}: 'tests' must not be empty")
-        tests = [
-            TestCase.from_dict(test_data, source_path, index)
-            for index, test_data in enumerate(data["tests"])
-        ]
-        return Problem(
-            id=data["id"],
-            topic=data["topic"],
-            title=data["title"],
-            prompt=data["prompt"],
-            starter_code=data["starter_code"],
-            function_name=data["function_name"],
-            tests=tests,
-            hint=data.get("hint", ""),
-        )
 
 
 @dataclass
 class Topic:
     name: str
-    problems: list[Problem] = field(default_factory=list)
+    problems: list[Problem]
+
+
+def decode_tuples(value):
+    """
+    JSON has no tuple type, so tuples are saved as {"__tuple__": [...]}
+    (see tools/content_authoring.py). This recursively turns those markers
+    back into real tuples, so a student sees (1, 2) and not [1, 2].
+    """
+    if isinstance(value, dict) and list(value.keys()) == ["__tuple__"]:
+        items = []
+        for item in value["__tuple__"]:
+            items.append(decode_tuples(item))
+        return tuple(items)
+    if isinstance(value, list):
+        items = []
+        for item in value:
+            items.append(decode_tuples(item))
+        return items
+    if isinstance(value, dict):
+        result = {}
+        for key, item in value.items():
+            result[key] = decode_tuples(item)
+        return result
+    return value
+
+
+def read_test_case(data: dict, path: Path, index: int) -> TestCase:
+    """Builds one TestCase from an entry of a problem's "tests" list."""
+    if "expected_output" not in data:
+        raise ProblemValidationError(f"{path}: tests[{index}] is missing 'expected_output'")
+    args = []
+    for arg in data.get("args", []):
+        args.append(decode_tuples(arg))
+    return TestCase(expected_output=data["expected_output"], args=args, input=data.get("input", ""))
+
+
+def read_problem(path: Path) -> Problem:
+    """Reads one problem JSON file and checks that nothing is missing."""
+    with open(path, "r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    missing = REQUIRED_FIELDS - data.keys()
+    if missing:
+        raise ProblemValidationError(f"{path}: missing field(s): {sorted(missing)}")
+    if not data["tests"]:
+        raise ProblemValidationError(f"{path}: 'tests' must not be empty")
+
+    tests = []
+    for index, test_data in enumerate(data["tests"]):
+        tests.append(read_test_case(test_data, path, index))
+
+    return Problem(
+        id=data["id"],
+        topic=data["topic"],
+        title=data["title"],
+        prompt=data["prompt"],
+        starter_code=data["starter_code"],
+        function_name=data["function_name"],
+        tests=tests,
+        solution=data["solution"],
+        hint=data.get("hint", ""),
+    )
+
+
+def topic_name_from_folder(folder_name: str) -> str:
+    """Removes the ordering number from a folder name: "05_loops" -> "loops"."""
+    parts = folder_name.split("_", 1)
+    if len(parts) == 2 and parts[0].isdigit():
+        return parts[1]
+    return folder_name
 
 
 class ProblemLoader:
-    """Loads all topics/problems from a content directory."""
+    """Loads every topic and problem from a content folder."""
 
-    def __init__(self, content_dir: str | Path):
-        """Points the loader at a content directory.
-
-        Args:
-            content_dir: Path to the directory containing topic subfolders.
-
-        Raises:
-            FileNotFoundError: If content_dir does not exist.
-        """
+    def __init__(self, content_dir):
+        """Remembers where the content folder is. It must exist."""
         self.content_dir = Path(content_dir)
         if not self.content_dir.exists():
             raise FileNotFoundError(f"Content directory not found: {self.content_dir}")
-        self._topics: dict[str, Topic] = {}
+        self._topics = {}
 
     def load_all(self) -> dict[str, Topic]:
-        """Loads every topic folder under content_dir.
-
-        Returns:
-            A dict mapping topic name to its Topic. Folders that contain
-            no problem files are skipped.
+        """
+        Loads every topic folder, in folder-name order, and returns a dict
+        from topic name to Topic. Folders with no problems are skipped.
         """
         self._topics = {}
-        topic_folders = sorted(
-            p for p in self.content_dir.iterdir() if p.is_dir()
-        )
-        for folder in topic_folders:
-            topic_name = self._strip_numeric_prefix(folder.name)
-            problems = self._load_topic_folder(folder)
+        folders = []
+        for path in self.content_dir.iterdir():
+            if path.is_dir():
+                folders.append(path)
+
+        for folder in sorted(folders):
+            problems = []
+            for json_file in sorted(folder.glob("*.json")):
+                problems.append(read_problem(json_file))
             if problems:
-                self._topics[topic_name] = Topic(name=topic_name, problems=problems)
+                name = topic_name_from_folder(folder.name)
+                self._topics[name] = Topic(name, problems)
         return self._topics
 
-    def _load_topic_folder(self, folder: Path) -> list[Problem]:
-        """Loads every problem JSON file in one topic folder.
-
-        Args:
-            folder: The topic folder to scan for problem JSON files.
-
-        Returns:
-            The problems found in folder, sorted by filename.
-        """
-        problems = []
-        for json_file in sorted(folder.glob("*.json")):
-            with open(json_file, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            problem = Problem.from_dict(data, json_file)
-            problems.append(problem)
-        return problems
-
-    @staticmethod
-    def _strip_numeric_prefix(folder_name: str) -> str:
-        """Removes a topic folder's numeric ordering prefix.
-
-        Args:
-            folder_name: A folder name such as "05_loops".
-
-        Returns:
-            The topic name with the prefix removed, e.g. "loops".
-        """
-        parts = folder_name.split("_", 1)
-        if len(parts) == 2 and parts[0].isdigit():
-            return parts[1]
-        return folder_name
-
     def get_topic(self, topic_name: str) -> Topic | None:
-        """Looks up a loaded topic by name.
-
-        Args:
-            topic_name: The topic to look up.
-
-        Returns:
-            The matching Topic, or None if no such topic was loaded.
-        """
+        """Returns the topic with this name, or None if there isn't one."""
         return self._topics.get(topic_name)
 
     def get_problem(self, topic_name: str, problem_id: str) -> Problem | None:
-        """Looks up a single problem by topic and id.
-
-        Args:
-            topic_name: The topic the problem belongs to.
-            problem_id: The problem's unique id.
-
-        Returns:
-            The matching Problem, or None if not found.
-        """
+        """Returns the problem with this id in this topic, or None."""
         topic = self.get_topic(topic_name)
-        if not topic:
+        if topic is None:
             return None
         for problem in topic.problems:
             if problem.id == problem_id:
                 return problem
         return None
-
-    @property
-    def topic_names(self) -> list[str]:
-        """Names of every topic currently loaded, in load order.
-
-        Returns:
-            A list of topic names.
-        """
-        return list(self._topics.keys())

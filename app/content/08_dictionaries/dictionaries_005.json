@@ -32,5 +32,6 @@
       "expected_output": "3"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def count_keys(d):\n    return len(d)\n"
 }

@@ -28,5 +28,6 @@
       "expected_output": "0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def is_passing(score):\n    return score >= 60\n\n\ndef count_passing_scores(scores):\n    count = 0\n    for score in scores:\n        if is_passing(score):\n            count += 1\n    return count\n"
 }

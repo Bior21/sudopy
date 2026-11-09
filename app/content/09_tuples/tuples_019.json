@@ -63,5 +63,6 @@
       "expected_output": "False"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def tuples_are_equal(a, b):\n    return a == b\n"
 }

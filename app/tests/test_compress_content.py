@@ -1,6 +1,14 @@
+"""
+File: test_compress_content.py
+Author: Bior Madol Khom Bior
+------------------------------
+Checks that compressing the content folder and unpacking it again
+gives back exactly the same files.
+"""
+
 import json
 
-from compress_content import compress_content, decompress_content
+from huffman.archive import compress_content, decompress_content
 
 
 SAMPLE_PROBLEM = {

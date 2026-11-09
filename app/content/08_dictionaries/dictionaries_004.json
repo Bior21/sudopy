@@ -37,5 +37,6 @@
       "expected_output": "{'a': 1, 'c': 3}"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def remove_key(d, key):\n    del d[key]\n    return d\n"
 }

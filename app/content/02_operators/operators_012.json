@@ -31,5 +31,6 @@
       "expected_output": "True"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def is_multiple_of_either(n, a, b):\n    return n % a == 0 or n % b == 0\n"
 }

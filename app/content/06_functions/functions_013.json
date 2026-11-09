@@ -26,5 +26,6 @@
       "expected_output": "20"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def square(n):\n    return n * n\n\n\ndef sum_of_squares(nums):\n    total = 0\n    for n in nums:\n        total += square(n)\n    return total\n"
 }

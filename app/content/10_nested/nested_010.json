@@ -54,5 +54,6 @@
       "expected_output": "95"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def get_student_field(students, index, field):\n    return students[index][field]\n"
 }

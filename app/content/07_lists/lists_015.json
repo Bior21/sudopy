@@ -42,5 +42,6 @@
       "expected_output": "[]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def filter_greater_than(nums, threshold):\n    result = []\n    for n in nums:\n        if n > threshold:\n            result.append(n)\n    return result\n"
 }

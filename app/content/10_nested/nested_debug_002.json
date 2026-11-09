@@ -50,5 +50,6 @@
       "expected_output": "[[1, 2, 3]]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def transpose_grid(grid):\n    result = []\n    for col in range(len(grid[0])):\n        new_row = []\n        for row in grid:\n            new_row.append(row[col])\n        result.append(new_row)\n    return result\n"
 }

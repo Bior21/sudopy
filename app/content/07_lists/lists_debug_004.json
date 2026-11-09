@@ -38,5 +38,6 @@
       "expected_output": "5"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def second_largest(nums):\n    first = max(nums[0], nums[1])\n    second = min(nums[0], nums[1])\n    for n in nums[2:]:\n        if n > first:\n            second = first\n            first = n\n        elif n > second:\n            second = n\n    return second\n"
 }

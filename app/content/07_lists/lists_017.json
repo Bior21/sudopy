@@ -35,5 +35,6 @@
       "expected_output": "[4, 9]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def squares_of_list(nums):\n    result = []\n    for n in nums:\n        result.append(n * n)\n    return result\n"
 }

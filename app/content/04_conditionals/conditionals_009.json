@@ -25,5 +25,6 @@
       "expected_output": "10000.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def tax_owed(income):\n    if income <= 10000:\n        return income * 0.1\n    elif income <= 40000:\n        return 1000 + (income - 10000) * 0.2\n    else:\n        return 7000 + (income - 40000) * 0.3\n"
 }

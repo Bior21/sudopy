@@ -28,5 +28,6 @@
       "expected_output": "7200"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def time_to_seconds(hours, minutes):\n    return hours * 3600 + minutes * 60\n"
 }

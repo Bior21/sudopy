@@ -31,5 +31,6 @@
       "expected_output": "50"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def exponential_growth(initial, rate, periods):\n    return initial * (1 + rate) ** periods\n"
 }

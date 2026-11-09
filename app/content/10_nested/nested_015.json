@@ -47,5 +47,6 @@
       "expected_output": "2"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def get_nested_dict_value(data, outer_key, inner_key):\n    return data[outer_key][inner_key]\n"
 }

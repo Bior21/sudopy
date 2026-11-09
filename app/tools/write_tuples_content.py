@@ -1,18 +1,18 @@
-"""One-time authoring script: writes the redesigned Tuples topic content.
+"""
+File: write_tuples_content.py
+Author: Bior Madol Khom Bior
+-----------------------------
+Lists the Tuples problems. tools/content_authoring.py does the
+actual work of computing expected outputs and writing the JSON files.
+Run it from inside app/:
 
-See write_loops_content.py's docstring for the general pattern; the
-actual writing (computing every expected_output for real, confirming
-every debug bug genuinely reproduces) is shared logic in
-content_authoring.py.
+    python3 -m tools.write_tuples_content
 
-Several problems below pass real Python tuples in args_list (e.g.
-(3, 4) rather than [3, 4]) - write_topic()'s _encode_tuples marks these
-so they round-trip through JSON as tuples, not lists, and problem_loader's
-_decode_tuples restores them on load. That's what makes a call site show
-authentic "(3, 4)" tuple syntax instead of "[3, 4]" list syntax.
+Several problems pass real tuples, such as (3, 4), so the call shows
+tuple syntax rather than list syntax.
 """
 
-from content_authoring import write_topic
+from tools.content_authoring import write_topic
 
 # Each write problem: (id, function_name, prompt, correct_solution, list_of_args, hint)
 WRITE_PROBLEMS = [

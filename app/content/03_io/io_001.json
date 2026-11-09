@@ -19,5 +19,6 @@
       "input": "Zainab",
       "expected_output": "Hello, Zainab!"
     }
-  ]
+  ],
+  "solution": "def greet_by_name():\n    name = input()\n    print(f'Hello, {name}!')\n"
 }

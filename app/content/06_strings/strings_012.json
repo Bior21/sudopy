@@ -28,5 +28,6 @@
       "expected_output": "True"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def ends_with(s, suffix):\n    return s.endswith(suffix)\n"
 }

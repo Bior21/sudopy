@@ -31,5 +31,6 @@
       "expected_output": "Ali, Zoe (#100)"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def formatted_id(first, last, id_number):\n    return f'{last}, {first} (#{id_number})'\n"
 }

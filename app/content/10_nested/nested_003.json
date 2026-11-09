@@ -51,5 +51,6 @@
       "expected_output": "[1, 2, 3, 4, 5, 6]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def flatten_grid(grid):\n    result = []\n    for row in grid:\n        for val in row:\n            result.append(val)\n    return result\n"
 }

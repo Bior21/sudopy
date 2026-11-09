@@ -47,5 +47,6 @@
       "expected_output": "7"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def max_in_grid(grid):\n    best = grid[0][0]\n    for row in grid:\n        for val in row:\n            if val > best:\n                best = val\n    return best\n"
 }

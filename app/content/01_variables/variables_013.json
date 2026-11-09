@@ -34,5 +34,6 @@
       "expected_output": "90"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def total_distance_two_legs(speed1, time1, speed2, time2):\n    return speed1 * time1 + speed2 * time2\n"
 }

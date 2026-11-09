@@ -25,5 +25,6 @@
       "expected_output": "False"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def is_valid_password_length(pw):\n    return len(pw) >= 8\n\n\ndef all_passwords_valid(passwords):\n    for pw in passwords:\n        if not is_valid_password_length(pw):\n            return False\n    return True\n"
 }

@@ -1,9 +1,10 @@
-"""The top-level application window.
-
-Lays out two panes side by side: a navigation tree listing every topic
-with its problems nested underneath, and the problem view (prompt/editor/
-results). MainWindow owns the ProblemLoader and drives which Problem is
-currently loaded into the ProblemView based on the user's tree selection.
+"""
+File: main_window.py
+Author: Bior Madol Khom Bior
+----------------------------
+The app's main window. On the left is a list of topics with their
+problems underneath; on the right is the problem the student picked.
+Clicking a problem, or pressing Next Problem, loads it on the right.
 """
 
 import tkinter as tk
@@ -12,31 +13,32 @@ from tkinter import ttk
 from core.problem_loader import ProblemLoader
 from gui.problem_view import ProblemView
 
-_TOPIC_DISPLAY_NAMES = {
-    "io": "I/O",
-}
+ACCENT_GREEN = "#2F6F4F"
+ACCENT_GREEN_DARK = "#26593F"
+ACCENT_GREEN_FADED = "#A9C4B5"
+SIDEBAR_BACKGROUND = "#FAFAF8"
+TEXT_COLOR = "#1A1A1A"
+
+# Topic names that read badly when just capitalized.
+TOPIC_LABELS = {"io": "I/O"}
 
 
-def _display_topic_name(topic_name: str) -> str:
-    """Turns a raw topic name like "nested" into a readable label.
+def topic_label(topic_name: str) -> str:
+    """Turns a topic name into a sidebar label: "loops" -> "Loops"."""
+    if topic_name in TOPIC_LABELS:
+        return TOPIC_LABELS[topic_name]
+    return topic_name.replace("_", " ").title()
 
-    Args:
-        topic_name: The topic's internal name, from ProblemLoader.
 
-    Returns:
-        A title-cased label, with a few short names (e.g. "io") spelled
-        out by hand since title-casing alone reads oddly for them.
-    """
-    return _TOPIC_DISPLAY_NAMES.get(topic_name, topic_name.replace("_", " ").title())
+def row_id(topic_name: str, problem_id: str) -> str:
+    """The sidebar row id for a problem, such as "loops::loops_001"."""
+    return f"{topic_name}::{problem_id}"
 
 
 class MainWindow(tk.Tk):
-    def __init__(self, content_dir):
-        """Builds the window and loads all topics/problems.
 
-        Args:
-            content_dir: Path to the directory containing problem content.
-        """
+    def __init__(self, content_dir):
+        """Loads every problem and builds the window."""
         super().__init__()
         self.title("Sudopy — Learn Python Offline")
         self.geometry("1000x650")
@@ -45,165 +47,98 @@ class MainWindow(tk.Tk):
         self.loader = ProblemLoader(content_dir)
         self.topics = self.loader.load_all()
 
-        # Maps a problem row's tree item id to (topic_name, problem_id),
-        # so a topic row (not in this map) can be told apart from a
-        # problem row on selection.
-        self._problem_by_iid: dict[str, tuple[str, str]] = {}
-        # Every problem row's iid, in tree order - lets the Next Problem
-        # button figure out what comes after the current one.
-        self._problem_order: list[str] = []
-        self._current_problem_iid: str | None = None
+        self._problem_rows = []         # every problem's row id, top to bottom
+        self._current_row = None
 
-        self._configure_style()
+        self._set_up_styles()
         self._build_layout()
-        self._populate_tree()
+        self._fill_sidebar()
 
-    def _configure_style(self):
-        """Sets up a readable, consistent look for the whole app.
-
-        Switches to the "clam" ttk theme, since the platform-native theme
-        (e.g. aqua on macOS) ignores most custom widget colors, then
-        applies:
-          - Sidebar.Treeview: a taller row height, a soft background, and
-            a clear selection highlight so the navigation tree reads as
-            distinct rows rather than a run of plain text.
-          - Primary.TButton: a filled accent-green button style, used
-            only for ProblemView's Run button so it visually stands out
-            from secondary actions like Reset and Show Solution.
-        Both styles share the same accent green, so the selected sidebar
-        row and the primary action button read as one consistent color.
+    def _set_up_styles(self):
+        """
+        Sets the colors and fonts used by the sidebar and the green Run
+        button. The "clam" theme is used because the built-in macOS theme
+        ignores most custom colors.
         """
         style = ttk.Style(self)
         style.theme_use("clam")
 
-        accent_green = "#2F6F4F"
+        style.configure("Sidebar.Treeview", background=SIDEBAR_BACKGROUND,
+                        fieldbackground=SIDEBAR_BACKGROUND, foreground=TEXT_COLOR,
+                        rowheight=30, borderwidth=0, font=("TkDefaultFont", 11))
+        style.map("Sidebar.Treeview",
+                  background=[("selected", ACCENT_GREEN)],
+                  foreground=[("selected", "white")])
 
-        style.configure(
-            "Sidebar.Treeview",
-            background="#FAFAF8",
-            fieldbackground="#FAFAF8",
-            foreground="#1A1A1A",
-            rowheight=30,
-            borderwidth=0,
-            relief="flat",
-            font=("TkDefaultFont", 11),
-        )
-        style.map(
-            "Sidebar.Treeview",
-            background=[("selected", accent_green)],
-            foreground=[("selected", "#FFFFFF")],
-        )
-
-        style.configure(
-            "Primary.TButton",
-            background=accent_green,
-            foreground="#FFFFFF",
-            font=("TkDefaultFont", 10, "bold"),
-            padding=(12, 6),
-            borderwidth=0,
-        )
-        style.map(
-            "Primary.TButton",
-            background=[("active", "#26593F"), ("disabled", "#A9C4B5")],
-            foreground=[("disabled", "#EFEFEF")],
-        )
+        style.configure("Primary.TButton", background=ACCENT_GREEN, foreground="white",
+                        font=("TkDefaultFont", 10, "bold"), padding=(12, 6), borderwidth=0)
+        style.map("Primary.TButton",
+                  background=[("active", ACCENT_GREEN_DARK), ("disabled", ACCENT_GREEN_FADED)],
+                  foreground=[("disabled", "#EFEFEF")])
 
     def _build_layout(self):
-        """Builds the two-pane layout: the navigation tree and the problem view."""
-        paned = ttk.Panedwindow(self, orient="horizontal")
-        paned.pack(fill="both", expand=True)
+        """Places the sidebar on the left and the problem view on the right."""
+        panes = ttk.Panedwindow(self, orient="horizontal")
+        panes.pack(fill="both", expand=True)
 
-        # --- Topic/problem navigation tree ---
-        nav_frame = ttk.Frame(paned, width=280)
-        ttk.Label(
-            nav_frame, text="Problems", font=("TkDefaultFont", 12, "bold")
-        ).pack(anchor="w", padx=14, pady=(14, 8))
-
-        self.tree = ttk.Treeview(
-            nav_frame, style="Sidebar.Treeview", show="tree", selectmode="browse"
-        )
+        sidebar = ttk.Frame(panes, width=280)
+        ttk.Label(sidebar, text="Problems", font=("TkDefaultFont", 12, "bold")).pack(
+            anchor="w", padx=14, pady=(14, 8))
+        self.tree = ttk.Treeview(sidebar, style="Sidebar.Treeview", show="tree", selectmode="browse")
         self.tree.pack(fill="both", expand=True, padx=8, pady=(0, 10))
         self.tree.tag_configure("topic", font=("TkDefaultFont", 11, "bold"))
-        self.tree.bind("<<TreeviewSelect>>", self._on_tree_selected)
-        paned.add(nav_frame, weight=0)
+        self.tree.bind("<<TreeviewSelect>>", self._on_row_selected)
+        panes.add(sidebar, weight=0)
 
-        # --- Problem view (prompt/editor/results) ---
-        view_container = ttk.Frame(paned, padding=18)
-        self.problem_view = ProblemView(view_container, on_next=self._on_next_clicked)
+        right_side = ttk.Frame(panes, padding=18)
+        self.problem_view = ProblemView(right_side, on_next=self._go_to_next_problem)
         self.problem_view.pack(fill="both", expand=True)
-        paned.add(view_container, weight=1)
+        panes.add(right_side, weight=1)
 
-    def _populate_tree(self):
-        """Fills the tree with every topic and its problems.
-
-        Each topic becomes an expanded parent row; its problems become
-        numbered child rows underneath. The first problem of the first
-        topic is selected and loaded by default.
-        """
-        first_problem_iid = None
-
+    def _fill_sidebar(self):
+        """Adds a row for every topic, with its numbered problems under it, and selects the first problem."""
         for topic_name, topic in self.topics.items():
-            self.tree.insert(
-                "", "end", iid=topic_name,
-                text=_display_topic_name(topic_name),
-                tags=("topic",), open=True,
-            )
-            for index, problem in enumerate(topic.problems, start=1):
-                problem_iid = f"{topic_name}::{problem.id}"
-                self._problem_by_iid[problem_iid] = (topic_name, problem.id)
-                self._problem_order.append(problem_iid)
-                self.tree.insert(
-                    topic_name, "end", iid=problem_iid,
-                    text=f"{index}. {problem.title}",
-                )
-                if first_problem_iid is None:
-                    first_problem_iid = problem_iid
+            self.tree.insert("", "end", iid=topic_name, text=topic_label(topic_name),
+                             tags=("topic",), open=True)
+            for number, problem in enumerate(topic.problems, start=1):
+                problem_row = row_id(topic_name, problem.id)
+                self._problem_rows.append(problem_row)
+                self.tree.insert(topic_name, "end", iid=problem_row, text=f"{number}. {problem.title}")
 
-        if first_problem_iid is not None:
-            self.tree.selection_set(first_problem_iid)
-            self.tree.see(first_problem_iid)
+        if self._problem_rows:
+            self._select_row(self._problem_rows[0])
 
-    def _on_tree_selected(self, event):
-        """Loads the selected problem into the problem view.
+    def _select_row(self, row):
+        """Selects a sidebar row, which loads it through _on_row_selected."""
+        self.tree.selection_set(row)
+        self.tree.see(row)
 
-        Selecting a topic row loads that topic's first problem instead,
-        so clicking a section header is never a dead end.
-
-        Args:
-            event: The Tkinter Treeview selection event. Unused; the
-                current selection is read directly from the tree.
+    def _on_row_selected(self, event):
+        """
+        Loads the selected problem. Clicking a topic row loads that topic's
+        first problem, so clicking a topic is never a dead end.
         """
         selection = self.tree.selection()
         if not selection:
             return
-        iid = selection[0]
+        row = selection[0]
 
-        if iid in self._problem_by_iid:
-            topic_name, problem_id = self._problem_by_iid[iid]
-            problem = self.loader.get_problem(topic_name, problem_id)
-            resolved_iid = iid
+        if row in self.topics:
+            topic_name = row
+            problem = self.topics[topic_name].problems[0]
         else:
-            problem = self.loader.get_topic(iid).problems[0]
-            resolved_iid = f"{iid}::{problem.id}"
+            topic_name, problem_id = row.split("::")
+            problem = self.loader.get_problem(topic_name, problem_id)
 
-        self._current_problem_iid = resolved_iid
+        self._current_row = row_id(topic_name, problem.id)
         self.problem_view.load_problem(problem)
-        is_last = self._problem_order.index(resolved_iid) == len(self._problem_order) - 1
+        is_last = self._current_row == self._problem_rows[-1]
         self.problem_view.set_next_enabled(not is_last)
 
-    def _on_next_clicked(self):
-        """Advances to the problem right after the current one in tree order.
-
-        The alternative to clicking a row in the navigation tree directly.
-        Selecting the next row triggers _on_tree_selected the same way a
-        manual click would, so there's only one place that actually loads
-        a problem.
-        """
-        if self._current_problem_iid is None:
+    def _go_to_next_problem(self):
+        """Selects the problem right after the current one."""
+        if self._current_row is None:
             return
-        index = self._problem_order.index(self._current_problem_iid)
-        if index + 1 >= len(self._problem_order):
-            return
-        next_iid = self._problem_order[index + 1]
-        self.tree.selection_set(next_iid)
-        self.tree.see(next_iid)
+        index = self._problem_rows.index(self._current_row)
+        if index + 1 < len(self._problem_rows):
+            self._select_row(self._problem_rows[index + 1])

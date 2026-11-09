@@ -29,5 +29,6 @@
       "expected_output": "-1"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def safe_divide(a, b, default=0):\n    if b == 0:\n        return default\n    return a / b\n"
 }

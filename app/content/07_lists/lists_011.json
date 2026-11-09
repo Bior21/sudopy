@@ -34,5 +34,6 @@
       "expected_output": "[5, 10]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def append_value(nums, value):\n    nums.append(value)\n    return nums\n"
 }

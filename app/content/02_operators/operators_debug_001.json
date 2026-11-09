@@ -28,5 +28,6 @@
       "expected_output": "300.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def percentage_change(old_value, new_value):\n    return (new_value - old_value) / old_value * 100\n"
 }

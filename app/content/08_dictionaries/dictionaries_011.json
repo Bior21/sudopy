@@ -38,5 +38,6 @@
       "expected_output": "{'hi': 3}"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def count_word_frequencies(words):\n    freq = {}\n    for word in words:\n        freq[word] = freq.get(word, 0) + 1\n    return freq\n"
 }

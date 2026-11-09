@@ -28,5 +28,6 @@
       "expected_output": "210.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def total_after_tax(price, tax_rate):\n    return price + price * tax_rate\n"
 }

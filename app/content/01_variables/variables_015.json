@@ -28,5 +28,6 @@
       "expected_output": "2036"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def year_someone_turns_age(birth_year, target_age):\n    return birth_year + target_age\n"
 }

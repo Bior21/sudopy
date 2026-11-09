@@ -19,5 +19,6 @@
       "input": "red\nblue",
       "expected_output": "red\nblue"
     }
-  ]
+  ],
+  "solution": "def print_on_separate_lines():\n    word1 = input()\n    word2 = input()\n    print(word1)\n    print(word2)\n"
 }

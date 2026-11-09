@@ -29,5 +29,6 @@
       "expected_output": "(3, 0, 0)"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def classify_and_count(nums):\n    positives = 0\n    negatives = 0\n    zeros = 0\n    for n in nums:\n        if n > 0:\n            positives += 1\n        elif n < 0:\n            negatives += 1\n        else:\n            zeros += 1\n    return positives, negatives, zeros\n"
 }

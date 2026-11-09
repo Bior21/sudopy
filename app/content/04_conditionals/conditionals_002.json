@@ -28,5 +28,6 @@
       "expected_output": "obese"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def classify_bmi(weight_kg, height_m):\n    bmi = weight_kg / (height_m ** 2)\n    if bmi < 18.5:\n        return 'underweight'\n    elif bmi < 25:\n        return 'normal'\n    elif bmi < 30:\n        return 'overweight'\n    else:\n        return 'obese'\n"
 }

@@ -38,5 +38,6 @@
       "expected_output": "7"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def find_maximum(nums):\n    return max(nums)\n"
 }

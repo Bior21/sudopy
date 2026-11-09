@@ -25,5 +25,6 @@
       "expected_output": "True"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def is_business_day(day_name):\n    return day_name not in ('Saturday', 'Sunday')\n"
 }

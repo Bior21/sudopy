@@ -54,5 +54,6 @@
       "expected_output": "6"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def diagonal_sum(grid):\n    total = 0\n    for i in range(len(grid)):\n        total += grid[i][i]\n    return total\n"
 }

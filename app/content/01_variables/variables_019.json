@@ -28,5 +28,6 @@
       "expected_output": "5"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def total_inches(feet, inches):\n    return feet * 12 + inches\n"
 }

@@ -28,5 +28,6 @@
       "expected_output": "0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def compare_three_way(a, b):\n    if a < b:\n        return -1\n    elif a > b:\n        return 1\n    else:\n        return 0\n"
 }

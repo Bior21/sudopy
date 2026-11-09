@@ -49,5 +49,6 @@
       "expected_output": "21"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def sum_of_grid(grid):\n    total = 0\n    for row in grid:\n        for val in row:\n            total += val\n    return total\n"
 }

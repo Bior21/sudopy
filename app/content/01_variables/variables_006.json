@@ -28,5 +28,6 @@
       "expected_output": "True"
     }
   ],
-  "hint": "Fahrenheit = Celsius \u00d7 9/5 + 32."
+  "hint": "Fahrenheit = Celsius \u00d7 9/5 + 32.",
+  "solution": "def exceeds_when_converted(celsius, fahrenheit_limit):\n    fahrenheit = celsius * 9 / 5 + 32\n    return fahrenheit > fahrenheit_limit\n"
 }

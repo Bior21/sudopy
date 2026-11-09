@@ -25,5 +25,6 @@
       "expected_output": "xx"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def first_and_last_char(s):\n    return s[0] + s[-1]\n"
 }

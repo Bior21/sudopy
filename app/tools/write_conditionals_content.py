@@ -1,14 +1,17 @@
-"""One-time authoring script: writes the redesigned Conditionals topic content.
+"""
+File: write_conditionals_content.py
+Author: Bior Madol Khom Bior
+-----------------------------------
+Lists the Conditionals problems. tools/content_authoring.py does the
+actual work of computing expected outputs and writing the JSON files.
+Run it from inside app/:
 
-See write_loops_content.py's docstring for the general pattern. Since
-Conditionals comes before Loops in the curriculum, every solution here
-is deliberately loop-free - no any()/all() over a generator, no
-character-by-character scanning - even where a loop would be the
-natural real-world tool, matching the vocabulary a student actually has
-at this point.
+    python3 -m tools.write_conditionals_content
+
+Conditionals come before Loops, so no solution here uses a loop.
 """
 
-from content_authoring import write_topic
+from tools.content_authoring import write_topic
 
 # Each write problem: (id, function_name, prompt, correct_solution, list_of_args, hint)
 WRITE_PROBLEMS = [

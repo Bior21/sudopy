@@ -28,5 +28,6 @@
       "expected_output": "1"
     }
   ],
-  "hint": "There's a way to round up using only integer division \u2014 add items_per_page - 1 first."
+  "hint": "There's a way to round up using only integer division \u2014 add items_per_page - 1 first.",
+  "solution": "def pages_needed(items, items_per_page):\n    return (items + items_per_page - 1) // items_per_page\n"
 }

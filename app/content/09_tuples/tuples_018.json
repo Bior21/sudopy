@@ -43,5 +43,6 @@
       "expected_output": "(1, 5, 9)"
     }
   ],
-  "hint": "Tuples can't be modified directly - convert to a list, swap there, then convert back."
+  "hint": "Tuples can't be modified directly - convert to a list, swap there, then convert back.",
+  "solution": "def swap_first_last(t):\n    t_list = list(t)\n    t_list[0], t_list[-1] = t_list[-1], t_list[0]\n    return tuple(t_list)\n"
 }

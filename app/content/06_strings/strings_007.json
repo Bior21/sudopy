@@ -25,5 +25,6 @@
       "expected_output": "ytho"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def slice_middle(s):\n    return s[1:-1]\n"
 }

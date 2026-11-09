@@ -1,3 +1,11 @@
+"""
+File: test_loader.py
+Author: Bior Madol Khom Bior
+--------------------
+Checks that problem files are read correctly and that broken ones are
+reported.
+"""
+
 import json
 
 import pytest
@@ -13,6 +21,7 @@ VALID_PROBLEM = {
     "starter_code": "def test_problem():\n    print('hi')\n",
     "function_name": "test_problem",
     "tests": [{"input": "", "expected_output": "hi"}],
+    "solution": "def test_problem():\n    print('hi')\n",
 }
 
 

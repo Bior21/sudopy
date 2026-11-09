@@ -70,5 +70,6 @@
       "expected_output": "[('c', 1), ('a', 5), ('b', 5)]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def sort_tuples_by_second(pairs):\n    return sorted(pairs, key=lambda p: p[1])\n"
 }

@@ -25,5 +25,6 @@
       "expected_output": "0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def last_two_digits(n):\n    return n % 100\n"
 }

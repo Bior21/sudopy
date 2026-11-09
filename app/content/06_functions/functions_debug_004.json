@@ -37,5 +37,6 @@
       "expected_output": "(60, 20.0)"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def total_and_average(nums):\n    total = sum(nums)\n    average = total / len(nums)\n    return total, average\n"
 }

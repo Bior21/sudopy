@@ -28,5 +28,6 @@
       "expected_output": "0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def temperature_swing(morning_temp, evening_temp):\n    return evening_temp - morning_temp\n"
 }

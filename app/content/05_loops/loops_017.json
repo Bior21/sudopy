@@ -25,5 +25,6 @@
       "expected_output": "55"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def fibonacci_at(n):\n    a, b = 0, 1\n    for i in range(n):\n        a, b = b, a + b\n    return a\n"
 }

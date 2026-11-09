@@ -35,5 +35,6 @@
       "expected_output": "{'x': 7}"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def combine_counts(d, key, amount):\n    d[key] = d.get(key, 0) + amount\n    return d\n"
 }

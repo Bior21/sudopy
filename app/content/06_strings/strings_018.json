@@ -25,5 +25,6 @@
       "expected_output": "equal"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def longest_word(s):\n    words = s.split()\n    return max(words, key=len)\n"
 }

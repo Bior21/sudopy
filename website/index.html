@@ -3,103 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sudopy — learn Python, no internet required</title>
-<meta name="description" content="Sudopy is a free, offline desktop tool for learning the basics of Python — download it once, and it keeps working with no connection at all.">
+<title>Sudopy — practise Python offline</title>
+<meta name="description" content="Sudopy is a free app for practising Python offline.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="wrap">
 
   <header class="topbar">
-    <div class="wrap topbar-inner">
-      <span class="brand">
-        <span class="brand-mark">&gt;_</span>
-        <span class="brand-name">sudo<span class="brand-dim">py</span></span>
-      </span>
-      <a href="#download" class="topbar-cta">Download</a>
-    </div>
+    <a class="brand" href="#"><span class="brand-mark">&gt;_</span>sudopy</a>
+    <a class="github" href="https://github.com/Bior21/sudopy">GitHub</a>
   </header>
 
   <main>
     <section class="hero">
-      <div class="wrap hero-inner">
-        <div class="board" role="group" aria-label="Simulated Python session">
-          <div class="board-chrome">
-            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-            <span class="board-label">python3</span>
-          </div>
-          <pre class="repl" aria-hidden="false"><code><span class="line l1"><span class="prompt">&gt;&gt;&gt; </span><span class="stmt">import</span> sudopy</span>
-<span class="line l2"><span class="prompt">&gt;&gt;&gt; </span>sudopy.<span class="fn">requires</span>(internet=<span class="kw">False</span>)</span>
-<span class="line l3 out">No internet needed. Just Python, ready when you are.</span>
-<span class="line l4"><span class="prompt">&gt;&gt;&gt; </span><span class="cursor">&#9608;</span></span></code></pre>
-        </div>
+      <h1>Python Practice without internet</h1>
+      <p class="lede">
+        Sudopy is a free app for practising the Python offline. Good for use if
+        you want some python practice problems but not connected to internet.
+      </p>
 
-        <h1 class="hero-title">Python, taught by a machine<br>that never needs Wi&#8209;Fi.</h1>
-        <p class="hero-sub">
-          A free desktop app for learning the basics of programming &mdash;
-          real problems to work through, feedback the moment you run your
-          code, and a full Python interpreter built right in. Download it
-          once, wherever you can find a connection, and it keeps working
-          long after that connection is gone.
-        </p>
+      <a class="download" id="download" href="https://github.com/Bior21/sudopy/releases/latest/download/sudopy-windows.zip">Download for Windows</a>
+      <p class="other" id="other">Also for <a href="https://github.com/Bior21/sudopy/releases/latest/download/sudopy-macos.zip">macOS</a></p>
+      <p class="facts">Free · about 10 MB · nothing to install</p>
 
-        <div class="cta-row" id="download">
-          <a class="run-btn" href="https://github.com/Bior21/sudopy/releases/download/v0.1.0/sudopy-macos.zip" download>
-            <span class="run-prompt">$</span> download &#8212;&#8202;macOS
-          </a>
-          <span class="also">Windows &amp; Linux builds coming soon</span>
-        </div>
-        <p class="filesize">It's one file, about 12&nbsp;MB, with nothing to install and nothing to sign up for.</p>
-
-        <details class="mac-warning">
-          <summary>Mac says it can't verify the app &mdash; what do I do?</summary>
-          <p>
-            This happens because the app isn't registered with Apple yet, not because
-            anything is wrong with it. To open it the first time:
-          </p>
-          <ol>
-            <li>Open <strong>System Settings &rarr; Privacy &amp; Security</strong></li>
-            <li>Scroll down to the message about sudopy being blocked, and click <strong>Open Anyway</strong></li>
-            <li>Try opening the file again &mdash; this time it'll offer a real <strong>Open</strong> button</li>
-          </ol>
-          <p>You only need to do this once.</p>
-        </details>
+      <div class="example" aria-label="An example practice problem">
+        <div class="example-head"><strong>Loops</strong> · Count the vowels in a word</div>
+        <pre><code><span class="kw">def</span> <span class="fn">count_vowels</span>(word):
+    count = 0
+    <span class="kw">for</span> letter <span class="kw">in</span> word:
+        <span class="kw">if</span> letter <span class="kw">in</span> <span class="fn">"aeiouAEIOU"</span>:
+            count += 1
+    <span class="kw">return</span> count</code></pre>
+        <div class="example-result">✓ All 3 tests passed</div>
       </div>
     </section>
 
-    <section class="how" aria-labelledby="how-heading">
-      <div class="wrap">
-        <p class="eyebrow">how it works</p>
-        <h2 id="how-heading">Built for the connection you have, not the one you wish you had.</h2>
-        <div class="steps">
-          <div class="step">
-            <span class="step-mark">1</span>
-            <h3>Download once</h3>
-            <p>Find a connection wherever you can &mdash; a library, a café, a friend's hotspot &mdash; and grab the file. That's the only time you'll need the internet.</p>
-          </div>
-          <div class="step">
-            <span class="step-mark">2</span>
-            <h3>Run it anywhere</h3>
-            <p>There's nothing to install and nothing else to set up. A full Python interpreter is already built in, so it just opens and runs.</p>
-          </div>
-          <div class="step">
-            <span class="step-mark">3</span>
-            <h3>Practice, offline, for good</h3>
-            <p>Write code, run it, and see right away whether it worked. No connection required, then or ever again.</p>
-          </div>
-        </div>
+    <section class="steps">
+      <div class="step">
+        <span class="step-number">01</span>
+        <h3>Download once</h3>
+        <p>Get the file whenever you have internet. You won't need it again.</p>
       </div>
+      <div class="step">
+        <span class="step-number">02</span>
+        <h3>Open it</h3>
+        <p>You don’t need to install anything. Python is already inside.</p>
+      </div>
+      <div class="step">
+        <span class="step-number">03</span>
+        <h3>Practise</h3>
+        <p>There are over 200 problems you can practice with, from variables to nested lists.</p>
+      </div>
+    </section>
+
+    <section class="help">
+      <h2>Opening it for the first time</h2>
+      <details>
+        <summary>Windows says "Windows protected your PC"</summary>
+        <p>Windows shows this for new apps it doesn't know yet. Click <strong>More info</strong>, then <strong>Run anyway</strong>. You only need to do this once.</p>
+      </details>
+      <details>
+        <summary>Mac says it can't verify the app</summary>
+        <ol>
+          <li>Open <strong>System Settings → Privacy &amp; Security</strong>.</li>
+          <li>Scroll down to the message about sudopy and click <strong>Open Anyway</strong>.</li>
+          <li>Open the app again and click <strong>Open</strong>.</li>
+        </ol>
+        <p>You only need to do this once.</p>
+      </details>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <span>Free and open source.</span>
-      <a href="https://github.com/Bior21/sudopy">View on GitHub</a>
-    </div>
+  <footer>
+    <p>This was built for Junub Code, which teaches programming in South Sudan.</p>
+    <p>But it is also <a href="https://github.com/Bior21/sudopy">free and open source</a> to anyone who might find it helpful in their teaching.</p>
   </footer>
 
+</div>
+
+<script>
+  // Mac visitors see the macOS download first; everyone else sees Windows.
+  var releases = "https://github.com/Bior21/sudopy/releases/latest/download/";
+  if (navigator.userAgent.indexOf("Mac") !== -1) {
+    var button = document.getElementById("download");
+    button.textContent = "Download for macOS";
+    button.href = releases + "sudopy-macos.zip";
+    document.getElementById("other").innerHTML =
+      'Also for <a href="' + releases + 'sudopy-windows.zip">Windows</a>';
+  }
+</script>
 </body>
 </html>

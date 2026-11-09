@@ -52,5 +52,6 @@
       "expected_output": "Kim"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def find_student_with_max_score(students):\n    best = students[0]\n    for s in students:\n        if s['score'] > best['score']:\n            best = s\n    return best['name']\n"
 }

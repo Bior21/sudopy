@@ -37,5 +37,6 @@
       "expected_output": "[5]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def tuple_to_list(t):\n    return list(t)\n"
 }

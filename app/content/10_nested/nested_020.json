@@ -64,5 +64,6 @@
       "expected_output": "{'m': 1, 'n': 2, 'o': 3}"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def list_of_pairs_to_dict(pairs):\n    result = {}\n    for key, value in pairs:\n        result[key] = value\n    return result\n"
 }

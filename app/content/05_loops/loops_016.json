@@ -28,5 +28,6 @@
       "expected_output": "10"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def gcd_of_two(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n"
 }

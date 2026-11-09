@@ -31,5 +31,6 @@
       "expected_output": "[5, 10]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def all_values(d):\n    return list(d.values())\n"
 }

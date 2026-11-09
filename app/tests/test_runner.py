@@ -1,3 +1,11 @@
+"""
+File: test_runner.py
+Author: Bior Madol Khom Bior
+--------------------
+Checks running code in a separate process: output, input, crashes and
+timeouts.
+"""
+
 from core.runner import run_code
 
 

@@ -37,5 +37,6 @@
       "expected_output": "x"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def join_with_separator(words, separator):\n    return separator.join(words)\n"
 }

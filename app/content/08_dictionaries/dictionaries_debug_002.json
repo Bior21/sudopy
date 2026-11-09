@@ -38,5 +38,6 @@
       "expected_output": "{'a': 1}"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def merge_dicts(a, b):\n    result = dict(a)\n    for key in b:\n        result[key] = b[key]\n    return result\n"
 }

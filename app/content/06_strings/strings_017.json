@@ -25,5 +25,6 @@
       "expected_output": "Single"
     }
   ],
-  "hint": "Build the capitalized words in a list, then join() them back together with a space."
+  "hint": "Build the capitalized words in a list, then join() them back together with a space.",
+  "solution": "def title_case(s):\n    words = s.split()\n    result = []\n    for word in words:\n        result.append(word[0].upper() + word[1:])\n    return ' '.join(result)\n"
 }

@@ -25,5 +25,6 @@
       "expected_output": "A"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def capitalize_first_letter(s):\n    return s[0].upper() + s[1:]\n"
 }

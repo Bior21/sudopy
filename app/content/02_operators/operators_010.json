@@ -34,5 +34,6 @@
       "expected_output": "20"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def total_area_two_rectangles(w1, h1, w2, h2):\n    return w1 * h1 + w2 * h2\n"
 }

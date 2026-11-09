@@ -34,5 +34,6 @@
       "expected_output": "70"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def weighted_score(score1, weight1, score2, weight2):\n    return score1 * weight1 + score2 * weight2\n"
 }

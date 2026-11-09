@@ -31,5 +31,6 @@
       "expected_output": "False"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def can_checkout(cart_total, has_coupon, coupon_minimum):\n    return not has_coupon or cart_total >= coupon_minimum\n"
 }

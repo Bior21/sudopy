@@ -42,5 +42,6 @@
       "expected_output": "[3]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def last_n_elements(nums, n):\n    return nums[-n:]\n"
 }

@@ -25,5 +25,6 @@
       "expected_output": "0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def discount_tier(total_spent):\n    if total_spent >= 500:\n        return 20\n    elif total_spent >= 200:\n        return 10\n    elif total_spent >= 50:\n        return 5\n    else:\n        return 0\n"
 }

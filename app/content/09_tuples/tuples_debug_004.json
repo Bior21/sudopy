@@ -58,5 +58,6 @@
       "expected_output": "[10, 0]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def sum_of_pairs(pairs):\n    result = []\n    for a, b in pairs:\n        result.append(a + b)\n    return result\n"
 }

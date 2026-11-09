@@ -1,14 +1,15 @@
-"""One-time authoring script: writes the redesigned Loops topic content.
+"""
+File: write_loops_content.py
+Author: Bior Madol Khom Bior
+----------------------------
+Lists the Loops problems. tools/content_authoring.py does the
+actual work of computing expected outputs and writing the JSON files.
+Run it from inside app/:
 
-Replaces the old input()-based loops_001..004 with 20 parameter-based
-problems (loops_001..020) plus 4 "debug it" problems (loops_debug_001..
-004) that ship with near-complete but broken starter_code instead of a
-TODO stub. The actual writing - computing every expected_output for
-real, confirming every debug bug genuinely reproduces - is shared logic
-in content_authoring.py; this script only supplies the problem data.
+    python3 -m tools.write_loops_content
 """
 
-from content_authoring import write_topic
+from tools.content_authoring import write_topic
 
 # Each write problem: (id, function_name, prompt, correct_solution, list_of_args, hint)
 WRITE_PROBLEMS = [

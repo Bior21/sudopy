@@ -23,5 +23,6 @@
       "expected_output": "1x book: $15"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def total_cost(price, quantity):\n    return price * quantity\n\n\ndef format_receipt(item, price, quantity):\n    cost = total_cost(price, quantity)\n    return f'{quantity}x {item}: ${cost}'\n"
 }

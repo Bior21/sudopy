@@ -25,5 +25,6 @@
       "expected_output": "['single']"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def split_into_words(s):\n    return s.split()\n"
 }

@@ -40,5 +40,6 @@
       "expected_output": "[2, 4, 6]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def filter_evens(nums):\n    result = []\n    for n in nums:\n        if n % 2 == 0:\n            result.append(n)\n    return result\n"
 }

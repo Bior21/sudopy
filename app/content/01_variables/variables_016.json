@@ -19,5 +19,6 @@
       "expected_output": "0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def flag_to_bit(is_active):\n    return int(is_active)\n"
 }

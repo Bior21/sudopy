@@ -1,3 +1,10 @@
+"""
+File: test_grader.py
+Author: Bior Madol Khom Bior
+--------------------
+Checks how printed output is compared with the expected output.
+"""
+
 from core.grader import grade
 from core.runner import ExecutionResult
 

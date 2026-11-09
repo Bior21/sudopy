@@ -31,5 +31,6 @@
       "expected_output": "False"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def can_move_elevator(current_floor, requested_floor, max_floor):\n    return 1 <= requested_floor <= max_floor and requested_floor != current_floor\n"
 }

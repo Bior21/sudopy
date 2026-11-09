@@ -31,5 +31,6 @@
       "expected_output": "5.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def average_speed(distance, time1, time2):\n    return distance / (time1 + time2)\n"
 }

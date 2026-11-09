@@ -31,5 +31,6 @@
       "expected_output": "15"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def sum_of_multiples_of_either(limit, a, b):\n    total = 0\n    for i in range(1, limit):\n        if i % a == 0 or i % b == 0:\n            total += i\n    return total\n"
 }

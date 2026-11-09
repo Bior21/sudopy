@@ -36,5 +36,6 @@
       "expected_output": "False"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def contains_value(nums, target):\n    return target in nums\n"
 }

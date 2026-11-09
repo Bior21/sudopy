@@ -1,14 +1,18 @@
-"""One-time authoring script: writes the redesigned Nested topic content.
+"""
+File: write_nested_content.py
+Author: Bior Madol Khom Bior
+-----------------------------
+Lists the Nested problems. tools/content_authoring.py does the
+actual work of computing expected outputs and writing the JSON files.
+Run it from inside app/:
 
-See write_loops_content.py's docstring for the general pattern; the
-actual writing (computing every expected_output for real, confirming
-every debug bug genuinely reproduces) is shared logic in
-content_authoring.py. Like write_tuples_content.py, list_of_pairs_to_dict
-passes real Python tuples so its call site shows authentic tuple syntax -
-see content_authoring.py's _encode_tuples.
+    python3 -m tools.write_nested_content
+
+list_of_pairs_to_dict passes real tuples, so the call shows (a, b)
+rather than [a, b].
 """
 
-from content_authoring import write_topic
+from tools.content_authoring import write_topic
 
 # Each write problem: (id, function_name, prompt, correct_solution, list_of_args, hint)
 WRITE_PROBLEMS = [

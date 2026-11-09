@@ -39,5 +39,6 @@
       "expected_output": "3"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def count_positive(nums):\n    count = 0\n    for n in nums:\n        if n > 0:\n            count += 1\n    return count\n"
 }

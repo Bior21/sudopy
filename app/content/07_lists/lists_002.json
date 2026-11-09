@@ -36,5 +36,6 @@
       "expected_output": "7.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def average_of_list(nums):\n    return sum(nums) / len(nums)\n"
 }

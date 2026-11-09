@@ -28,5 +28,6 @@
       "expected_output": "5.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def speed_from_distance_time(distance, time):\n    return distance / time\n"
 }

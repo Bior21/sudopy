@@ -34,12 +34,12 @@ jobs:
       - name: Validate problem content
         working-directory: app
         run: |
-          python3 validate_content.py
+          python3 -m tools.validate_content
 
       - name: Verify every problem is solvable
         working-directory: app
         run: |
-          python3 verify_all_solvable.py
+          python3 -m tools.verify_all_solvable
 
       - name: Smoke-test the GUI launches headlessly
         working-directory: app
@@ -53,3 +53,26 @@ jobs:
           app.destroy()
           print('GUI smoke test passed')
           "
+
+  # Running student code works differently on Windows (no process groups,
+  # taskkill instead of signals), so the tests run there too.
+  test-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install pytest
+
+      - name: Run test suite
+        working-directory: app
+        run: python -m pytest -v
+
+      - name: Verify every problem is solvable
+        working-directory: app
+        run: python -m tools.verify_all_solvable

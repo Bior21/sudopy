@@ -28,5 +28,6 @@
       "expected_output": "[6, 4, 2, 0]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def countdown_by_step(n, step):\n    result = []\n    current = n\n    while current >= 0:\n        result.append(current)\n        current -= step\n    return result\n"
 }

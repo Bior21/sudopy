@@ -36,5 +36,6 @@
       "expected_output": "{'a': 1, 'b': 3}"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def increment_value(d, key):\n    d[key] += 1\n    return d\n"
 }

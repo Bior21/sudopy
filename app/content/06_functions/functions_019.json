@@ -21,5 +21,6 @@
       "expected_output": "50.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def discounted_price(price, discount_percent):\n    return price - price * discount_percent / 100\n\n\ndef apply_discount_twice(price, discount_percent):\n    once = discounted_price(price, discount_percent)\n    twice = discounted_price(once, discount_percent)\n    return twice\n"
 }

@@ -25,5 +25,6 @@
       "expected_output": "strong"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def password_strength(password):\n    if len(password) < 6:\n        return 'weak'\n    elif len(password) < 10:\n        return 'medium'\n    else:\n        return 'strong'\n"
 }

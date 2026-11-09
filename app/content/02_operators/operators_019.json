@@ -28,5 +28,6 @@
       "expected_output": "50.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def body_mass_index(weight_kg, height_m):\n    return weight_kg / (height_m ** 2)\n"
 }

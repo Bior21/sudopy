@@ -45,5 +45,6 @@
       "expected_output": "4"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def get_element_at(t, index):\n    return t[index]\n"
 }

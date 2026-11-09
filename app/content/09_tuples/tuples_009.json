@@ -51,5 +51,6 @@
       "expected_output": "(5,)"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def concatenate_tuples(a, b):\n    return a + b\n"
 }

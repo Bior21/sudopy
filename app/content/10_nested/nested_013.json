@@ -51,5 +51,6 @@
       "expected_output": "['Al', 'Kim']"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def filter_students_by_min_score(students, min_score):\n    result = []\n    for s in students:\n        if s['score'] >= min_score:\n            result.append(s['name'])\n    return result\n"
 }

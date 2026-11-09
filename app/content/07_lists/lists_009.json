@@ -42,5 +42,6 @@
       "expected_output": "[]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def first_n_elements(nums, n):\n    return nums[:n]\n"
 }

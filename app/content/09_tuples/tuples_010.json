@@ -48,5 +48,6 @@
       "expected_output": "3"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def count_value_in_tuple(t, value):\n    return t.count(value)\n"
 }

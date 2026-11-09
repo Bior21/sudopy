@@ -25,5 +25,6 @@
       "expected_output": "21"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def reverse_number(n):\n    reversed_n = 0\n    while n > 0:\n        digit = n % 10\n        reversed_n = reversed_n * 10 + digit\n        n //= 10\n    return reversed_n\n"
 }

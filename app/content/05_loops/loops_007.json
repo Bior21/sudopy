@@ -25,5 +25,6 @@
       "expected_output": "1"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def digit_sum(n):\n    total = 0\n    while n > 0:\n        total += n % 10\n        n //= 10\n    return total\n"
 }

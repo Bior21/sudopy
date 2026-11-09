@@ -36,5 +36,6 @@
       "expected_output": "4.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def average_of_values(d):\n    return sum(d.values()) / len(d)\n"
 }

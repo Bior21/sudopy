@@ -31,5 +31,6 @@
       "expected_output": "True"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def is_valid_triangle(a, b, c):\n    return a + b > c and a + c > b and b + c > a\n"
 }

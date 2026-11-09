@@ -33,5 +33,6 @@
       "expected_output": "False"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def has_key(d, key):\n    return key in d\n"
 }

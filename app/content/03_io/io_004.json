@@ -19,5 +19,6 @@
       "input": "100.0",
       "expected_output": "100.0"
     }
-  ]
+  ],
+  "solution": "def read_a_number_and_echo_it():\n    value = float(input())\n    print(value)\n"
 }

@@ -40,5 +40,6 @@
       "expected_output": "(-3, 0)"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def swap_pair(pair):\n    a, b = pair\n    return b, a\n"
 }

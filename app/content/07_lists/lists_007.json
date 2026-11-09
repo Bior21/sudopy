@@ -40,5 +40,6 @@
       "expected_output": "2"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def index_of_value(nums, target):\n    return nums.index(target)\n"
 }

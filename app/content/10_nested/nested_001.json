@@ -56,5 +56,6 @@
       "expected_output": "3"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def get_grid_value(grid, row, col):\n    return grid[row][col]\n"
 }

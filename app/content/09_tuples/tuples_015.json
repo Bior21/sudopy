@@ -43,5 +43,6 @@
       "expected_output": "7"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def max_of_tuple(t):\n    return max(t)\n"
 }

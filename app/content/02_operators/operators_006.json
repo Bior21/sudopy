@@ -28,5 +28,6 @@
       "expected_output": "False"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def same_sign(a, b):\n    return (a > 0 and b > 0) or (a < 0 and b < 0)\n"
 }

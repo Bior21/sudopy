@@ -1,3 +1,11 @@
+"""
+File: test_huffman.py
+Author: Bior Madol Khom Bior
+---------------------
+Checks that Huffman encoding and decoding give back the original text,
+and records how it compares with zlib.
+"""
+
 import zlib
 
 import pytest

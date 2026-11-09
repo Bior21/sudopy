@@ -53,5 +53,6 @@
       "expected_output": "4"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def count_matching_in_grid(grid, target):\n    count = 0\n    for row in grid:\n        for val in row:\n            if val == target:\n                count += 1\n    return count\n"
 }

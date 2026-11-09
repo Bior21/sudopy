@@ -19,5 +19,6 @@
       "input": "red\nblue",
       "expected_output": "red, blue"
     }
-  ]
+  ],
+  "solution": "def print_with_separator():\n    word1 = input()\n    word2 = input()\n    print(word1 + ', ' + word2)\n"
 }

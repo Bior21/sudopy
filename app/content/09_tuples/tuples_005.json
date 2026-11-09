@@ -28,5 +28,6 @@
       "expected_output": "(-1, 5)"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def make_point(x, y):\n    return (x, y)\n"
 }

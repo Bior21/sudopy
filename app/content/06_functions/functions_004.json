@@ -19,5 +19,6 @@
       "expected_output": "Sam wins!"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def announce_winner(name):\n    print(f'{name} wins!')\n"
 }

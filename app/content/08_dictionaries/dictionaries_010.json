@@ -35,5 +35,6 @@
       "expected_output": "n"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def max_value_key(d):\n    return max(d, key=d.get)\n"
 }

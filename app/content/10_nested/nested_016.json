@@ -50,5 +50,6 @@
       "expected_output": "[{'name': 'X', 'score': 100}]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def add_score_to_student(students, index, points):\n    students[index]['score'] += points\n    return students\n"
 }

@@ -42,5 +42,6 @@
       "expected_output": "3"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def count_occurrences(nums, target):\n    return nums.count(target)\n"
 }

@@ -38,5 +38,6 @@
       "expected_output": "2"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def count_matching_values(d, target):\n    count = 0\n    for key in d:\n        if d[key] == target:\n            count += 1\n    return count\n"
 }

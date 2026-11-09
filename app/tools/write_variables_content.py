@@ -1,12 +1,15 @@
-"""One-time authoring script: writes the redesigned Variables topic content.
+"""
+File: write_variables_content.py
+Author: Bior Madol Khom Bior
+--------------------------------
+Lists the Variables problems. tools/content_authoring.py does the
+actual work of computing expected outputs and writing the JSON files.
+Run it from inside app/:
 
-See write_loops_content.py's docstring for the general pattern; the
-actual writing (computing every expected_output for real, confirming
-every debug bug genuinely reproduces) is shared logic in
-content_authoring.py.
+    python3 -m tools.write_variables_content
 """
 
-from content_authoring import write_topic
+from tools.content_authoring import write_topic
 
 # Each write problem: (id, function_name, prompt, correct_solution, list_of_args, hint)
 WRITE_PROBLEMS = [

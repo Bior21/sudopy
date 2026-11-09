@@ -28,5 +28,6 @@
       "expected_output": "55"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def sum_of_range(start, end):\n    total = 0\n    for i in range(start, end + 1):\n        total += i\n    return total\n"
 }

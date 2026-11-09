@@ -31,5 +31,6 @@
       "expected_output": "False"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def is_strictly_increasing(a, b, c):\n    return a < b < c\n"
 }

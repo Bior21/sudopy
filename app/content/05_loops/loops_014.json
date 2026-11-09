@@ -28,5 +28,6 @@
       "expected_output": "125"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def power_without_operator(base, exp):\n    result = 1\n    for i in range(exp):\n        result *= base\n    return result\n"
 }

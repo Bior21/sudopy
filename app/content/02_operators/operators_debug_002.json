@@ -31,5 +31,6 @@
       "expected_output": "False"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def is_close_enough(a, b, tolerance):\n    return abs(a - b) <= tolerance\n"
 }

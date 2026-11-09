@@ -25,5 +25,6 @@
       "expected_output": "True"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def is_all_digits(s):\n    return s.isdigit()\n"
 }

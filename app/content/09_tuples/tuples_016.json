@@ -40,5 +40,6 @@
       "expected_output": "[]"
     }
   ],
-  "hint": "zip() pairs up two sequences elementwise into tuples - wrap it in list() to see the pairs."
+  "hint": "zip() pairs up two sequences elementwise into tuples - wrap it in list() to see the pairs.",
+  "solution": "def pairs_from_two_lists(a, b):\n    return list(zip(a, b))\n"
 }

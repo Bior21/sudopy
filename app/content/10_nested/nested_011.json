@@ -51,5 +51,6 @@
       "expected_output": "60"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def total_score(students, field):\n    total = 0\n    for s in students:\n        total += s[field]\n    return total\n"
 }

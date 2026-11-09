@@ -19,5 +19,6 @@
       "input": "Zoe\n7",
       "expected_output": "Zoe is 7 years old."
     }
-  ]
+  ],
+  "solution": "def formatted_output():\n    name = input()\n    age = int(input())\n    print(f'{name} is {age} years old.')\n"
 }

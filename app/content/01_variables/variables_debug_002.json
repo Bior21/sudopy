@@ -28,5 +28,6 @@
       "expected_output": "50.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def discounted_price(price, discount_percent):\n    return price - price * discount_percent / 100\n"
 }

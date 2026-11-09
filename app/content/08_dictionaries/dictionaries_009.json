@@ -31,5 +31,6 @@
       "expected_output": "10"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def sum_of_values(d):\n    return sum(d.values())\n"
 }

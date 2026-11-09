@@ -31,5 +31,6 @@
       "expected_output": "(5,)"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def list_to_tuple(lst):\n    return tuple(lst)\n"
 }

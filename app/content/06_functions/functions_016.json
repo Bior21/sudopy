@@ -17,5 +17,6 @@
       "expected_output": "[32.0, 68.0, 212.0]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def celsius_to_fahrenheit(c):\n    return c * 9 / 5 + 32\n\n\ndef fahrenheit_report_list(celsius_list):\n    result = []\n    for c in celsius_list:\n        result.append(celsius_to_fahrenheit(c))\n    return result\n"
 }

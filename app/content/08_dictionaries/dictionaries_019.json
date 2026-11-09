@@ -40,5 +40,6 @@
       "expected_output": "{}"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def dict_from_two_lists(keys, values):\n    result = {}\n    for i in range(len(keys)):\n        result[keys[i]] = values[i]\n    return result\n"
 }

@@ -28,5 +28,6 @@
       "expected_output": "0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def age_gap(age1, age2):\n    return abs(age1 - age2)\n"
 }

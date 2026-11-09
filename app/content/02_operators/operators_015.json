@@ -28,5 +28,6 @@
       "expected_output": "44"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def round_up_to_nearest(n, multiple):\n    return ((n + multiple - 1) // multiple) * multiple\n"
 }

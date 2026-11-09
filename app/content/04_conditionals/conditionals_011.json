@@ -28,5 +28,6 @@
       "expected_output": "False"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def heat_index_alert(temp, humidity):\n    return temp >= 90 and humidity >= 60\n"
 }

@@ -31,5 +31,6 @@
       "expected_output": "50.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def total_with_compound_discount(price, discount1, discount2):\n    after_first = price - price * discount1 / 100\n    after_second = after_first - after_first * discount2 / 100\n    return after_second\n"
 }

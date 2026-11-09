@@ -36,5 +36,6 @@
       "expected_output": "[1, 2, 3, 4]"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def reverse_list(nums):\n    return nums[::-1]\n"
 }

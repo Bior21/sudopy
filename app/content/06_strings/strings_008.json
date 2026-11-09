@@ -25,5 +25,6 @@
       "expected_output": "1"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def count_words(s):\n    return len(s.split())\n"
 }

@@ -25,5 +25,6 @@
       "expected_output": "1\n1 2\n1 2 3\n1 2 3 4\n1 2 3 4 5"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def number_triangle(n):\n    rows = []\n    for i in range(1, n + 1):\n        row = ''\n        for x in range(1, i + 1):\n            if x > 1:\n                row = row + ' '\n            row = row + str(x)\n        rows.append(row)\n    return '\\n'.join(rows)\n"
 }

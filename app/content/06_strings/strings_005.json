@@ -25,5 +25,6 @@
       "expected_output": "noSpaces"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def remove_spaces(s):\n    return s.replace(' ', '')\n"
 }

@@ -38,5 +38,6 @@
       "expected_output": "['m', 'n', 'o']"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def keys_with_value(d, target_value):\n    result = []\n    for key in d:\n        if d[key] == target_value:\n            result.append(key)\n    return result\n"
 }

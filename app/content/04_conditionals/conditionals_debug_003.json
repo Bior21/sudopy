@@ -25,5 +25,6 @@
       "expected_output": "7"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def fizz_or_buzz(n):\n    if n % 15 == 0:\n        return 'fizzbuzz'\n    elif n % 3 == 0:\n        return 'fizz'\n    elif n % 5 == 0:\n        return 'buzz'\n    else:\n        return str(n)\n"
 }

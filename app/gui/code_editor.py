@@ -1,263 +1,148 @@
-"""A self-contained code editor widget for the problem view.
-
-Provides a line-number gutter with synced scrolling, lightweight
-regex-based Python syntax highlighting, current-line highlighting,
-Tab-inserts-4-spaces, and auto-indent on Enter (matching the previous
-line's indentation, one level deeper after a line ending in ":") - the
-baseline things that make a text box read as "a code editor" rather than
-a plain text field. It's deliberately not a
-full tokenizer/parser: regex-based highlighting can be fooled by edge
-cases (e.g. a '#' inside a string that isn't a comment), which is
-acceptable here since this is a teaching tool for beginner-level code,
-not a production IDE, and the tradeoff keeps this file small and
-dependency-free. CodeEditor exposes get/delete/insert proxied to the
-underlying Text widget, so it can be dropped in wherever a plain tk.Text
-was used for the editor without changing the calling code.
 """
+File: code_editor.py
+Author: Bior Madol Khom Bior
+----------------------------
+A small code editor: a text box with line numbers, Python colors, the
+current line shaded, Tab inserting 4 spaces, and Enter keeping the
+indentation (one level deeper after a line ending in ":").
 
-from __future__ import annotations
+Coloring uses regular expressions, not a full Python parser, so an odd
+case can be colored wrongly (such as a # inside a string). That's fine
+for the short beginner programs this editor is used for.
+"""
 
 import re
 import tkinter as tk
 from tkinter import ttk
 
-PY_KEYWORDS = {
+KEYWORDS = [
     "False", "None", "True", "and", "as", "assert", "async", "await",
     "break", "class", "continue", "def", "del", "elif", "else", "except",
     "finally", "for", "from", "global", "if", "import", "in", "is",
     "lambda", "nonlocal", "not", "or", "pass", "raise", "return", "try",
     "while", "with", "yield",
-}
+]
 
-PY_BUILTINS = {
+BUILTINS = [
     "print", "input", "int", "float", "str", "bool", "list", "dict",
     "tuple", "set", "len", "range", "sum", "max", "min", "sorted",
     "enumerate", "zip", "abs", "round", "type", "open", "map", "filter",
-}
-
-# Order matters: string/comment are re-raised above keyword/builtin/number
-# afterward so a keyword-looking substring inside a string or comment
-# still displays as a string/comment, not a keyword.
-_TOKEN_PATTERNS = [
-    ("number", r"\b\d+(\.\d+)?\b"),
-    ("keyword", r"\b(?:" + "|".join(sorted(PY_KEYWORDS)) + r")\b"),
-    ("builtin", r"\b(?:" + "|".join(sorted(PY_BUILTINS)) + r")\b"),
-    ("string", r"(\"\"\".*?\"\"\"|'''.*?'''|\"[^\"\n]*\"|'[^'\n]*')"),
-    ("comment", r"#.*"),
 ]
 
-_COLORS = {
-    "keyword": "#0057B7",
-    "builtin": "#7A3E9D",
-    "string": "#0B7A3E",
-    "comment": "#8A8A8A",
-    "number": "#B15C00",
-}
+# Each kind of word, the pattern that finds it, and its color.
+# \b means a word boundary, so "in" is not found inside "print".
+HIGHLIGHTS = [
+    ("number", r"\b\d+(\.\d+)?\b", "#B15C00"),
+    ("keyword", r"\b(" + "|".join(KEYWORDS) + r")\b", "#0057B7"),
+    ("builtin", r"\b(" + "|".join(BUILTINS) + r")\b", "#7A3E9D"),
+    ("string", r"(\"\"\".*?\"\"\"|'''.*?'''|\"[^\"\n]*\"|'[^'\n]*')", "#0B7A3E"),
+    ("comment", r"#.*", "#8A8A8A"),
+]
 
 
 class CodeEditor(ttk.Frame):
-    def __init__(self, parent, font=("Courier New", 11)):
-        """Builds the line-number gutter and text area, and wires up highlighting.
 
-        Args:
-            parent: The Tkinter widget this frame is placed inside.
-            font: The font tuple used for both the gutter and the text area.
-        """
+    def __init__(self, parent, font):
+        """Builds the line-number column, the text box and the scrollbar."""
         super().__init__(parent)
-        self._font = font
 
-        self.linenumbers = tk.Text(
-            self,
-            width=4,
-            padx=6,
-            pady=4,
-            takefocus=0,
-            border=0,
-            background="#EAEAEA",
-            foreground="#8A8A8A",
-            state="disabled",
-            font=font,
-            wrap="none",
-        )
-        self.linenumbers.pack(side="left", fill="y")
+        self.line_numbers = tk.Text(self, width=4, padx=6, pady=4, takefocus=0, border=0,
+                                    background="#EAEAEA", foreground="#8A8A8A",
+                                    state="disabled", font=font, wrap="none")
+        self.line_numbers.pack(side="left", fill="y")
 
-        self.text = tk.Text(
-            self,
-            wrap="none",
-            font=font,
-            padx=6,
-            pady=4,
-            undo=True,
-            background="white",
-            foreground="#1A1A1A",
-            insertbackground="black",
-            border=0,
-        )
+        self.text = tk.Text(self, wrap="none", font=font, padx=6, pady=4, undo=True,
+                            background="white", foreground="#1A1A1A",
+                            insertbackground="black", border=0)
         self.text.pack(side="left", fill="both", expand=True)
 
-        scrollbar = ttk.Scrollbar(self, orient="vertical", command=self._on_scroll)
-        scrollbar.pack(side="right", fill="y")
-        self.text.configure(yscrollcommand=self._on_text_scroll(scrollbar))
+        self.scrollbar = ttk.Scrollbar(self, orient="vertical", command=self._on_scrollbar_moved)
+        self.scrollbar.pack(side="right", fill="y")
+        self.text.configure(yscrollcommand=self._on_text_scrolled)
 
-        self.text.tag_configure("currentline", background="#F3F3F3")
-        for tag, color in _COLORS.items():
-            self.text.tag_configure(tag, foreground=color)
+        self.text.tag_configure("current_line", background="#F3F3F3")
+        for name, pattern, color in HIGHLIGHTS:
+            self.text.tag_configure(name, foreground=color)
 
         self.text.bind("<KeyRelease>", self._on_change)
         self.text.bind("<ButtonRelease>", self._on_change)
         self.text.bind("<Tab>", self._on_tab)
-        self.text.bind("<Return>", self._on_return)
+        self.text.bind("<Return>", self._on_enter)
+        self._redraw()
 
-        self._refresh()
+    def get_text(self) -> str:
+        """Returns everything typed in the editor."""
+        return self.text.get("1.0", "end-1c")
 
-    # --- scrolling: keep gutter and editor in lockstep ---
+    def set_text(self, new_text: str):
+        """Replaces everything in the editor with new_text."""
+        self.text.delete("1.0", "end")
+        self.text.insert("1.0", new_text)
+        self._redraw()
 
-    def _on_scroll(self, *args):
-        """Scrolls both the editor and the line-number gutter together.
-
-        Args:
-            *args: The scroll command arguments Tkinter passes to a
-                yscrollcommand handler.
-        """
+    def _on_scrollbar_moved(self, *args):
+        """When the scrollbar is dragged, scrolls the text and line numbers together."""
         self.text.yview(*args)
-        self.linenumbers.yview(*args)
+        self.line_numbers.yview(*args)
 
-    def _on_text_scroll(self, scrollbar):
-        """Builds the callback that keeps the scrollbar and gutter in sync.
-
-        The returned handler runs whenever the text widget scrolls on its
-        own, such as while typing past the visible area.
-
-        Args:
-            scrollbar: The scrollbar widget to update.
-
-        Returns:
-            A callback suitable for use as the text widget's yscrollcommand.
-        """
-        def handler(first, last):
-            scrollbar.set(first, last)
-            self.linenumbers.yview_moveto(first)
-        return handler
-
-    # --- editing behavior ---
+    def _on_text_scrolled(self, first, last):
+        """When the text scrolls by itself (e.g. while typing), moves the scrollbar and line numbers to match."""
+        self.scrollbar.set(first, last)
+        self.line_numbers.yview_moveto(first)
 
     def _on_tab(self, event):
-        """Inserts 4 spaces instead of a literal tab character.
-
-        Args:
-            event: The Tkinter key event that triggered this handler.
-
-        Returns:
-            The string "break", which tells Tkinter to skip its default
-            Tab behavior of shifting focus to the next widget.
+        """
+        Inserts 4 spaces. Returning "break" stops Tkinter's normal Tab
+        behavior, which would move the focus to the next button.
         """
         self.text.insert("insert", "    ")
-        return "break"  # prevent default focus-shift behavior
-
-    def _on_return(self, event):
-        """Auto-indents the new line: same as the current line, deeper after ":".
-
-        Mirrors how other code editors handle Enter - a new line starts
-        with the same leading whitespace as the line it follows, plus
-        one more level of indentation if that line ends with a colon
-        (the start of a new block).
-
-        Args:
-            event: The Tkinter key event that triggered this handler.
-
-        Returns:
-            The string "break", which tells Tkinter to skip its default
-            Return behavior (a plain newline with no indentation).
-        """
-        line_before_cursor = self.text.get("insert linestart", "insert")
-        current_indent = re.match(r"[ \t]*", line_before_cursor).group(0)
-
-        new_indent = current_indent
-        if line_before_cursor.rstrip().endswith(":"):
-            new_indent += "    "
-
-        self.text.insert("insert", "\n" + new_indent)
         return "break"
 
-    def _on_change(self, event=None):
-        """Re-renders line numbers and highlighting after an edit.
-
-        Args:
-            event: The Tkinter event that triggered this handler. Unused.
+    def _on_enter(self, event):
         """
-        self._refresh()
+        Starts the new line with the same indentation as the current one,
+        plus 4 more spaces if the current line ends with ":".
+        """
+        line = self.text.get("insert linestart", "insert")
+        indent = re.match(r"[ \t]*", line).group(0)
+        if line.rstrip().endswith(":"):
+            indent += "    "
+        self.text.insert("insert", "\n" + indent)
+        return "break"
 
-    def _refresh(self):
-        """Recomputes line numbers, syntax highlighting, and the current-line marker."""
+    def _on_change(self, event):
+        """Redraws after every key press or click."""
+        self._redraw()
+
+    def _redraw(self):
+        """Updates the line numbers, the colors and the shaded current line."""
         self._update_line_numbers()
-        self._highlight_syntax()
-        self._highlight_current_line()
+        self._color_code()
+        self.text.tag_remove("current_line", "1.0", "end")
+        self.text.tag_add("current_line", "insert linestart", "insert lineend+1c")
 
     def _update_line_numbers(self):
-        """Redraws the gutter to match the editor's current line count."""
+        """Writes one number per line of code into the line-number column."""
         line_count = int(self.text.index("end-1c").split(".")[0])
-        numbers_text = "\n".join(str(i) for i in range(1, line_count + 1))
+        numbers = []
+        for number in range(1, line_count + 1):
+            numbers.append(str(number))
 
-        self.linenumbers.config(state="normal")
-        self.linenumbers.delete("1.0", "end")
-        self.linenumbers.insert("1.0", numbers_text)
-        self.linenumbers.config(state="disabled")
+        self.line_numbers.config(state="normal")
+        self.line_numbers.delete("1.0", "end")
+        self.line_numbers.insert("1.0", "\n".join(numbers))
+        self.line_numbers.config(state="disabled")
 
-    def _highlight_syntax(self):
-        """Re-tags every keyword/builtin/string/comment/number match in the text."""
-        for tag in _COLORS:
-            self.text.tag_remove(tag, "1.0", "end")
-
-        content = self.text.get("1.0", "end-1c")
-        for tag, pattern in _TOKEN_PATTERNS:
-            for match in re.finditer(pattern, content, re.MULTILINE):
-                start = f"1.0+{match.start()}c"
-                end = f"1.0+{match.end()}c"
-                self.text.tag_add(tag, start, end)
-
-        # strings/comments should visually win over keyword/builtin/number
-        # matches that happen to fall inside them
+    def _color_code(self):
+        """
+        Colors every match of each pattern in HIGHLIGHTS. Strings and comments
+        are raised to the top afterwards, so a keyword inside a string or a
+        comment shows in the string's or comment's color.
+        """
+        code = self.get_text()
+        for name, pattern, color in HIGHLIGHTS:
+            self.text.tag_remove(name, "1.0", "end")
+            for match in re.finditer(pattern, code):
+                self.text.tag_add(name, f"1.0+{match.start()}c", f"1.0+{match.end()}c")
         self.text.tag_raise("string")
         self.text.tag_raise("comment")
-
-    def _highlight_current_line(self):
-        """Shades the line the cursor is currently on."""
-        self.text.tag_remove("currentline", "1.0", "end")
-        self.text.tag_add("currentline", "insert linestart", "insert lineend+1c")
-
-    # --- proxy interface so callers can treat this like a plain tk.Text ---
-
-    def get(self, *args, **kwargs):
-        """Proxies to the underlying Text widget's get().
-
-        Args:
-            *args: Positional arguments forwarded to Text.get().
-            **kwargs: Keyword arguments forwarded to Text.get().
-
-        Returns:
-            The requested text.
-        """
-        return self.text.get(*args, **kwargs)
-
-    def delete(self, *args, **kwargs):
-        """Proxies to the underlying Text widget's delete().
-
-        Args:
-            *args: Positional arguments forwarded to Text.delete().
-            **kwargs: Keyword arguments forwarded to Text.delete().
-        """
-        self.text.delete(*args, **kwargs)
-
-    def insert(self, *args, **kwargs):
-        """Proxies to the underlying Text widget's insert(), then re-renders.
-
-        Args:
-            *args: Positional arguments forwarded to Text.insert().
-            **kwargs: Keyword arguments forwarded to Text.insert().
-        """
-        self.text.insert(*args, **kwargs)
-        self._refresh()
-
-    def focus_set(self):
-        """Moves keyboard focus to the underlying Text widget."""
-        self.text.focus_set()

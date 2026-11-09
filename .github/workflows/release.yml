@@ -1,0 +1,87 @@
+# Builds Sudopy for Windows and macOS and attaches both to a GitHub Release.
+# PyInstaller can only build for the system it runs on, so each build runs
+# on its own GitHub machine.
+#
+# To release: git tag v0.2.0 && git push origin v0.2.0
+#
+# The download page links to releases/latest/download/<file>, so it always
+# points at the newest release without being edited.
+
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            archive: sudopy-windows.zip
+          - os: macos-latest
+            archive: sudopy-macos.zip
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: app
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install -r ../requirements.txt
+
+      - name: Check the problems before building
+        run: |
+          python -m tools.validate_content
+          python -m tools.verify_all_solvable
+
+      - name: Build the app
+        run: |
+          python -m tools.compress_content
+          pyinstaller packaging/build.spec --distpath dist --workpath build --noconfirm
+
+      # Runs a small script inside the built app. The script grades a correct
+      # solution and an infinite loop through the app's own runner, and writes
+      # what happened to a file (a windowed app has no console to print to).
+      - name: Check the built app can run and grade code
+        run: |
+          cat > smoke_check.py <<'EOF'
+          from core.problem_loader import TestCase
+          from core.submission import run_and_grade_all
+          tests = [TestCase(args=[2], expected_output="4"), TestCase(args=[3], expected_output="6")]
+          good = run_and_grade_all("def double(n):\n    return n * 2\n", "double", tests)
+          stuck = run_and_grade_all("def double(n):\n    while True:\n        pass\n", "double", tests)
+          with open("smoke_result.txt", "w") as file:
+              file.write(f"{[r.passed for r in good]} {stuck[0].timed_out}")
+          EOF
+          ls dist
+          if [ -f dist/sudopy.exe ]; then app=dist/sudopy.exe; else app=dist/sudopy; fi
+          "$app" --sudopy-run-code smoke_check.py
+          cat smoke_result.txt
+          test "$(cat smoke_result.txt)" = "[True, True] True"
+
+      - name: Zip the app (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: Compress-Archive -Path dist/sudopy.exe -DestinationPath ${{ matrix.archive }}
+
+      - name: Zip the app (macOS)
+        if: runner.os == 'macOS'
+        run: ditto -c -k dist/sudopy ${{ matrix.archive }}
+
+      - name: Attach to the release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: app/${{ matrix.archive }}

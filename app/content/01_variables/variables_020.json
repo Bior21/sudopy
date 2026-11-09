@@ -28,5 +28,6 @@
       "expected_output": "0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def net_change(start_value, end_value):\n    return end_value - start_value\n"
 }

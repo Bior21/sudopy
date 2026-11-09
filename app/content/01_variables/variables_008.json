@@ -28,5 +28,6 @@
       "expected_output": "20.0"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def paces_to_meters(paces, pace_length):\n    return paces * pace_length\n"
 }

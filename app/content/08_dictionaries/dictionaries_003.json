@@ -35,5 +35,6 @@
       "expected_output": "{'x': 5}"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def add_or_update(d, key, value):\n    d[key] = value\n    return d\n"
 }

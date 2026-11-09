@@ -28,5 +28,6 @@
       "expected_output": "True"
     }
   ],
-  "hint": ""
+  "hint": "",
+  "solution": "def starts_with(s, prefix):\n    return s.startswith(prefix)\n"
 }
