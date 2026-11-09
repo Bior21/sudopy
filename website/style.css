@@ -1,13 +1,13 @@
 /* ===== Colors and fonts ===== */
 :root {
-  --board: #1B2E28;
-  --board-light: #213832;
-  --line: #2E4740;
-  --chalk: #F1EDE3;
-  --chalk-dim: #B9B3A5;
-  --amber: #E8C468;
-  --teal: #7FA9A0;
-  --pass: #8BC79A;
+  --board: #16203A;
+  --board-light: #1D2948;
+  --line: #2C3A5E;
+  --chalk: #EEF1F7;
+  --chalk-dim: #A9B2C6;
+  --amber: #F2C14E;
+  --blue: #8FB8E8;
+  --pass: #8BD3A5;
 
   --display: 'Space Grotesk', sans-serif;
   --mono: 'IBM Plex Mono', monospace;
@@ -59,7 +59,7 @@ h1 {
   border-radius: 10px;
   text-decoration: none;
 }
-.download:hover { background: #F0D07E; }
+.download:hover { background: #F5CE6E; }
 
 .other { margin: 14px 0 0; font-size: 14px; color: var(--chalk-dim); }
 .other a { color: var(--chalk); }
@@ -79,7 +79,7 @@ h1 {
 .example-head strong { color: var(--chalk); font-weight: 600; }
 .example pre { margin: 0; padding: 16px 18px; font-family: var(--mono); font-size: 14px; line-height: 1.6; overflow-x: auto; }
 .kw { color: var(--amber); }
-.fn { color: var(--teal); }
+.fn { color: var(--blue); }
 .example-result { padding: 12px 18px; border-top: 1px solid var(--line); font-size: 14px; color: var(--pass); }
 
 /* ===== Three steps ===== */
